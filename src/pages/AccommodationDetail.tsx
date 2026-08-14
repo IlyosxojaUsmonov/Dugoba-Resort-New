@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState } from 'react';
 import {
-  Users, Wifi, Tv, ShowerHead, Check, ArrowLeft, ArrowRight,
+  Users, Wifi, Tv, ShowerHead, Check, ArrowRight,
   ChevronRight, Utensils, Camera,
 } from 'lucide-react';
 import { getAccommodationById, getRelatedAccommodations } from '@/data/accommodations';

@@ -1,37 +1,20 @@
 import { useState, useEffect } from 'react';
-import { X, CheckCircle2, Loader2, AlertCircle, Send } from 'lucide-react';
+import { X, CheckCircle2, AlertCircle, Send } from 'lucide-react';
 import { useBookingModal } from '@/lib/store';
 
-interface BookingResult {
-  success: boolean;
-  message: string;
-  booking?: {
-    first_name: string;
-    last_name: string;
-    phone: string;
-    guests: number;
-    nights: number;
-    accommodation_name: string;
-    price_per_night: string;
-    notes?: string | null;
-    status: string;
-  };
-}
-
-const NIGHT_PRESETS = [1, 2, 3, 5, 7, 10];
+const TELEGRAM_USERNAME = 'sherzod015';
+const NIGHT_PRESETS = [1, 2, 3, 4, 5, 7, 10];
 
 export default function BookingModal() {
-  const { isOpen, accommodationId, accommodationName, priceDisplay, close } = useBookingModal();
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const { isOpen, accommodationName, close } = useBookingModal();
+  const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [guests, setGuests] = useState(1);
   const [nights, setNights] = useState(1);
   const [customNights, setCustomNights] = useState('');
   const [notes, setNotes] = useState('');
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [result, setResult] = useState<BookingResult | null>(null);
+  const [sent, setSent] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -39,10 +22,9 @@ export default function BookingModal() {
     } else {
       document.body.style.overflow = '';
       setTimeout(() => {
-        setResult(null);
+        setSent(false);
         setError(null);
-        setFirstName('');
-        setLastName('');
+        setName('');
         setPhone('');
         setGuests(1);
         setNights(1);
@@ -57,65 +39,37 @@ export default function BookingModal() {
 
   const finalNights = customNights ? parseInt(customNights, 10) || nights : nights;
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!accommodationId || !accommodationName || !priceDisplay) return;
-    if (!firstName.trim() || !lastName.trim() || !phone.trim()) {
+    if (!accommodationName) return;
+
+    if (!name.trim() || !phone.trim()) {
       setError('Iltimos, barcha majburiy maydonlarni to\'ldiring.');
       return;
     }
 
-    setLoading(true);
+    if (!finalNights || finalNights < 1) {
+      setError('Iltimos, qolish muddatini kiriting.');
+      return;
+    }
+
     setError(null);
 
-    try {
-      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-      const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-      const response = await fetch(`${supabaseUrl}/functions/v1/send-telegram-booking`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${supabaseAnonKey}`,
-        },
-        body: JSON.stringify({
-          accommodation_id: accommodationId,
-          accommodation_name: accommodationName,
-          first_name: firstName.trim(),
-          last_name: lastName.trim(),
-          phone: phone.trim(),
-          guests: Number(guests),
-          nights: Number(finalNights),
-          notes: notes.trim() || null,
-          price_per_night: priceDisplay,
-        }),
-      });
+    const lines = [
+      'Dugoba Resort — Bron so\'rovi',
+      '',
+      `Xona/kottej: ${accommodationName}`,
+      `Ism: ${name.trim()}`,
+      `Telefon: ${phone.trim()}`,
+      `Mehmonlar soni: ${guests} kishi`,
+      `Qolish muddati: ${finalNights} kun`,
+      `Izoh: ${notes.trim() || '—'}`,
+    ];
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Xatolik yuz berdi');
-      }
-
-      setResult({
-        success: true,
-        message: data.message || 'Bron so\'rovingiz yuborildi.',
-        booking: {
-          first_name: firstName.trim(),
-          last_name: lastName.trim(),
-          phone: phone.trim(),
-          guests: Number(guests),
-          nights: Number(finalNights),
-          accommodation_name: accommodationName,
-          price_per_night: priceDisplay,
-          notes: notes.trim() || null,
-          status: 'pending',
-        },
-      });
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Bron yuborishda xatolik yuz berdi');
-    } finally {
-      setLoading(false);
-    }
+    const message = lines.join('\n');
+    const url = `https://t.me/${TELEGRAM_USERNAME}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+    setSent(true);
   };
 
   return (
@@ -123,75 +77,38 @@ export default function BookingModal() {
       <div className="absolute inset-0 bg-stone-950/80 backdrop-blur-sm" onClick={close} />
 
       <div className="relative bg-white rounded-sm shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto animate-scale-in">
-        {result ? (
+        {sent ? (
           <div className="p-8">
             <div className="flex flex-col items-center text-center mb-6">
               <div className="w-16 h-16 rounded-full bg-forest-100 flex items-center justify-center mb-4">
                 <CheckCircle2 size={36} className="text-forest-600" />
               </div>
               <h3 className="font-serif text-2xl font-semibold text-stone-900 mb-2">
-                Bron so'rovingiz yuborildi
+                Telegram ochildi
               </h3>
               <p className="text-stone-600 text-sm leading-relaxed">
-                Administrator bo'sh kunlarni tekshiradi va sizga xabar beradi.
+                Yangi oynada Telegram chatiga o'tdingiz. Bron ma'lumotlaringiz tayyor xabar
+                sifatida kiritilgan — so'rovni yuborish uchun Telegramdagi{' '}
+                <span className="font-medium text-stone-900">Yuborish (Send)</span> tugmasini bosing.
+                Admin siz bilan bog'lanib, kelish sanasini birgalikda kelishadi.
               </p>
             </div>
 
-            <div className="bg-stone-50 rounded-sm p-6 mb-6">
-              <h4 className="text-xs uppercase tracking-wider text-stone-400 font-semibold mb-4">
-                Sizning bron so'rovingiz
-              </h4>
-              <dl className="space-y-3">
-                <div className="flex justify-between text-sm">
-                  <dt className="text-stone-500">Obyekt</dt>
-                  <dd className="font-medium text-stone-900">{result.booking?.accommodation_name}</dd>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <dt className="text-stone-500">Ism</dt>
-                  <dd className="font-medium text-stone-900">{result.booking?.first_name} {result.booking?.last_name}</dd>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <dt className="text-stone-500">Telefon</dt>
-                  <dd className="font-medium text-stone-900">{result.booking?.phone}</dd>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <dt className="text-stone-500">Mehmonlar soni</dt>
-                  <dd className="font-medium text-stone-900">{result.booking?.guests} kishi</dd>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <dt className="text-stone-500">Dam olish muddati</dt>
-                  <dd className="font-medium text-stone-900">{result.booking?.nights} kun</dd>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <dt className="text-stone-500">Kunlik narx</dt>
-                  <dd className="font-medium text-stone-900">{result.booking?.price_per_night}</dd>
-                </div>
-                {result.booking?.notes && (
-                  <div className="flex justify-between text-sm">
-                    <dt className="text-stone-500">Izoh</dt>
-                    <dd className="font-medium text-stone-900 text-right max-w-[60%]">{result.booking.notes}</dd>
-                  </div>
-                )}
-                <div className="pt-3 border-t border-stone-200">
-                  <div className="flex justify-between text-sm">
-                    <dt className="text-stone-500">Status</dt>
-                    <dd className="font-medium text-sand-600 flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-sand-500 animate-pulse" />
-                      Administrator tekshirmoqda
-                    </dd>
-                  </div>
-                </div>
-              </dl>
-            </div>
-
-            <div className="flex gap-3">
-              <button
-                onClick={close}
-                className="flex-1 px-6 py-3 bg-forest-700 text-white font-medium rounded-sm hover:bg-forest-800 transition-colors"
-              >
-                Yopish
-              </button>
-            </div>
+            <a
+              href={`https://t.me/${TELEGRAM_USERNAME}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-forest-700 text-white font-medium rounded-sm hover:bg-forest-800 transition-colors mb-3"
+            >
+              <Send size={18} />
+              Telegramni qayta ochish
+            </a>
+            <button
+              onClick={close}
+              className="w-full px-6 py-3 border border-stone-300 text-stone-600 font-medium rounded-sm hover:bg-stone-50 transition-colors"
+            >
+              Yopish
+            </button>
           </div>
         ) : (
           <>
@@ -207,37 +124,22 @@ export default function BookingModal() {
 
             <form onSubmit={handleSubmit} className="p-6 space-y-4">
               <p className="text-xs text-stone-500 bg-stone-50 p-3 rounded-sm">
-                Administrator bo'sh kunlarni tekshiradi va sizga xabar beradi. Kelish va ketish
-                sanasini kiritish shart emas — faqat necha kun dam olmoqchi ekanligingizni ko'rsating.
+                Ma'lumotlaringizni to'ldiring — tayyor xabar bilan Telegram ochiladi. Kelish
+                sanasini kiritish shart emas, admin siz bilan bog'lanib kelishadi.
               </p>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-medium text-stone-600 mb-1.5">
-                    Ism <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    required
-                    className="w-full px-3 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-sm transition-all"
-                    placeholder="Ismingiz"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-medium text-stone-600 mb-1.5">
-                    Familiya <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    required
-                    className="w-full px-3 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-sm transition-all"
-                    placeholder="Familiyangiz"
-                  />
-                </div>
+              <div>
+                <label className="block text-xs font-medium text-stone-600 mb-1.5">
+                  Ism <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  className="w-full px-3 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-sm transition-all"
+                  placeholder="Ismingiz"
+                />
               </div>
 
               <div>
@@ -280,7 +182,7 @@ export default function BookingModal() {
 
               <div>
                 <label className="block text-xs font-medium text-stone-600 mb-2">
-                  Necha kun dam olmoqchisiz?
+                  Necha kun qolmoqchisiz? <span className="text-red-500">*</span>
                 </label>
                 <div className="flex flex-wrap gap-2 mb-2">
                   {NIGHT_PRESETS.map((n) => (
@@ -331,23 +233,13 @@ export default function BookingModal() {
               <div className="pt-2">
                 <button
                   type="submit"
-                  disabled={loading}
-                  className="w-full px-6 py-3.5 bg-forest-700 text-white font-medium rounded-sm hover:bg-forest-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full px-6 py-3.5 bg-forest-700 text-white font-medium rounded-sm hover:bg-forest-800 transition-colors flex items-center justify-center gap-2"
                 >
-                  {loading ? (
-                    <>
-                      <Loader2 size={18} className="animate-spin" />
-                      Yuborilmoqda...
-                    </>
-                  ) : (
-                    <>
-                      <Send size={18} />
-                      Bron so'rovini yuborish
-                    </>
-                  )}
+                  <Send size={18} />
+                  Bron qilish
                 </button>
                 <p className="text-[11px] text-stone-400 text-center mt-3">
-                  Ma'lumotlaringiz administratorga Telegram orqali yuboriladi
+                  Telegram orqali @{TELEGRAM_USERNAME} ga tayyor xabar bilan yo'naltirasiz
                 </p>
               </div>
             </form>

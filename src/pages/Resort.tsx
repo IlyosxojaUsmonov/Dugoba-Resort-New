@@ -137,9 +137,9 @@ export default function Resort() {
             Tur paketlari orqali resortga kelib-ketish mumkin.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/tur-paketlari" className="btn-primary">
+            <span aria-disabled="true" className="btn-primary cursor-not-allowed">
               Tur paketlari
-            </Link>
+            </span>
             <Link to="/aloqa" className="btn-secondary">
               Aloqa
             </Link>

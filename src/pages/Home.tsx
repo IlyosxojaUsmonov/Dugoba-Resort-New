@@ -45,9 +45,9 @@ export default function Home() {
               <Link to="/xonalar" className="btn-primary">
                 Xonalarni ko'rish
               </Link>
-              <Link to="/tur-paketlari" className="btn-secondary">
+              <span aria-disabled="true" className="btn-secondary cursor-not-allowed">
                 Tur paketlarini ko'rish
-              </Link>
+              </span>
             </div>
           </div>
         </div>

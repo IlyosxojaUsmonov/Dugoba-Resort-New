@@ -35,7 +35,7 @@ export default function Footer() {
               <li><Link to="/resort" className="text-sm hover:text-forest-400 transition-colors">Resort haqida</Link></li>
               <li><Link to="/kottejlar" className="text-sm hover:text-forest-400 transition-colors">Kottejlar</Link></li>
               <li><Link to="/xonalar" className="text-sm hover:text-forest-400 transition-colors">Xonalar</Link></li>
-              <li><Link to="/tur-paketlari" className="text-sm hover:text-forest-400 transition-colors">Tur paketlari</Link></li>
+              <li><span aria-disabled="true" className="text-sm text-stone-300 cursor-not-allowed">Tur paketlari</span></li>
             </ul>
           </div>
 
