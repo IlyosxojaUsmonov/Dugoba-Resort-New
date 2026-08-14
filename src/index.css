@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #fafaf9;
+  color: #1c1917;
+}
+
+::selection {
+  background-color: #235341;
+  color: #fafaf9;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f5f4;
+}
+::-webkit-scrollbar-thumb {
+  background: #5a9f82;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a8064;
+}
+
+@layer components {
+  .container-lux {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-forest-700 text-white font-medium tracking-wide rounded-sm transition-all duration-300 hover:bg-forest-800 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white/10 backdrop-blur-md border border-white/30 text-white font-medium tracking-wide rounded-sm transition-all duration-300 hover:bg-white/20 hover:border-white/50 active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-stone-700 font-medium tracking-wide transition-all duration-300 hover:text-forest-700 border-b-2 border-transparent hover:border-forest-600;
+  }
+  .section-title {
+    @apply font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-stone-900 tracking-tight;
+  }
+  .section-subtitle {
+    @apply text-sm sm:text-base text-forest-600 font-medium tracking-[0.2em] uppercase mb-3;
+  }
+  .lux-card {
+    @apply bg-white rounded-sm shadow-md overflow-hidden transition-all duration-500 hover:shadow-2xl;
+  }
+}
+
+.text-shadow-lux {
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+  .parallax-bg {
+    background-attachment: scroll;
+  }
+}
