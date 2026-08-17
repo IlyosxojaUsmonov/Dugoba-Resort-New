@@ -9,7 +9,7 @@ export default function Resort() {
       <PageHero
         title="Resort haqida"
         subtitle="Farg'ona viloyati, Shohimardon qishlog'ining eng yuqori nuqtasida joylashgan premium resort"
-        image={IMAGES.heroResort}
+        image={IMAGES.atrofMuhitResort}
         breadcrumb={[{ label: 'Bosh sahifa', to: '/' }, { label: 'Resort' }]}
       />
 
@@ -52,10 +52,10 @@ export default function Resort() {
               </div>
             </div>
             <div className="order-1 lg:order-2 space-y-4">
-              <img src={IMAGES.resortAerial} alt="Resort aerial ko'rinishi" className="w-full h-80 object-cover rounded-sm shadow-lg" loading="lazy" />
+              <img src={IMAGES.atrofMuhitTog} alt="Tog' manzarasi" className="w-full h-80 object-cover rounded-sm shadow-lg" loading="lazy" />
               <div className="grid grid-cols-2 gap-4">
-                <img src={IMAGES.resortTerrace} alt="Resort terasi" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
-                <img src={IMAGES.resortGarden} alt="Resort bog'i" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={IMAGES.atrofMuhitXonaKotej} alt="Resort va kottejlar" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={IMAGES.atrofMuhitTabiat6} alt="Tog' manzarasi" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
               </div>
             </div>
           </div>
@@ -137,9 +137,12 @@ export default function Resort() {
             Tur paketlari orqali resortga kelib-ketish mumkin.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <span aria-disabled="true" className="btn-primary cursor-not-allowed">
+            <a href={resortInfo.mapUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
+              Xaritada ko'rish
+            </a>
+            <Link to="/tur-paketlari" className="btn-secondary">
               Tur paketlari
-            </span>
+            </Link>
             <Link to="/aloqa" className="btn-secondary">
               Aloqa
             </Link>

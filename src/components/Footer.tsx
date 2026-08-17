@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Send, Mountain } from 'lucide-react';
+import { MapPin, Phone, Send } from 'lucide-react';
 import { resortInfo } from '@/data/accommodations';
+import logo from '@/atrof-muhit/dugobba.png';
 
 export default function Footer() {
   return (
@@ -9,8 +10,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-12 h-12 rounded-sm border-2 border-forest-400 flex items-center justify-center">
-                <Mountain size={22} className="text-forest-400" />
+              <div className="w-12 h-12 rounded-sm border-2 border-forest-400 flex items-center justify-center overflow-hidden">
+                <img src={logo} alt="Dugoba Resort" className="w-full h-full object-cover" />
               </div>
               <div className="flex flex-col">
                 <span className="font-serif text-white text-2xl font-semibold tracking-wide leading-none">
@@ -35,7 +36,7 @@ export default function Footer() {
               <li><Link to="/resort" className="text-sm hover:text-forest-400 transition-colors">Resort haqida</Link></li>
               <li><Link to="/kottejlar" className="text-sm hover:text-forest-400 transition-colors">Kottejlar</Link></li>
               <li><Link to="/xonalar" className="text-sm hover:text-forest-400 transition-colors">Xonalar</Link></li>
-              <li><span aria-disabled="true" className="text-sm text-stone-300 cursor-not-allowed">Tur paketlari</span></li>
+              <li><Link to="/tur-paketlari" className="text-sm hover:text-forest-400 transition-colors">Tur paketlari</Link></li>
             </ul>
           </div>
 
@@ -55,7 +56,9 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-forest-400 mt-0.5 shrink-0" />
-                <span className="text-sm text-stone-400">{resortInfo.location}</span>
+                <a href={resortInfo.mapUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-stone-400 hover:text-forest-400 transition-colors">
+                  {resortInfo.location}
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-forest-400 shrink-0" />

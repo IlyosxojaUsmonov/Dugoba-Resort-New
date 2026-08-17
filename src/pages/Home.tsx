@@ -5,6 +5,11 @@ import {
 } from 'lucide-react';
 import { accommodations, IMAGES } from '@/data/accommodations';
 import AccommodationCard from '@/components/AccommodationCard';
+import heroImage from '@/atrof-muhit/xona-kotej.png';
+import tabiat1 from '@/atrof-muhit/tabiat1.png';
+import tabiat2 from '@/atrof-muhit/tabiat2.png';
+import tabiat3 from '@/atrof-muhit/tabiat3.png';
+import tabiat8 from '@/atrof-muhit/tabiat8.png';
 
 export default function Home() {
   const featuredCottages = accommodations.filter((a) => a.type === 'cottage').slice(0, 3);
@@ -22,7 +27,7 @@ export default function Home() {
       <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={IMAGES.heroResort}
+            src={heroImage}
             alt="Dugoba Resort"
             className="w-full h-full object-cover animate-slow-zoom"
           />
@@ -45,9 +50,9 @@ export default function Home() {
               <Link to="/xonalar" className="btn-primary">
                 Xonalarni ko'rish
               </Link>
-              <span aria-disabled="true" className="btn-secondary cursor-not-allowed">
+              <Link to="/tur-paketlari" className="btn-secondary">
                 Tur paketlarini ko'rish
-              </span>
+              </Link>
             </div>
           </div>
         </div>
@@ -93,12 +98,12 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <img src={IMAGES.mountain1} alt="Tog' manzarasi" className="w-full h-64 object-cover rounded-sm shadow-md" loading="lazy" />
-                <img src={IMAGES.cottage1} alt="Kottej" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={tabiat1} alt="Tabiat manzarasi" className="w-full h-64 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={tabiat2} alt="Tabiat manzarasi" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
               </div>
               <div className="space-y-4 pt-8">
-                <img src={IMAGES.resortTerrace} alt="Resort terasi" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
-                <img src={IMAGES.mountain3} alt="Tog'lar" className="w-full h-64 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={tabiat3} alt="Tabiat manzarasi" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={tabiat8} alt="Tabiat manzarasi" className="w-full h-64 object-cover rounded-sm shadow-md" loading="lazy" />
               </div>
             </div>
           </div>

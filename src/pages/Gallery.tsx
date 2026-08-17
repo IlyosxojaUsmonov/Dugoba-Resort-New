@@ -1,58 +1,25 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import PageHero from '@/components/PageHero';
 import Lightbox from '@/components/Lightbox';
-import { galleryImages, galleryCategories, IMAGES } from '@/data/accommodations';
+import { galleryImages, IMAGES } from '@/data/accommodations';
 
 export default function Gallery() {
-  const [activeCategory, setActiveCategory] = useState<string>('Barchasi');
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-
-  const filteredImages = useMemo(() => {
-    if (activeCategory === 'Barchasi') return galleryImages;
-    return galleryImages.filter((img) => img.category === activeCategory);
-  }, [activeCategory]);
 
   return (
     <div>
       <PageHero
         title="Galereya"
         subtitle="Resort hududi, tog' manzaralari, kottejlar, xonalar va boshqa go'zalliklar"
-        image={IMAGES.resortGarden}
+        image={IMAGES.atrofMuhitTog}
         breadcrumb={[{ label: 'Bosh sahifa', to: '/' }, { label: 'Galereya' }]}
       />
 
       <section className="py-20 bg-white">
         <div className="container-lux">
-          {/* Category filter */}
-          <div className="flex flex-wrap gap-2 mb-10 justify-center">
-            <button
-              onClick={() => setActiveCategory('Barchasi')}
-              className={`px-4 py-2 text-sm rounded-sm border transition-all ${
-                activeCategory === 'Barchasi'
-                  ? 'bg-forest-700 text-white border-forest-700'
-                  : 'bg-white text-stone-600 border-stone-300 hover:border-forest-400'
-              }`}
-            >
-              Barchasi
-            </button>
-            {galleryCategories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 text-sm rounded-sm border transition-all ${
-                  activeCategory === cat
-                    ? 'bg-forest-700 text-white border-forest-700'
-                    : 'bg-white text-stone-600 border-stone-300 hover:border-forest-400'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
           {/* Masonry grid */}
           <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
-            {filteredImages.map((img, i) => (
+            {galleryImages.map((img, i) => (
               <button
                 key={`${img.url}-${i}`}
                 onClick={() => setLightboxIndex(i)}
@@ -76,7 +43,7 @@ export default function Gallery() {
 
           {lightboxIndex !== null && (
             <Lightbox
-              images={filteredImages.map((img) => img.url)}
+              images={galleryImages.map((img) => img.url)}
               startIndex={lightboxIndex}
               onClose={() => setLightboxIndex(null)}
             />

@@ -1,17 +1,11 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { Play, Video } from 'lucide-react';
 import PageHero from '@/components/PageHero';
-import { videoItems, videoCategories, IMAGES } from '@/data/accommodations';
+import { videoItems, IMAGES } from '@/data/accommodations';
 import { VideoModal } from '@/components/VideoPlayer';
 
 export default function Videos() {
-  const [activeCategory, setActiveCategory] = useState<string>('Barchasi');
-  const [selectedVideo, setSelectedVideo] = useState<{ thumbnail: string; title: string } | null>(null);
-
-  const filteredVideos = useMemo(() => {
-    if (activeCategory === 'Barchasi') return videoItems;
-    return videoItems.filter((v) => v.category === activeCategory);
-  }, [activeCategory]);
+  const [selectedVideo, setSelectedVideo] = useState<{ thumbnail: string; title: string; videoSrc?: string | null } | null>(null);
 
   return (
     <div>
@@ -24,35 +18,9 @@ export default function Videos() {
 
       <section className="py-20 bg-white">
         <div className="container-lux">
-          <div className="flex flex-wrap gap-2 mb-10 justify-center">
-            <button
-              onClick={() => setActiveCategory('Barchasi')}
-              className={`px-4 py-2 text-sm rounded-sm border transition-all ${
-                activeCategory === 'Barchasi'
-                  ? 'bg-forest-700 text-white border-forest-700'
-                  : 'bg-white text-stone-600 border-stone-300 hover:border-forest-400'
-              }`}
-            >
-              Barchasi
-            </button>
-            {videoCategories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 text-sm rounded-sm border transition-all ${
-                  activeCategory === cat
-                    ? 'bg-forest-700 text-white border-forest-700'
-                    : 'bg-white text-stone-600 border-stone-300 hover:border-forest-400'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredVideos.map((video) => (
-              <div key={video.id} className="group cursor-pointer" onClick={() => setSelectedVideo({ thumbnail: video.thumbnail, title: video.title })}>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-2">
+            {videoItems.map((video) => (
+              <div key={video.id} className="group cursor-pointer" onClick={() => setSelectedVideo({ thumbnail: video.thumbnail, title: video.title, videoSrc: video.videoSrc })}>
                 <div className="relative aspect-video rounded-sm overflow-hidden">
                   <img
                     src={video.thumbnail}
@@ -82,9 +50,9 @@ export default function Videos() {
           <div className="mt-16 text-center bg-stone-50 p-8 rounded-sm">
             <Video size={32} className="mx-auto text-forest-600 mb-4" />
             <p className="text-stone-600 max-w-2xl mx-auto">
-              Har bir xona va kottej uchun alohida videolar mavjud. Videolar keyinchalik
-              qo'shilishi mumkin. Hozirgi vaqtda placeholder rasmlar ko'rsatilmoqda.
-              Obyekt sahifasiga kirib har bir xona va kottejning videosini ko'rishingiz mumkin.
+              Resort, tog' manzarasi, kottejlar va xonalar bo'yicha videolarni yuqorida
+              tomosha qilishingiz mumkin. Ayrim kottej va xonalarning o'ziga xos videosini
+              esa shu obyektning o'z sahifasiga kirib ko'rishingiz mumkin.
             </p>
           </div>
         </div>
@@ -94,6 +62,7 @@ export default function Videos() {
         <VideoModal
           thumbnail={selectedVideo.thumbnail}
           title={selectedVideo.title}
+          videoSrc={selectedVideo.videoSrc}
           onClose={() => setSelectedVideo(null)}
         />
       )}

@@ -1,3 +1,85 @@
+import r3p1 from '../xonalar/3kishilik/3kishi1.png';
+import r3p2 from '../xonalar/3kishilik/3kishi2.png';
+import r3p3 from '../xonalar/3kishilik/3kishi3.png';
+import r3p4 from '../xonalar/3kishilik/3kishi4.png';
+import r3p5 from '../xonalar/3kishilik/3kishi5.png';
+
+import r4p1 from '../xonalar/4kishilik/4kishi1.png';
+import r4p2 from '../xonalar/4kishilik/4kishi2.png';
+import r4p3 from '../xonalar/4kishilik/4kishi3.png';
+import r4p4 from '../xonalar/4kishilik/4kishi4.png';
+import r4p5 from '../xonalar/4kishilik/4kishi5.png';
+
+import c1_1 from '../xonalar/10kishilik/10kishi1.png';
+import c1_2 from '../xonalar/10kishilik/10kishi2.png';
+import c1_3 from '../xonalar/10kishilik/10kishi3.png';
+import c1_4 from '../xonalar/10kishilik/10kishi4.png';
+
+import c2_1 from '../xonalar/10kishilik-1/2-10kishi1.png';
+import c2_2 from '../xonalar/10kishilik-1/2-10kishi2.png';
+import c2_3 from '../xonalar/10kishilik-1/2-10kishi3.png';
+import c2_4 from '../xonalar/10kishilik-1/2-10kishi4.png';
+import c2_5 from '../xonalar/10kishilik-1/2-10kishi5.png';
+import c2_6 from '../xonalar/10kishilik-1/2-10kishi6.png';
+
+import c3_1 from '../xonalar/10-kishilik-3-standart/standart-1.png';
+import c3_2 from '../xonalar/10-kishilik-3-standart/standart-2.png';
+import c3_3 from '../xonalar/10-kishilik-3-standart/standart-3.png';
+import c3_4 from '../xonalar/10-kishilik-3-standart/standart-4.png';
+import c3_5 from '../xonalar/10-kishilik-3-standart/standart-5.png';
+import c3_6 from '../xonalar/10-kishilik-3-standart/standart-6.png';
+import c3_7 from '../xonalar/10-kishilik-3-standart/standart-7.png';
+import c3_8 from '../xonalar/10-kishilik-3-standart/standart-8.png';
+import c3_9 from '../xonalar/10-kishilik-3-standart/standart-9.png';
+import c3_10 from '../xonalar/10-kishilik-3-standart/standart-10.png';
+
+import c4_1 from '../xonalar/10-kishilik-pollux/10kishi-pollux1.png';
+import c4_2 from '../xonalar/10-kishilik-pollux/10kishi-pollux2.png';
+import c4_3 from '../xonalar/10-kishilik-pollux/10kishi-pollux3.png';
+import c4_4 from '../xonalar/10-kishilik-pollux/10kishi-pollux4.png';
+import c4_5 from '../xonalar/10-kishilik-pollux/10kishi-pollux5.png';
+import c4_6 from '../xonalar/10-kishilik-pollux/10kishi-pollux6.png';
+import c4_7 from '../xonalar/10-kishilik-pollux/10kishi-pollux7.png';
+import c4_8 from '../xonalar/10-kishilik-pollux/10kishi-pollux8.png';
+import c4_9 from '../xonalar/10-kishilik-pollux/10kishi-pollux9.png';
+import c4_10 from '../xonalar/10-kishilik-pollux/10kishi-pollux10.png';
+
+import c5_1 from '../xonalar/8-kishilik-luks/8kishi-lux1.png';
+import c5_2 from '../xonalar/8-kishilik-luks/8kishi-lux2.png';
+import c5_3 from '../xonalar/8-kishilik-luks/8kishi-lux3.png';
+import c5_4 from '../xonalar/8-kishilik-luks/8kishi-lux4.png';
+import c5_5 from '../xonalar/8-kishilik-luks/8kishi-lux5.png';
+import c5_6 from '../xonalar/8-kishilik-luks/8kishi-lux6.png';
+import c5_7 from '../xonalar/8-kishilik-luks/8kishi-lux7.png';
+import c5_8 from '../xonalar/8-kishilik-luks/8kishi-lux8.png';
+import c5_9 from '../xonalar/8-kishilik-luks/8kishi-lux9.png';
+import c5_10 from '../xonalar/8-kishilik-luks/8kishi-lux10.png';
+
+import v_standart2 from '../videos/2-standart-kotej-video/standart-2.mp4';
+import v_standart3 from '../videos/3-standart-kotej-video/standart-3.mp4';
+import v_luxKotej from '../videos/lux-kotej-video/lux-kotej.mp4';
+import v_4kishi1 from '../videos/4-kishi-xona-video/4kishi.mp4';
+import v_4kishi2 from '../videos/4-kishi-xona-video/4kishi-2.mp4';
+import v_4kishi3 from '../videos/4-kishi-xona-video/4kishi-3.mp4';
+
+import v_bolim1 from '../videos/videolar-bolim.mp4';
+import v_bolim2 from '../videos/videolar-bolim2.mp4';
+import v_bolim3 from '../videos/videolar-bolim3.mp4';
+import v_bolim4 from '../videos/videolar-bolim4.mp4';
+
+import am_tabiat0 from '../atrof-muhit/tabiat.png';
+import am_tabiat1 from '../atrof-muhit/tabiat1.png';
+import am_tabiat2 from '../atrof-muhit/tabiat2.png';
+import am_tabiat3 from '../atrof-muhit/tabiat3.png';
+import am_tabiat4 from '../atrof-muhit/tabiat4.png';
+import am_tabiat5 from '../atrof-muhit/tabiat5.png';
+import am_tabiat6 from '../atrof-muhit/tabiat6.png';
+import am_tabiat7 from '../atrof-muhit/tabiat7.png';
+import am_tabiat8 from '../atrof-muhit/tabiat8.png';
+import am_xonaKotej from '../atrof-muhit/xona-kotej.png';
+import am_tog from '../atrof-muhit/tog.png';
+import am_resort from '../atrof-muhit/resort.png';
+
 export interface Accommodation {
   id: string;
   name: string;
@@ -115,6 +197,10 @@ const IMG = {
   cottageInterior2: 'https://images.pexels.com/photos/8135118/pexels-photo-8135118.jpeg?auto=compress&cs=tinysrgb&w=1920',
   cottageInterior3: 'https://images.pexels.com/photos/8135502/pexels-photo-8135502.jpeg?auto=compress&cs=tinysrgb&w=1920',
   cottageInterior4: 'https://images.pexels.com/photos/8134808/pexels-photo-8134808.jpeg?auto=compress&cs=tinysrgb&w=1920',
+  atrofMuhitTog: am_tog,
+  atrofMuhitResort: am_resort,
+  atrofMuhitXonaKotej: am_xonaKotej,
+  atrofMuhitTabiat6: am_tabiat6,
 };
 
 export const IMAGES = IMG;
@@ -205,19 +291,7 @@ function makeCottage(
   const cottageAmenities = [...baseAmenities, 'Shaxsiy orqa tapchan', 'Kottej intererga ega'];
   if (hasKitchen) cottageAmenities.push('Shaxsiy kuxnya', 'Kuxnya jihozlari');
 
-  const allGallery = [
-    mainImage,
-    ...gallery,
-    IMG.cottageInterior1,
-    IMG.cottageInterior2,
-    IMG.cottageInterior3,
-    IMG.cottageInterior4,
-    IMG.tapchan5,
-    IMG.tapchan6,
-  ];
-  if (hasKitchen) {
-    allGallery.push(IMG.kitchen1, IMG.kitchen2, IMG.kitchen3, IMG.kitchen4);
-  }
+  const allGallery = [mainImage, ...gallery];
 
   return {
     id,
@@ -234,9 +308,9 @@ function makeCottage(
     mainImage,
     gallery: allGallery,
     video: null,
-    tapchanImages: [IMG.tapchan5, IMG.tapchan6, IMG.tapchan7],
+    tapchanImages: [],
     hasKitchen,
-    kitchenImages: hasKitchen ? [IMG.kitchen1, IMG.kitchen2, IMG.kitchen3, IMG.kitchen4, IMG.kitchen5, IMG.stove] : [],
+    kitchenImages: [],
     kitchenVideo: null,
     isLuxury,
     hasPrivateTapchan: true,
@@ -250,50 +324,65 @@ export const accommodations: Accommodation[] = [
     'cottage-1',
     '1-Kottej — Standart',
     10, 1500000, '1 500 000 so\'m',
-    IMG.cottage1, false, false,
+    c1_1, false, false,
     '1-Kottej — Dugoba Resortning standart sinfidagi kottejidir. 10 kishi sig\'imiga ega bo\'lib, keng va qulay interyorga mo\'jallangan. Kottejning orqa qismida mehmonlar dam olishlari uchun shaxsiy so\'ri/tapchan mavjud. Tog\' manzarasidan bahramand bo\'lib, oilaviy yoki do\'stlar bilan katta guruh bo\'lib dam olish uchun ideal variant. Kottejda dush, sanuzel, Wi-Fi va televizor mavjud.',
-    [IMG.cottage2, IMG.cottage3],
+    [c1_2, c1_3, c1_4],
     ['10 kishilik', 'Standart kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor'],
   ),
-  makeCottage(
-    'cottage-2',
-    '2-Kottej — Standart',
-    10, 1500000, '1 500 000 so\'m',
-    IMG.cottage2, false, false,
-    '2-Kottej — Standart sinfidagi 10 kishilik kottej. 1-Kottej bilan bir xil qulayliklarga ega, lekin boshqa joylashuv va interyorga ega. Orqa qismida shaxsiy so\'ri/tapchan mavjud. Katta oilalar yoki do\'stlar guruhi uchun juda mos. Kottejda barcha zarur qulayliklar: dush, sanuzel, Wi-Fi va televizor mavjud.',
-    [IMG.cottage3, IMG.cottage4],
-    ['10 kishilik', 'Standart kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor'],
-  ),
-  makeCottage(
-    'cottage-3',
-    '3-Kottej — Standart',
-    10, 1500000, '1 500 000 so\'m',
-    IMG.cottage3, false, false,
-    '3-Kottej — Standart sinfidagi 10 kishilik kottej. Resortning to\'g\'ri qismida joylashgan. Orqa qismida shaxsiy so\'ri/tapchan mavjud. Keng interyorga ega bo\'lib, 10 kishi uchun qulay dam olishni ta\'minlaydi. Barcha zarur qulayliklar: dush, sanuzel, Wi-Fi va televizor mavjud.',
-    [IMG.cottage4, IMG.cottage1],
-    ['10 kishilik', 'Standart kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor'],
-  ),
+  {
+    ...makeCottage(
+      'cottage-2',
+      '2-Kottej — Standart',
+      10, 1500000, '1 500 000 so\'m',
+      c2_6, false, false,
+      '2-Kottej — Standart sinfidagi 10 kishilik kottej. 1-Kottej bilan bir xil qulayliklarga ega, lekin boshqa joylashuv va interyorga ega. Orqa qismida shaxsiy so\'ri/tapchan mavjud. Katta oilalar yoki do\'stlar guruhi uchun juda mos. Kottejda barcha zarur qulayliklar: dush, sanuzel, Wi-Fi va televizor mavjud.',
+      [c2_1, c2_2, c2_3, c2_4, c2_5],
+      ['10 kishilik', 'Standart kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor'],
+    ),
+    tapchanImages: [c2_6],
+    video: v_standart2,
+  },
+  {
+    ...makeCottage(
+      'cottage-3',
+      '3-Kottej — Standart',
+      10, 1500000, '1 500 000 so\'m',
+      c3_1, false, false,
+      '3-Kottej — Standart sinfidagi 10 kishilik kottej. Resortning to\'g\'ri qismida joylashgan. Orqa qismida shaxsiy so\'ri/tapchan mavjud. Keng interyorga ega bo\'lib, 10 kishi uchun qulay dam olishni ta\'minlaydi. Barcha zarur qulayliklar: dush, sanuzel, Wi-Fi va televizor mavjud.',
+      [c3_2, c3_3, c3_4, c3_5, c3_6, c3_7, c3_8, c3_9, c3_10],
+      ['10 kishilik', 'Standart kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor'],
+    ),
+    video: v_standart3,
+  },
   makeCottage(
     'cottage-4',
     'Pollux',
     10, 2000000, '2 000 000 so\'m',
-    IMG.cottage4, true, false,
+    c4_1, true, false,
     'Pollux — Dugoba Resortning premium sinfidagi kottejidir. 10 kishi sig\'imiga ega, lekin standart kottejlardan farqli ravishda yanada yuqori darajadagi interyer va qulayliklarga ega. Orqa qismida shaxsiy so\'ri/tapchan mavjud. Pollux kotteji mehmonlarga eng yuqori darajadagi dam olishni ta\'minlash uchun mo\'ljallangan. Premium dizayn, keng interyer va tog\' manzarasi bu kottejni maxsus qiladi.',
-    [IMG.cottage5, IMG.cottage6, IMG.cottage7],
+    [c4_2, c4_3, c4_4, c4_5, c4_6, c4_7, c4_8, c4_9, c4_10],
     ['10 kishilik', 'Premium kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Premium dizayn'],
   ),
-  makeCottage(
-    'cottage-5',
-    'Lux Kottej',
-    8, 2500000, '2 500 000 so\'m',
-    IMG.cottage5, true, true,
-    'Lux Kottej — Dugoba Resortning eng yuqori sinfidagi kottejidir. 8 kishi sig\'imiga ega. Boshqa barcha kottejlardan farqli ravishda, Lux kottejning ichida faqat ushbu kottej mehmonlari uchun mo\'ljallangan alohida kuxnya mavjud. Kuxnyada stol va stullar mavjud bo\'lib, mehmonlar o\'zlari ovqat tayyorlashlari mumkin. Orqa qismida shaxsiy so\'ri/tapchan mavjud. Eng yuqori darajadagi interyer, premium qulayliklar va eksklyuziv kuxnya bilan Lux kottej dam olishning eng yuqori cho\'qqisidir.',
-    [IMG.cottage6, IMG.cottage7, IMG.cottage8],
-    ['8 kishilik', 'Lyuks kottej', 'Shaxsiy kuxnya', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Premium dizayn'],
-  ),
+  {
+    ...makeCottage(
+      'cottage-5',
+      'Lux Kottej',
+      8, 2500000, '2 500 000 so\'m',
+      c5_1, true, true,
+      'Lux Kottej — Dugoba Resortning eng yuqori sinfidagi kottejidir. 8 kishi sig\'imiga ega. Boshqa barcha kottejlardan farqli ravishda, Lux kottejning ichida faqat ushbu kottej mehmonlari uchun mo\'ljallangan alohida kuxnya mavjud. Kuxnyada stol va stullar mavjud bo\'lib, mehmonlar o\'zlari ovqat tayyorlashlari mumkin. Orqa qismida shaxsiy so\'ri/tapchan mavjud. Eng yuqori darajadagi interyer, premium qulayliklar va eksklyuziv kuxnya bilan Lux kottej dam olishning eng yuqori cho\'qqisidir.',
+      [c5_2, c5_3, c5_4, c5_5, c5_6, c5_7, c5_8, c5_9, c5_10],
+      ['8 kishilik', 'Lyuks kottej', 'Shaxsiy kuxnya', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Premium dizayn'],
+    ),
+    kitchenImages: [c5_2],
+    video: v_luxKotej,
+  },
 
   // ===== 16 x 3-person rooms =====
-  make3pRoom('room-3p-1', 1, 'Old qism', IMG.room1, IMG.room2, IMG.room3),
+  {
+    ...make3pRoom('room-3p-1', 1, 'Old qism', r3p5, r3p1, r3p2),
+    gallery: [r3p5, r3p1, r3p2, r3p3, r3p4],
+    tapchanImages: [r3p5],
+  },
   make3pRoom('room-3p-2', 2, 'Old qism', IMG.room2, IMG.room3, IMG.room4),
   make3pRoom('room-3p-3', 3, 'Old qism', IMG.room3, IMG.room4, IMG.room5),
   make3pRoom('room-3p-4', 4, 'Old qism', IMG.room4, IMG.room5, IMG.room6),
@@ -311,9 +400,14 @@ export const accommodations: Accommodation[] = [
   make3pRoom('room-3p-16', 16, 'Orqa qism', IMG.room10, IMG.room11, IMG.room12),
 
   // ===== 4 x 4-person rooms =====
-  make4pRoom('room-4p-1', 1, 'Old tomon', IMG.room17, IMG.room18, IMG.room19),
-  make4pRoom('room-4p-2', 2, 'Old tomon', IMG.room18, IMG.room19, IMG.room20),
-  make4pRoom('room-4p-3', 3, 'Orqa tomon', IMG.room19, IMG.room20, IMG.room21),
+  {
+    ...make4pRoom('room-4p-1', 1, 'Old tomon', r4p5, r4p1, r4p2),
+    gallery: [r4p5, r4p1, r4p2, r4p3, r4p4],
+    tapchanImages: [r4p5],
+    video: v_4kishi1,
+  },
+  { ...make4pRoom('room-4p-2', 2, 'Old tomon', IMG.room18, IMG.room19, IMG.room20), video: v_4kishi2 },
+  { ...make4pRoom('room-4p-3', 3, 'Orqa tomon', IMG.room19, IMG.room20, IMG.room21), video: v_4kishi3 },
   make4pRoom('room-4p-4', 4, 'Orqa tomon', IMG.room20, IMG.room21, IMG.room22),
 
   // ===== 6-person room =====
@@ -491,58 +585,16 @@ export interface GalleryImage {
 }
 
 export const galleryImages: GalleryImage[] = [
-  { url: IMG.resortAerial, category: 'Resort', caption: 'Resort umumiy ko\'rinishi' },
-  { url: IMG.resortTerrace, category: 'Resort', caption: 'Resort terasi' },
-  { url: IMG.resortPool, category: 'Resort', caption: 'Resort dam olish zonasi' },
-  { url: IMG.resortFacade, category: 'Resort', caption: 'Resort fasadi' },
-  { url: IMG.resortGarden, category: 'Resort', caption: 'Resort bog\'i' },
-  { url: IMG.resortElegant, category: 'Resort', caption: 'Resort eksteryeri' },
-  { url: IMG.resortForest, category: 'Resort', caption: 'Resort o\'rmon manzarasi' },
-  { url: IMG.resortRiverside, category: 'Resort', caption: 'Resort atrofi' },
-  { url: IMG.mountain1, category: 'Tog\' manzarasi', caption: 'Tog\' manzarasi - kun botishi' },
-  { url: IMG.mountain2, category: 'Tog\' manzarasi', caption: 'Tog\' vodiysi' },
-  { url: IMG.mountain3, category: 'Tog\' manzarasi', caption: 'Tog\'lar - aerial ko\'rinish' },
-  { url: IMG.mountain4, category: 'Tog\' manzarasi', caption: 'Yashil tog\'lar' },
-  { url: IMG.mountain5, category: 'Tog\' manzarasi', caption: 'Tog\' manzarasi - oqshom' },
-  { url: IMG.mountain6, category: 'Tog\' manzarasi', caption: 'Panoramik tog\' manzarasi' },
-  { url: IMG.mountain7, category: 'Tog\' manzarasi', caption: 'Tog\' shafaqi' },
-  { url: IMG.mountain8, category: 'Tog\' manzarasi', caption: 'Tog\' tepalari' },
-  { url: IMG.mountain9, category: 'Tog\' manzarasi', caption: 'Tog\' vodiysi - yashil' },
-  { url: IMG.mountain10, category: 'Tog\' manzarasi', caption: 'Tog\' manzarari - kun botishi' },
-  { url: IMG.mountain11, category: 'Tog\' manzarasi', caption: 'Tog\' tepalari - oqshom' },
-  { url: IMG.mountain12, category: 'Tog\' manzarasi', caption: 'Tog\' manzarari - bulutli' },
-  { url: IMG.cottage1, category: 'Kottejlar', caption: '1-Kottej — Standart' },
-  { url: IMG.cottage2, category: 'Kottejlar', caption: '2-Kottej — Standart' },
-  { url: IMG.cottage3, category: 'Kottejlar', caption: '3-Kottej — Standart' },
-  { url: IMG.cottage4, category: 'Kottejlar', caption: '4-Kottej — Pollux' },
-  { url: IMG.cottage5, category: 'Kottejlar', caption: '5-Kottej — Lux' },
-  { url: IMG.room1, category: 'Xonalar', caption: '3 kishilik xona' },
-  { url: IMG.room2, category: 'Xonalar', caption: '3 kishilik xona interyeri' },
-  { url: IMG.room17, category: 'Xonalar', caption: '4 kishilik xona' },
-  { url: IMG.room22, category: 'Xonalar', caption: '6 kishilik xona' },
-  { url: IMG.room23, category: 'Xonalar', caption: '8 kishilik xona' },
-  { url: IMG.room26, category: 'Xonalar', caption: '10 kishilik xona' },
-  { url: IMG.tapchan1, category: 'Tapchanlar', caption: 'Tapchan dam olish zonasi' },
-  { url: IMG.tapchan2, category: 'Tapchanlar', caption: 'Terrasli tapchan' },
-  { url: IMG.tapchan3, category: 'Tapchanlar', caption: 'Shaxsiy tapchan' },
-  { url: IMG.tapchan5, category: 'Tapchanlar', caption: 'Kottej tapchani' },
-  { url: IMG.stove, category: 'O\'choqxona', caption: 'O\'choqxona' },
-  { url: IMG.stove2, category: 'O\'choqxona', caption: 'O\'choq' },
-  { url: IMG.playground1, category: 'Bolalar maydonchasi', caption: 'Bolalar maydonchasi' },
-  { url: IMG.playground2, category: 'Bolalar maydonchasi', caption: 'Bolalar maydonchasi - yog\'och' },
-  { url: IMG.playground3, category: 'Bolalar maydonchasi', caption: 'Bolalar maydonchasi - oqshom' },
-  { url: IMG.kitchen1, category: 'Kuxna', caption: 'Lyuks kottej kuxnasi' },
-  { url: IMG.kitchen2, category: 'Kuxna', caption: 'Kuxna interyeri' },
-  { url: IMG.kitchen3, category: 'Kuxna', caption: 'Kuxna jihozlari' },
-  { url: IMG.shop1, category: 'Atrof-muhit', caption: 'Magazin' },
-  { url: IMG.shop2, category: 'Atrof-muhit', caption: 'Magazin interyeri' },
-  { url: IMG.campfire1, category: 'Atrof-muhit', caption: 'Olov va tog\' manzarasi' },
-  { url: IMG.campfire2, category: 'Atrof-muhit', caption: 'Olov - oqshom' },
-];
-
-export const galleryCategories = [
-  'Resort', 'Tog\' manzarasi', 'Kottejlar', 'Xonalar',
-  'Tapchanlar', 'O\'choqxona', 'Bolalar maydonchasi', 'Kuxna', 'Atrof-muhit',
+  { url: am_xonaKotej, category: 'Atrof-muhit', caption: 'Resort va kottejlar' },
+  { url: am_tabiat0, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
+  { url: am_tabiat1, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
+  { url: am_tabiat2, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
+  { url: am_tabiat3, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
+  { url: am_tabiat4, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
+  { url: am_tabiat5, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
+  { url: am_tabiat6, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
+  { url: am_tabiat7, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
+  { url: am_tabiat8, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
 ];
 
 // ===== VIDEO GALLERY =====
@@ -553,24 +605,17 @@ export interface VideoItem {
   description: string;
   thumbnail: string;
   youtubeId: string | null;
+  videoSrc?: string | null;
 }
 
 export const videoItems: VideoItem[] = [
-  { id: 'vid-1', title: 'Dugoba Resort — Umumiy ko\'rinish', category: 'Resort hududi', description: 'Resort hududining to\'liq ko\'rinishi va qulayliklari.', thumbnail: IMG.resortAerial, youtubeId: null },
-  { id: 'vid-2', title: 'Tog\' manzarasi', category: 'Tog\' manzarasi', description: 'Resortdan tog\' manzarasining go\'zal ko\'rinishi.', thumbnail: IMG.mountain1, youtubeId: null },
-  { id: 'vid-3', title: '1-Kottej — Standart', category: 'Kottej videolari', description: '1-Kottejning ichki qismi va qulayliklari.', thumbnail: IMG.cottage1, youtubeId: null },
-  { id: 'vid-4', title: 'Pollux Kottej', category: 'Kottej videolari', description: 'Pollux kottejining premium interyeri.', thumbnail: IMG.cottage4, youtubeId: null },
-  { id: 'vid-5', title: 'Lux Kottej', category: 'Kottej videolari', description: 'Lux kottej va uning shaxsiy kuxnasi.', thumbnail: IMG.cottage5, youtubeId: null },
-  { id: 'vid-6', title: '3 kishilik xona', category: 'Xona videolari', description: '3 kishilik xonaning to\'liq ko\'rinishi.', thumbnail: IMG.room1, youtubeId: null },
-  { id: 'vid-7', title: '4 kishilik xona', category: 'Xona videolari', description: '4 kishilik xonaning interyeri.', thumbnail: IMG.room17, youtubeId: null },
-  { id: 'vid-8', title: '8 kishilik xona va kuxna', category: 'Xona videolari', description: '8 kishilik xona va uning shaxsiy kuxnasi.', thumbnail: IMG.room23, youtubeId: null },
-  { id: 'vid-9', title: 'Lux Kottej kuxnasi', category: 'Kuxna videolari', description: 'Lux kottejning shaxsiy kuxnasi.', thumbnail: IMG.kitchen1, youtubeId: null },
-  { id: 'vid-10', title: 'O\'choqxona', category: 'Resort hududi', description: 'Mehmonlar uchun o\'choqxona.', thumbnail: IMG.stove, youtubeId: null },
-  { id: 'vid-11', title: 'Bolalar maydonchasi', category: 'Resort hududi', description: 'Bolalar maydonchasi va o\'yin maydoni.', thumbnail: IMG.playground1, youtubeId: null },
-  { id: 'vid-12', title: 'Tog\' manzarasi — kun botishi', category: 'Tog\' manzarasi', description: 'Tog\' manzarasining kun botishidagi go\'zal ko\'rinishi.', thumbnail: IMG.mountain5, youtubeId: null },
+  { id: 'vid-1', title: 'Dugoba Resort — Umumiy ko\'rinish', category: 'Resort hududi', description: 'Resort hududining to\'liq ko\'rinishi va qulayliklari.', thumbnail: IMG.resortAerial, youtubeId: null, videoSrc: v_bolim1 },
+  { id: 'vid-2', title: 'Tog\' manzarasi', category: 'Tog\' manzarasi', description: 'Resortdan tog\' manzarasining go\'zal ko\'rinishi.', thumbnail: IMG.mountain1, youtubeId: null, videoSrc: v_bolim2 },
+  { id: 'vid-3', title: 'Kottejlar', category: 'Kottej videolari', description: 'Resort kottejlarining ichki va tashqi ko\'rinishi.', thumbnail: IMG.cottage1, youtubeId: null, videoSrc: v_bolim3 },
+  { id: 'vid-4', title: 'Xonalar', category: 'Xona videolari', description: 'Resort xonalarining ichki ko\'rinishi va qulayliklari.', thumbnail: IMG.room1, youtubeId: null, videoSrc: v_bolim4 },
 ];
 
-export const videoCategories = ['Resort hududi', 'Tog\' manzarasi', 'Kottej videolari', 'Xona videolari', 'Kuxna videolari'];
+export const videoCategories = ['Resort hududi', 'Tog\' manzarasi', 'Kottej videolari', 'Xona videolari'];
 
 export function getAccommodationById(id: string): Accommodation | undefined {
   return accommodations.find((a) => a.id === id);
@@ -588,7 +633,8 @@ export const resortInfo = {
   name: 'Dugoba Resort',
   location: 'Farg\'ona viloyati, Shohimardon qishlog\'i',
   description: 'Dugoba Resort Farg\'ona viloyati, Shohimardon qishlog\'ining eng yuqori nuqtasida joylashgan. Resort tog\'ning eng yuqori qismida joylashgani sababli bu yerdan tog\'lar va go\'zal tog\' manzarasi juda yaxshi ko\'rinadi. Resortda tur paketlari ham mavjud. Mehmonlar tur paketlari orqali resortga kelib-ketishlari mumkin.',
-  phone: '+998 90 123 45 67',
+  phone: '+998 90 407 05 01',
+  mapUrl: 'https://yandex.uz/maps/-/CTgzIW7o',
   telegram: 'https://t.me/sherzod015',
   telegramUsername: '@sherzod015',
   totalCottages: 5,

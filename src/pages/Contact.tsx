@@ -27,7 +27,14 @@ export default function Contact() {
                   </div>
                   <div>
                     <h4 className="font-medium text-stone-900 mb-1">Manzil</h4>
-                    <p className="text-sm text-stone-600">{resortInfo.location}</p>
+                    <a
+                      href={resortInfo.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-stone-600 hover:text-forest-700 transition-colors"
+                    >
+                      {resortInfo.location}
+                    </a>
                     <p className="text-sm text-stone-500 mt-1">Tog'ning eng yuqori nuqtasida</p>
                   </div>
                 </div>
@@ -95,7 +102,9 @@ export default function Contact() {
 
             {/* Image / location */}
             <div className="space-y-4">
-              <img src={IMAGES.resortAerial} alt="Resort joylashuvi" className="w-full h-80 object-cover rounded-sm shadow-lg" loading="lazy" />
+              <a href={resortInfo.mapUrl} target="_blank" rel="noopener noreferrer" className="block group">
+                <img src={IMAGES.resortAerial} alt="Resort joylashuvi" className="w-full h-80 object-cover rounded-sm shadow-lg transition-transform duration-500 group-hover:scale-[1.02]" loading="lazy" />
+              </a>
               <div className="grid grid-cols-2 gap-4">
                 <img src={IMAGES.mountain1} alt="Tog' manzarasi" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
                 <img src={IMAGES.cottage1} alt="Kottej" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />

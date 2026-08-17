@@ -5,10 +5,25 @@ interface VideoPlayerProps {
   thumbnail: string;
   title: string;
   youtubeId?: string | null;
+  videoSrc?: string | null;
 }
 
-export default function VideoPlayer({ thumbnail, title, youtubeId = null }: VideoPlayerProps) {
+export default function VideoPlayer({ thumbnail, title, youtubeId = null, videoSrc = null }: VideoPlayerProps) {
   const [playing, setPlaying] = useState(false);
+
+  if (playing && videoSrc) {
+    return (
+      <div className="relative aspect-video rounded-sm overflow-hidden bg-black animate-scale-in">
+        <video
+          className="w-full h-full"
+          src={videoSrc}
+          title={title}
+          controls
+          autoPlay
+        />
+      </div>
+    );
+  }
 
   if (playing && youtubeId) {
     return (
@@ -40,14 +55,26 @@ export default function VideoPlayer({ thumbnail, title, youtubeId = null }: Vide
   );
 }
 
-export function VideoModal({ thumbnail, title, onClose }: { thumbnail: string; title: string; onClose: () => void }) {
+export function VideoModal({
+  thumbnail,
+  title,
+  onClose,
+  youtubeId,
+  videoSrc,
+}: {
+  thumbnail: string;
+  title: string;
+  onClose: () => void;
+  youtubeId?: string | null;
+  videoSrc?: string | null;
+}) {
   return (
     <div className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center animate-fade-in p-4" onClick={onClose}>
       <button className="absolute top-6 right-6 text-white/80 hover:text-white p-2" onClick={onClose}>
         <X size={32} />
       </button>
       <div className="w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
-        <VideoPlayer thumbnail={thumbnail} title={title} />
+        <VideoPlayer thumbnail={thumbnail} title={title} youtubeId={youtubeId} videoSrc={videoSrc} />
       </div>
     </div>
   );

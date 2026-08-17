@@ -172,20 +172,22 @@ export default function AccommodationDetail() {
       </section>
 
       {/* VIDEO SECTION */}
-      <section className="py-16 bg-stone-50">
-        <div className="container-lux max-w-4xl">
-          <p className="section-subtitle mb-3">Video</p>
-          <h2 className="section-title mb-8">Obyekt videosi</h2>
-          <VideoPlayer
-            thumbnail={accommodation.mainImage}
-            title={`${accommodation.name} — video ko'rinish`}
-            youtubeId={accommodation.video}
-          />
-          <p className="text-sm text-stone-500 mt-4 text-center">
-            Ushbu {accommodation.type === 'cottage' ? 'kottej' : 'xona'} haqida to'liq ma'lumot olish uchun videoni tomosha qiling.
-          </p>
-        </div>
-      </section>
+      {accommodation.video && (
+        <section className="py-16 bg-stone-50">
+          <div className="container-lux max-w-4xl">
+            <p className="section-subtitle mb-3">Video</p>
+            <h2 className="section-title mb-8">Obyekt videosi</h2>
+            <VideoPlayer
+              thumbnail={accommodation.mainImage}
+              title={`${accommodation.name} — video ko'rinish`}
+              videoSrc={accommodation.video}
+            />
+            <p className="text-sm text-stone-500 mt-4 text-center">
+              Ushbu {accommodation.type === 'cottage' ? 'kottej' : 'xona'} haqida to'liq ma'lumot olish uchun videoni tomosha qiling.
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* DETAILED DESCRIPTION */}
       <section className="py-16 bg-white">
@@ -262,13 +264,15 @@ export default function AccommodationDetail() {
                 </button>
               ))}
             </div>
-            <div className="max-w-2xl">
-              <VideoPlayer
-                thumbnail={accommodation.kitchenImages[0] || accommodation.mainImage}
-                title="Kuxnya videosi"
-                youtubeId={accommodation.kitchenVideo}
-              />
-            </div>
+            {accommodation.kitchenVideo && (
+              <div className="max-w-2xl">
+                <VideoPlayer
+                  thumbnail={accommodation.kitchenImages[0] || accommodation.mainImage}
+                  title="Kuxnya videosi"
+                  videoSrc={accommodation.kitchenVideo}
+                />
+              </div>
+            )}
           </div>
         </section>
       )}
