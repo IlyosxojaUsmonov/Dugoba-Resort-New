@@ -1,16 +1,19 @@
 import { Link } from 'react-router-dom';
 import { Mountain, Store, Flame, Baby, MapPin } from 'lucide-react';
 import PageHero from '@/components/PageHero';
-import { IMAGES, resortInfo } from '@/data/accommodations';
+import { IMAGES, resortInfo, getResortLocation } from '@/data/accommodations';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export default function Resort() {
+  const { t, language } = useTranslation();
+
   return (
     <div>
       <PageHero
-        title="Resort haqida"
-        subtitle="Farg'ona viloyati, Shohimardon qishlog'ining eng yuqori nuqtasida joylashgan premium resort"
+        title={t('resort.heroTitle')}
+        subtitle={t('resort.heroSubtitle')}
         image={IMAGES.atrofMuhitResort}
-        breadcrumb={[{ label: 'Bosh sahifa', to: '/' }, { label: 'Resort' }]}
+        breadcrumb={[{ label: t('common.home'), to: '/' }, { label: t('resort.heroTitle') }]}
       />
 
       {/* RESORT DESCRIPTION */}
@@ -18,36 +21,25 @@ export default function Resort() {
         <div className="container-lux">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
-              <p className="section-subtitle">Dugoba Resort</p>
-              <h2 className="section-title mb-6">Tog'ning cho'qqisida</h2>
+              <p className="section-subtitle">{t('resort.subtitle')}</p>
+              <h2 className="section-title mb-6">{t('resort.title')}</h2>
               <div className="space-y-4 text-stone-600 leading-relaxed">
-                <p>
-                  Dugoba Resort Farg'ona viloyati, Shohimardon qishlog'ining eng yuqori
-                  nuqtasida joylashgan. Resort tog'ning eng yuqori qismida joylashgani sababli
-                  bu yerdan tog'lar va go'zal tog' manzarasi juda yaxshi ko'rinadi.
-                </p>
-                <p>
-                  Resortda tur paketlari ham mavjud. Mehmonlar tur paketlari orqali resortga
-                  kelib-ketishlari mumkin. Bu dam olishni yanada qulay va unutilmas qiladi.
-                </p>
-                <p>
-                  Resort hududida 5 ta alohida kottej, 24 ta alohida xona, o'choqxona, bolalar
-                  maydonchasi, kirish qismidagi magazin va ko'plab boshqa qulayliklar mavjud.
-                  Har bir obyekt alohida sahifa va barcha zarur ma'lumotlarga ega.
-                </p>
+                <p>{t('resort.p1')}</p>
+                <p>{t('resort.p2')}</p>
+                <p>{t('resort.p3')}</p>
               </div>
               <div className="mt-8 grid grid-cols-3 gap-4">
                 <div className="text-center p-4 bg-forest-50 rounded-sm">
                   <div className="font-serif text-3xl font-bold text-forest-700">29</div>
-                  <div className="text-xs text-stone-500 uppercase tracking-wider mt-1">Obyekt</div>
+                  <div className="text-xs text-stone-500 uppercase tracking-wider mt-1">{t('resort.statObject')}</div>
                 </div>
                 <div className="text-center p-4 bg-forest-50 rounded-sm">
                   <div className="font-serif text-3xl font-bold text-forest-700">5</div>
-                  <div className="text-xs text-stone-500 uppercase tracking-wider mt-1">Kottej</div>
+                  <div className="text-xs text-stone-500 uppercase tracking-wider mt-1">{t('resort.statCottage')}</div>
                 </div>
                 <div className="text-center p-4 bg-forest-50 rounded-sm">
                   <div className="font-serif text-3xl font-bold text-forest-700">24</div>
-                  <div className="text-xs text-stone-500 uppercase tracking-wider mt-1">Xona</div>
+                  <div className="text-xs text-stone-500 uppercase tracking-wider mt-1">{t('resort.statRoom')}</div>
                 </div>
               </div>
             </div>
@@ -66,8 +58,8 @@ export default function Resort() {
       <section className="py-24 bg-stone-50">
         <div className="container-lux">
           <div className="text-center mb-16">
-            <p className="section-subtitle">Resort hududi</p>
-            <h2 className="section-title">Qulayliklar va hududlar</h2>
+            <p className="section-subtitle">{t('resort.areasSubtitle')}</p>
+            <h2 className="section-title">{t('resort.areasTitle')}</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -75,11 +67,9 @@ export default function Resort() {
               <img src={IMAGES.shop1} alt="Magazin" className="w-full sm:w-2/5 h-48 sm:h-auto object-cover" loading="lazy" />
               <div className="p-6 flex-1">
                 <Store size={28} className="text-forest-600 mb-3" />
-                <h3 className="font-serif text-xl font-semibold text-stone-900 mb-2">Kirish qismidagi magazin</h3>
+                <h3 className="font-serif text-xl font-semibold text-stone-900 mb-2">{t('resort.shopTitle')}</h3>
                 <p className="text-sm text-stone-600 leading-relaxed">
-                  Resortga kirib kelganda, eshik tagida kichik magazin mavjud. Ushbu magazinda
-                  mehmonlarga dam olish vaqtida kerak bo'ladigan zarur narsalarning barchasini
-                  xarid qilish mumkin.
+                  {t('resort.shopDesc')}
                 </p>
               </div>
             </div>
@@ -88,11 +78,9 @@ export default function Resort() {
               <img src={IMAGES.stove} alt="O'choqxona" className="w-full sm:w-2/5 h-48 sm:h-auto object-cover" loading="lazy" />
               <div className="p-6 flex-1">
                 <Flame size={28} className="text-forest-600 mb-3" />
-                <h3 className="font-serif text-xl font-semibold text-stone-900 mb-2">O'choqxona</h3>
+                <h3 className="font-serif text-xl font-semibold text-stone-900 mb-2">{t('resort.stoveTitle')}</h3>
                 <p className="text-sm text-stone-600 leading-relaxed">
-                  Resort hududiga kirib kelganda to'g'ridan mehmonlar ovqat tayyorlashi uchun
-                  o'choqxona mavjud. O'choqxona odamlar o'zlari ovqat pishirishlari uchun
-                  mo'ljallangan. Chap va o'ng tomonlarida tapchanlar mavjud.
+                  {t('resort.stoveDesc')}
                 </p>
               </div>
             </div>
@@ -101,10 +89,9 @@ export default function Resort() {
               <img src={IMAGES.playground1} alt="Bolalar maydonchasi" className="w-full sm:w-2/5 h-48 sm:h-auto object-cover" loading="lazy" />
               <div className="p-6 flex-1">
                 <Baby size={28} className="text-forest-600 mb-3" />
-                <h3 className="font-serif text-xl font-semibold text-stone-900 mb-2">Bolalar maydonchasi</h3>
+                <h3 className="font-serif text-xl font-semibold text-stone-900 mb-2">{t('resort.playgroundTitle')}</h3>
                 <p className="text-sm text-stone-600 leading-relaxed">
-                  Resort hududida barcha mehmonlar uchun bitta umumiy bolalar maydonchasi mavjud.
-                  Ushbu bolalar maydonchasidan resortdagi barcha mehmonlar foydalanishi mumkin.
+                  {t('resort.playgroundDesc')}
                 </p>
               </div>
             </div>
@@ -113,10 +100,9 @@ export default function Resort() {
               <img src={IMAGES.mountain1} alt="Tog' manzarasi" className="w-full sm:w-2/5 h-48 sm:h-auto object-cover" loading="lazy" />
               <div className="p-6 flex-1">
                 <Mountain size={28} className="text-forest-600 mb-3" />
-                <h3 className="font-serif text-xl font-semibold text-stone-900 mb-2">Tog' manzarasi</h3>
+                <h3 className="font-serif text-xl font-semibold text-stone-900 mb-2">{t('resort.mountainTitle')}</h3>
                 <p className="text-sm text-stone-600 leading-relaxed">
-                  Resort tog'ning eng yuqori qismida joylashgani sababli bu yerdan tog'lar va
-                  go'zal tog' manzarasi juda yaxshi ko'rinadi. Bu resortning asosiy afzalligidir.
+                  {t('resort.mountainDesc')}
                 </p>
               </div>
             </div>
@@ -128,23 +114,22 @@ export default function Resort() {
       <section className="py-24 bg-forest-950 text-white">
         <div className="container-lux text-center">
           <MapPin size={40} className="mx-auto text-forest-400 mb-6" />
-          <p className="section-subtitle text-forest-400">Joylashuv</p>
+          <p className="section-subtitle text-forest-400">{t('resort.locationSubtitle')}</p>
           <h2 className="font-serif text-3xl sm:text-4xl font-semibold mb-4">
-            {resortInfo.location}
+            {getResortLocation(language)}
           </h2>
           <p className="text-white/70 max-w-2xl mx-auto mb-8">
-            Shohimardon qishlog'ining eng yuqori nuqtasida, tog'lar qo'ynida joylashgan.
-            Tur paketlari orqali resortga kelib-ketish mumkin.
+            {t('resort.locationDesc')}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href={resortInfo.mapUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
-              Xaritada ko'rish
+              {t('resort.viewMap')}
             </a>
             <Link to="/tur-paketlari" className="btn-secondary">
-              Tur paketlari
+              {t('resort.tourPackages')}
             </Link>
             <Link to="/aloqa" className="btn-secondary">
-              Aloqa
+              {t('resort.contact')}
             </Link>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useTranslation } from '@/i18n/useTranslation';
 
 interface LightboxProps {
   images: string[];
@@ -8,6 +9,7 @@ interface LightboxProps {
 }
 
 export default function Lightbox({ images, startIndex, onClose }: LightboxProps) {
+  const { t } = useTranslation();
   const [index, setIndex] = useState(startIndex);
 
   const next = useCallback(() => {
@@ -40,7 +42,7 @@ export default function Lightbox({ images, startIndex, onClose }: LightboxProps)
       <button
         className="absolute top-6 right-6 text-white/80 hover:text-white p-2 transition-colors z-10"
         onClick={onClose}
-        aria-label="Yopish"
+        aria-label={t('lightbox.close')}
       >
         <X size={32} />
       </button>
@@ -50,14 +52,14 @@ export default function Lightbox({ images, startIndex, onClose }: LightboxProps)
           <button
             className="absolute left-4 sm:left-8 text-white/80 hover:text-white p-2 transition-colors z-10"
             onClick={(e) => { e.stopPropagation(); prev(); }}
-            aria-label="Oldingi"
+            aria-label={t('lightbox.previous')}
           >
             <ChevronLeft size={40} />
           </button>
           <button
             className="absolute right-4 sm:right-8 text-white/80 hover:text-white p-2 transition-colors z-10"
             onClick={(e) => { e.stopPropagation(); next(); }}
-            aria-label="Keyingi"
+            aria-label={t('lightbox.next')}
           >
             <ChevronRight size={40} />
           </button>

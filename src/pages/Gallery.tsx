@@ -1,18 +1,21 @@
 import { useState } from 'react';
 import PageHero from '@/components/PageHero';
 import Lightbox from '@/components/Lightbox';
-import { galleryImages, IMAGES } from '@/data/accommodations';
+import { getGalleryImages, IMAGES } from '@/data/accommodations';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export default function Gallery() {
+  const { t, language } = useTranslation();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const galleryImages = getGalleryImages(language);
 
   return (
     <div>
       <PageHero
-        title="Galereya"
-        subtitle="Resort hududi, tog' manzaralari, kottejlar, xonalar va boshqa go'zalliklar"
+        title={t('gallery.heroTitle')}
+        subtitle={t('gallery.heroSubtitle')}
         image={IMAGES.atrofMuhitTog}
-        breadcrumb={[{ label: 'Bosh sahifa', to: '/' }, { label: 'Galereya' }]}
+        breadcrumb={[{ label: t('common.home'), to: '/' }, { label: t('gallery.heroTitle') }]}
       />
 
       <section className="py-20 bg-white">

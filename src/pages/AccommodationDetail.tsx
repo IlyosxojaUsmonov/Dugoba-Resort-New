@@ -6,30 +6,32 @@ import {
 } from 'lucide-react';
 import { getAccommodationById, getRelatedAccommodations } from '@/data/accommodations';
 import { useBookingModal } from '@/lib/store';
+import { useTranslation } from '@/i18n/useTranslation';
 import AccommodationCard from '@/components/AccommodationCard';
 import Lightbox from '@/components/Lightbox';
 import VideoPlayer from '@/components/VideoPlayer';
 
 export default function AccommodationDetail() {
   const { id } = useParams<{ id: string }>();
+  const { t, language } = useTranslation();
   const openBooking = useBookingModal((s) => s.open);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const accommodation = id ? getAccommodationById(id) : undefined;
+  const accommodation = id ? getAccommodationById(id, language) : undefined;
 
   if (!accommodation) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-stone-50 pt-20">
         <div className="text-center">
-          <h2 className="font-serif text-2xl text-stone-900 mb-4">Obyekt topilmadi</h2>
-          <p className="text-stone-600 mb-6">So'ralgan obyekt mavjud emas yoki o'chirilgan.</p>
-          <Link to="/xonalar" className="btn-primary">Xonalarga qaytish</Link>
+          <h2 className="font-serif text-2xl text-stone-900 mb-4">{t('accommodationDetail.notFoundTitle')}</h2>
+          <p className="text-stone-600 mb-6">{t('accommodationDetail.notFoundDesc')}</p>
+          <Link to="/xonalar" className="btn-primary">{t('accommodationDetail.backToRooms')}</Link>
         </div>
       </div>
     );
   }
 
-  const related = getRelatedAccommodations(accommodation.id, 3);
+  const related = getRelatedAccommodations(accommodation.id, language, 3);
   const allImages = [accommodation.mainImage, ...accommodation.gallery, ...accommodation.tapchanImages];
   if (accommodation.hasKitchen) {
     allImages.push(...accommodation.kitchenImages);
@@ -46,10 +48,10 @@ export default function AccommodationDetail() {
         <div className="absolute bottom-0 left-0 right-0 pb-12">
           <div className="container-lux">
             <nav className="flex items-center gap-2 text-xs text-white/60 mb-4">
-              <Link to="/" className="hover:text-forest-300">Bosh sahifa</Link>
+              <Link to="/" className="hover:text-forest-300">{t('common.home')}</Link>
               <ChevronRight size={12} />
               <Link to={accommodation.type === 'cottage' ? '/kottejlar' : '/xonalar'} className="hover:text-forest-300">
-                {accommodation.type === 'cottage' ? 'Kottejlar' : 'Xonalar'}
+                {accommodation.type === 'cottage' ? t('accommodationDetail.cottages') : t('accommodationDetail.rooms')}
               </Link>
               <ChevronRight size={12} />
               <span className="text-forest-300">{accommodation.name}</span>
@@ -63,19 +65,19 @@ export default function AccommodationDetail() {
                   {accommodation.name}
                 </h1>
                 <div className="flex items-center gap-4 mt-4 text-white/80 text-sm">
-                  <span className="flex items-center gap-1.5"><Users size={16} /> {accommodation.capacity} kishi</span>
+                  <span className="flex items-center gap-1.5"><Users size={16} /> {accommodation.capacity} {t('accommodationDetail.personSuffix')}</span>
                   <span className="w-px h-4 bg-white/30" />
                   <span>{accommodation.location}</span>
                   {accommodation.isLuxury && (
                     <>
                       <span className="w-px h-4 bg-white/30" />
-                      <span className="text-sand-300 font-medium">Premium</span>
+                      <span className="text-sand-300 font-medium">{t('accommodationDetail.premium')}</span>
                     </>
                   )}
                 </div>
               </div>
               <div className="text-right">
-                <span className="text-xs text-white/60 block">Kunlik narx</span>
+                <span className="text-xs text-white/60 block">{t('accommodationDetail.dailyPrice')}</span>
                 <span className="font-serif text-2xl sm:text-3xl font-semibold text-white">
                   {accommodation.priceDisplay}
                 </span>
@@ -91,24 +93,24 @@ export default function AccommodationDetail() {
           <div className="flex flex-wrap items-center gap-6">
             <div className="flex items-center gap-2 text-sm text-stone-600">
               <Users size={20} className="text-forest-600" />
-              <span>{accommodation.capacity} kishilik</span>
+              <span>{accommodation.capacity} {t('accommodationDetail.seatedSuffix')}</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-stone-600">
               <Wifi size={20} className="text-forest-600" />
-              <span>Wi-Fi</span>
+              <span>{t('accommodationDetail.wifi')}</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-stone-600">
               <Tv size={20} className="text-forest-600" />
-              <span>Televizor</span>
+              <span>{t('accommodationDetail.tv')}</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-stone-600">
               <ShowerHead size={20} className="text-forest-600" />
-              <span>Dush va sanuzel</span>
+              <span>{t('accommodationDetail.shower')}</span>
             </div>
             {accommodation.hasKitchen && (
               <div className="flex items-center gap-2 text-sm text-stone-600">
                 <Utensils size={20} className="text-forest-600" />
-                <span>Kuxnya</span>
+                <span>{t('accommodationDetail.kitchen')}</span>
               </div>
             )}
           </div>
@@ -116,7 +118,7 @@ export default function AccommodationDetail() {
             onClick={() => openBooking(accommodation.id, accommodation.name, accommodation.priceDisplay)}
             className="btn-primary"
           >
-            Bron qilish
+            {t('accommodationDetail.bookNow')}
           </button>
         </div>
       </section>
@@ -125,7 +127,7 @@ export default function AccommodationDetail() {
       <section className="py-16 bg-stone-50">
         <div className="container-lux">
           <div className="max-w-3xl">
-            <p className="section-subtitle">Qisqa tavsif</p>
+            <p className="section-subtitle">{t('accommodationDetail.shortDescSubtitle')}</p>
             <h2 className="section-title mb-6">{accommodation.name}</h2>
             <p className="text-lg text-stone-700 leading-relaxed">{accommodation.shortDescription}</p>
           </div>
@@ -135,8 +137,8 @@ export default function AccommodationDetail() {
       {/* MAIN IMAGE + GALLERY */}
       <section className="py-16 bg-white">
         <div className="container-lux">
-          <p className="section-subtitle mb-3">Foto galereya</p>
-          <h2 className="section-title mb-8">Rasmlar</h2>
+          <p className="section-subtitle mb-3">{t('accommodationDetail.gallerySubtitle')}</p>
+          <h2 className="section-title mb-8">{t('accommodationDetail.galleryTitle')}</h2>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {uniqueImages.map((img, i) => (
@@ -175,15 +177,15 @@ export default function AccommodationDetail() {
       {accommodation.video && (
         <section className="py-16 bg-stone-50">
           <div className="container-lux max-w-4xl">
-            <p className="section-subtitle mb-3">Video</p>
-            <h2 className="section-title mb-8">Obyekt videosi</h2>
+            <p className="section-subtitle mb-3">{t('accommodationDetail.videoSubtitle')}</p>
+            <h2 className="section-title mb-8">{t('accommodationDetail.videoTitle')}</h2>
             <VideoPlayer
               thumbnail={accommodation.mainImage}
-              title={`${accommodation.name} — video ko'rinish`}
+              title={`${accommodation.name} — ${t('accommodationDetail.videoPlayerSuffix')}`}
               videoSrc={accommodation.video}
             />
             <p className="text-sm text-stone-500 mt-4 text-center">
-              Ushbu {accommodation.type === 'cottage' ? 'kottej' : 'xona'} haqida to'liq ma'lumot olish uchun videoni tomosha qiling.
+              {accommodation.type === 'cottage' ? t('accommodationDetail.videoNoteCottage') : t('accommodationDetail.videoNoteRoom')}
             </p>
           </div>
         </section>
@@ -192,8 +194,8 @@ export default function AccommodationDetail() {
       {/* DETAILED DESCRIPTION */}
       <section className="py-16 bg-white">
         <div className="container-lux max-w-4xl">
-          <p className="section-subtitle mb-3">Batafsil tavsif</p>
-          <h2 className="section-title mb-6">To'liq ma'lumot</h2>
+          <p className="section-subtitle mb-3">{t('accommodationDetail.detailedSubtitle')}</p>
+          <h2 className="section-title mb-6">{t('accommodationDetail.detailedTitle')}</h2>
           <p className="text-stone-700 leading-relaxed text-lg">{accommodation.description}</p>
         </div>
       </section>
@@ -201,8 +203,8 @@ export default function AccommodationDetail() {
       {/* AMENITIES */}
       <section className="py-16 bg-stone-50">
         <div className="container-lux max-w-4xl">
-          <p className="section-subtitle mb-3">Qulayliklar</p>
-          <h2 className="section-title mb-8">Barcha qulayliklar</h2>
+          <p className="section-subtitle mb-3">{t('accommodationDetail.amenitiesSubtitle')}</p>
+          <h2 className="section-title mb-8">{t('accommodationDetail.amenitiesTitle')}</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {accommodation.amenities.map((amenity) => (
               <div key={amenity} className="flex items-center gap-3 p-4 bg-white rounded-sm border border-stone-100">
@@ -219,12 +221,12 @@ export default function AccommodationDetail() {
       {/* TAPCHAN */}
       <section className="py-16 bg-white">
         <div className="container-lux">
-          <p className="section-subtitle mb-3">Dam olish zonasi</p>
-          <h2 className="section-title mb-4">Shaxsiy so'ri/tapchan</h2>
+          <p className="section-subtitle mb-3">{t('accommodationDetail.tapchanSubtitle')}</p>
+          <h2 className="section-title mb-4">{t('accommodationDetail.tapchanTitle')}</h2>
           <p className="text-stone-600 mb-8 max-w-2xl">
             {accommodation.type === 'cottage'
-              ? 'Kottejning orqa qismida mehmonlar dam olishlari uchun shaxsiy so\'ri/tapchan mavjud.'
-              : 'Xonaga biriktirilgan shaxsiy so\'ri/tapchan mehmonlar uchun dam olishni qulay qiladi.'}
+              ? t('accommodationDetail.tapchanDescCottage')
+              : t('accommodationDetail.tapchanDescRoom')}
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {accommodation.tapchanImages.map((img, i) => (
@@ -233,7 +235,7 @@ export default function AccommodationDetail() {
                 onClick={() => setLightboxIndex(uniqueImages.indexOf(img) >= 0 ? uniqueImages.indexOf(img) : 0)}
                 className="relative overflow-hidden rounded-sm group aspect-[4/3]"
               >
-                <img src={img} alt={`Tapchan ${i + 1}`} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                <img src={img} alt={`${t('accommodationDetail.tapchanAlt')} ${i + 1}`} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors" />
               </button>
             ))}
@@ -245,12 +247,12 @@ export default function AccommodationDetail() {
       {accommodation.hasKitchen && accommodation.kitchenImages.length > 0 && (
         <section className="py-16 bg-stone-50">
           <div className="container-lux">
-            <p className="section-subtitle mb-3">Kuxnya</p>
-            <h2 className="section-title mb-4">Shaxsiy kuxnya</h2>
+            <p className="section-subtitle mb-3">{t('accommodationDetail.kitchenSubtitle')}</p>
+            <h2 className="section-title mb-4">{t('accommodationDetail.kitchenTitle')}</h2>
             <p className="text-stone-600 mb-8 max-w-2xl">
               {accommodation.id === 'cottage-5'
-                ? 'Lux kottejning ichida faqat ushbu kottej mehmonlari uchun mo\'ljallangan alohida kuxnya mavjud. Kuxnyada stol va stullar mavjud. Mehmonlar o\'zlari ovqat tayyorlashlari mumkin.'
-                : 'Ovqat pishirish uchun alohida kuxnya mavjud. Mehmonlar o\'zlari ovqat tayyorlashlari mumkin.'}
+                ? t('accommodationDetail.kitchenDescLux')
+                : t('accommodationDetail.kitchenDescDefault')}
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
               {accommodation.kitchenImages.map((img, i) => (
@@ -259,7 +261,7 @@ export default function AccommodationDetail() {
                   onClick={() => setLightboxIndex(uniqueImages.indexOf(img) >= 0 ? uniqueImages.indexOf(img) : 0)}
                   className="relative overflow-hidden rounded-sm group aspect-[4/3]"
                 >
-                  <img src={img} alt={`Kuxnya ${i + 1}`} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  <img src={img} alt={`${t('accommodationDetail.kitchenAlt')} ${i + 1}`} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors" />
                 </button>
               ))}
@@ -268,7 +270,7 @@ export default function AccommodationDetail() {
               <div className="max-w-2xl">
                 <VideoPlayer
                   thumbnail={accommodation.kitchenImages[0] || accommodation.mainImage}
-                  title="Kuxnya videosi"
+                  title={t('accommodationDetail.kitchenVideoTitle')}
                   videoSrc={accommodation.kitchenVideo}
                 />
               </div>
@@ -281,17 +283,16 @@ export default function AccommodationDetail() {
       <section className="py-16 bg-forest-950 text-white">
         <div className="container-lux text-center">
           <h2 className="font-serif text-3xl sm:text-4xl font-semibold mb-4">
-            {accommodation.name}ni bron qiling
+            {accommodation.name}{t('accommodationDetail.bookCtaSuffix')}
           </h2>
           <p className="text-white/70 max-w-2xl mx-auto mb-8">
-            Administrator bo'sh kunlarni tekshiradi va sizga xabar beradi.
-            Kelish va ketish sanasini kiritish shart emas.
+            {t('accommodationDetail.bookCtaDesc')}
           </p>
           <button
             onClick={() => openBooking(accommodation.id, accommodation.name, accommodation.priceDisplay)}
             className="inline-flex items-center gap-2 px-8 py-4 bg-forest-600 text-white font-medium rounded-sm hover:bg-forest-500 transition-colors"
           >
-            Bron qilish
+            {t('accommodationDetail.bookNow')}
             <ArrowRight size={18} />
           </button>
         </div>
@@ -301,8 +302,8 @@ export default function AccommodationDetail() {
       {related.length > 0 && (
         <section className="py-20 bg-stone-50">
           <div className="container-lux">
-            <p className="section-subtitle mb-3">O'xshash obyektlar</p>
-            <h2 className="section-title mb-8">Shu kabi sig'imli obyektlar</h2>
+            <p className="section-subtitle mb-3">{t('accommodationDetail.relatedSubtitle')}</p>
+            <h2 className="section-title mb-8">{t('accommodationDetail.relatedTitle')}</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {related.map((r) => (
                 <AccommodationCard key={r.id} accommodation={r} />

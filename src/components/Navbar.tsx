@@ -2,24 +2,27 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import { resortInfo } from '@/data/accommodations';
+import { useTranslation } from '@/i18n/useTranslation';
 import logo from '@/atrof-muhit/dugobba.png';
-
-const navLinks = [
-  { to: '/', label: 'Bosh sahifa' },
-  { to: '/resort', label: 'Resort' },
-  { to: '/kottejlar', label: 'Kottejlar' },
-  { to: '/xonalar', label: 'Xonalar' },
-  { to: '/tur-paketlari', label: 'Tur paketlari' },
-  { to: '/qulayliklar', label: 'Qulayliklar' },
-  { to: '/galereya', label: 'Galereya' },
-  { to: '/videolar', label: 'Videolar' },
-  { to: '/tog-manzarasi', label: 'Tog\' manzarasi' },
-  { to: '/aloqa', label: 'Aloqa' },
-];
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useTranslation();
+
+  const navLinks = [
+    { to: '/', label: t('navbar.home') },
+    { to: '/resort', label: t('navbar.resort') },
+    { to: '/kottejlar', label: t('navbar.cottages') },
+    { to: '/xonalar', label: t('navbar.rooms') },
+    { to: '/tur-paketlari', label: t('navbar.tourPackages') },
+    { to: '/qulayliklar', label: t('navbar.amenities') },
+    { to: '/galereya', label: t('navbar.gallery') },
+    { to: '/videolar', label: t('navbar.videos') },
+    { to: '/tog-manzarasi', label: t('navbar.mountainViews') },
+    { to: '/aloqa', label: t('navbar.contact') },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -65,13 +68,14 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="hidden lg:flex items-center">
+        <div className="hidden lg:flex items-center gap-3">
+          <LanguageSwitcher variant="dark" />
           <a
             href={`tel:${resortInfo.phone.replace(/\s/g, '')}`}
             className="flex items-center gap-2 px-4 py-2 border border-forest-400/40 rounded-sm text-forest-300 hover:bg-forest-700 hover:text-white hover:border-forest-700 transition-all duration-300"
           >
             <Phone size={16} />
-            <span className="text-sm font-medium">Bron qilish</span>
+            <span className="text-sm font-medium">{t('navbar.book')}</span>
           </a>
         </div>
 
@@ -87,6 +91,9 @@ export default function Navbar() {
       {isOpen && (
         <div className="lg:hidden absolute top-full left-0 right-0 bg-stone-900/98 backdrop-blur-lg shadow-2xl animate-slide-down max-h-[80vh] overflow-y-auto">
           <div className="container-lux py-6 flex flex-col gap-1">
+            <div className="mb-2">
+              <LanguageSwitcher variant="dark" />
+            </div>
             {navLinks.map((link) => (
               <NavLink
                 key={link.to}

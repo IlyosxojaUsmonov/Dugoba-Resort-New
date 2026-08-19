@@ -1,33 +1,34 @@
 import { useState } from 'react';
 import { Check, Clock, MapPin, ArrowRight, Calendar, Bus } from 'lucide-react';
 import PageHero from '@/components/PageHero';
-import { tourPackages, IMAGES } from '@/data/accommodations';
+import { getTourPackages, IMAGES } from '@/data/accommodations';
 import VideoPlayer from '@/components/VideoPlayer';
 import Lightbox from '@/components/Lightbox';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export default function TourPackages() {
+  const { t, language } = useTranslation();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const tourPackages = getTourPackages(language);
 
-  const allGalleryImages = tourPackages.flatMap((t) => t.gallery);
+  const allGalleryImages = tourPackages.flatMap((pkg) => pkg.gallery);
 
   return (
     <div>
       <PageHero
-        title="Tur paketlari"
-        subtitle="Resortga kelib-ketish uchun qulay tur paketlari. Transport xizmati va dam olish birlashgan."
+        title={t('tourPackages.heroTitle')}
+        subtitle={t('tourPackages.heroSubtitle')}
         image={IMAGES.mountain1}
-        breadcrumb={[{ label: 'Bosh sahifa', to: '/' }, { label: 'Tur paketlari' }]}
+        breadcrumb={[{ label: t('common.home'), to: '/' }, { label: t('tourPackages.heroTitle') }]}
       />
 
       {/* INTRO */}
       <section className="py-20 bg-white">
         <div className="container-lux max-w-4xl text-center">
           <Bus size={40} className="mx-auto text-forest-600 mb-6" />
-          <h2 className="section-title mb-6">Resortga qulay kelib-ketish</h2>
+          <h2 className="section-title mb-6">{t('tourPackages.introTitle')}</h2>
           <p className="text-lg text-stone-600 leading-relaxed">
-            Dugoba Resortda tur paketlari mavjud. Mehmonlar tur paketlari orqali resortga
-            kelib-ketishlari mumkin. Har bir paket o'z ichiga transport xizmati, dam olish va
-            turli qulayliklarni oladi. O'zingizga mos paketni tanlang va bron qiling.
+            {t('tourPackages.introDesc')}
           </p>
         </div>
       </section>
@@ -52,7 +53,7 @@ export default function TourPackages() {
                   </div>
                   {idx === 1 && (
                     <span className="absolute top-4 right-4 px-3 py-1 bg-sand-500 text-white text-xs font-semibold tracking-wider uppercase rounded-sm">
-                      Tavsiya etiladi
+                      {t('tourPackages.recommended')}
                     </span>
                   )}
                 </div>
@@ -61,7 +62,7 @@ export default function TourPackages() {
                   <p className="text-sm text-stone-600 leading-relaxed mb-5">{pkg.description}</p>
 
                   <h4 className="text-xs uppercase tracking-wider text-stone-400 font-semibold mb-3">
-                    Paket tarkibi
+                    {t('tourPackages.packageContents')}
                   </h4>
                   <ul className="space-y-2 mb-6 flex-1">
                     {pkg.includes.map((item) => (
@@ -74,7 +75,7 @@ export default function TourPackages() {
 
                   <div className="pt-4 border-t border-stone-100">
                     <div className="flex items-center justify-between mb-4">
-                      <span className="text-xs text-stone-400">Narx</span>
+                      <span className="text-xs text-stone-400">{t('tourPackages.price')}</span>
                       <span className="font-serif text-lg font-semibold text-forest-700">{pkg.price}</span>
                     </div>
                     <a
@@ -83,7 +84,7 @@ export default function TourPackages() {
                       rel="noopener noreferrer"
                       className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-forest-700 text-white text-sm font-medium rounded-sm hover:bg-forest-800 transition-colors"
                     >
-                      Telegram orqali bog'lanish
+                      {t('tourPackages.contactTelegram')}
                       <ArrowRight size={16} />
                     </a>
                   </div>
@@ -99,16 +100,16 @@ export default function TourPackages() {
         <div className="container-lux">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="section-subtitle">Kelish va qaytish</p>
-              <h2 className="section-title mb-6">Transport xizmati</h2>
+              <p className="section-subtitle">{t('tourPackages.transportSubtitle')}</p>
+              <h2 className="section-title mb-6">{t('tourPackages.transportTitle')}</h2>
               <div className="space-y-4 text-stone-600 leading-relaxed">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-full bg-forest-50 flex items-center justify-center shrink-0">
                     <MapPin size={18} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">Farg'onadan borgan-kelgan</h4>
-                    <p className="text-sm">Mehmonlar Farg'ona shahridan Dugoba Resortga transport xizmati orqali kelib-ketishlari mumkin.</p>
+                    <h4 className="font-medium text-stone-900 mb-1">{t('tourPackages.transport1Title')}</h4>
+                    <p className="text-sm">{t('tourPackages.transport1Desc')}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -116,8 +117,8 @@ export default function TourPackages() {
                     <Calendar size={18} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">Moslashuvchan vaqt</h4>
-                    <p className="text-sm">Tur paketlari 1 kundan 5 kungacha moslashuvchan vaqt bilan taklif etiladi.</p>
+                    <h4 className="font-medium text-stone-900 mb-1">{t('tourPackages.transport2Title')}</h4>
+                    <p className="text-sm">{t('tourPackages.transport2Desc')}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -125,8 +126,8 @@ export default function TourPackages() {
                     <Bus size={18} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">Qulay transport</h4>
-                    <p className="text-sm">Transport xizmati tur paketi tarkibiga kiritilgan. Mehmonlar qulay sharoitda sayohat qilishadi.</p>
+                    <h4 className="font-medium text-stone-900 mb-1">{t('tourPackages.transport3Title')}</h4>
+                    <p className="text-sm">{t('tourPackages.transport3Desc')}</p>
                   </div>
                 </div>
               </div>
@@ -145,8 +146,8 @@ export default function TourPackages() {
       {/* GALLERY */}
       <section className="py-20 bg-stone-50">
         <div className="container-lux">
-          <p className="section-subtitle mb-3">Tur galereyasi</p>
-          <h2 className="section-title mb-8">Sayohat manzaralari</h2>
+          <p className="section-subtitle mb-3">{t('tourPackages.gallerySubtitle')}</p>
+          <h2 className="section-title mb-8">{t('tourPackages.galleryTitle')}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {allGalleryImages.map((img, i) => (
               <button
@@ -173,11 +174,11 @@ export default function TourPackages() {
       {/* VIDEO */}
       <section className="py-20 bg-white">
         <div className="container-lux max-w-4xl">
-          <p className="section-subtitle mb-3">Video</p>
-          <h2 className="section-title mb-8">Tur paketi videosi</h2>
+          <p className="section-subtitle mb-3">{t('tourPackages.videoSubtitle')}</p>
+          <h2 className="section-title mb-8">{t('tourPackages.videoTitle')}</h2>
           <VideoPlayer
             thumbnail={IMAGES.mountain1}
-            title="Dugoba Resort tur paketi — to'liq ko'rinish"
+            title={t('tourPackages.videoCaption')}
           />
         </div>
       </section>

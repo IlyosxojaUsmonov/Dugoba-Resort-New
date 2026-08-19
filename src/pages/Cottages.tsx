@@ -1,28 +1,28 @@
 import PageHero from '@/components/PageHero';
 import AccommodationCard from '@/components/AccommodationCard';
-import { accommodations, IMAGES } from '@/data/accommodations';
+import { getAccommodations, IMAGES } from '@/data/accommodations';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export default function Cottages() {
-  const cottages = accommodations.filter((a) => a.type === 'cottage');
+  const { t, language } = useTranslation();
+  const cottages = getAccommodations(language).filter((a) => a.type === 'cottage');
 
   return (
     <div>
       <PageHero
-        title="Kottejlar"
-        subtitle="5 ta alohida kottej — har biri o'zining sig'im, narx, qulayliklar va shaxsiy tapchaniga ega"
+        title={t('cottages.heroTitle')}
+        subtitle={t('cottages.heroSubtitle')}
         image={IMAGES.cottage1}
-        breadcrumb={[{ label: 'Bosh sahifa', to: '/' }, { label: 'Kottejlar' }]}
+        breadcrumb={[{ label: t('common.home'), to: '/' }, { label: t('cottages.heroTitle') }]}
       />
 
       <section className="py-24 bg-stone-50">
         <div className="container-lux">
           <div className="mb-12 text-center">
-            <p className="section-subtitle">Premium turar joy</p>
-            <h2 className="section-title">Barcha kottejlar</h2>
+            <p className="section-subtitle">{t('cottages.subtitle')}</p>
+            <h2 className="section-title">{t('cottages.title')}</h2>
             <p className="text-stone-600 mt-3 max-w-2xl mx-auto">
-              Resortning to'g'ri qismida jami 5 ta kottej mavjud. Har bir kottej alohida obyekt
-              sifatida yaratilgan — o'zining rasmi, galereyasi, videosi, tavsifi va bron qilish
-              tugmasi bilan.
+              {t('cottages.desc')}
             </p>
           </div>
 

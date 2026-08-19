@@ -1,26 +1,30 @@
 import { Check } from 'lucide-react';
 import PageHero from '@/components/PageHero';
-import { amenities, IMAGES } from '@/data/accommodations';
+import { getAmenities, IMAGES } from '@/data/accommodations';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export default function Amenities() {
+  const { t, tList, language } = useTranslation();
+  const amenities = getAmenities(language);
+  const fullList = tList('amenities.list');
+
   return (
     <div>
       <PageHero
-        title="Qulayliklar"
-        subtitle="Resortning barcha qulayliklari — dam olish uchun zarur bo'lgan barcha sharoitlar"
+        title={t('amenities.heroTitle')}
+        subtitle={t('amenities.heroSubtitle')}
         image={IMAGES.resortElegant}
-        breadcrumb={[{ label: 'Bosh sahifa', to: '/' }, { label: 'Qulayliklar' }]}
+        breadcrumb={[{ label: t('common.home'), to: '/' }, { label: t('amenities.heroTitle') }]}
       />
 
       {/* AMENITIES GRID */}
       <section className="py-20 bg-white">
         <div className="container-lux">
           <div className="text-center mb-12">
-            <p className="section-subtitle">Barcha qulayliklar</p>
-            <h2 className="section-title">Dam olish uchun to'liq sharoit</h2>
+            <p className="section-subtitle">{t('amenities.gridSubtitle')}</p>
+            <h2 className="section-title">{t('amenities.gridTitle')}</h2>
             <p className="text-stone-600 mt-3 max-w-2xl mx-auto">
-              Resort tog'ning eng yuqori nuqtasida joylashgan bo'lib, mehmonlarga
-              barcha zarur qulayliklarni taqdim etadi.
+              {t('amenities.gridDesc')}
             </p>
           </div>
 
@@ -51,29 +55,10 @@ export default function Amenities() {
       {/* FULL LIST */}
       <section className="py-20 bg-stone-50">
         <div className="container-lux max-w-4xl">
-          <p className="section-subtitle mb-3">To'liq ro'yxat</p>
-          <h2 className="section-title mb-8">Barcha qulayliklar ro'yxati</h2>
+          <p className="section-subtitle mb-3">{t('amenities.listSubtitle')}</p>
+          <h2 className="section-title mb-8">{t('amenities.listTitle')}</h2>
           <div className="grid sm:grid-cols-2 gap-3">
-            {[
-              'Farg\'ona viloyati, Shohimardon qishlog\'ining eng yuqori nuqtasi',
-              'Tog\' manzarasi',
-              'Tur paketlari',
-              'Tur bilan kelib-ketish imkoniyati',
-              'Kirish qismidagi kichik magazin',
-              'Zarur narsalarni xarid qilish imkoniyati',
-              'O\'choqxona',
-              'Mehmonlarning o\'zlari ovqat pishirish imkoniyati',
-              'O\'choqxona chap tomonidagi tapchanlar',
-              'O\'choqxona o\'ng tomonidagi tapchanlar',
-              'Umumiy bolalar maydonchasi',
-              '5 ta asosiy kottej',
-              'Har bir kottej uchun shaxsiy orqa tapchan',
-              'Xonalarda dush',
-              'Xonalarda sanuzel',
-              'Wi-Fi',
-              'Televizor',
-              'Har bir xona uchun shaxsiy so\'ri/tapchan',
-            ].map((item) => (
+            {fullList.map((item) => (
               <div key={item} className="flex items-center gap-3 p-4 bg-white rounded-sm border border-stone-100">
                 <div className="w-6 h-6 rounded-full bg-forest-50 flex items-center justify-center shrink-0">
                   <Check size={14} className="text-forest-600" />

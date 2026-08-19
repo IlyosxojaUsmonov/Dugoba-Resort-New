@@ -1,19 +1,22 @@
 import { useState } from 'react';
 import { Play, Video } from 'lucide-react';
 import PageHero from '@/components/PageHero';
-import { videoItems, IMAGES } from '@/data/accommodations';
+import { getVideoItems, IMAGES } from '@/data/accommodations';
 import { VideoModal } from '@/components/VideoPlayer';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export default function Videos() {
+  const { t, language } = useTranslation();
   const [selectedVideo, setSelectedVideo] = useState<{ thumbnail: string; title: string; videoSrc?: string | null } | null>(null);
+  const videoItems = getVideoItems(language);
 
   return (
     <div>
       <PageHero
-        title="Videolar"
-        subtitle="Resort hududi, kottejlar, xonalar, kuxna va tog' manzaralari videolari"
+        title={t('videos.heroTitle')}
+        subtitle={t('videos.heroSubtitle')}
         image={IMAGES.resortPool}
-        breadcrumb={[{ label: 'Bosh sahifa', to: '/' }, { label: 'Videolar' }]}
+        breadcrumb={[{ label: t('common.home'), to: '/' }, { label: t('videos.heroTitle') }]}
       />
 
       <section className="py-20 bg-white">
@@ -50,9 +53,7 @@ export default function Videos() {
           <div className="mt-16 text-center bg-stone-50 p-8 rounded-sm">
             <Video size={32} className="mx-auto text-forest-600 mb-4" />
             <p className="text-stone-600 max-w-2xl mx-auto">
-              Resort, tog' manzarasi, kottejlar va xonalar bo'yicha videolarni yuqorida
-              tomosha qilishingiz mumkin. Ayrim kottej va xonalarning o'ziga xos videosini
-              esa shu obyektning o'z sahifasiga kirib ko'rishingiz mumkin.
+              {t('videos.note')}
             </p>
           </div>
         </div>

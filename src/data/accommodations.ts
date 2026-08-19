@@ -80,6 +80,10 @@ import am_xonaKotej from '../atrof-muhit/xona-kotej.png';
 import am_tog from '../atrof-muhit/tog.png';
 import am_resort from '../atrof-muhit/resort.png';
 
+import type { Language } from '@/i18n/language';
+
+export type Lang = Language;
+
 export interface Accommodation {
   id: string;
   name: string;
@@ -205,30 +209,60 @@ const IMG = {
 
 export const IMAGES = IMG;
 
-const baseAmenities = [
-  'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Shaxsiy so\'ri/tapchan',
-];
+function formatPrice(price: number, lang: Lang): string {
+  const formatted = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  return lang === 'ru' ? `${formatted} сум` : `${formatted} so'm`;
+}
+
+const BASE_AMENITIES: Record<Lang, string[]> = {
+  uz: ['Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', "Shaxsiy so'ri/tapchan"],
+  ru: ['Душ', 'Санузел', 'Wi-Fi', 'Телевизор', 'Личный тапчан'],
+};
+
+type LocKey = 'front' | 'back' | 'frontSide' | 'backSide' | 'resortArea' | 'lowerPart' | 'frontOfResort';
+
+const LOC: Record<LocKey, { uz: string; ruNom: string; ruPrep: string }> = {
+  front: { uz: 'Old qism', ruNom: 'Передняя часть', ruPrep: 'передней части' },
+  back: { uz: 'Orqa qism', ruNom: 'Задняя часть', ruPrep: 'задней части' },
+  frontSide: { uz: 'Old tomon', ruNom: 'Передняя сторона', ruPrep: 'передней стороне' },
+  backSide: { uz: 'Orqa tomon', ruNom: 'Задняя сторона', ruPrep: 'задней стороне' },
+  resortArea: { uz: 'Resort hududi', ruNom: 'Территория курорта', ruPrep: 'территории курорта' },
+  lowerPart: { uz: "Resortning pastki qismi", ruNom: 'Нижняя часть курорта', ruPrep: 'нижней части курорта' },
+  frontOfResort: { uz: "Resortning to'g'ri qismi", ruNom: 'Передняя часть курорта', ruPrep: 'передней части курорта' },
+};
 
 function make3pRoom(
+  lang: Lang,
   id: string,
   num: number,
-  location: string,
+  locKey: LocKey,
   mainImage: string,
   roomImg2: string,
   roomImg3: string,
 ): Accommodation {
+  const loc = LOC[locKey];
+  const name = lang === 'ru' ? `3-местный номер №${num}` : `3 kishilik xona №${num}`;
+  const shortDescription =
+    lang === 'ru'
+      ? `Современный 3-местный номер, расположенный в ${loc.ruPrep} — с душем, санузлом, Wi-Fi и личным тапчаном.`
+      : `${loc.uz}da joylashgan 3 kishilik zamonaviy xona — dush, sanuzel, Wi-Fi va shaxsiy tapchan bilan.`;
+  const description =
+    lang === 'ru'
+      ? `Этот номер расположен в ${loc.ruPrep} и рассчитан на 3 человек. В номере есть современный душ, санузел, телевизор и Wi-Fi. За гостями закреплён личный тапчан для отдыха. Вид на горы и спокойная атмосфера курорта создают идеальные условия для отдыха. Номер отличается чистым, светлым и уютным интерьером — прекрасно подходит для семейного отдыха или поездки с друзьями.`
+      : `Bu xona ${loc.uz}da joylashgan bo'lib, 3 kishi uchun mo'ljallangan. Xonada zamonaviy dush, sanuzel, televizor va Wi-Fi mavjud. Mehmonlar uchun shaxsiy so'ri/tapchan biriktirilgan. Tog' manzarasi va resortning tinch muhiti dam olish uchun ideal sharoit yaratadi. Xona toza, yorug' va qulay intererga ega bo'lib, oilaviy dam olish yoki do'stlar bilan kelish uchun juda mos keladi.`;
+
   return {
     id,
-    name: `3 kishilik xona №${num}`,
+    name,
     type: 'room',
-    category: '3 kishilik',
+    category: lang === 'ru' ? '3-местный' : '3 kishilik',
     capacity: 3,
     price: 600000,
-    priceDisplay: '600 000 so\'m',
-    location,
-    shortDescription: `${location}da joylashgan 3 kishilik zamonaviy xona — dush, sanuzel, Wi-Fi va shaxsiy tapchan bilan.`,
-    description: `Bu xona ${location}da joylashgan bo'lib, 3 kishi uchun mo'ljallangan. Xonada zamonaviy dush, sanuzel, televizor va Wi-Fi mavjud. Mehmonlar uchun shaxsiy so'ri/tapchan biriktirilgan. Tog' manzarasi va resortning tinch muhiti dam olish uchun ideal sharoit yaratadi. Xona toza, yorug' va qulay intererga ega bo'lib, oilaviy dam olish yoki do'stlar bilan kelish uchun juda mos keladi.`,
-    amenities: [...baseAmenities],
+    priceDisplay: formatPrice(600000, lang),
+    location: lang === 'ru' ? loc.ruNom : loc.uz,
+    shortDescription,
+    description,
+    amenities: [...BASE_AMENITIES[lang]],
     mainImage,
     gallery: [mainImage, roomImg2, roomImg3, IMG.bathroom1, IMG.bathroom2, IMG.tapchan1],
     video: null,
@@ -238,30 +272,45 @@ function make3pRoom(
     kitchenVideo: null,
     isLuxury: false,
     hasPrivateTapchan: true,
-    features: ['3 kishilik', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Shaxsiy tapchan'],
+    features:
+      lang === 'ru'
+        ? ['3-местный', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор', 'Личный тапчан']
+        : ['3 kishilik', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Shaxsiy tapchan'],
   };
 }
 
 function make4pRoom(
+  lang: Lang,
   id: string,
   num: number,
-  location: string,
+  locKey: LocKey,
   mainImage: string,
   roomImg2: string,
   roomImg3: string,
 ): Accommodation {
+  const loc = LOC[locKey];
+  const name = lang === 'ru' ? `4-местный номер №${num}` : `4 kishilik xona №${num}`;
+  const shortDescription =
+    lang === 'ru'
+      ? `Просторный 4-местный номер, расположенный в ${loc.ruPrep} — со всеми удобствами и личным тапчаном.`
+      : `${loc.uz}da joylashgan 4 kishilik keng xona — barcha qulayliklar va shaxsiy tapchan bilan.`;
+  const description =
+    lang === 'ru'
+      ? `Этот номер расположен в ${loc.ruPrep} и представляет собой просторный номер, рассчитанный на 4 человек. В номере есть современный душ, санузел, телевизор и Wi-Fi. За гостями закреплён личный тапчан для отдыха. Благодаря большей площади номер особенно удобен для семейного отдыха. Вид на горы и живописная атмосфера курорта делают отдых незабываемым.`
+      : `Bu xona ${loc.uz}da joylashgan bo'lib, 4 kishi uchun mo'ljallangan keng xonadir. Xonada zamonaviy dush, sanuzel, televizor va Wi-Fi mavjud. Mehmonlar uchun shaxsiy so'ri/tapchan biriktirilgan. Xona kattaroq bo'lgani uchun oilaviy dam olish uchun yanada qulayroq. Tog' manzarasi va resortning go'zal muhiti dam olishni unutilmas qiladi.`;
+
   return {
     id,
-    name: `4 kishilik xona №${num}`,
+    name,
     type: 'room',
-    category: '4 kishilik',
+    category: lang === 'ru' ? '4-местный' : '4 kishilik',
     capacity: 4,
     price: 800000,
-    priceDisplay: '800 000 so\'m',
-    location,
-    shortDescription: `${location}da joylashgan 4 kishilik keng xona — barcha qulayliklar va shaxsiy tapchan bilan.`,
-    description: `Bu xona ${location}da joylashgan bo'lib, 4 kishi uchun mo'ljallangan keng xonadir. Xonada zamonaviy dush, sanuzel, televizor va Wi-Fi mavjud. Mehmonlar uchun shaxsiy so'ri/tapchan biriktirilgan. Xona kattaroq bo'lgani uchun oilaviy dam olish uchun yanada qulayroq. Tog' manzarasi va resortning go'zal muhiti dam olishni unutilmas qiladi.`,
-    amenities: [...baseAmenities],
+    priceDisplay: formatPrice(800000, lang),
+    location: lang === 'ru' ? loc.ruNom : loc.uz,
+    shortDescription,
+    description,
+    amenities: [...BASE_AMENITIES[lang]],
     mainImage,
     gallery: [mainImage, roomImg2, roomImg3, IMG.bathroom3, IMG.bathroom4, IMG.tapchan3],
     video: null,
@@ -271,243 +320,363 @@ function make4pRoom(
     kitchenVideo: null,
     isLuxury: false,
     hasPrivateTapchan: true,
-    features: ['4 kishilik', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Shaxsiy tapchan'],
+    features:
+      lang === 'ru'
+        ? ['4-местный', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор', 'Личный тапчан']
+        : ['4 kishilik', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Shaxsiy tapchan'],
   };
 }
 
-function makeCottage(
-  id: string,
-  name: string,
-  capacity: number,
-  price: number,
-  priceDisplay: string,
-  mainImage: string,
-  isLuxury: boolean,
-  hasKitchen: boolean,
-  description: string,
-  gallery: string[],
-  features: string[],
-): Accommodation {
-  const cottageAmenities = [...baseAmenities, 'Shaxsiy orqa tapchan', 'Kottej intererga ega'];
-  if (hasKitchen) cottageAmenities.push('Shaxsiy kuxnya', 'Kuxnya jihozlari');
+interface CottageSpec {
+  id: string;
+  nameUz: string;
+  nameRu: string;
+  capacity: number;
+  price: number;
+  mainImage: string;
+  isLuxury: boolean;
+  hasKitchen: boolean;
+  descUz: string;
+  descRu: string;
+  gallery: string[];
+  featuresUz: string[];
+  featuresRu: string[];
+}
 
-  const allGallery = [mainImage, ...gallery];
+function makeCottage(lang: Lang, spec: CottageSpec): Accommodation {
+  const cottageAmenities = [...BASE_AMENITIES[lang]];
+  if (lang === 'ru') {
+    cottageAmenities.push('Личный задний тапчан', 'Коттеджный интерьер');
+    if (spec.hasKitchen) cottageAmenities.push('Личная кухня', 'Кухонное оборудование');
+  } else {
+    cottageAmenities.push('Shaxsiy orqa tapchan', 'Kottej intererga ega');
+    if (spec.hasKitchen) cottageAmenities.push('Shaxsiy kuxnya', 'Kuxnya jihozlari');
+  }
+
+  const loc = LOC.frontOfResort;
+  const shortDescription =
+    lang === 'ru'
+      ? `${spec.capacity}-местный ${spec.isLuxury ? 'люкс' : 'стандарт'} коттедж. ${
+          spec.hasKitchen ? 'С собственной кухней.' : 'С собственным задним тапчаном.'
+        }`
+      : `${spec.capacity} kishilik ${spec.isLuxury ? 'lyuks' : 'standart'} kottej. ${
+          spec.hasKitchen ? 'Shaxsiy kuxnya bilan.' : 'Shaxsiy orqa tapchan bilan.'
+        }`;
 
   return {
-    id,
-    name,
+    id: spec.id,
+    name: lang === 'ru' ? spec.nameRu : spec.nameUz,
     type: 'cottage',
-    category: isLuxury ? 'Lyuks kottej' : 'Standart kottej',
-    capacity,
-    price,
-    priceDisplay,
-    location: 'Resortning to\'g\'ri qismi',
-    shortDescription: `${capacity} kishilik ${isLuxury ? 'lyuks' : 'standart'} kottej. ${hasKitchen ? 'Shaxsiy kuxnya bilan.' : 'Shaxsiy orqa tapchan bilan.'}`,
-    description,
+    category:
+      lang === 'ru'
+        ? spec.isLuxury
+          ? 'Люкс коттедж'
+          : 'Стандарт коттедж'
+        : spec.isLuxury
+          ? 'Lyuks kottej'
+          : 'Standart kottej',
+    capacity: spec.capacity,
+    price: spec.price,
+    priceDisplay: formatPrice(spec.price, lang),
+    location: lang === 'ru' ? loc.ruNom : loc.uz,
+    shortDescription,
+    description: lang === 'ru' ? spec.descRu : spec.descUz,
     amenities: cottageAmenities,
-    mainImage,
-    gallery: allGallery,
+    mainImage: spec.mainImage,
+    gallery: [spec.mainImage, ...spec.gallery],
     video: null,
     tapchanImages: [],
-    hasKitchen,
+    hasKitchen: spec.hasKitchen,
     kitchenImages: [],
     kitchenVideo: null,
-    isLuxury,
+    isLuxury: spec.isLuxury,
     hasPrivateTapchan: true,
-    features,
+    features: lang === 'ru' ? spec.featuresRu : spec.featuresUz,
   };
 }
 
-export const accommodations: Accommodation[] = [
-  // ===== 5 COTTAGES =====
-  makeCottage(
-    'cottage-1',
-    '1-Kottej — Standart',
-    10, 1500000, '1 500 000 so\'m',
-    c1_1, false, false,
-    '1-Kottej — Dugoba Resortning standart sinfidagi kottejidir. 10 kishi sig\'imiga ega bo\'lib, keng va qulay interyorga mo\'jallangan. Kottejning orqa qismida mehmonlar dam olishlari uchun shaxsiy so\'ri/tapchan mavjud. Tog\' manzarasidan bahramand bo\'lib, oilaviy yoki do\'stlar bilan katta guruh bo\'lib dam olish uchun ideal variant. Kottejda dush, sanuzel, Wi-Fi va televizor mavjud.',
-    [c1_2, c1_3, c1_4],
-    ['10 kishilik', 'Standart kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor'],
-  ),
-  {
-    ...makeCottage(
-      'cottage-2',
-      '2-Kottej — Standart',
-      10, 1500000, '1 500 000 so\'m',
-      c2_6, false, false,
-      '2-Kottej — Standart sinfidagi 10 kishilik kottej. 1-Kottej bilan bir xil qulayliklarga ega, lekin boshqa joylashuv va interyorga ega. Orqa qismida shaxsiy so\'ri/tapchan mavjud. Katta oilalar yoki do\'stlar guruhi uchun juda mos. Kottejda barcha zarur qulayliklar: dush, sanuzel, Wi-Fi va televizor mavjud.',
-      [c2_1, c2_2, c2_3, c2_4, c2_5],
-      ['10 kishilik', 'Standart kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor'],
-    ),
-    tapchanImages: [c2_6],
-    video: v_standart2,
-  },
-  {
-    ...makeCottage(
-      'cottage-3',
-      '3-Kottej — Standart',
-      10, 1500000, '1 500 000 so\'m',
-      c3_1, false, false,
-      '3-Kottej — Standart sinfidagi 10 kishilik kottej. Resortning to\'g\'ri qismida joylashgan. Orqa qismida shaxsiy so\'ri/tapchan mavjud. Keng interyorga ega bo\'lib, 10 kishi uchun qulay dam olishni ta\'minlaydi. Barcha zarur qulayliklar: dush, sanuzel, Wi-Fi va televizor mavjud.',
-      [c3_2, c3_3, c3_4, c3_5, c3_6, c3_7, c3_8, c3_9, c3_10],
-      ['10 kishilik', 'Standart kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor'],
-    ),
-    video: v_standart3,
-  },
-  makeCottage(
-    'cottage-4',
-    'Pollux',
-    10, 2000000, '2 000 000 so\'m',
-    c4_1, true, false,
-    'Pollux — Dugoba Resortning premium sinfidagi kottejidir. 10 kishi sig\'imiga ega, lekin standart kottejlardan farqli ravishda yanada yuqori darajadagi interyer va qulayliklarga ega. Orqa qismida shaxsiy so\'ri/tapchan mavjud. Pollux kotteji mehmonlarga eng yuqori darajadagi dam olishni ta\'minlash uchun mo\'ljallangan. Premium dizayn, keng interyer va tog\' manzarasi bu kottejni maxsus qiladi.',
-    [c4_2, c4_3, c4_4, c4_5, c4_6, c4_7, c4_8, c4_9, c4_10],
-    ['10 kishilik', 'Premium kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Premium dizayn'],
-  ),
-  {
-    ...makeCottage(
-      'cottage-5',
-      'Lux Kottej',
-      8, 2500000, '2 500 000 so\'m',
-      c5_1, true, true,
-      'Lux Kottej — Dugoba Resortning eng yuqori sinfidagi kottejidir. 8 kishi sig\'imiga ega. Boshqa barcha kottejlardan farqli ravishda, Lux kottejning ichida faqat ushbu kottej mehmonlari uchun mo\'ljallangan alohida kuxnya mavjud. Kuxnyada stol va stullar mavjud bo\'lib, mehmonlar o\'zlari ovqat tayyorlashlari mumkin. Orqa qismida shaxsiy so\'ri/tapchan mavjud. Eng yuqori darajadagi interyer, premium qulayliklar va eksklyuziv kuxnya bilan Lux kottej dam olishning eng yuqori cho\'qqisidir.',
-      [c5_2, c5_3, c5_4, c5_5, c5_6, c5_7, c5_8, c5_9, c5_10],
-      ['8 kishilik', 'Lyuks kottej', 'Shaxsiy kuxnya', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Premium dizayn'],
-    ),
-    kitchenImages: [c5_2],
-    video: v_luxKotej,
-  },
+export function getAccommodations(lang: Lang): Accommodation[] {
+  return [
+    // ===== 5 COTTAGES =====
+    makeCottage(lang, {
+      id: 'cottage-1',
+      nameUz: '1-Kottej — Standart',
+      nameRu: 'Коттедж №1 — Стандарт',
+      capacity: 10,
+      price: 1500000,
+      mainImage: c1_1,
+      isLuxury: false,
+      hasKitchen: false,
+      descUz:
+        "1-Kottej — Dugoba Resortning standart sinfidagi kottejidir. 10 kishi sig'imiga ega bo'lib, keng va qulay interyorga mo'jallangan. Kottejning orqa qismida mehmonlar dam olishlari uchun shaxsiy so'ri/tapchan mavjud. Tog' manzarasidan bahramand bo'lib, oilaviy yoki do'stlar bilan katta guruh bo'lib dam olish uchun ideal variant. Kottejda dush, sanuzel, Wi-Fi va televizor mavjud.",
+      descRu:
+        'Коттедж №1 — коттедж стандартного класса Dugoba Resort. Вместимость — 10 человек, просторный и комфортный интерьер. В задней части коттеджа для гостей предусмотрен личный тапчан для отдыха. Отсюда открывается вид на горы — идеальный вариант для отдыха всей семьёй или большой компанией друзей. В коттедже есть душ, санузел, Wi-Fi и телевизор.',
+      gallery: [c1_2, c1_3, c1_4],
+      featuresUz: ['10 kishilik', 'Standart kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor'],
+      featuresRu: ['10-местный', 'Стандарт коттедж', 'Личный задний тапчан', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор'],
+    }),
+    {
+      ...makeCottage(lang, {
+        id: 'cottage-2',
+        nameUz: '2-Kottej — Standart',
+        nameRu: 'Коттедж №2 — Стандарт',
+        capacity: 10,
+        price: 1500000,
+        mainImage: c2_6,
+        isLuxury: false,
+        hasKitchen: false,
+        descUz:
+          "2-Kottej — Standart sinfidagi 10 kishilik kottej. 1-Kottej bilan bir xil qulayliklarga ega, lekin boshqa joylashuv va interyorga ega. Orqa qismida shaxsiy so'ri/tapchan mavjud. Katta oilalar yoki do'stlar guruhi uchun juda mos. Kottejda barcha zarur qulayliklar: dush, sanuzel, Wi-Fi va televizor mavjud.",
+        descRu:
+          'Коттедж №2 — 10-местный коттедж стандартного класса. Обладает теми же удобствами, что и Коттедж №1, но имеет другое расположение и интерьер. В задней части — личный тапчан. Отлично подходит для больших семей или компаний друзей. В коттедже есть все необходимые удобства: душ, санузел, Wi-Fi и телевизор.',
+        gallery: [c2_1, c2_2, c2_3, c2_4, c2_5],
+        featuresUz: ['10 kishilik', 'Standart kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor'],
+        featuresRu: ['10-местный', 'Стандарт коттедж', 'Личный задний тапчан', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор'],
+      }),
+      tapchanImages: [c2_6],
+      video: v_standart2,
+    },
+    {
+      ...makeCottage(lang, {
+        id: 'cottage-3',
+        nameUz: '3-Kottej — Standart',
+        nameRu: 'Коттедж №3 — Стандарт',
+        capacity: 10,
+        price: 1500000,
+        mainImage: c3_1,
+        isLuxury: false,
+        hasKitchen: false,
+        descUz:
+          "3-Kottej — Standart sinfidagi 10 kishilik kottej. Resortning to'g'ri qismida joylashgan. Orqa qismida shaxsiy so'ri/tapchan mavjud. Keng interyorga ega bo'lib, 10 kishi uchun qulay dam olishni ta'minlaydi. Barcha zarur qulayliklar: dush, sanuzel, Wi-Fi va televizor mavjud.",
+        descRu:
+          'Коттедж №3 — 10-местный коттедж стандартного класса. Расположен в передней части курорта. В задней части — личный тапчан. Просторный интерьер обеспечивает комфортный отдых для 10 человек. Все необходимые удобства: душ, санузел, Wi-Fi и телевизор.',
+        gallery: [c3_2, c3_3, c3_4, c3_5, c3_6, c3_7, c3_8, c3_9, c3_10],
+        featuresUz: ['10 kishilik', 'Standart kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor'],
+        featuresRu: ['10-местный', 'Стандарт коттедж', 'Личный задний тапчан', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор'],
+      }),
+      video: v_standart3,
+    },
+    makeCottage(lang, {
+      id: 'cottage-4',
+      nameUz: 'Pollux',
+      nameRu: 'Поллюкс',
+      capacity: 10,
+      price: 2000000,
+      mainImage: c4_1,
+      isLuxury: true,
+      hasKitchen: false,
+      descUz:
+        "Pollux — Dugoba Resortning premium sinfidagi kottejidir. 10 kishi sig'imiga ega, lekin standart kottejlardan farqli ravishda yanada yuqori darajadagi interyer va qulayliklarga ega. Orqa qismida shaxsiy so'ri/tapchan mavjud. Pollux kotteji mehmonlarga eng yuqori darajadagi dam olishni ta'minlash uchun mo'ljallangan. Premium dizayn, keng interyer va tog' manzarasi bu kottejni maxsus qiladi.",
+      descRu:
+        'Поллюкс — коттедж премиум-класса Dugoba Resort. Вместимость — 10 человек, но, в отличие от стандартных коттеджей, отличается более высоким уровнем интерьера и удобств. В задней части — личный тапчан. Коттедж Поллюкс создан для того, чтобы обеспечить гостям отдых наивысшего уровня. Премиальный дизайн, просторный интерьер и вид на горы делают этот коттедж особенным.',
+      gallery: [c4_2, c4_3, c4_4, c4_5, c4_6, c4_7, c4_8, c4_9, c4_10],
+      featuresUz: ['10 kishilik', 'Premium kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Premium dizayn'],
+      featuresRu: ['10-местный', 'Премиум коттедж', 'Личный задний тапчан', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор', 'Премиальный дизайн'],
+    }),
+    {
+      ...makeCottage(lang, {
+        id: 'cottage-5',
+        nameUz: 'Lux Kottej',
+        nameRu: 'Люкс коттедж',
+        capacity: 8,
+        price: 2500000,
+        mainImage: c5_1,
+        isLuxury: true,
+        hasKitchen: true,
+        descUz:
+          "Lux Kottej — Dugoba Resortning eng yuqori sinfidagi kottejidir. 8 kishi sig'imiga ega. Boshqa barcha kottejlardan farqli ravishda, Lux kottejning ichida faqat ushbu kottej mehmonlari uchun mo'ljallangan alohida kuxnya mavjud. Kuxnyada stol va stullar mavjud bo'lib, mehmonlar o'zlari ovqat tayyorlashlari mumkin. Orqa qismida shaxsiy so'ri/tapchan mavjud. Eng yuqori darajadagi interyer, premium qulayliklar va eksklyuziv kuxnya bilan Lux kottej dam olishning eng yuqori cho'qqisidir.",
+        descRu:
+          'Люкс коттедж — коттедж наивысшего класса Dugoba Resort. Вместимость — 8 человек. В отличие от всех остальных коттеджей, внутри Люкс коттеджа есть отдельная кухня, предназначенная только для гостей этого коттеджа. На кухне есть стол и стулья — гости могут готовить еду самостоятельно. В задней части — личный тапчан. С интерьером наивысшего уровня, премиальными удобствами и эксклюзивной кухней Люкс коттедж — вершина комфортного отдыха.',
+        gallery: [c5_2, c5_3, c5_4, c5_5, c5_6, c5_7, c5_8, c5_9, c5_10],
+        featuresUz: ['8 kishilik', 'Lyuks kottej', 'Shaxsiy kuxnya', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Premium dizayn'],
+        featuresRu: ['8-местный', 'Люкс коттедж', 'Личная кухня', 'Личный задний тапчан', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор', 'Премиальный дизайн'],
+      }),
+      kitchenImages: [c5_2],
+      video: v_luxKotej,
+    },
 
-  // ===== 16 x 3-person rooms =====
-  {
-    ...make3pRoom('room-3p-1', 1, 'Old qism', r3p5, r3p1, r3p2),
-    gallery: [r3p5, r3p1, r3p2, r3p3, r3p4],
-    tapchanImages: [r3p5],
-  },
-  make3pRoom('room-3p-2', 2, 'Old qism', IMG.room2, IMG.room3, IMG.room4),
-  make3pRoom('room-3p-3', 3, 'Old qism', IMG.room3, IMG.room4, IMG.room5),
-  make3pRoom('room-3p-4', 4, 'Old qism', IMG.room4, IMG.room5, IMG.room6),
-  make3pRoom('room-3p-5', 5, 'Old qism', IMG.room5, IMG.room6, IMG.room7),
-  make3pRoom('room-3p-6', 6, 'Old qism', IMG.room6, IMG.room7, IMG.room8),
-  make3pRoom('room-3p-7', 7, 'Old qism', IMG.room7, IMG.room8, IMG.room9),
-  make3pRoom('room-3p-8', 8, 'Old qism', IMG.room8, IMG.room9, IMG.room10),
-  make3pRoom('room-3p-9', 9, 'Orqa qism', IMG.room11, IMG.room12, IMG.room13),
-  make3pRoom('room-3p-10', 10, 'Orqa qism', IMG.room12, IMG.room13, IMG.room14),
-  make3pRoom('room-3p-11', 11, 'Orqa qism', IMG.room13, IMG.room14, IMG.room15),
-  make3pRoom('room-3p-12', 12, 'Orqa qism', IMG.room14, IMG.room15, IMG.room16),
-  make3pRoom('room-3p-13', 13, 'Orqa qism', IMG.room15, IMG.room16, IMG.room1),
-  make3pRoom('room-3p-14', 14, 'Orqa qism', IMG.room16, IMG.room1, IMG.room2),
-  make3pRoom('room-3p-15', 15, 'Orqa qism', IMG.room9, IMG.room10, IMG.room11),
-  make3pRoom('room-3p-16', 16, 'Orqa qism', IMG.room10, IMG.room11, IMG.room12),
+    // ===== 16 x 3-person rooms =====
+    {
+      ...make3pRoom(lang, 'room-3p-1', 1, 'front', r3p5, r3p1, r3p2),
+      gallery: [r3p5, r3p1, r3p2, r3p3, r3p4],
+      tapchanImages: [r3p5],
+    },
+    make3pRoom(lang, 'room-3p-2', 2, 'front', IMG.room2, IMG.room3, IMG.room4),
+    make3pRoom(lang, 'room-3p-3', 3, 'front', IMG.room3, IMG.room4, IMG.room5),
+    make3pRoom(lang, 'room-3p-4', 4, 'front', IMG.room4, IMG.room5, IMG.room6),
+    make3pRoom(lang, 'room-3p-5', 5, 'front', IMG.room5, IMG.room6, IMG.room7),
+    make3pRoom(lang, 'room-3p-6', 6, 'front', IMG.room6, IMG.room7, IMG.room8),
+    make3pRoom(lang, 'room-3p-7', 7, 'front', IMG.room7, IMG.room8, IMG.room9),
+    make3pRoom(lang, 'room-3p-8', 8, 'front', IMG.room8, IMG.room9, IMG.room10),
+    make3pRoom(lang, 'room-3p-9', 9, 'back', IMG.room11, IMG.room12, IMG.room13),
+    make3pRoom(lang, 'room-3p-10', 10, 'back', IMG.room12, IMG.room13, IMG.room14),
+    make3pRoom(lang, 'room-3p-11', 11, 'back', IMG.room13, IMG.room14, IMG.room15),
+    make3pRoom(lang, 'room-3p-12', 12, 'back', IMG.room14, IMG.room15, IMG.room16),
+    make3pRoom(lang, 'room-3p-13', 13, 'back', IMG.room15, IMG.room16, IMG.room1),
+    make3pRoom(lang, 'room-3p-14', 14, 'back', IMG.room16, IMG.room1, IMG.room2),
+    make3pRoom(lang, 'room-3p-15', 15, 'back', IMG.room9, IMG.room10, IMG.room11),
+    make3pRoom(lang, 'room-3p-16', 16, 'back', IMG.room10, IMG.room11, IMG.room12),
 
-  // ===== 4 x 4-person rooms =====
-  {
-    ...make4pRoom('room-4p-1', 1, 'Old tomon', r4p5, r4p1, r4p2),
-    gallery: [r4p5, r4p1, r4p2, r4p3, r4p4],
-    tapchanImages: [r4p5],
-    video: v_4kishi1,
-  },
-  { ...make4pRoom('room-4p-2', 2, 'Old tomon', IMG.room18, IMG.room19, IMG.room20), video: v_4kishi2 },
-  { ...make4pRoom('room-4p-3', 3, 'Orqa tomon', IMG.room19, IMG.room20, IMG.room21), video: v_4kishi3 },
-  make4pRoom('room-4p-4', 4, 'Orqa tomon', IMG.room20, IMG.room21, IMG.room22),
+    // ===== 4 x 4-person rooms =====
+    {
+      ...make4pRoom(lang, 'room-4p-1', 1, 'frontSide', r4p5, r4p1, r4p2),
+      gallery: [r4p5, r4p1, r4p2, r4p3, r4p4],
+      tapchanImages: [r4p5],
+      video: v_4kishi1,
+    },
+    { ...make4pRoom(lang, 'room-4p-2', 2, 'frontSide', IMG.room18, IMG.room19, IMG.room20), video: v_4kishi2 },
+    { ...make4pRoom(lang, 'room-4p-3', 3, 'backSide', IMG.room19, IMG.room20, IMG.room21), video: v_4kishi3 },
+    make4pRoom(lang, 'room-4p-4', 4, 'backSide', IMG.room20, IMG.room21, IMG.room22),
 
-  // ===== 6-person room =====
-  {
-    id: 'room-6p-1',
-    name: '6 kishilik xona',
-    type: 'room',
-    category: '6 kishilik',
-    capacity: 6,
-    price: 1200000,
-    priceDisplay: '1 200 000 so\'m',
-    location: 'Resort hududi',
-    shortDescription: '6 kishilik keng xona — barcha qulayliklar va shaxsiy tapchan bilan.',
-    description: '6 kishilik xona — keng oilalar yoki do\'stlar guruhi uchun mo\'ljallangan. Xonada zamonaviy dush, sanuzel, televizor va Wi-Fi mavjud. Mehmonlar uchun shaxsiy so\'ri/tapchan biriktirilgan. Tog\' manzarasi va resortning go\'zal muhiti dam olishni unutilmas qiladi.',
-    amenities: [...baseAmenities],
-    mainImage: IMG.room22,
-    gallery: [IMG.room22, IMG.room23, IMG.room24, IMG.room25, IMG.bathroom5, IMG.bathroom6, IMG.tapchan5],
-    video: null,
-    tapchanImages: [IMG.tapchan5, IMG.tapchan6],
-    hasKitchen: false,
-    kitchenImages: [],
-    kitchenVideo: null,
-    isLuxury: false,
-    hasPrivateTapchan: true,
-    features: ['6 kishilik', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Shaxsiy tapchan'],
-  },
+    // ===== 6-person room =====
+    {
+      id: 'room-6p-1',
+      name: lang === 'ru' ? '6-местный номер' : '6 kishilik xona',
+      type: 'room',
+      category: lang === 'ru' ? '6-местный' : '6 kishilik',
+      capacity: 6,
+      price: 1200000,
+      priceDisplay: formatPrice(1200000, lang),
+      location: lang === 'ru' ? LOC.resortArea.ruNom : LOC.resortArea.uz,
+      shortDescription:
+        lang === 'ru'
+          ? 'Просторный 6-местный номер — со всеми удобствами и личным тапчаном.'
+          : '6 kishilik keng xona — barcha qulayliklar va shaxsiy tapchan bilan.',
+      description:
+        lang === 'ru'
+          ? '6-местный номер предназначен для больших семей или компаний друзей. В номере есть современный душ, санузел, телевизор и Wi-Fi. За гостями закреплён личный тапчан для отдыха. Вид на горы и живописная атмосфера курорта делают отдых незабываемым.'
+          : "6 kishilik xona — keng oilalar yoki do'stlar guruhi uchun mo'ljallangan. Xonada zamonaviy dush, sanuzel, televizor va Wi-Fi mavjud. Mehmonlar uchun shaxsiy so'ri/tapchan biriktirilgan. Tog' manzarasi va resortning go'zal muhiti dam olishni unutilmas qiladi.",
+      amenities: [...BASE_AMENITIES[lang]],
+      mainImage: IMG.room22,
+      gallery: [IMG.room22, IMG.room23, IMG.room24, IMG.room25, IMG.bathroom5, IMG.bathroom6, IMG.tapchan5],
+      video: null,
+      tapchanImages: [IMG.tapchan5, IMG.tapchan6],
+      hasKitchen: false,
+      kitchenImages: [],
+      kitchenVideo: null,
+      isLuxury: false,
+      hasPrivateTapchan: true,
+      features:
+        lang === 'ru'
+          ? ['6-местный', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор', 'Личный тапчан']
+          : ['6 kishilik', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Shaxsiy tapchan'],
+    },
 
-  // ===== 8-person room with kitchen =====
-  {
-    id: 'room-8p-1',
-    name: '8 kishilik xona',
-    type: 'room',
-    category: '8 kishilik',
-    capacity: 8,
-    price: 1300000,
-    priceDisplay: '1 300 000 so\'m',
-    location: 'Resort hududi',
-    shortDescription: '8 kishilik keng xona — alohida kuxnya va barcha qulayliklar bilan.',
-    description: '8 kishilik xona — Dugoba Resortning keng xonalaridan biri. Bu xonaning asosiy afzalligi — ovqat pishirish uchun alohida kuxnya mavjudligi. Kuxnyada mehmonlar o\'zlari ovqat tayyorlashlari mumkin. Xonada 8 kishi uchun qulay joy, dush, sanuzel, Wi-Fi, televizor va shaxsiy so\'ri/tapchan mavjud. Bu xona Lux kottej bilan aralashtirilmasin — bu alohida 8 kishilik xonadir. Katta oilalar uchun eng ideal variant.',
-    amenities: [...baseAmenities, 'Shaxsiy kuxnya', 'Kuxnya jihozlari'],
-    mainImage: IMG.room23,
-    gallery: [IMG.room23, IMG.room24, IMG.room25, IMG.kitchen1, IMG.kitchen2, IMG.kitchen3, IMG.kitchen4, IMG.bathroom5, IMG.bathroom6, IMG.tapchan7],
-    video: null,
-    tapchanImages: [IMG.tapchan7, IMG.tapchan8],
-    hasKitchen: true,
-    kitchenImages: [IMG.kitchen1, IMG.kitchen2, IMG.kitchen3, IMG.kitchen4, IMG.kitchen5, IMG.stove],
-    kitchenVideo: null,
-    isLuxury: false,
-    hasPrivateTapchan: true,
-    features: ['8 kishilik', 'Alohida kuxnya', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Shaxsiy tapchan'],
-  },
+    // ===== 8-person room with kitchen =====
+    {
+      id: 'room-8p-1',
+      name: lang === 'ru' ? '8-местный номер' : '8 kishilik xona',
+      type: 'room',
+      category: lang === 'ru' ? '8-местный' : '8 kishilik',
+      capacity: 8,
+      price: 1300000,
+      priceDisplay: formatPrice(1300000, lang),
+      location: lang === 'ru' ? LOC.resortArea.ruNom : LOC.resortArea.uz,
+      shortDescription:
+        lang === 'ru'
+          ? 'Просторный 8-местный номер — с отдельной кухней и всеми удобствами.'
+          : '8 kishilik keng xona — alohida kuxnya va barcha qulayliklar bilan.',
+      description:
+        lang === 'ru'
+          ? '8-местный номер — один из просторных номеров Dugoba Resort. Главное преимущество этого номера — наличие отдельной кухни для приготовления пищи, где гости могут готовить самостоятельно. В номере комфортно разместятся 8 человек, есть душ, санузел, Wi-Fi, телевизор и личный тапчан. Не путайте этот номер с Люкс коттеджем — это отдельный 8-местный номер. Идеальный вариант для больших семей.'
+          : "8 kishilik xona — Dugoba Resortning keng xonalaridan biri. Bu xonaning asosiy afzalligi — ovqat pishirish uchun alohida kuxnya mavjudligi. Kuxnyada mehmonlar o'zlari ovqat tayyorlashlari mumkin. Xonada 8 kishi uchun qulay joy, dush, sanuzel, Wi-Fi, televizor va shaxsiy so'ri/tapchan mavjud. Bu xona Lux kottej bilan aralashtirilmasin — bu alohida 8 kishilik xonadir. Katta oilalar uchun eng ideal variant.",
+      amenities:
+        lang === 'ru'
+          ? [...BASE_AMENITIES.ru, 'Личная кухня', 'Кухонное оборудование']
+          : [...BASE_AMENITIES.uz, 'Shaxsiy kuxnya', 'Kuxnya jihozlari'],
+      mainImage: IMG.room23,
+      gallery: [IMG.room23, IMG.room24, IMG.room25, IMG.kitchen1, IMG.kitchen2, IMG.kitchen3, IMG.kitchen4, IMG.bathroom5, IMG.bathroom6, IMG.tapchan7],
+      video: null,
+      tapchanImages: [IMG.tapchan7, IMG.tapchan8],
+      hasKitchen: true,
+      kitchenImages: [IMG.kitchen1, IMG.kitchen2, IMG.kitchen3, IMG.kitchen4, IMG.kitchen5, IMG.stove],
+      kitchenVideo: null,
+      isLuxury: false,
+      hasPrivateTapchan: true,
+      features:
+        lang === 'ru'
+          ? ['8-местный', 'Отдельная кухня', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор', 'Личный тапчан']
+          : ['8 kishilik', 'Alohida kuxnya', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Shaxsiy tapchan'],
+    },
 
-  // ===== 2 x 10-person standard rooms =====
-  {
-    id: 'room-10p-1',
-    name: '10 kishilik standart xona №1',
-    type: 'room',
-    category: '10 kishilik standart',
-    capacity: 10,
-    price: 1200000,
-    priceDisplay: '1 200 000 so\'m',
-    location: 'Resortning pastki qismi',
-    shortDescription: '10 kishilik standart xona — keng oilaviy dam olish uchun ideal.',
-    description: '10 kishilik standart xona №1 — resortning pastki qismida joylashgan. 10 kishi uchun mo\'ljallangan keng xona. Xonada dush, sanuzel, Wi-Fi va televizor mavjud. Mehmonlar uchun shaxsiy so\'ri/tapchan biriktirilgan. Katta oilalar yoki do\'stlar guruhi uchun eng mos variant. Tog\' manzarasi va resortning tinch muhiti dam olishni yoqimli qiladi.',
-    amenities: [...baseAmenities],
-    mainImage: IMG.room26,
-    gallery: [IMG.room26, IMG.room27, IMG.room24, IMG.room25, IMG.bathroom1, IMG.bathroom2, IMG.tapchan1],
-    video: null,
-    tapchanImages: [IMG.tapchan1, IMG.tapchan2],
-    hasKitchen: false,
-    kitchenImages: [],
-    kitchenVideo: null,
-    isLuxury: false,
-    hasPrivateTapchan: true,
-    features: ['10 kishilik', 'Standart xona', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Shaxsiy tapchan'],
-  },
-  {
-    id: 'room-10p-2',
-    name: '10 kishilik standart xona №2',
-    type: 'room',
-    category: '10 kishilik standart',
-    capacity: 10,
-    price: 1200000,
-    priceDisplay: '1 200 000 so\'m',
-    location: 'Resortning pastki qismi',
-    shortDescription: '10 kishilik standart xona — keng oilaviy dam olish uchun ideal.',
-    description: '10 kishilik standart xona №2 — resortning pastki qismida joylashgan. 10 kishi uchun mo\'ljallangan keng xona. Xonada dush, sanuzel, Wi-Fi va televizor mavjud. Mehmonlar uchun shaxsiy so\'ri/tapchan biriktirilgan. №1 xona bilan bir xil qulayliklarga ega, lekin boshqa interyorga ega. Katta oilalar uchun juda mos.',
-    amenities: [...baseAmenities],
-    mainImage: IMG.room27,
-    gallery: [IMG.room27, IMG.room26, IMG.room23, IMG.room24, IMG.bathroom3, IMG.bathroom4, IMG.tapchan3],
-    video: null,
-    tapchanImages: [IMG.tapchan3, IMG.tapchan4],
-    hasKitchen: false,
-    kitchenImages: [],
-    kitchenVideo: null,
-    isLuxury: false,
-    hasPrivateTapchan: true,
-    features: ['10 kishilik', 'Standart xona', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Shaxsiy tapchan'],
-  },
-];
+    // ===== 2 x 10-person standard rooms =====
+    {
+      id: 'room-10p-1',
+      name: lang === 'ru' ? '10-местный стандартный номер №1' : '10 kishilik standart xona №1',
+      type: 'room',
+      category: lang === 'ru' ? '10-местный стандарт' : '10 kishilik standart',
+      capacity: 10,
+      price: 1200000,
+      priceDisplay: formatPrice(1200000, lang),
+      location: lang === 'ru' ? LOC.lowerPart.ruNom : LOC.lowerPart.uz,
+      shortDescription:
+        lang === 'ru'
+          ? '10-местный стандартный номер — идеален для отдыха большой семьёй.'
+          : '10 kishilik standart xona — keng oilaviy dam olish uchun ideal.',
+      description:
+        lang === 'ru'
+          ? '10-местный стандартный номер №1 расположен в нижней части курорта. Просторный номер, рассчитанный на 10 человек. В номере есть душ, санузел, Wi-Fi и телевизор. За гостями закреплён личный тапчан для отдыха. Отличный вариант для больших семей или компаний друзей. Вид на горы и спокойная атмосфера курорта делают отдых приятным.'
+          : "10 kishilik standart xona №1 — resortning pastki qismida joylashgan. 10 kishi uchun mo'ljallangan keng xona. Xonada dush, sanuzel, Wi-Fi va televizor mavjud. Mehmonlar uchun shaxsiy so'ri/tapchan biriktirilgan. Katta oilalar yoki do'stlar guruhi uchun eng mos variant. Tog' manzarasi va resortning tinch muhiti dam olishni yoqimli qiladi.",
+      amenities: [...BASE_AMENITIES[lang]],
+      mainImage: IMG.room26,
+      gallery: [IMG.room26, IMG.room27, IMG.room24, IMG.room25, IMG.bathroom1, IMG.bathroom2, IMG.tapchan1],
+      video: null,
+      tapchanImages: [IMG.tapchan1, IMG.tapchan2],
+      hasKitchen: false,
+      kitchenImages: [],
+      kitchenVideo: null,
+      isLuxury: false,
+      hasPrivateTapchan: true,
+      features:
+        lang === 'ru'
+          ? ['10-местный', 'Стандартный номер', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор', 'Личный тапчан']
+          : ['10 kishilik', 'Standart xona', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Shaxsiy tapchan'],
+    },
+    {
+      id: 'room-10p-2',
+      name: lang === 'ru' ? '10-местный стандартный номер №2' : '10 kishilik standart xona №2',
+      type: 'room',
+      category: lang === 'ru' ? '10-местный стандарт' : '10 kishilik standart',
+      capacity: 10,
+      price: 1200000,
+      priceDisplay: formatPrice(1200000, lang),
+      location: lang === 'ru' ? LOC.lowerPart.ruNom : LOC.lowerPart.uz,
+      shortDescription:
+        lang === 'ru'
+          ? '10-местный стандартный номер — идеален для отдыха большой семьёй.'
+          : '10 kishilik standart xona — keng oilaviy dam olish uchun ideal.',
+      description:
+        lang === 'ru'
+          ? '10-местный стандартный номер №2 расположен в нижней части курорта. Просторный номер, рассчитанный на 10 человек. В номере есть душ, санузел, Wi-Fi и телевизор. За гостями закреплён личный тапчан для отдыха. Обладает теми же удобствами, что и номер №1, но с другим интерьером. Отлично подходит для больших семей.'
+          : "10 kishilik standart xona №2 — resortning pastki qismida joylashgan. 10 kishi uchun mo'ljallangan keng xona. Xonada dush, sanuzel, Wi-Fi va televizor mavjud. Mehmonlar uchun shaxsiy so'ri/tapchan biriktirilgan. №1 xona bilan bir xil qulayliklarga ega, lekin boshqa interyorga ega. Katta oilalar uchun juda mos.",
+      amenities: [...BASE_AMENITIES[lang]],
+      mainImage: IMG.room27,
+      gallery: [IMG.room27, IMG.room26, IMG.room23, IMG.room24, IMG.bathroom3, IMG.bathroom4, IMG.tapchan3],
+      video: null,
+      tapchanImages: [IMG.tapchan3, IMG.tapchan4],
+      hasKitchen: false,
+      kitchenImages: [],
+      kitchenVideo: null,
+      isLuxury: false,
+      hasPrivateTapchan: true,
+      features:
+        lang === 'ru'
+          ? ['10-местный', 'Стандартный номер', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор', 'Личный тапчан']
+          : ['10 kishilik', 'Standart xona', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Shaxsiy tapchan'],
+    },
+  ];
+}
+
+export function getAccommodationById(id: string, lang: Lang): Accommodation | undefined {
+  return getAccommodations(lang).find((a) => a.id === id);
+}
+
+export function getRelatedAccommodations(id: string, lang: Lang, limit: number = 3): Accommodation[] {
+  const list = getAccommodations(lang);
+  const current = list.find((a) => a.id === id);
+  if (!current) return [];
+  return list.filter((a) => a.id !== id && a.capacity === current.capacity).slice(0, limit);
+}
 
 // ===== TOUR PACKAGES =====
 export interface TourPackage {
@@ -521,38 +690,59 @@ export interface TourPackage {
   gallery: string[];
 }
 
-export const tourPackages: TourPackage[] = [
-  {
-    id: 'tour-1',
-    name: 'Standart Tur Paketi',
-    price: 'Kelishuvga binoan',
-    duration: '1-2 kun',
-    description: 'Farg\'ona shahridan Dugoba Resortga kelish va qaytish. Mehmonlar tur paketi orqali resortga kelib-ketishlari mumkin. Transport xizmati kiritilgan. Resortda dam olish va barcha qulayliklardan foydalanish imkoniyati.',
-    includes: ['Farg\'onadan borgan-kelgan transport', 'Resortda dam olish', 'Tog\' manzarasidan bahramand bo\'lish', 'Bolalar maydonchasidan foydalanish', 'O\'choqxona va magizindan foydalanish'],
-    image: IMG.mountain1,
-    gallery: [IMG.mountain1, IMG.mountain2, IMG.mountain3, IMG.resortAerial],
-  },
-  {
-    id: 'tour-2',
-    name: 'Premium Tur Paketi',
-    price: 'Kelishuvga binoan',
-    duration: '2-3 kun',
-    description: 'Premium tur paketi — Farg\'ona shahridan Dugoba Resortga kelish va qaytish, shuningdek resortda 2-3 kun dam olish. Transport xizmati, joylashuv va barcha qulayliklar kiritilgan. Tog\' manzarasi va resortning barcha imkoniyatlaridan to\'liq foydalanish.',
-    includes: ['Farg\'onadan borgan-keligan transport', '2-3 kun dam olish', 'Xona yoki kottej joylashuvi', 'Tog\' manzarasidan bahramand bo\'lish', 'Barcha qulayliklardan foydalanish', 'O\'choqxona va magizindan foydalanish'],
-    image: IMG.mountain2,
-    gallery: [IMG.mountain2, IMG.mountain4, IMG.mountain5, IMG.resortTerrace],
-  },
-  {
-    id: 'tour-3',
-    name: 'Oilaviy Tur Paketi',
-    price: 'Kelishuvga binoan',
-    duration: '3-5 kun',
-    description: 'Oilaviy tur paketi — oilalar uchun maxsus mo\'ljallangan. Farg\'onadan transport, resortda 3-5 kun dam olish, bolalar maydonchasi va barcha oilaviy qulayliklar. Bolalar uchun bepul kirish. Oilaviy dam olishning eng yaxshi varianti.',
-    includes: ['Farg\'onadan borgan-kelgan transport', '3-5 kun dam olish', 'Oilaviy xona joylashuvi', 'Bolalar maydonchasi', 'Bolalar uchun bepul kirish', 'O\'choqxona va magizindan foydalanish', 'Tog\' manzarasi va tabiat'],
-    image: IMG.mountain3,
-    gallery: [IMG.mountain3, IMG.mountain6, IMG.mountain7, IMG.playground1],
-  },
-];
+export function getTourPackages(lang: Lang): TourPackage[] {
+  const price = lang === 'ru' ? 'По договорённости' : 'Kelishuvga binoan';
+  return [
+    {
+      id: 'tour-1',
+      name: lang === 'ru' ? 'Стандартный турпакет' : 'Standart Tur Paketi',
+      price,
+      duration: lang === 'ru' ? '1–2 дня' : '1-2 kun',
+      description:
+        lang === 'ru'
+          ? 'Поездка из города Фергана в Dugoba Resort и обратно. Гости могут добраться до курорта и обратно с помощью турпакета. Транспортные услуги включены. Возможность отдыха на курорте и пользования всеми удобствами.'
+          : "Farg'ona shahridan Dugoba Resortga kelish va qaytish. Mehmonlar tur paketi orqali resortga kelib-ketishlari mumkin. Transport xizmati kiritilgan. Resortda dam olish va barcha qulayliklardan foydalanish imkoniyati.",
+      includes:
+        lang === 'ru'
+          ? ['Транспорт из Ферганы туда и обратно', 'Отдых на курорте', 'Наслаждение видом на горы', 'Пользование детской площадкой', 'Пользование зоной для приготовления пищи и магазином']
+          : ["Farg'onadan borgan-kelgan transport", 'Resortda dam olish', "Tog' manzarasidan bahramand bo'lish", 'Bolalar maydonchasidan foydalanish', "O'choqxona va magizindan foydalanish"],
+      image: IMG.mountain1,
+      gallery: [IMG.mountain1, IMG.mountain2, IMG.mountain3, IMG.resortAerial],
+    },
+    {
+      id: 'tour-2',
+      name: lang === 'ru' ? 'Премиум турпакет' : 'Premium Tur Paketi',
+      price,
+      duration: lang === 'ru' ? '2–3 дня' : '2-3 kun',
+      description:
+        lang === 'ru'
+          ? 'Премиум турпакет — поездка из города Фергана в Dugoba Resort и обратно, а также отдых на курорте в течение 2–3 дней. Включены транспортные услуги, проживание и все удобства. Полное использование вида на горы и всех возможностей курорта.'
+          : "Premium tur paketi — Farg'ona shahridan Dugoba Resortga kelish va qaytish, shuningdek resortda 2-3 kun dam olish. Transport xizmati, joylashuv va barcha qulayliklar kiritilgan. Tog' manzarasi va resortning barcha imkoniyatlaridan to'liq foydalanish.",
+      includes:
+        lang === 'ru'
+          ? ['Транспорт из Ферганы туда и обратно', 'Отдых в течение 2–3 дней', 'Проживание в номере или коттедже', 'Наслаждение видом на горы', 'Пользование всеми удобствами', 'Пользование зоной для приготовления пищи и магазином']
+          : ["Farg'onadan borgan-keligan transport", '2-3 kun dam olish', 'Xona yoki kottej joylashuvi', "Tog' manzarasidan bahramand bo'lish", "Barcha qulayliklardan foydalanish", "O'choqxona va magizindan foydalanish"],
+      image: IMG.mountain2,
+      gallery: [IMG.mountain2, IMG.mountain4, IMG.mountain5, IMG.resortTerrace],
+    },
+    {
+      id: 'tour-3',
+      name: lang === 'ru' ? 'Семейный турпакет' : 'Oilaviy Tur Paketi',
+      price,
+      duration: lang === 'ru' ? '3–5 дней' : '3-5 kun',
+      description:
+        lang === 'ru'
+          ? 'Семейный турпакет разработан специально для семей. Транспорт из Ферганы, отдых на курорте в течение 3–5 дней, детская площадка и все удобства для семейного отдыха. Бесплатный вход для детей. Лучший вариант для отдыха всей семьёй.'
+          : "Oilaviy tur paketi — oilalar uchun maxsus mo'ljallangan. Farg'onadan transport, resortda 3-5 kun dam olish, bolalar maydonchasi va barcha oilaviy qulayliklar. Bolalar uchun bepul kirish. Oilaviy dam olishning eng yaxshi varianti.",
+      includes:
+        lang === 'ru'
+          ? ['Транспорт из Ферганы туда и обратно', 'Отдых в течение 3–5 дней', 'Проживание в семейном номере', 'Детская площадка', 'Бесплатный вход для детей', 'Пользование зоной для приготовления пищи и магазином', 'Вид на горы и природа']
+          : ["Farg'onadan borgan-kelgan transport", '3-5 kun dam olish', 'Oilaviy xona joylashuvi', 'Bolalar maydonchasi', 'Bolalar uchun bepul kirish', "O'choqxona va magizindan foydalanish", "Tog' manzarasi va tabiat"],
+      image: IMG.mountain3,
+      gallery: [IMG.mountain3, IMG.mountain6, IMG.mountain7, IMG.playground1],
+    },
+  ];
+}
 
 // ===== AMENITIES =====
 export interface Amenity {
@@ -562,20 +752,40 @@ export interface Amenity {
   image: string;
 }
 
-export const amenities: Amenity[] = [
-  { id: 'am-1', name: 'Tog\' manzarasi', description: 'Resort tog\'ning eng yuqori nuqtasida joylashgani sababli bu yerdan tog\'lar va go\'zal tog\' manzarasi juda yaxshi ko\'rinadi.', image: IMG.mountain1 },
-  { id: 'am-2', name: 'Tur paketlari', description: 'Mehmonlar tur paketlari orqali resortga kelib-ketishlari mumkin. Transport xizmati kiritilgan.', image: IMG.mountain2 },
-  { id: 'am-3', name: 'Kirish qismidagi magazin', description: 'Resortga kirib kelganda, eshik tagida kichik magazin mavjud. Zarur narsalarni xarid qilish mumkin.', image: IMG.shop1 },
-  { id: 'am-4', name: 'O\'choqxona', description: 'Resort hududiga kirib kelganda mehmonlar uchun o\'choqxona mavjud. Mehmonlar o\'zlari ovqat pishirishlari mumkin.', image: IMG.stove },
-  { id: 'am-5', name: 'O\'choqxona tapchanlari', description: 'O\'choqxona chap va o\'ng tomonlarida mehmonlar dam olishi uchun so\'ri/tapchanlar mavjud.', image: IMG.tapchan1 },
-  { id: 'am-6', name: 'Bolalar maydonchasi', description: 'Resort hududida barcha mehmonlar uchun bitta umumiy bolalar maydonchasi mavjud.', image: IMG.playground1 },
-  { id: 'am-7', name: '5 ta kottej', description: 'Resortning to\'g\'ri qismida jami 5 ta kottej mavjud. Har biri alohida obyekt.', image: IMG.cottage1 },
-  { id: 'am-8', name: 'Shaxsiy orqa tapchanlar', description: 'Har bir kottej uchun shaxsiy orqa tapchan mavjud.', image: IMG.tapchan5 },
-  { id: 'am-9', name: 'Xonalarda dush va sanuzel', description: 'Barcha xonalarda zamonaviy dush va sanuzel mavjud.', image: IMG.bathroom1 },
-  { id: 'am-10', name: 'Wi-Fi', description: 'Barcha xona va kottejlarda Wi-Fi mavjud.', image: IMG.room1 },
-  { id: 'am-11', name: 'Televizor', description: 'Barcha xona va kottejlarda televizor mavjud.', image: IMG.room2 },
-  { id: 'am-12', name: 'Shaxsiy so\'ri/tapchan', description: 'Har bir xona uchun shaxsiy so\'ri/tapchan biriktirilgan.', image: IMG.tapchan3 },
-];
+export function getAmenities(lang: Lang): Amenity[] {
+  const items: [string, string, string, string][] =
+    lang === 'ru'
+      ? [
+          ['am-1', 'Вид на горы', 'Благодаря расположению курорта на самой высокой точке горы отсюда открывается прекрасный вид на горы.', IMG.mountain1],
+          ['am-2', 'Турпакеты', 'Гости могут добраться до курорта и обратно с помощью турпакетов. Транспортные услуги включены.', IMG.mountain2],
+          ['am-3', 'Магазин у входа', 'При въезде на территорию курорта у входа расположен небольшой магазин. Здесь можно приобрести всё необходимое.', IMG.shop1],
+          ['am-4', 'Зона для приготовления пищи', 'На территории курорта для гостей предусмотрена зона для приготовления пищи. Гости могут готовить еду самостоятельно.', IMG.stove],
+          ['am-5', 'Тапчаны у зоны приготовления пищи', 'С левой и правой стороны от зоны приготовления пищи расположены тапчаны для отдыха гостей.', IMG.tapchan1],
+          ['am-6', 'Детская площадка', 'На территории курорта имеется одна общая детская площадка для всех гостей.', IMG.playground1],
+          ['am-7', '5 коттеджей', 'В передней части курорта расположено 5 коттеджей. Каждый из них — отдельный объект.', IMG.cottage1],
+          ['am-8', 'Личные задние тапчаны', 'У каждого коттеджа есть личный задний тапчан.', IMG.tapchan5],
+          ['am-9', 'Душ и санузел в номерах', 'Во всех номерах есть современный душ и санузел.', IMG.bathroom1],
+          ['am-10', 'Wi-Fi', 'Wi-Fi доступен во всех номерах и коттеджах.', IMG.room1],
+          ['am-11', 'Телевизор', 'Телевизор есть во всех номерах и коттеджах.', IMG.room2],
+          ['am-12', 'Личный тапчан', 'За каждым номером закреплён личный тапчан.', IMG.tapchan3],
+        ]
+      : [
+          ['am-1', "Tog' manzarasi", "Resort tog'ning eng yuqori nuqtasida joylashgani sababli bu yerdan tog'lar va go'zal tog' manzarasi juda yaxshi ko'rinadi.", IMG.mountain1],
+          ['am-2', 'Tur paketlari', 'Mehmonlar tur paketlari orqali resortga kelib-ketishlari mumkin. Transport xizmati kiritilgan.', IMG.mountain2],
+          ['am-3', 'Kirish qismidagi magazin', 'Resortga kirib kelganda, eshik tagida kichik magazin mavjud. Zarur narsalarni xarid qilish mumkin.', IMG.shop1],
+          ['am-4', "O'choqxona", "Resort hududiga kirib kelganda mehmonlar uchun o'choqxona mavjud. Mehmonlar o'zlari ovqat pishirishlari mumkin.", IMG.stove],
+          ['am-5', "O'choqxona tapchanlari", "O'choqxona chap va o'ng tomonlarida mehmonlar dam olishi uchun so'ri/tapchanlar mavjud.", IMG.tapchan1],
+          ['am-6', 'Bolalar maydonchasi', 'Resort hududida barcha mehmonlar uchun bitta umumiy bolalar maydonchasi mavjud.', IMG.playground1],
+          ['am-7', '5 ta kottej', "Resortning to'g'ri qismida jami 5 ta kottej mavjud. Har biri alohida obyekt.", IMG.cottage1],
+          ['am-8', 'Shaxsiy orqa tapchanlar', 'Har bir kottej uchun shaxsiy orqa tapchan mavjud.', IMG.tapchan5],
+          ['am-9', 'Xonalarda dush va sanuzel', 'Barcha xonalarda zamonaviy dush va sanuzel mavjud.', IMG.bathroom1],
+          ['am-10', 'Wi-Fi', 'Barcha xona va kottejlarda Wi-Fi mavjud.', IMG.room1],
+          ['am-11', 'Televizor', 'Barcha xona va kottejlarda televizor mavjud.', IMG.room2],
+          ['am-12', "Shaxsiy so'ri/tapchan", "Har bir xona uchun shaxsiy so'ri/tapchan biriktirilgan.", IMG.tapchan3],
+        ];
+
+  return items.map(([id, name, description, image]) => ({ id, name, description, image }));
+}
 
 // ===== GALLERY =====
 export interface GalleryImage {
@@ -584,18 +794,23 @@ export interface GalleryImage {
   caption: string;
 }
 
-export const galleryImages: GalleryImage[] = [
-  { url: am_xonaKotej, category: 'Atrof-muhit', caption: 'Resort va kottejlar' },
-  { url: am_tabiat0, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
-  { url: am_tabiat1, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
-  { url: am_tabiat2, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
-  { url: am_tabiat3, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
-  { url: am_tabiat4, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
-  { url: am_tabiat5, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
-  { url: am_tabiat6, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
-  { url: am_tabiat7, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
-  { url: am_tabiat8, category: 'Atrof-muhit', caption: 'Tabiat manzarasi' },
-];
+export function getGalleryImages(lang: Lang): GalleryImage[] {
+  const category = lang === 'ru' ? 'Природа' : 'Atrof-muhit';
+  const natureCaption = lang === 'ru' ? 'Природный пейзаж' : 'Tabiat manzarasi';
+  const resortCaption = lang === 'ru' ? 'Курорт и коттеджи' : 'Resort va kottejlar';
+  return [
+    { url: am_xonaKotej, category, caption: resortCaption },
+    { url: am_tabiat0, category, caption: natureCaption },
+    { url: am_tabiat1, category, caption: natureCaption },
+    { url: am_tabiat2, category, caption: natureCaption },
+    { url: am_tabiat3, category, caption: natureCaption },
+    { url: am_tabiat4, category, caption: natureCaption },
+    { url: am_tabiat5, category, caption: natureCaption },
+    { url: am_tabiat6, category, caption: natureCaption },
+    { url: am_tabiat7, category, caption: natureCaption },
+    { url: am_tabiat8, category, caption: natureCaption },
+  ];
+}
 
 // ===== VIDEO GALLERY =====
 export interface VideoItem {
@@ -608,31 +823,40 @@ export interface VideoItem {
   videoSrc?: string | null;
 }
 
-export const videoItems: VideoItem[] = [
-  { id: 'vid-1', title: 'Dugoba Resort — Umumiy ko\'rinish', category: 'Resort hududi', description: 'Resort hududining to\'liq ko\'rinishi va qulayliklari.', thumbnail: IMG.resortAerial, youtubeId: null, videoSrc: v_bolim1 },
-  { id: 'vid-2', title: 'Tog\' manzarasi', category: 'Tog\' manzarasi', description: 'Resortdan tog\' manzarasining go\'zal ko\'rinishi.', thumbnail: IMG.mountain1, youtubeId: null, videoSrc: v_bolim2 },
-  { id: 'vid-3', title: 'Kottejlar', category: 'Kottej videolari', description: 'Resort kottejlarining ichki va tashqi ko\'rinishi.', thumbnail: IMG.cottage1, youtubeId: null, videoSrc: v_bolim3 },
-  { id: 'vid-4', title: 'Xonalar', category: 'Xona videolari', description: 'Resort xonalarining ichki ko\'rinishi va qulayliklari.', thumbnail: IMG.room1, youtubeId: null, videoSrc: v_bolim4 },
-];
-
-export const videoCategories = ['Resort hududi', 'Tog\' manzarasi', 'Kottej videolari', 'Xona videolari'];
-
-export function getAccommodationById(id: string): Accommodation | undefined {
-  return accommodations.find((a) => a.id === id);
+export function getVideoItems(lang: Lang): VideoItem[] {
+  return lang === 'ru'
+    ? [
+        { id: 'vid-1', title: 'Dugoba Resort — общий вид', category: 'Территория курорта', description: 'Полный обзор территории курорта и её удобств.', thumbnail: IMG.resortAerial, youtubeId: null, videoSrc: v_bolim1 },
+        { id: 'vid-2', title: 'Вид на горы', category: 'Вид на горы', description: 'Прекрасный вид на горы с территории курорта.', thumbnail: IMG.mountain1, youtubeId: null, videoSrc: v_bolim2 },
+        { id: 'vid-3', title: 'Коттеджи', category: 'Видео коттеджей', description: 'Внутренний и внешний вид коттеджей курорта.', thumbnail: IMG.cottage1, youtubeId: null, videoSrc: v_bolim3 },
+        { id: 'vid-4', title: 'Номера', category: 'Видео номеров', description: 'Внутренний вид номеров курорта и их удобства.', thumbnail: IMG.room1, youtubeId: null, videoSrc: v_bolim4 },
+      ]
+    : [
+        { id: 'vid-1', title: "Dugoba Resort — Umumiy ko'rinish", category: 'Resort hududi', description: "Resort hududining to'liq ko'rinishi va qulayliklari.", thumbnail: IMG.resortAerial, youtubeId: null, videoSrc: v_bolim1 },
+        { id: 'vid-2', title: "Tog' manzarasi", category: "Tog' manzarasi", description: "Resortdan tog' manzarasining go'zal ko'rinishi.", thumbnail: IMG.mountain1, youtubeId: null, videoSrc: v_bolim2 },
+        { id: 'vid-3', title: 'Kottejlar', category: 'Kottej videolari', description: 'Resort kottejlarining ichki va tashqi ko\'rinishi.', thumbnail: IMG.cottage1, youtubeId: null, videoSrc: v_bolim3 },
+        { id: 'vid-4', title: 'Xonalar', category: 'Xona videolari', description: 'Resort xonalarining ichki ko\'rinishi va qulayliklari.', thumbnail: IMG.room1, youtubeId: null, videoSrc: v_bolim4 },
+      ];
 }
 
-export function getRelatedAccommodations(id: string, limit: number = 3): Accommodation[] {
-  const current = getAccommodationById(id);
-  if (!current) return [];
-  return accommodations
-    .filter((a) => a.id !== id && a.capacity === current.capacity)
-    .slice(0, limit);
+export function getVideoCategories(lang: Lang): string[] {
+  return lang === 'ru'
+    ? ['Территория курорта', 'Вид на горы', 'Видео коттеджей', 'Видео номеров']
+    : ['Resort hududi', "Tog' manzarasi", 'Kottej videolari', 'Xona videolari'];
 }
+
+const RESORT_LOCATION: Record<Lang, string> = {
+  uz: "Farg'ona viloyati, Shohimardon qishlog'i",
+  ru: 'Ферганская область, кишлак Шохимардон',
+};
+
+const RESORT_DESCRIPTION: Record<Lang, string> = {
+  uz: "Dugoba Resort Farg'ona viloyati, Shohimardon qishlog'ining eng yuqori nuqtasida joylashgan. Resort tog'ning eng yuqori qismida joylashgani sababli bu yerdan tog'lar va go'zal tog' manzarasi juda yaxshi ko'rinadi. Resortda tur paketlari ham mavjud. Mehmonlar tur paketlari orqali resortga kelib-ketishlari mumkin.",
+  ru: 'Dugoba Resort расположен на самой высокой точке кишлака Шохимардон, Ферганская область. Благодаря расположению на вершине горы отсюда открывается прекрасный вид на горы. На курорте также доступны турпакеты — гости могут добраться до курорта и обратно с их помощью.',
+};
 
 export const resortInfo = {
   name: 'Dugoba Resort',
-  location: 'Farg\'ona viloyati, Shohimardon qishlog\'i',
-  description: 'Dugoba Resort Farg\'ona viloyati, Shohimardon qishlog\'ining eng yuqori nuqtasida joylashgan. Resort tog\'ning eng yuqori qismida joylashgani sababli bu yerdan tog\'lar va go\'zal tog\' manzarasi juda yaxshi ko\'rinadi. Resortda tur paketlari ham mavjud. Mehmonlar tur paketlari orqali resortga kelib-ketishlari mumkin.',
   phone: '+998 90 407 05 01',
   mapUrl: 'https://yandex.uz/maps/-/CTgzIW7o',
   telegram: 'https://t.me/sherzod015',
@@ -641,3 +865,11 @@ export const resortInfo = {
   totalRooms: 24,
   totalAccommodations: 29,
 };
+
+export function getResortLocation(lang: Lang): string {
+  return RESORT_LOCATION[lang];
+}
+
+export function getResortDescription(lang: Lang): string {
+  return RESORT_DESCRIPTION[lang];
+}

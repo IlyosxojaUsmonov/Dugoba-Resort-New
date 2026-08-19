@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Users, ArrowRight, Check } from 'lucide-react';
 import type { Accommodation } from '@/data/accommodations';
 import { useBookingModal } from '@/lib/store';
+import { useTranslation } from '@/i18n/useTranslation';
 
 interface Props {
   accommodation: Accommodation;
@@ -9,6 +10,7 @@ interface Props {
 
 export default function AccommodationCard({ accommodation }: Props) {
   const openBooking = useBookingModal((s) => s.open);
+  const { t } = useTranslation();
 
   return (
     <div className="lux-card group flex flex-col">
@@ -22,12 +24,12 @@ export default function AccommodationCard({ accommodation }: Props) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         {accommodation.isLuxury && (
           <span className="absolute top-4 left-4 px-3 py-1 bg-sand-500 text-white text-xs font-semibold tracking-wider uppercase rounded-sm">
-            Premium
+            {t('accommodationCard.premium')}
           </span>
         )}
         {accommodation.hasKitchen && (
           <span className="absolute top-4 right-4 px-3 py-1 bg-forest-600 text-white text-xs font-medium tracking-wider rounded-sm">
-            Kuxnya bor
+            {t('accommodationCard.kitchenAvailable')}
           </span>
         )}
         <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
@@ -46,7 +48,7 @@ export default function AccommodationCard({ accommodation }: Props) {
         <div className="flex items-center gap-4 text-sm text-stone-600 mb-4">
           <span className="flex items-center gap-1.5">
             <Users size={16} className="text-forest-600" />
-            {accommodation.capacity} kishi
+            {accommodation.capacity} {t('accommodationCard.person')}
           </span>
           <span className="w-px h-4 bg-stone-300" />
           <span className="text-xs text-stone-500">{accommodation.location}</span>
@@ -72,7 +74,7 @@ export default function AccommodationCard({ accommodation }: Props) {
 
         <div className="flex items-center justify-between pt-4 border-t border-stone-100">
           <div>
-            <span className="text-xs text-stone-400 block">Kunlik narx</span>
+            <span className="text-xs text-stone-400 block">{t('accommodationCard.dailyPrice')}</span>
             <span className="font-serif text-lg font-semibold text-stone-900">
               {accommodation.priceDisplay}
             </span>
@@ -82,12 +84,12 @@ export default function AccommodationCard({ accommodation }: Props) {
               onClick={() => openBooking(accommodation.id, accommodation.name, accommodation.priceDisplay)}
               className="px-4 py-2.5 bg-forest-700 text-white text-sm font-medium rounded-sm hover:bg-forest-800 transition-colors"
             >
-              Bron qilish
+              {t('accommodationCard.book')}
             </button>
             <Link
               to={`/obyekt/${accommodation.id}`}
               className="w-10 h-10 flex items-center justify-center border border-stone-300 rounded-sm text-stone-600 hover:border-forest-600 hover:text-forest-600 transition-all"
-              aria-label="Batafsil"
+              aria-label={t('accommodationCard.details')}
             >
               <ArrowRight size={18} />
             </Link>

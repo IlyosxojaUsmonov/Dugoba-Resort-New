@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { X, CheckCircle2, AlertCircle, Send } from 'lucide-react';
 import { useBookingModal } from '@/lib/store';
+import { useTranslation } from '@/i18n/useTranslation';
 
 const TELEGRAM_USERNAME = 'sherzod015';
 const NIGHT_PRESETS = [1, 2, 3, 4, 5, 7, 10];
 
 export default function BookingModal() {
+  const { t } = useTranslation();
   const { isOpen, accommodationName, close } = useBookingModal();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -44,26 +46,26 @@ export default function BookingModal() {
     if (!accommodationName) return;
 
     if (!name.trim() || !phone.trim()) {
-      setError('Iltimos, barcha majburiy maydonlarni to\'ldiring.');
+      setError(t('bookingModal.errorRequired'));
       return;
     }
 
     if (!finalNights || finalNights < 1) {
-      setError('Iltimos, qolish muddatini kiriting.');
+      setError(t('bookingModal.errorNights'));
       return;
     }
 
     setError(null);
 
     const lines = [
-      'Dugoba Resort — Bron so\'rovi',
+      t('bookingModal.messageTitle'),
       '',
-      `Xona/kottej: ${accommodationName}`,
-      `Ism: ${name.trim()}`,
-      `Telefon: ${phone.trim()}`,
-      `Mehmonlar soni: ${guests} kishi`,
-      `Qolish muddati: ${finalNights} kun`,
-      `Izoh: ${notes.trim() || '—'}`,
+      `${t('bookingModal.messageObject')}: ${accommodationName}`,
+      `${t('bookingModal.messageName')}: ${name.trim()}`,
+      `${t('bookingModal.messagePhone')}: ${phone.trim()}`,
+      `${t('bookingModal.messageGuests')}: ${guests} ${t('bookingModal.messageGuestsSuffix')}`,
+      `${t('bookingModal.messageNights')}: ${finalNights} ${t('bookingModal.messageNightsSuffix')}`,
+      `${t('bookingModal.messageNotes')}: ${notes.trim() || '—'}`,
     ];
 
     const message = lines.join('\n');
@@ -84,13 +86,12 @@ export default function BookingModal() {
                 <CheckCircle2 size={36} className="text-forest-600" />
               </div>
               <h3 className="font-serif text-2xl font-semibold text-stone-900 mb-2">
-                Telegram ochildi
+                {t('bookingModal.openedTitle')}
               </h3>
               <p className="text-stone-600 text-sm leading-relaxed">
-                Yangi oynada Telegram chatiga o'tdingiz. Bron ma'lumotlaringiz tayyor xabar
-                sifatida kiritilgan — so'rovni yuborish uchun Telegramdagi{' '}
-                <span className="font-medium text-stone-900">Yuborish (Send)</span> tugmasini bosing.
-                Admin siz bilan bog'lanib, kelish sanasini birgalikda kelishadi.
+                {t('bookingModal.openedDesc1')}{' '}
+                <span className="font-medium text-stone-900">{t('bookingModal.openedDescHighlight')}</span>
+                {t('bookingModal.openedDesc2')}
               </p>
             </div>
 
@@ -101,20 +102,20 @@ export default function BookingModal() {
               className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-forest-700 text-white font-medium rounded-sm hover:bg-forest-800 transition-colors mb-3"
             >
               <Send size={18} />
-              Telegramni qayta ochish
+              {t('bookingModal.reopenTelegram')}
             </a>
             <button
               onClick={close}
               className="w-full px-6 py-3 border border-stone-300 text-stone-600 font-medium rounded-sm hover:bg-stone-50 transition-colors"
             >
-              Yopish
+              {t('bookingModal.close')}
             </button>
           </div>
         ) : (
           <>
             <div className="flex items-center justify-between p-6 border-b border-stone-100">
               <div>
-                <h3 className="font-serif text-xl font-semibold text-stone-900">Bron qilish</h3>
+                <h3 className="font-serif text-xl font-semibold text-stone-900">{t('bookingModal.bookTitle')}</h3>
                 <p className="text-sm text-forest-600 mt-1">{accommodationName}</p>
               </div>
               <button onClick={close} className="text-stone-400 hover:text-stone-600 p-1">
@@ -124,13 +125,12 @@ export default function BookingModal() {
 
             <form onSubmit={handleSubmit} className="p-6 space-y-4">
               <p className="text-xs text-stone-500 bg-stone-50 p-3 rounded-sm">
-                Ma'lumotlaringizni to'ldiring — tayyor xabar bilan Telegram ochiladi. Kelish
-                sanasini kiritish shart emas, admin siz bilan bog'lanib kelishadi.
+                {t('bookingModal.formNote')}
               </p>
 
               <div>
                 <label className="block text-xs font-medium text-stone-600 mb-1.5">
-                  Ism <span className="text-red-500">*</span>
+                  {t('bookingModal.nameLabel')} <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -138,13 +138,13 @@ export default function BookingModal() {
                   onChange={(e) => setName(e.target.value)}
                   required
                   className="w-full px-3 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-sm transition-all"
-                  placeholder="Ismingiz"
+                  placeholder={t('bookingModal.namePlaceholder')}
                 />
               </div>
 
               <div>
                 <label className="block text-xs font-medium text-stone-600 mb-1.5">
-                  Telefon raqam <span className="text-red-500">*</span>
+                  {t('bookingModal.phoneLabel')} <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="tel"
@@ -152,13 +152,13 @@ export default function BookingModal() {
                   onChange={(e) => setPhone(e.target.value)}
                   required
                   className="w-full px-3 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-sm transition-all"
-                  placeholder="+998 XX XXX XX XX"
+                  placeholder={t('bookingModal.phonePlaceholder')}
                 />
               </div>
 
               <div>
                 <label className="block text-xs font-medium text-stone-600 mb-1.5">
-                  Mehmonlar soni
+                  {t('bookingModal.guestsLabel')}
                 </label>
                 <div className="flex items-center gap-3">
                   <button
@@ -176,13 +176,13 @@ export default function BookingModal() {
                   >
                     +
                   </button>
-                  <span className="text-xs text-stone-400 ml-2">kishi</span>
+                  <span className="text-xs text-stone-400 ml-2">{t('bookingModal.guestsSuffix')}</span>
                 </div>
               </div>
 
               <div>
                 <label className="block text-xs font-medium text-stone-600 mb-2">
-                  Necha kun qolmoqchisiz? <span className="text-red-500">*</span>
+                  {t('bookingModal.nightsLabel')} <span className="text-red-500">*</span>
                 </label>
                 <div className="flex flex-wrap gap-2 mb-2">
                   {NIGHT_PRESETS.map((n) => (
@@ -196,7 +196,7 @@ export default function BookingModal() {
                           : 'bg-white text-stone-600 border-stone-300 hover:border-forest-400'
                       }`}
                     >
-                      {n} kun
+                      {n} {t('bookingModal.nightsUnit')}
                     </button>
                   ))}
                 </div>
@@ -206,20 +206,20 @@ export default function BookingModal() {
                   value={customNights}
                   onChange={(e) => setCustomNights(e.target.value)}
                   className="w-full px-3 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-sm transition-all"
-                  placeholder="Yoki o'zingiz kun sonini kiriting"
+                  placeholder={t('bookingModal.nightsPlaceholder')}
                 />
               </div>
 
               <div>
                 <label className="block text-xs font-medium text-stone-600 mb-1.5">
-                  Qo'shimcha izoh
+                  {t('bookingModal.notesLabel')}
                 </label>
                 <textarea
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   rows={3}
                   className="w-full px-3 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-sm transition-all resize-none"
-                  placeholder="Qo'shimcha ma'lumot yoki savollar..."
+                  placeholder={t('bookingModal.notesPlaceholder')}
                 />
               </div>
 
@@ -236,10 +236,10 @@ export default function BookingModal() {
                   className="w-full px-6 py-3.5 bg-forest-700 text-white font-medium rounded-sm hover:bg-forest-800 transition-colors flex items-center justify-center gap-2"
                 >
                   <Send size={18} />
-                  Bron qilish
+                  {t('bookingModal.submit')}
                 </button>
                 <p className="text-[11px] text-stone-400 text-center mt-3">
-                  Telegram orqali @{TELEGRAM_USERNAME} ga tayyor xabar bilan yo'naltirasiz
+                  {t('bookingModal.submitNote')}
                 </p>
               </div>
             </form>

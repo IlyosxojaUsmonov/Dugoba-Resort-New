@@ -1,15 +1,18 @@
 import { MapPin, Phone, Send, Clock, Mountain, MessageCircle } from 'lucide-react';
 import PageHero from '@/components/PageHero';
-import { resortInfo, IMAGES } from '@/data/accommodations';
+import { resortInfo, IMAGES, getResortLocation } from '@/data/accommodations';
+import { useTranslation } from '@/i18n/useTranslation';
 
 export default function Contact() {
+  const { t, language } = useTranslation();
+
   return (
     <div>
       <PageHero
-        title="Aloqa"
-        subtitle="Biz bilan bog'laning — savollaringizga javob beramiz va bron qilishingizga yordam beramiz"
+        title={t('contact.heroTitle')}
+        subtitle={t('contact.heroSubtitle')}
         image={IMAGES.resortFacade}
-        breadcrumb={[{ label: 'Bosh sahifa', to: '/' }, { label: 'Aloqa' }]}
+        breadcrumb={[{ label: t('common.home'), to: '/' }, { label: t('contact.heroTitle') }]}
       />
 
       <section className="py-20 bg-white">
@@ -17,8 +20,8 @@ export default function Contact() {
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact info */}
             <div>
-              <p className="section-subtitle">Bog'lanish</p>
-              <h2 className="section-title mb-8">Aloqa ma'lumotlari</h2>
+              <p className="section-subtitle">{t('contact.subtitle')}</p>
+              <h2 className="section-title mb-8">{t('contact.title')}</h2>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4 p-6 bg-stone-50 rounded-sm">
@@ -26,16 +29,16 @@ export default function Contact() {
                     <MapPin size={22} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">Manzil</h4>
+                    <h4 className="font-medium text-stone-900 mb-1">{t('contact.addressLabel')}</h4>
                     <a
                       href={resortInfo.mapUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm text-stone-600 hover:text-forest-700 transition-colors"
                     >
-                      {resortInfo.location}
+                      {getResortLocation(language)}
                     </a>
-                    <p className="text-sm text-stone-500 mt-1">Tog'ning eng yuqori nuqtasida</p>
+                    <p className="text-sm text-stone-500 mt-1">{t('contact.addressNote')}</p>
                   </div>
                 </div>
 
@@ -44,7 +47,7 @@ export default function Contact() {
                     <Phone size={22} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">Telefon</h4>
+                    <h4 className="font-medium text-stone-900 mb-1">{t('contact.phoneLabel')}</h4>
                     <a href={`tel:${resortInfo.phone.replace(/\s/g, '')}`} className="text-sm text-stone-600 hover:text-forest-700 transition-colors">
                       {resortInfo.phone}
                     </a>
@@ -56,7 +59,7 @@ export default function Contact() {
                     <Send size={22} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">Telegram</h4>
+                    <h4 className="font-medium text-stone-900 mb-1">{t('contact.telegramLabel')}</h4>
                     <a
                       href={resortInfo.telegram}
                       target="_blank"
@@ -65,7 +68,7 @@ export default function Contact() {
                     >
                       {resortInfo.telegramUsername}
                     </a>
-                    <p className="text-sm text-stone-500 mt-1">Bron qilish uchun Telegram orqali bog'laning</p>
+                    <p className="text-sm text-stone-500 mt-1">{t('contact.telegramNote')}</p>
                   </div>
                 </div>
 
@@ -74,8 +77,8 @@ export default function Contact() {
                     <Clock size={22} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">Ish vaqti</h4>
-                    <p className="text-sm text-stone-600">24/7 — yil davomida</p>
+                    <h4 className="font-medium text-stone-900 mb-1">{t('contact.hoursLabel')}</h4>
+                    <p className="text-sm text-stone-600">{t('contact.hoursValue')}</p>
                   </div>
                 </div>
               </div>
@@ -83,10 +86,9 @@ export default function Contact() {
               {/* Quick booking CTA */}
               <div className="mt-8 p-8 bg-forest-950 rounded-sm text-white">
                 <MessageCircle size={32} className="text-forest-400 mb-4" />
-                <h3 className="font-serif text-xl font-semibold mb-2">Tezkor bron qilish</h3>
+                <h3 className="font-serif text-xl font-semibold mb-2">{t('contact.quickBookTitle')}</h3>
                 <p className="text-sm text-white/70 mb-5">
-                  O'zingizga mos obyektni tanlang va bron so'rovini yuboring. Administrator
-                  bo'sh kunlarni tekshiradi va sizga xabar beradi.
+                  {t('contact.quickBookDesc')}
                 </p>
                 <a
                   href={resortInfo.telegram}
@@ -95,7 +97,7 @@ export default function Contact() {
                   className="inline-flex items-center gap-2 px-6 py-3 bg-forest-600 text-white text-sm font-medium rounded-sm hover:bg-forest-500 transition-colors"
                 >
                   <Send size={16} />
-                  Telegram orqali bog'lanish
+                  {t('contact.quickBookButton')}
                 </a>
               </div>
             </div>
@@ -111,11 +113,9 @@ export default function Contact() {
               </div>
               <div className="p-6 bg-stone-50 rounded-sm">
                 <Mountain size={24} className="text-forest-600 mb-3" />
-                <h4 className="font-medium text-stone-900 mb-2">Resort haqida</h4>
+                <h4 className="font-medium text-stone-900 mb-2">{t('contact.aboutTitle')}</h4>
                 <p className="text-sm text-stone-600 leading-relaxed">
-                  Dugoba Resort — Farg'ona viloyati, Shohimardon qishlog'ining eng yuqori
-                  nuqtasida joylashgan premium resort. 29 ta alohida obyekt: 5 kottej va 24 xona.
-                  Tog' manzarasi, tur paketlari va to'liq qulayliklar.
+                  {t('contact.aboutDesc')}
                 </p>
               </div>
             </div>

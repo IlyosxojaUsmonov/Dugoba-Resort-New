@@ -4,6 +4,7 @@ import PageHero from '@/components/PageHero';
 import Lightbox from '@/components/Lightbox';
 import VideoPlayer from '@/components/VideoPlayer';
 import { IMAGES } from '@/data/accommodations';
+import { useTranslation } from '@/i18n/useTranslation';
 
 const mountainImages = [
   IMAGES.mountain1, IMAGES.mountain2, IMAGES.mountain3, IMAGES.mountain4,
@@ -12,28 +13,26 @@ const mountainImages = [
 ];
 
 export default function MountainViews() {
+  const { t } = useTranslation();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   return (
     <div>
       <PageHero
-        title="Tog' manzarasi"
-        subtitle="Resortning eng yuqori nuqtasidan tog'larning go'zal va hayratlanarli manzarasi"
+        title={t('mountainViews.heroTitle')}
+        subtitle={t('mountainViews.heroSubtitle')}
         image={IMAGES.mountain2}
-        breadcrumb={[{ label: 'Bosh sahifa', to: '/' }, { label: 'Tog\' manzarasi' }]}
+        breadcrumb={[{ label: t('common.home'), to: '/' }, { label: t('mountainViews.heroTitle') }]}
       />
 
       {/* INTRO */}
       <section className="py-24 bg-white">
         <div className="container-lux max-w-4xl text-center">
           <Mountain size={48} className="mx-auto text-forest-600 mb-6" />
-          <p className="section-subtitle">Eng yuqori nuqta</p>
-          <h2 className="section-title mb-6">Tog' manzarasidan bahramand bo'ling</h2>
+          <p className="section-subtitle">{t('mountainViews.introSubtitle')}</p>
+          <h2 className="section-title mb-6">{t('mountainViews.introTitle')}</h2>
           <p className="text-lg text-stone-600 leading-relaxed">
-            Dugoba Resort Farg'ona viloyati, Shohimardon qishlog'ining eng yuqori nuqtasida
-            joylashgan. Resort tog'ning eng yuqori qismida joylashgani sababli bu yerdan
-            tog'lar va go'zal tog' manzarasi juda yaxshi ko'rinadi. Bu resortning asosiy
-            vizual afzalliklaridan biridir.
+            {t('mountainViews.introDesc')}
           </p>
         </div>
       </section>
@@ -43,10 +42,10 @@ export default function MountainViews() {
         <div className="absolute inset-0 bg-stone-950/40" />
         <div className="relative text-center text-white px-4">
           <h2 className="font-serif text-3xl sm:text-5xl font-semibold text-shadow-lux">
-            Cheksiz tog' manzarasi
+            {t('mountainViews.parallax1Title')}
           </h2>
           <p className="text-white/80 mt-4 max-w-xl mx-auto">
-            Har kuni kun botishi va kun chiqishi boshqacha go'zallikni namoyish etadi
+            {t('mountainViews.parallax1Desc')}
           </p>
         </div>
       </section>
@@ -56,11 +55,11 @@ export default function MountainViews() {
         <div className="container-lux">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <p className="section-subtitle">Foto galereya</p>
-              <h2 className="section-title">Tog' manzaralari</h2>
+              <p className="section-subtitle">{t('mountainViews.gallerySubtitle')}</p>
+              <h2 className="section-title">{t('mountainViews.galleryTitle')}</h2>
             </div>
             <span className="text-sm text-stone-400 flex items-center gap-2">
-              <Camera size={16} /> {mountainImages.length} ta rasm
+              <Camera size={16} /> {mountainImages.length} {t('mountainViews.photoCountSuffix')}
             </span>
           </div>
 
@@ -75,7 +74,7 @@ export default function MountainViews() {
               >
                 <img
                   src={img}
-                  alt={`Tog' manzarasi ${i + 1}`}
+                  alt={`${t('mountainViews.heroTitle')} ${i + 1}`}
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -98,9 +97,9 @@ export default function MountainViews() {
       <section className="relative h-[50vh] min-h-[300px] flex items-center justify-center parallax-bg" style={{ backgroundImage: `url(${IMAGES.mountain5})` }}>
         <div className="absolute inset-0 bg-stone-950/40" />
         <div className="relative text-center text-white px-4">
-          <p className="text-white/70 text-sm tracking-[0.3em] uppercase mb-4">Shohimardon</p>
+          <p className="text-white/70 text-sm tracking-[0.3em] uppercase mb-4">{t('mountainViews.parallax2Subtitle')}</p>
           <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-shadow-lux">
-            Farg'ona viloyati
+            {t('mountainViews.parallax2Title')}
           </h2>
         </div>
       </section>
@@ -108,11 +107,11 @@ export default function MountainViews() {
       {/* VIDEO */}
       <section className="py-20 bg-white">
         <div className="container-lux max-w-4xl">
-          <p className="section-subtitle mb-3">Video</p>
-          <h2 className="section-title mb-8">Tog' manzarasi videosi</h2>
+          <p className="section-subtitle mb-3">{t('mountainViews.videoSubtitle')}</p>
+          <h2 className="section-title mb-8">{t('mountainViews.videoTitle')}</h2>
           <VideoPlayer
             thumbnail={IMAGES.mountain1}
-            title="Dugoba Resort — tog' manzarasi videosi"
+            title={t('mountainViews.videoCaption')}
           />
         </div>
       </section>
