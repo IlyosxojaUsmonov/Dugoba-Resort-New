@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import BookingModal from '@/components/BookingModal';
+import FloatingContact from '@/components/FloatingContact';
 import Home from '@/pages/Home';
 import Resort from '@/pages/Resort';
 import Cottages from '@/pages/Cottages';
@@ -39,6 +40,7 @@ function App() {
         </main>
         <Footer />
         <BookingModal />
+        <FloatingContact />
       </div>
     </BrowserRouter>
   );
