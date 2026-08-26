@@ -13,4 +13,11 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  experimental: {
+    renderBuiltUrl(filename, { type, hostType }) {
+      if (type === 'asset' && hostType !== 'html') {
+        return `https://dugobaresort.b-cdn.net/${filename}`;
+      }
+    },
+  },
 });
