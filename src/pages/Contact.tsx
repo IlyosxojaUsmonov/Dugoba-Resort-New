@@ -1,4 +1,4 @@
-import { MapPin, Phone, Send, Clock, Mountain, MessageCircle } from 'lucide-react';
+import { MapPin, Phone, Send, Clock, Mountain, MessageCircle, Radio, Instagram } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import { resortInfo, IMAGES, getResortLocation } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
@@ -69,6 +69,42 @@ export default function Contact() {
                       {resortInfo.telegramUsername}
                     </a>
                     <p className="text-sm text-stone-500 mt-1">{t('contact.telegramNote')}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 p-6 bg-stone-50 rounded-sm">
+                  <div className="w-12 h-12 rounded-full bg-forest-50 flex items-center justify-center shrink-0">
+                    <Radio size={22} className="text-forest-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-stone-900 mb-1">{t('contact.telegramChannelLabel')}</h4>
+                    <a
+                      href={resortInfo.telegramChannel}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-stone-600 hover:text-forest-700 transition-colors"
+                    >
+                      {resortInfo.telegramChannelUsername}
+                    </a>
+                    <p className="text-sm text-stone-500 mt-1">{t('contact.telegramChannelNote')}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 p-6 bg-stone-50 rounded-sm">
+                  <div className="w-12 h-12 rounded-full bg-forest-50 flex items-center justify-center shrink-0">
+                    <Instagram size={22} className="text-forest-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-stone-900 mb-1">{t('contact.instagramLabel')}</h4>
+                    <a
+                      href={resortInfo.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-stone-600 hover:text-forest-700 transition-colors"
+                    >
+                      {resortInfo.instagramUsername}
+                    </a>
+                    <p className="text-sm text-stone-500 mt-1">{t('contact.instagramNote')}</p>
                   </div>
                 </div>
 

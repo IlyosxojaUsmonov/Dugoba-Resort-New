@@ -8,8 +8,7 @@ import { useTranslation } from '@/i18n/useTranslation';
 
 const mountainImages = [
   IMAGES.mountain1, IMAGES.mountain2, IMAGES.mountain3, IMAGES.mountain4,
-  IMAGES.mountain5, IMAGES.mountain6, IMAGES.mountain7, IMAGES.mountain8,
-  IMAGES.mountain9, IMAGES.mountain10, IMAGES.mountain11, IMAGES.mountain12,
+  IMAGES.mountain5, IMAGES.mountain6, IMAGES.mountain7, IMAGES.mountain9,
 ];
 
 export default function MountainViews() {

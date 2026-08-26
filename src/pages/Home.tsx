@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <div>
       {/* HERO */}
-      <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex flex-col overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={heroImage}
@@ -37,7 +37,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-stone-950/60 via-stone-950/30 to-stone-950/80" />
         </div>
 
-        <div className="relative container-lux text-center text-white pt-20">
+        <div className="relative flex-1 flex items-center justify-center container-lux text-center text-white pt-28 pb-10">
           <div className="animate-fade-up">
             <p className="text-sm sm:text-base text-forest-300 tracking-[0.3em] uppercase font-medium mb-4">
               {t('home.heroLocation')}
@@ -59,7 +59,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0">
+        <div className="relative">
           <div className="container-lux pb-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 backdrop-blur-md rounded-sm overflow-hidden">
               {stats.map((s) => (

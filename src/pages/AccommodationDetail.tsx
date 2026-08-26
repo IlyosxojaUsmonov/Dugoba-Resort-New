@@ -180,9 +180,10 @@ export default function AccommodationDetail() {
             <p className="section-subtitle mb-3">{t('accommodationDetail.videoSubtitle')}</p>
             <h2 className="section-title mb-8">{t('accommodationDetail.videoTitle')}</h2>
             <VideoPlayer
-              thumbnail={accommodation.mainImage}
+              thumbnail={accommodation.videoPoster ?? accommodation.mainImage}
               title={`${accommodation.name} — ${t('accommodationDetail.videoPlayerSuffix')}`}
               videoSrc={accommodation.video}
+              orientation="portrait"
             />
             <p className="text-sm text-stone-500 mt-4 text-center">
               {accommodation.type === 'cottage' ? t('accommodationDetail.videoNoteCottage') : t('accommodationDetail.videoNoteRoom')}
@@ -272,6 +273,7 @@ export default function AccommodationDetail() {
                   thumbnail={accommodation.kitchenImages[0] || accommodation.mainImage}
                   title={t('accommodationDetail.kitchenVideoTitle')}
                   videoSrc={accommodation.kitchenVideo}
+                  orientation="portrait"
                 />
               </div>
             )}

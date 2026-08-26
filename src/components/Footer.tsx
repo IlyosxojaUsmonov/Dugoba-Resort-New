@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Send } from 'lucide-react';
+import { MapPin, Phone, Send, Radio, Instagram } from 'lucide-react';
 import { resortInfo, getResortLocation } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
 import logo from '@/atrof-muhit/dugobba.png';
@@ -71,6 +71,18 @@ export default function Footer() {
                 <Send size={18} className="text-forest-400 shrink-0" />
                 <a href={resortInfo.telegram} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-forest-400 transition-colors">
                   {t('footer.telegramPrefix')}: {resortInfo.telegramUsername}
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Radio size={18} className="text-forest-400 shrink-0" />
+                <a href={resortInfo.telegramChannel} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-forest-400 transition-colors">
+                  {t('footer.telegramChannelLabel')}: {resortInfo.telegramChannelUsername}
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Instagram size={18} className="text-forest-400 shrink-0" />
+                <a href={resortInfo.instagram} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-forest-400 transition-colors">
+                  {t('footer.instagramLabel')}: {resortInfo.instagramUsername}
                 </a>
               </li>
             </ul>

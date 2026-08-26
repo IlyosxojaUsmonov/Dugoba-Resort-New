@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import { X, CheckCircle2, AlertCircle, Send } from 'lucide-react';
 import { useBookingModal } from '@/lib/store';
 import { useTranslation } from '@/i18n/useTranslation';
+import { resortInfo } from '@/data/accommodations';
 
-const TELEGRAM_USERNAME = 'sherzod015';
+/** Bron xabari resortInfo.telegram dagi hisobga yuboriladi. */
+const TELEGRAM_URL = resortInfo.telegram;
 const NIGHT_PRESETS = [1, 2, 3, 4, 5, 7, 10];
 
 export default function BookingModal() {
@@ -69,7 +71,7 @@ export default function BookingModal() {
     ];
 
     const message = lines.join('\n');
-    const url = `https://t.me/${TELEGRAM_USERNAME}?text=${encodeURIComponent(message)}`;
+    const url = `${TELEGRAM_URL}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
     setSent(true);
   };
@@ -96,7 +98,7 @@ export default function BookingModal() {
             </div>
 
             <a
-              href={`https://t.me/${TELEGRAM_USERNAME}`}
+              href={TELEGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-forest-700 text-white font-medium rounded-sm hover:bg-forest-800 transition-colors mb-3"

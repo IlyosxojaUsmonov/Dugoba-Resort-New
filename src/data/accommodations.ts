@@ -10,10 +10,18 @@ import r4p3 from '../xonalar/4kishilik/4kishi3.png';
 import r4p4 from '../xonalar/4kishilik/4kishi4.png';
 import r4p5 from '../xonalar/4kishilik/4kishi5.png';
 
-import c1_1 from '../xonalar/10kishilik/10kishi1.png';
-import c1_2 from '../xonalar/10kishilik/10kishi2.png';
-import c1_3 from '../xonalar/10kishilik/10kishi3.png';
-import c1_4 from '../xonalar/10kishilik/10kishi4.png';
+import r4b1 from '../xonalar/4kishilik2/4kishilik-1.png';
+import r4b2 from '../xonalar/4kishilik2/4kishilik-2.png';
+import r4b3 from '../xonalar/4kishilik2/4kishilik-3.png';
+
+import c1_1 from '../xonalar/10-kishilik-1-standart/1-standart.png';
+import c1_2 from '../xonalar/10-kishilik-1-standart/1-2-standart.png';
+import c1_3 from '../xonalar/10-kishilik-1-standart/1-3standart.png';
+import c1_4 from '../xonalar/10-kishilik-1-standart/1-4-standart.png';
+import c1_5 from '../xonalar/10-kishilik-1-standart/1-5standart.png';
+import c1_6 from '../xonalar/10-kishilik-1-standart/1-6standart.png';
+import c1_7 from '../xonalar/10-kishilik-1-standart/1-7standart.png';
+import c1_8 from '../xonalar/10-kishilik-1-standart/1-8standart.png';
 
 import c2_1 from '../xonalar/10kishilik-1/2-10kishi1.png';
 import c2_2 from '../xonalar/10kishilik-1/2-10kishi2.png';
@@ -55,17 +63,78 @@ import c5_8 from '../xonalar/8-kishilik-luks/8kishi-lux8.png';
 import c5_9 from '../xonalar/8-kishilik-luks/8kishi-lux9.png';
 import c5_10 from '../xonalar/8-kishilik-luks/8kishi-lux10.png';
 
+import v_kotej1 from '../videos/1-kotej.mp4';
 import v_standart2 from '../videos/2-standart-kotej-video/standart-2.mp4';
-import v_standart3 from '../videos/3-standart-kotej-video/standart-3.mp4';
+import v_standart3 from '../xonalar/10-kishilik-3-standart/video.mp4';
 import v_luxKotej from '../videos/lux-kotej-video/lux-kotej.mp4';
-import v_4kishi1 from '../videos/4-kishi-xona-video/4kishi.mp4';
-import v_4kishi2 from '../videos/4-kishi-xona-video/4kishi-2.mp4';
-import v_4kishi3 from '../videos/4-kishi-xona-video/4kishi-3.mp4';
+import v_4kishi1 from '../xonalar/4kishilik/4kishi.mp4';
+import v_4kishi2 from '../xonalar/4kishilik2/IMG_9611.mp4';
+import v_4kishi3 from '../xonalar/4kishilik/4kishi-3.mp4';
+import v_pollux from '../xonalar/10-kishilik-pollux/IMG_9616.mp4';
+import v_4kishi4 from '../xonalar/4kishilik/4kishi-2.mp4';
 
 import v_bolim1 from '../videos/videolar-bolim.mp4';
 import v_bolim2 from '../videos/videolar-bolim2.mp4';
 import v_bolim3 from '../videos/videolar-bolim3.mp4';
 import v_bolim4 from '../videos/videolar-bolim4.mp4';
+import p_bolim1 from '../videos/posters/videolar-bolim.jpg';
+import p_bolim2 from '../videos/posters/videolar-bolim2.jpg';
+import p_bolim3 from '../videos/posters/videolar-bolim3.jpg';
+import p_bolim4 from '../videos/posters/videolar-bolim4.jpg';
+import p_kotej1 from '../videos/posters/obj-kotej1.jpg';
+import p_standart2 from '../videos/posters/obj-standart2.jpg';
+import p_standart3 from '../videos/posters/obj-standart3.jpg';
+import p_luxKotej from '../videos/posters/obj-lux-kotej.jpg';
+import p_4kishi1 from '../videos/posters/obj-4kishi1.jpg';
+import p_4kishi2 from '../videos/posters/obj-4kishi2.jpg';
+import p_4kishi3 from '../videos/posters/obj-4kishi3.jpg';
+import p_pollux from '../videos/posters/obj-pollux.jpg';
+import p_4kishi4 from '../videos/posters/obj-4kishi4.jpg';
+
+import tourVideoMain from '../tur-paket/tur-paket-batafsil.mp4';
+import tourVideoExtra1 from '../tur-paket/IMG_8888.mp4';
+
+import tv1 from '../tabiat-videos/tabiat-1.mp4';
+import tv2 from '../tabiat-videos/tabiat-2.mp4';
+import tv3 from '../tabiat-videos/tabiat-4.mp4';
+import tv4 from '../tabiat-videos/tabiat-resort-3.mp4';
+import tv5 from '../tabiat-videos/tabiat-7.mp4';
+import tv6 from '../tabiat-videos/tabiat-5.mp4';
+import tv7 from '../tabiat-videos/tabiat-6.mp4';
+import tv8 from '../tabiat-videos/IMG_3509.mp4';
+import tv9 from '../tabiat-videos/IMG_3511.mp4';
+import tv10 from '../tabiat-videos/IMG_3512.mp4';
+import tv11 from '../tabiat-videos/IMG_3514.mp4';
+import tv12 from '../tabiat-videos/IMG_8111.mp4';
+import tv13 from '../tabiat-videos/IMG_8158.mp4';
+import tv14 from '../tabiat-videos/IMG_8170.mp4';
+import tv15 from '../tabiat-videos/IMG_8171.mp4';
+import tv16 from '../tabiat-videos/IMG_8176.mp4';
+import tv17 from '../tabiat-videos/IMG_8215.mp4';
+import tv18 from '../tabiat-videos/IMG_8222.mp4';
+import tv19 from '../tabiat-videos/IMG_8224.mp4';
+import tv20 from '../tabiat-videos/IMG_8236.mp4';
+
+import tvp1 from '../tabiat-videos/posters/tabiat-1.jpg';
+import tvp2 from '../tabiat-videos/posters/tabiat-2.jpg';
+import tvp3 from '../tabiat-videos/posters/tabiat-4.jpg';
+import tvp4 from '../tabiat-videos/posters/tabiat-resort-3.jpg';
+import tvp5 from '../tabiat-videos/posters/tabiat-7.jpg';
+import tvp6 from '../tabiat-videos/posters/tabiat-5.jpg';
+import tvp7 from '../tabiat-videos/posters/tabiat-6.jpg';
+import tvp8 from '../tabiat-videos/posters/IMG_3509.jpg';
+import tvp9 from '../tabiat-videos/posters/IMG_3511.jpg';
+import tvp10 from '../tabiat-videos/posters/IMG_3512.jpg';
+import tvp11 from '../tabiat-videos/posters/IMG_3514.jpg';
+import tvp12 from '../tabiat-videos/posters/IMG_8111.jpg';
+import tvp13 from '../tabiat-videos/posters/IMG_8158.jpg';
+import tvp14 from '../tabiat-videos/posters/IMG_8170.jpg';
+import tvp15 from '../tabiat-videos/posters/IMG_8171.jpg';
+import tvp16 from '../tabiat-videos/posters/IMG_8176.jpg';
+import tvp17 from '../tabiat-videos/posters/IMG_8215.jpg';
+import tvp18 from '../tabiat-videos/posters/IMG_8222.jpg';
+import tvp19 from '../tabiat-videos/posters/IMG_8224.jpg';
+import tvp20 from '../tabiat-videos/posters/IMG_8236.jpg';
 
 import am_tabiat0 from '../atrof-muhit/tabiat.png';
 import am_tabiat1 from '../atrof-muhit/tabiat1.png';
@@ -99,6 +168,8 @@ export interface Accommodation {
   mainImage: string;
   gallery: string[];
   video: string | null;
+  /** Video uchun poster kadri (videolar bo'yiga olingan). */
+  videoPoster: string | null;
   tapchanImages: string[];
   hasKitchen: boolean;
   kitchenImages: string[];
@@ -181,18 +252,14 @@ const IMG = {
   shop1: 'https://images.pexels.com/photos/3735183/pexels-photo-3735183.jpeg?auto=compress&cs=tinysrgb&w=1920',
   shop2: 'https://images.pexels.com/photos/38698664/pexels-photo-38698664.jpeg?auto=compress&cs=tinysrgb&w=1920',
   shop3: 'https://images.pexels.com/photos/3167310/pexels-photo-3167310.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  mountain1: 'https://images.pexels.com/photos/18685968/pexels-photo-18685968.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  mountain2: 'https://images.pexels.com/photos/9579665/pexels-photo-9579665.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  mountain3: 'https://images.pexels.com/photos/9271524/pexels-photo-9271524.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  mountain4: 'https://images.pexels.com/photos/15256032/pexels-photo-15256032.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  mountain5: 'https://images.pexels.com/photos/15499463/pexels-photo-15499463.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  mountain6: 'https://images.pexels.com/photos/31735734/pexels-photo-31735734.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  mountain7: 'https://images.pexels.com/photos/5665900/pexels-photo-5665900.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  mountain8: 'https://images.pexels.com/photos/11249076/pexels-photo-11249076.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  mountain9: 'https://images.pexels.com/photos/14211206/pexels-photo-14211206.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  mountain10: 'https://images.pexels.com/photos/5223578/pexels-photo-5223578.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  mountain11: 'https://images.pexels.com/photos/24643976/pexels-photo-24643976.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  mountain12: 'https://images.pexels.com/photos/12261365/pexels-photo-12261365.jpeg?auto=compress&cs=tinysrgb&w=1920',
+  mountain1: am_tog,
+  mountain2: am_tabiat5,
+  mountain3: am_tabiat3,
+  mountain4: am_tabiat7,
+  mountain5: am_tabiat6,
+  mountain6: am_tabiat4,
+  mountain7: am_tabiat1,
+  mountain9: am_tabiat0,
   campfire1: 'https://images.pexels.com/photos/1061640/pexels-photo-1061640.jpeg?auto=compress&cs=tinysrgb&w=1920',
   campfire2: 'https://images.pexels.com/photos/5686602/pexels-photo-5686602.jpeg?auto=compress&cs=tinysrgb&w=1920',
   campfire3: 'https://images.pexels.com/photos/9880528/pexels-photo-9880528.jpeg?auto=compress&cs=tinysrgb&w=1920',
@@ -266,6 +333,7 @@ function make3pRoom(
     mainImage,
     gallery: [mainImage, roomImg2, roomImg3, IMG.bathroom1, IMG.bathroom2, IMG.tapchan1],
     video: null,
+    videoPoster: null,
     tapchanImages: [IMG.tapchan1, IMG.tapchan2],
     hasKitchen: false,
     kitchenImages: [],
@@ -314,6 +382,7 @@ function make4pRoom(
     mainImage,
     gallery: [mainImage, roomImg2, roomImg3, IMG.bathroom3, IMG.bathroom4, IMG.tapchan3],
     video: null,
+    videoPoster: null,
     tapchanImages: [IMG.tapchan3, IMG.tapchan4],
     hasKitchen: false,
     kitchenImages: [],
@@ -385,6 +454,7 @@ function makeCottage(lang: Lang, spec: CottageSpec): Accommodation {
     mainImage: spec.mainImage,
     gallery: [spec.mainImage, ...spec.gallery],
     video: null,
+    videoPoster: null,
     tapchanImages: [],
     hasKitchen: spec.hasKitchen,
     kitchenImages: [],
@@ -398,44 +468,44 @@ function makeCottage(lang: Lang, spec: CottageSpec): Accommodation {
 export function getAccommodations(lang: Lang): Accommodation[] {
   return [
     // ===== 5 COTTAGES =====
-    makeCottage(lang, {
-      id: 'cottage-1',
-      nameUz: '1-Kottej — Standart',
-      nameRu: 'Коттедж №1 — Стандарт',
-      capacity: 10,
-      price: 1500000,
-      mainImage: c1_1,
-      isLuxury: false,
-      hasKitchen: false,
-      descUz:
-        "1-Kottej — Dugoba Resortning standart sinfidagi kottejidir. 10 kishi sig'imiga ega bo'lib, keng va qulay interyorga mo'jallangan. Kottejning orqa qismida mehmonlar dam olishlari uchun shaxsiy so'ri/tapchan mavjud. Tog' manzarasidan bahramand bo'lib, oilaviy yoki do'stlar bilan katta guruh bo'lib dam olish uchun ideal variant. Kottejda dush, sanuzel, Wi-Fi va televizor mavjud.",
-      descRu:
-        'Коттедж №1 — коттедж стандартного класса Dugoba Resort. Вместимость — 10 человек, просторный и комфортный интерьер. В задней части коттеджа для гостей предусмотрен личный тапчан для отдыха. Отсюда открывается вид на горы — идеальный вариант для отдыха всей семьёй или большой компанией друзей. В коттедже есть душ, санузел, Wi-Fi и телевизор.',
-      gallery: [c1_2, c1_3, c1_4],
-      featuresUz: ['10 kishilik', 'Standart kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor'],
-      featuresRu: ['10-местный', 'Стандарт коттедж', 'Личный задний тапчан', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор'],
-    }),
     {
       ...makeCottage(lang, {
-        id: 'cottage-2',
-        nameUz: '2-Kottej — Standart',
-        nameRu: 'Коттедж №2 — Стандарт',
+        id: 'cottage-1',
+        nameUz: '1-Kottej — Standart',
+        nameRu: 'Коттедж №1 — Стандарт',
         capacity: 10,
         price: 1500000,
-        mainImage: c2_6,
+        mainImage: c1_1,
         isLuxury: false,
         hasKitchen: false,
         descUz:
-          "2-Kottej — Standart sinfidagi 10 kishilik kottej. 1-Kottej bilan bir xil qulayliklarga ega, lekin boshqa joylashuv va interyorga ega. Orqa qismida shaxsiy so'ri/tapchan mavjud. Katta oilalar yoki do'stlar guruhi uchun juda mos. Kottejda barcha zarur qulayliklar: dush, sanuzel, Wi-Fi va televizor mavjud.",
+          "1-Kottej — Dugoba Resortning standart sinfidagi kottejidir. 10 kishi sig'imiga ega bo'lib, keng va qulay interyorga mo'jallangan. Kottejning orqa qismida mehmonlar dam olishlari uchun shaxsiy so'ri/tapchan mavjud. Tog' manzarasidan bahramand bo'lib, oilaviy yoki do'stlar bilan katta guruh bo'lib dam olish uchun ideal variant. Kottejda dush, sanuzel, Wi-Fi va televizor mavjud.",
         descRu:
-          'Коттедж №2 — 10-местный коттедж стандартного класса. Обладает теми же удобствами, что и Коттедж №1, но имеет другое расположение и интерьер. В задней части — личный тапчан. Отлично подходит для больших семей или компаний друзей. В коттедже есть все необходимые удобства: душ, санузел, Wi-Fi и телевизор.',
-        gallery: [c2_1, c2_2, c2_3, c2_4, c2_5],
+          'Коттедж №1 — коттедж стандартного класса Dugoba Resort. Вместимость — 10 человек, просторный и комфортный интерьер. В задней части коттеджа для гостей предусмотрен личный тапчан для отдыха. Отсюда открывается вид на горы — идеальный вариант для отдыха всей семьёй или большой компанией друзей. В коттедже есть душ, санузел, Wi-Fi и телевизор.',
+        gallery: [c1_2, c1_3, c1_4, c1_5, c1_6, c1_7, c1_8],
         featuresUz: ['10 kishilik', 'Standart kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor'],
         featuresRu: ['10-местный', 'Стандарт коттедж', 'Личный задний тапчан', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор'],
       }),
-      tapchanImages: [c2_6],
-      video: v_standart2,
+      video: v_kotej1,
+      videoPoster: p_kotej1,
     },
+    makeCottage(lang, {
+      id: 'cottage-2',
+      nameUz: '2-Kottej — Standart',
+      nameRu: 'Коттедж №2 — Стандарт',
+      capacity: 10,
+      price: 1500000,
+      mainImage: IMG.cottage2,
+      isLuxury: false,
+      hasKitchen: false,
+      descUz:
+        "2-Kottej — Standart sinfidagi 10 kishilik kottej. 1-Kottej bilan bir xil qulayliklarga ega, lekin boshqa joylashuv va interyorga ega. Orqa qismida shaxsiy so'ri/tapchan mavjud. Katta oilalar yoki do'stlar guruhi uchun juda mos. Kottejda barcha zarur qulayliklar: dush, sanuzel, Wi-Fi va televizor mavjud.",
+      descRu:
+        'Коттедж №2 — 10-местный коттедж стандартного класса. Обладает теми же удобствами, что и Коттедж №1, но имеет другое расположение и интерьер. В задней части — личный тапчан. Отлично подходит для больших семей или компаний друзей. В коттедже есть все необходимые удобства: душ, санузел, Wi-Fi и телевизор.',
+      gallery: [IMG.cottage3, IMG.cottage6],
+      featuresUz: ['10 kishilik', 'Standart kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor'],
+      featuresRu: ['10-местный', 'Стандарт коттедж', 'Личный задний тапчан', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор'],
+    }),
     {
       ...makeCottage(lang, {
         id: 'cottage-3',
@@ -455,24 +525,29 @@ export function getAccommodations(lang: Lang): Accommodation[] {
         featuresRu: ['10-местный', 'Стандарт коттедж', 'Личный задний тапчан', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор'],
       }),
       video: v_standart3,
+      videoPoster: p_standart3,
     },
-    makeCottage(lang, {
-      id: 'cottage-4',
-      nameUz: 'Pollux',
-      nameRu: 'Поллюкс',
-      capacity: 10,
-      price: 2000000,
-      mainImage: c4_1,
-      isLuxury: true,
-      hasKitchen: false,
-      descUz:
-        "Pollux — Dugoba Resortning premium sinfidagi kottejidir. 10 kishi sig'imiga ega, lekin standart kottejlardan farqli ravishda yanada yuqori darajadagi interyer va qulayliklarga ega. Orqa qismida shaxsiy so'ri/tapchan mavjud. Pollux kotteji mehmonlarga eng yuqori darajadagi dam olishni ta'minlash uchun mo'ljallangan. Premium dizayn, keng interyer va tog' manzarasi bu kottejni maxsus qiladi.",
-      descRu:
-        'Поллюкс — коттедж премиум-класса Dugoba Resort. Вместимость — 10 человек, но, в отличие от стандартных коттеджей, отличается более высоким уровнем интерьера и удобств. В задней части — личный тапчан. Коттедж Поллюкс создан для того, чтобы обеспечить гостям отдых наивысшего уровня. Премиальный дизайн, просторный интерьер и вид на горы делают этот коттедж особенным.',
-      gallery: [c4_2, c4_3, c4_4, c4_5, c4_6, c4_7, c4_8, c4_9, c4_10],
-      featuresUz: ['10 kishilik', 'Premium kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Premium dizayn'],
-      featuresRu: ['10-местный', 'Премиум коттедж', 'Личный задний тапчан', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор', 'Премиальный дизайн'],
-    }),
+    {
+      ...makeCottage(lang, {
+        id: 'cottage-4',
+        nameUz: 'Pollux',
+        nameRu: 'Поллюкс',
+        capacity: 10,
+        price: 2000000,
+        mainImage: c4_1,
+        isLuxury: true,
+        hasKitchen: false,
+        descUz:
+          "Pollux — Dugoba Resortning premium sinfidagi kottejidir. 10 kishi sig'imiga ega, lekin standart kottejlardan farqli ravishda yanada yuqori darajadagi interyer va qulayliklarga ega. Orqa qismida shaxsiy so'ri/tapchan mavjud. Pollux kotteji mehmonlarga eng yuqori darajadagi dam olishni ta'minlash uchun mo'ljallangan. Premium dizayn, keng interyer va tog' manzarasi bu kottejni maxsus qiladi.",
+        descRu:
+          'Поллюкс — коттедж премиум-класса Dugoba Resort. Вместимость — 10 человек, но, в отличие от стандартных коттеджей, отличается более высоким уровнем интерьера и удобств. В задней части — личный тапчан. Коттедж Поллюкс создан для того, чтобы обеспечить гостям отдых наивысшего уровня. Премиальный дизайн, просторный интерьер и вид на горы делают этот коттедж особенным.',
+        gallery: [c4_2, c4_3, c4_4, c4_5, c4_6, c4_7, c4_8, c4_9, c4_10],
+        featuresUz: ['10 kishilik', 'Premium kottej', 'Shaxsiy orqa tapchan', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Premium dizayn'],
+        featuresRu: ['10-местный', 'Премиум коттедж', 'Личный задний тапчан', 'Душ', 'Санузел', 'Wi-Fi', 'Телевизор', 'Премиальный дизайн'],
+      }),
+      video: v_pollux,
+      videoPoster: p_pollux,
+    },
     {
       ...makeCottage(lang, {
         id: 'cottage-5',
@@ -493,6 +568,7 @@ export function getAccommodations(lang: Lang): Accommodation[] {
       }),
       kitchenImages: [c5_2],
       video: v_luxKotej,
+      videoPoster: p_luxKotej,
     },
 
     // ===== 16 x 3-person rooms =====
@@ -502,9 +578,21 @@ export function getAccommodations(lang: Lang): Accommodation[] {
       tapchanImages: [r3p5],
     },
     make3pRoom(lang, 'room-3p-2', 2, 'front', IMG.room2, IMG.room3, IMG.room4),
-    make3pRoom(lang, 'room-3p-3', 3, 'front', IMG.room3, IMG.room4, IMG.room5),
-    make3pRoom(lang, 'room-3p-4', 4, 'front', IMG.room4, IMG.room5, IMG.room6),
-    make3pRoom(lang, 'room-3p-5', 5, 'front', IMG.room5, IMG.room6, IMG.room7),
+    {
+      ...make3pRoom(lang, 'room-3p-3', 3, 'front', r3p5, r3p1, r3p2),
+      gallery: [r3p5, r3p1, r3p2, r3p3, r3p4],
+      tapchanImages: [r3p5],
+    },
+    {
+      ...make3pRoom(lang, 'room-3p-4', 4, 'front', r3p5, r3p1, r3p2),
+      gallery: [r3p5, r3p1, r3p2, r3p3, r3p4],
+      tapchanImages: [r3p5],
+    },
+    {
+      ...make3pRoom(lang, 'room-3p-5', 5, 'front', r3p5, r3p1, r3p2),
+      gallery: [r3p5, r3p1, r3p2, r3p3, r3p4],
+      tapchanImages: [r3p5],
+    },
     make3pRoom(lang, 'room-3p-6', 6, 'front', IMG.room6, IMG.room7, IMG.room8),
     make3pRoom(lang, 'room-3p-7', 7, 'front', IMG.room7, IMG.room8, IMG.room9),
     make3pRoom(lang, 'room-3p-8', 8, 'front', IMG.room8, IMG.room9, IMG.room10),
@@ -523,10 +611,29 @@ export function getAccommodations(lang: Lang): Accommodation[] {
       gallery: [r4p5, r4p1, r4p2, r4p3, r4p4],
       tapchanImages: [r4p5],
       video: v_4kishi1,
+      videoPoster: p_4kishi1,
     },
-    { ...make4pRoom(lang, 'room-4p-2', 2, 'frontSide', IMG.room18, IMG.room19, IMG.room20), video: v_4kishi2 },
-    { ...make4pRoom(lang, 'room-4p-3', 3, 'backSide', IMG.room19, IMG.room20, IMG.room21), video: v_4kishi3 },
-    make4pRoom(lang, 'room-4p-4', 4, 'backSide', IMG.room20, IMG.room21, IMG.room22),
+    {
+      ...make4pRoom(lang, 'room-4p-2', 2, 'frontSide', r4b1, r4b2, r4b3),
+      gallery: [r4b1, r4b2, r4b3],
+      tapchanImages: [r4b1],
+      video: v_4kishi2,
+      videoPoster: p_4kishi2,
+    },
+    {
+      ...make4pRoom(lang, 'room-4p-3', 3, 'backSide', r4p5, r4p1, r4p2),
+      gallery: [r4p5, r4p1, r4p2, r4p3, r4p4],
+      tapchanImages: [r4p5],
+      video: v_4kishi3,
+      videoPoster: p_4kishi3,
+    },
+    {
+      ...make4pRoom(lang, 'room-4p-4', 4, 'backSide', r4p5, r4p1, r4p2),
+      gallery: [r4p5, r4p1, r4p2, r4p3, r4p4],
+      tapchanImages: [r4p5],
+      video: v_4kishi4,
+      videoPoster: p_4kishi4,
+    },
 
     // ===== 6-person room =====
     {
@@ -550,6 +657,7 @@ export function getAccommodations(lang: Lang): Accommodation[] {
       mainImage: IMG.room22,
       gallery: [IMG.room22, IMG.room23, IMG.room24, IMG.room25, IMG.bathroom5, IMG.bathroom6, IMG.tapchan5],
       video: null,
+      videoPoster: null,
       tapchanImages: [IMG.tapchan5, IMG.tapchan6],
       hasKitchen: false,
       kitchenImages: [],
@@ -587,6 +695,7 @@ export function getAccommodations(lang: Lang): Accommodation[] {
       mainImage: IMG.room23,
       gallery: [IMG.room23, IMG.room24, IMG.room25, IMG.kitchen1, IMG.kitchen2, IMG.kitchen3, IMG.kitchen4, IMG.bathroom5, IMG.bathroom6, IMG.tapchan7],
       video: null,
+      videoPoster: null,
       tapchanImages: [IMG.tapchan7, IMG.tapchan8],
       hasKitchen: true,
       kitchenImages: [IMG.kitchen1, IMG.kitchen2, IMG.kitchen3, IMG.kitchen4, IMG.kitchen5, IMG.stove],
@@ -618,10 +727,11 @@ export function getAccommodations(lang: Lang): Accommodation[] {
           ? '10-местный стандартный номер №1 расположен в нижней части курорта. Просторный номер, рассчитанный на 10 человек. В номере есть душ, санузел, Wi-Fi и телевизор. За гостями закреплён личный тапчан для отдыха. Отличный вариант для больших семей или компаний друзей. Вид на горы и спокойная атмосфера курорта делают отдых приятным.'
           : "10 kishilik standart xona №1 — resortning pastki qismida joylashgan. 10 kishi uchun mo'ljallangan keng xona. Xonada dush, sanuzel, Wi-Fi va televizor mavjud. Mehmonlar uchun shaxsiy so'ri/tapchan biriktirilgan. Katta oilalar yoki do'stlar guruhi uchun eng mos variant. Tog' manzarasi va resortning tinch muhiti dam olishni yoqimli qiladi.",
       amenities: [...BASE_AMENITIES[lang]],
-      mainImage: IMG.room26,
-      gallery: [IMG.room26, IMG.room27, IMG.room24, IMG.room25, IMG.bathroom1, IMG.bathroom2, IMG.tapchan1],
-      video: null,
-      tapchanImages: [IMG.tapchan1, IMG.tapchan2],
+      mainImage: c2_6,
+      gallery: [c2_6, c2_1, c2_2, c2_3, c2_4, c2_5],
+      video: v_standart2,
+      videoPoster: p_standart2,
+      tapchanImages: [c2_6],
       hasKitchen: false,
       kitchenImages: [],
       kitchenVideo: null,
@@ -653,6 +763,7 @@ export function getAccommodations(lang: Lang): Accommodation[] {
       mainImage: IMG.room27,
       gallery: [IMG.room27, IMG.room26, IMG.room23, IMG.room24, IMG.bathroom3, IMG.bathroom4, IMG.tapchan3],
       video: null,
+      videoPoster: null,
       tapchanImages: [IMG.tapchan3, IMG.tapchan4],
       hasKitchen: false,
       kitchenImages: [],
@@ -682,66 +793,108 @@ export function getRelatedAccommodations(id: string, lang: Lang, limit: number =
 export interface TourPackage {
   id: string;
   name: string;
-  price: string;
-  duration: string;
+  date: string;
+  dateNote?: string;
+  priceBasic: string;
+  priceWithMeal: string;
   description: string;
   includes: string[];
-  image: string;
-  gallery: string[];
 }
 
+/** Tur paketi narxlari (so'mda). Dasturxonsiz / yaxshi dasturxon (ovqat) bilan. */
+const TOUR_PRICE_BASIC = 1290000;
+const TOUR_PRICE_WITH_MEAL = 1490000;
+
+/** Yozgi mavsumning oxirgi ikki tur paketi — belgilangan sanalarda. 4-sentabr yozgi mavsumning so'nggi paketi. */
 export function getTourPackages(lang: Lang): TourPackage[] {
-  const price = lang === 'ru' ? 'По договорённости' : 'Kelishuvga binoan';
+  const priceBasic = formatPrice(TOUR_PRICE_BASIC, lang);
+  const priceWithMeal = formatPrice(TOUR_PRICE_WITH_MEAL, lang);
+  const description =
+    lang === 'ru'
+      ? 'Поездка из города Фергана в Dugoba Resort и обратно. Транспортные услуги включены. Возможность отдыха на курорте и пользования всеми удобствами.'
+      : "Farg'ona shahridan Dugoba Resortga kelish va qaytish. Transport xizmati kiritilgan. Resortda dam olish va barcha qulayliklardan foydalanish imkoniyati.";
+  const includes =
+    lang === 'ru'
+      ? ['Транспорт из Ферганы туда и обратно', 'Отдых на курорте', 'Наслаждение видом на горы', 'Пользование детской площадкой', 'Пользование зоной для приготовления пищи и магазином']
+      : ["Farg'onadan borgan-kelgan transport", 'Resortda dam olish', "Tog' manzarasidan bahramand bo'lish", 'Bolalar maydonchasidan foydalanish', "O'choqxona va magizindan foydalanish"];
+
   return [
     {
-      id: 'tour-1',
-      name: lang === 'ru' ? 'Стандартный турпакет' : 'Standart Tur Paketi',
-      price,
-      duration: lang === 'ru' ? '1–2 дня' : '1-2 kun',
-      description:
-        lang === 'ru'
-          ? 'Поездка из города Фергана в Dugoba Resort и обратно. Гости могут добраться до курорта и обратно с помощью турпакета. Транспортные услуги включены. Возможность отдыха на курорте и пользования всеми удобствами.'
-          : "Farg'ona shahridan Dugoba Resortga kelish va qaytish. Mehmonlar tur paketi orqali resortga kelib-ketishlari mumkin. Transport xizmati kiritilgan. Resortda dam olish va barcha qulayliklardan foydalanish imkoniyati.",
-      includes:
-        lang === 'ru'
-          ? ['Транспорт из Ферганы туда и обратно', 'Отдых на курорте', 'Наслаждение видом на горы', 'Пользование детской площадкой', 'Пользование зоной для приготовления пищи и магазином']
-          : ["Farg'onadan borgan-kelgan transport", 'Resortda dam olish', "Tog' manzarasidan bahramand bo'lish", 'Bolalar maydonchasidan foydalanish', "O'choqxona va magizindan foydalanish"],
-      image: IMG.mountain1,
-      gallery: [IMG.mountain1, IMG.mountain2, IMG.mountain3, IMG.resortAerial],
+      id: 'tour-2708',
+      name: lang === 'ru' ? 'Летний турпакет' : 'Yozgi Tur Paketi',
+      date: lang === 'ru' ? '27 августа' : '27-avgust',
+      priceBasic,
+      priceWithMeal,
+      description,
+      includes,
     },
     {
-      id: 'tour-2',
-      name: lang === 'ru' ? 'Премиум турпакет' : 'Premium Tur Paketi',
-      price,
-      duration: lang === 'ru' ? '2–3 дня' : '2-3 kun',
-      description:
+      id: 'tour-0409',
+      name: lang === 'ru' ? 'Летний турпакет' : 'Yozgi Tur Paketi',
+      date: lang === 'ru' ? '4 сентября' : '4-sentabr',
+      dateNote:
         lang === 'ru'
-          ? 'Премиум турпакет — поездка из города Фергана в Dugoba Resort и обратно, а также отдых на курорте в течение 2–3 дней. Включены транспортные услуги, проживание и все удобства. Полное использование вида на горы и всех возможностей курорта.'
-          : "Premium tur paketi — Farg'ona shahridan Dugoba Resortga kelish va qaytish, shuningdek resortda 2-3 kun dam olish. Transport xizmati, joylashuv va barcha qulayliklar kiritilgan. Tog' manzarasi va resortning barcha imkoniyatlaridan to'liq foydalanish.",
-      includes:
-        lang === 'ru'
-          ? ['Транспорт из Ферганы туда и обратно', 'Отдых в течение 2–3 дней', 'Проживание в номере или коттедже', 'Наслаждение видом на горы', 'Пользование всеми удобствами', 'Пользование зоной для приготовления пищи и магазином']
-          : ["Farg'onadan borgan-keligan transport", '2-3 kun dam olish', 'Xona yoki kottej joylashuvi', "Tog' manzarasidan bahramand bo'lish", "Barcha qulayliklardan foydalanish", "O'choqxona va magizindan foydalanish"],
-      image: IMG.mountain2,
-      gallery: [IMG.mountain2, IMG.mountain4, IMG.mountain5, IMG.resortTerrace],
-    },
-    {
-      id: 'tour-3',
-      name: lang === 'ru' ? 'Семейный турпакет' : 'Oilaviy Tur Paketi',
-      price,
-      duration: lang === 'ru' ? '3–5 дней' : '3-5 kun',
-      description:
-        lang === 'ru'
-          ? 'Семейный турпакет разработан специально для семей. Транспорт из Ферганы, отдых на курорте в течение 3–5 дней, детская площадка и все удобства для семейного отдыха. Бесплатный вход для детей. Лучший вариант для отдыха всей семьёй.'
-          : "Oilaviy tur paketi — oilalar uchun maxsus mo'ljallangan. Farg'onadan transport, resortda 3-5 kun dam olish, bolalar maydonchasi va barcha oilaviy qulayliklar. Bolalar uchun bepul kirish. Oilaviy dam olishning eng yaxshi varianti.",
-      includes:
-        lang === 'ru'
-          ? ['Транспорт из Ферганы туда и обратно', 'Отдых в течение 3–5 дней', 'Проживание в семейном номере', 'Детская площадка', 'Бесплатный вход для детей', 'Пользование зоной для приготовления пищи и магазином', 'Вид на горы и природа']
-          : ["Farg'onadan borgan-kelgan transport", '3-5 kun dam olish', 'Oilaviy xona joylashuvi', 'Bolalar maydonchasi', 'Bolalar uchun bepul kirish', "O'choqxona va magizindan foydalanish", "Tog' manzarasi va tabiat"],
-      image: IMG.mountain3,
-      gallery: [IMG.mountain3, IMG.mountain6, IMG.mountain7, IMG.playground1],
+          ? 'Последний турпакет летнего сезона'
+          : "Yozgi mavsumning so'nggi tur paketi",
+      priceBasic,
+      priceWithMeal,
+      description,
+      includes,
     },
   ];
+}
+
+// ===== TUR PAKETI VIDEOLARI =====
+export interface TourVideo {
+  id: string;
+  title: string;
+  description: string;
+  videoSrc: string;
+  orientation: 'portrait' | 'landscape';
+}
+
+/** "Batafsil videoda" bo'limining asosiy videosi (tur-paket/tur-paket-batafsil). */
+export function getTourMainVideo(lang: Lang): TourVideo {
+  return lang === 'ru'
+    ? {
+        id: 'tour-video-main',
+        title: 'Турпакет Dugoba Resort — подробное видео',
+        description:
+          'Полный обзор турпакета: дорога из Ферганы, приезд на курорт, номера, коттеджи и вид на горы.',
+        videoSrc: tourVideoMain,
+        orientation: 'portrait',
+      }
+    : {
+        id: 'tour-video-main',
+        title: "Dugoba Resort tur paketi — batafsil video",
+        description:
+          "Tur paketining to'liq ko'rinishi: Farg'onadan yo'l, resortga kelish, xonalar, kottejlar va tog' manzarasi.",
+        videoSrc: tourVideoMain,
+        orientation: 'portrait',
+      };
+}
+
+/** "Qo'shimcha videolar" bo'limi — asosiy batafsil video bu ro'yxatga kirmaydi. */
+export function getTourExtraVideos(lang: Lang): TourVideo[] {
+  return lang === 'ru'
+    ? [
+        {
+          id: 'tour-video-1',
+          title: 'Моменты путешествия',
+          description: 'Кадры с дороги и с территории курорта.',
+          videoSrc: tourVideoExtra1,
+          orientation: 'portrait',
+        },
+      ]
+    : [
+        {
+          id: 'tour-video-1',
+          title: 'Sayohat lahzalari',
+          description: "Yo'l va resort hududidan olingan kadrlar.",
+          videoSrc: tourVideoExtra1,
+          orientation: 'portrait',
+        },
+      ];
 }
 
 // ===== AMENITIES =====
@@ -818,31 +971,77 @@ export interface VideoItem {
   title: string;
   category: string;
   description: string;
-  thumbnail: string;
+  /** Poster rasmi. `null` bo'lsa, kartochkada videoning o'zi ko'rsatiladi. */
+  thumbnail: string | null;
   youtubeId: string | null;
   videoSrc?: string | null;
+  /** Video kadrining yo'nalishi — tabiat videolari bo'yiga (portrait) olingan. */
+  orientation?: 'portrait' | 'landscape';
+}
+
+const TABIAT_VIDEOS: ReadonlyArray<{ src: string; poster: string }> = [
+  { src: tv1, poster: tvp1 },
+  { src: tv2, poster: tvp2 },
+  { src: tv3, poster: tvp3 },
+  { src: tv4, poster: tvp4 },
+  { src: tv5, poster: tvp5 },
+  { src: tv6, poster: tvp6 },
+  { src: tv7, poster: tvp7 },
+  { src: tv8, poster: tvp8 },
+  { src: tv9, poster: tvp9 },
+  { src: tv10, poster: tvp10 },
+  { src: tv11, poster: tvp11 },
+  { src: tv12, poster: tvp12 },
+  { src: tv13, poster: tvp13 },
+  { src: tv14, poster: tvp14 },
+  { src: tv15, poster: tvp15 },
+  { src: tv16, poster: tvp16 },
+  { src: tv17, poster: tvp17 },
+  { src: tv18, poster: tvp18 },
+  { src: tv19, poster: tvp19 },
+  { src: tv20, poster: tvp20 },
+];
+
+function getTabiatVideos(lang: Lang): VideoItem[] {
+  return TABIAT_VIDEOS.map(({ src, poster }, i) => ({
+    id: `vid-tabiat-${i + 1}`,
+    title: lang === 'ru' ? `Природа Дугоба — ${i + 1}` : `Dugoba tabiati — ${i + 1}`,
+    category: lang === 'ru' ? 'Видео природы' : 'Tabiat videolari',
+    description:
+      lang === 'ru'
+        ? 'Природа и горные пейзажи вокруг Dugoba Resort.'
+        : "Dugoba Resort atrofidagi tabiat va tog' manzaralari.",
+    thumbnail: poster,
+    youtubeId: null,
+    videoSrc: src,
+    orientation: 'portrait' as const,
+  }));
 }
 
 export function getVideoItems(lang: Lang): VideoItem[] {
+  return [...getBaseVideoItems(lang), ...getTabiatVideos(lang)];
+}
+
+function getBaseVideoItems(lang: Lang): VideoItem[] {
   return lang === 'ru'
     ? [
-        { id: 'vid-1', title: 'Dugoba Resort — общий вид', category: 'Территория курорта', description: 'Полный обзор территории курорта и её удобств.', thumbnail: IMG.resortAerial, youtubeId: null, videoSrc: v_bolim1 },
-        { id: 'vid-2', title: 'Вид на горы', category: 'Вид на горы', description: 'Прекрасный вид на горы с территории курорта.', thumbnail: IMG.mountain1, youtubeId: null, videoSrc: v_bolim2 },
-        { id: 'vid-3', title: 'Коттеджи', category: 'Видео коттеджей', description: 'Внутренний и внешний вид коттеджей курорта.', thumbnail: IMG.cottage1, youtubeId: null, videoSrc: v_bolim3 },
-        { id: 'vid-4', title: 'Номера', category: 'Видео номеров', description: 'Внутренний вид номеров курорта и их удобства.', thumbnail: IMG.room1, youtubeId: null, videoSrc: v_bolim4 },
+        { id: 'vid-1', title: 'Dugoba Resort — общий вид', category: 'Территория курорта', description: 'Полный обзор территории курорта и её удобств.', thumbnail: p_bolim1, youtubeId: null, videoSrc: v_bolim1, orientation: 'portrait' },
+        { id: 'vid-2', title: 'Вид на горы', category: 'Вид на горы', description: 'Прекрасный вид на горы с территории курорта.', thumbnail: p_bolim2, youtubeId: null, videoSrc: v_bolim2, orientation: 'portrait' },
+        { id: 'vid-3', title: 'Коттеджи', category: 'Видео коттеджей', description: 'Внутренний и внешний вид коттеджей курорта.', thumbnail: p_bolim3, youtubeId: null, videoSrc: v_bolim3, orientation: 'portrait' },
+        { id: 'vid-4', title: 'Номера', category: 'Видео номеров', description: 'Внутренний вид номеров курорта и их удобства.', thumbnail: p_bolim4, youtubeId: null, videoSrc: v_bolim4, orientation: 'portrait' },
       ]
     : [
-        { id: 'vid-1', title: "Dugoba Resort — Umumiy ko'rinish", category: 'Resort hududi', description: "Resort hududining to'liq ko'rinishi va qulayliklari.", thumbnail: IMG.resortAerial, youtubeId: null, videoSrc: v_bolim1 },
-        { id: 'vid-2', title: "Tog' manzarasi", category: "Tog' manzarasi", description: "Resortdan tog' manzarasining go'zal ko'rinishi.", thumbnail: IMG.mountain1, youtubeId: null, videoSrc: v_bolim2 },
-        { id: 'vid-3', title: 'Kottejlar', category: 'Kottej videolari', description: 'Resort kottejlarining ichki va tashqi ko\'rinishi.', thumbnail: IMG.cottage1, youtubeId: null, videoSrc: v_bolim3 },
-        { id: 'vid-4', title: 'Xonalar', category: 'Xona videolari', description: 'Resort xonalarining ichki ko\'rinishi va qulayliklari.', thumbnail: IMG.room1, youtubeId: null, videoSrc: v_bolim4 },
+        { id: 'vid-1', title: "Dugoba Resort — Umumiy ko'rinish", category: 'Resort hududi', description: "Resort hududining to'liq ko'rinishi va qulayliklari.", thumbnail: p_bolim1, youtubeId: null, videoSrc: v_bolim1, orientation: 'portrait' },
+        { id: 'vid-2', title: "Tog' manzarasi", category: "Tog' manzarasi", description: "Resortdan tog' manzarasining go'zal ko'rinishi.", thumbnail: p_bolim2, youtubeId: null, videoSrc: v_bolim2, orientation: 'portrait' },
+        { id: 'vid-3', title: 'Kottejlar', category: 'Kottej videolari', description: 'Resort kottejlarining ichki va tashqi ko\'rinishi.', thumbnail: p_bolim3, youtubeId: null, videoSrc: v_bolim3, orientation: 'portrait' },
+        { id: 'vid-4', title: 'Xonalar', category: 'Xona videolari', description: 'Resort xonalarining ichki ko\'rinishi va qulayliklari.', thumbnail: p_bolim4, youtubeId: null, videoSrc: v_bolim4, orientation: 'portrait' },
       ];
 }
 
 export function getVideoCategories(lang: Lang): string[] {
   return lang === 'ru'
-    ? ['Территория курорта', 'Вид на горы', 'Видео коттеджей', 'Видео номеров']
-    : ['Resort hududi', "Tog' manzarasi", 'Kottej videolari', 'Xona videolari'];
+    ? ['Территория курорта', 'Вид на горы', 'Видео коттеджей', 'Видео номеров', 'Видео природы']
+    : ['Resort hududi', "Tog' manzarasi", 'Kottej videolari', 'Xona videolari', 'Tabiat videolari'];
 }
 
 const RESORT_LOCATION: Record<Lang, string> = {
@@ -857,10 +1056,14 @@ const RESORT_DESCRIPTION: Record<Lang, string> = {
 
 export const resortInfo = {
   name: 'Dugoba Resort',
-  phone: '+998 90 407 05 01',
+  phone: '+998 90 009 05 01',
   mapUrl: 'https://yandex.uz/maps/-/CTgzIW7o',
-  telegram: 'https://t.me/sherzod015',
-  telegramUsername: '@sherzod015',
+  telegram: 'https://t.me/maftunaresort',
+  telegramUsername: '@maftunaresort',
+  telegramChannel: 'https://t.me/dugoba_resort',
+  telegramChannelUsername: '@dugoba_resort',
+  instagram: 'https://www.instagram.com/dugoba_resort',
+  instagramUsername: '@dugoba_resort',
   totalCottages: 5,
   totalRooms: 24,
   totalAccommodations: 29,
