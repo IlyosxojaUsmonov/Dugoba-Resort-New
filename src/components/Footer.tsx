@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { MapPin, Phone, Send, Radio, Instagram } from 'lucide-react';
 import { resortInfo, getResortLocation } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
-import logo from '@/atrof-muhit/dugobba.png';
+import logo from '@/atrof-muhit/dugobba.webp';
 
 export default function Footer() {
   const { t, language } = useTranslation();
@@ -14,7 +14,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-6">
               <div className="w-12 h-12 rounded-sm border-2 border-forest-400 flex items-center justify-center overflow-hidden">
-                <img src={logo} alt="Dugoba Resort" className="w-full h-full object-cover" />
+                <img src={logo} alt="Dugoba Resort" loading="lazy" width={200} height={200} className="w-full h-full object-cover" />
               </div>
               <div className="flex flex-col">
                 <span className="font-serif text-white text-2xl font-semibold tracking-wide leading-none">

@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import { resortInfo } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
-import logo from '@/atrof-muhit/dugobba.png';
+import logo from '@/atrof-muhit/dugobba.webp';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 export default function Navbar() {
@@ -50,7 +50,7 @@ export default function Navbar() {
       <nav className="container-lux flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group shrink-0" onClick={() => setIsOpen(false)}>
           <div className="w-10 h-10 rounded-sm border-2 border-forest-300 flex items-center justify-center overflow-hidden transition-all group-hover:border-forest-400">
-            <img src={logo} alt="Dugoba Resort" className="w-full h-full object-cover" />
+            <img src={logo} alt="Dugoba Resort" width={200} height={200} className="w-full h-full object-cover" />
           </div>
           <div className="flex flex-col">
             <span className="font-serif text-white text-xl font-semibold tracking-wide leading-none">

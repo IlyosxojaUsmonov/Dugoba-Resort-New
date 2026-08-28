@@ -44,10 +44,10 @@ export default function Resort() {
               </div>
             </div>
             <div className="order-1 lg:order-2 space-y-4">
-              <img src={IMAGES.atrofMuhitTog} alt="Tog' manzarasi" className="w-full h-80 object-cover rounded-sm shadow-lg" loading="lazy" />
+              <img src={IMAGES.atrofMuhitTog} alt="Tog' manzarasi" width={1800} height={1200} className="w-full h-80 object-cover rounded-sm shadow-lg" loading="lazy" />
               <div className="grid grid-cols-2 gap-4">
-                <img src={IMAGES.atrofMuhitXonaKotej} alt="Resort va kottejlar" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
-                <img src={IMAGES.atrofMuhitTabiat6} alt="Tog' manzarasi" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={IMAGES.atrofMuhitXonaKotej} alt="Resort va kottejlar" width={1280} height={960} className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={IMAGES.atrofMuhitTabiat6} alt="Tog' manzarasi" width={640} height={640} className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function Resort() {
             </div>
 
             <div className="lux-card flex flex-col sm:flex-row overflow-hidden">
-              <img src={IMAGES.mountain1} alt="Tog' manzarasi" className="w-full sm:w-2/5 h-48 sm:h-auto object-cover" loading="lazy" />
+              <img src={IMAGES.mountain1} alt="Tog' manzarasi" width={1800} height={1200} className="w-full sm:w-2/5 h-48 sm:h-auto object-cover" loading="lazy" />
               <div className="p-6 flex-1">
                 <Mountain size={28} className="text-forest-600 mb-3" />
                 <h3 className="font-serif text-xl font-semibold text-stone-900 mb-2">{t('resort.mountainTitle')}</h3>

@@ -147,10 +147,10 @@ export default function TourPackages() {
               </div>
             </div>
             <div className="space-y-4">
-              <img src={IMAGES.mountain4} alt="Tog' yo'li" className="w-full h-80 object-cover rounded-sm shadow-lg" loading="lazy" />
+              <img src={IMAGES.mountain4} alt="Tog' yo'li" width={640} height={640} className="w-full h-80 object-cover rounded-sm shadow-lg" loading="lazy" />
               <div className="grid grid-cols-2 gap-4">
-                <img src={IMAGES.mountain7} alt="Tog' manzarasi" className="w-full h-40 object-cover rounded-sm shadow-md" loading="lazy" />
-                <img src={IMAGES.mountain9} alt="Vodiy" className="w-full h-40 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={IMAGES.mountain7} alt="Tog' manzarasi" width={1920} height={2560} className="w-full h-40 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={IMAGES.mountain9} alt="Vodiy" width={1920} height={2560} className="w-full h-40 object-cover rounded-sm shadow-md" loading="lazy" />
               </div>
             </div>
           </div>

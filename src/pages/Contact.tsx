@@ -144,7 +144,7 @@ export default function Contact() {
                 <img src={IMAGES.resortAerial} alt="Resort joylashuvi" className="w-full h-80 object-cover rounded-sm shadow-lg transition-transform duration-500 group-hover:scale-[1.02]" loading="lazy" />
               </a>
               <div className="grid grid-cols-2 gap-4">
-                <img src={IMAGES.mountain1} alt="Tog' manzarasi" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={IMAGES.mountain1} alt="Tog' manzarasi" width={1800} height={1200} className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
                 <img src={IMAGES.cottage1} alt="Kottej" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
               </div>
               <div className="p-6 bg-stone-50 rounded-sm">

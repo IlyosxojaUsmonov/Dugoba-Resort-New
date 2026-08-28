@@ -1,67 +1,67 @@
-import r3p1 from '../xonalar/3kishilik/3kishi1.png';
-import r3p2 from '../xonalar/3kishilik/3kishi2.png';
-import r3p3 from '../xonalar/3kishilik/3kishi3.png';
-import r3p4 from '../xonalar/3kishilik/3kishi4.png';
-import r3p5 from '../xonalar/3kishilik/3kishi5.png';
+import r3p1 from '../xonalar/3kishilik/3kishi1.webp';
+import r3p2 from '../xonalar/3kishilik/3kishi2.webp';
+import r3p3 from '../xonalar/3kishilik/3kishi3.webp';
+import r3p4 from '../xonalar/3kishilik/3kishi4.webp';
+import r3p5 from '../xonalar/3kishilik/3kishi5.webp';
 
-import r4p1 from '../xonalar/4kishilik/4kishi1.png';
-import r4p2 from '../xonalar/4kishilik/4kishi2.png';
-import r4p3 from '../xonalar/4kishilik/4kishi3.png';
-import r4p4 from '../xonalar/4kishilik/4kishi4.png';
-import r4p5 from '../xonalar/4kishilik/4kishi5.png';
+import r4p1 from '../xonalar/4kishilik/4kishi1.webp';
+import r4p2 from '../xonalar/4kishilik/4kishi2.webp';
+import r4p3 from '../xonalar/4kishilik/4kishi3.webp';
+import r4p4 from '../xonalar/4kishilik/4kishi4.webp';
+import r4p5 from '../xonalar/4kishilik/4kishi5.webp';
 
-import r4b1 from '../xonalar/4kishilik2/4kishilik-1.png';
-import r4b2 from '../xonalar/4kishilik2/4kishilik-2.png';
-import r4b3 from '../xonalar/4kishilik2/4kishilik-3.png';
+import r4b1 from '../xonalar/4kishilik2/4kishilik-1.webp';
+import r4b2 from '../xonalar/4kishilik2/4kishilik-2.webp';
+import r4b3 from '../xonalar/4kishilik2/4kishilik-3.webp';
 
-import c1_1 from '../xonalar/10-kishilik-1-standart/1-standart.png';
-import c1_2 from '../xonalar/10-kishilik-1-standart/1-2-standart.png';
-import c1_3 from '../xonalar/10-kishilik-1-standart/1-3standart.png';
-import c1_4 from '../xonalar/10-kishilik-1-standart/1-4-standart.png';
-import c1_5 from '../xonalar/10-kishilik-1-standart/1-5standart.png';
-import c1_6 from '../xonalar/10-kishilik-1-standart/1-6standart.png';
-import c1_7 from '../xonalar/10-kishilik-1-standart/1-7standart.png';
-import c1_8 from '../xonalar/10-kishilik-1-standart/1-8standart.png';
+import c1_1 from '../xonalar/10-kishilik-1-standart/1-standart.webp';
+import c1_2 from '../xonalar/10-kishilik-1-standart/1-2-standart.webp';
+import c1_3 from '../xonalar/10-kishilik-1-standart/1-3standart.webp';
+import c1_4 from '../xonalar/10-kishilik-1-standart/1-4-standart.webp';
+import c1_5 from '../xonalar/10-kishilik-1-standart/1-5standart.webp';
+import c1_6 from '../xonalar/10-kishilik-1-standart/1-6standart.webp';
+import c1_7 from '../xonalar/10-kishilik-1-standart/1-7standart.webp';
+import c1_8 from '../xonalar/10-kishilik-1-standart/1-8standart.webp';
 
-import c2_1 from '../xonalar/10kishilik-1/2-10kishi1.png';
-import c2_2 from '../xonalar/10kishilik-1/2-10kishi2.png';
-import c2_3 from '../xonalar/10kishilik-1/2-10kishi3.png';
-import c2_4 from '../xonalar/10kishilik-1/2-10kishi4.png';
-import c2_5 from '../xonalar/10kishilik-1/2-10kishi5.png';
-import c2_6 from '../xonalar/10kishilik-1/2-10kishi6.png';
+import c2_1 from '../xonalar/10kishilik-1/2-10kishi1.webp';
+import c2_2 from '../xonalar/10kishilik-1/2-10kishi2.webp';
+import c2_3 from '../xonalar/10kishilik-1/2-10kishi3.webp';
+import c2_4 from '../xonalar/10kishilik-1/2-10kishi4.webp';
+import c2_5 from '../xonalar/10kishilik-1/2-10kishi5.webp';
+import c2_6 from '../xonalar/10kishilik-1/2-10kishi6.webp';
 
-import c3_1 from '../xonalar/10-kishilik-3-standart/standart-1.png';
-import c3_2 from '../xonalar/10-kishilik-3-standart/standart-2.png';
-import c3_3 from '../xonalar/10-kishilik-3-standart/standart-3.png';
-import c3_4 from '../xonalar/10-kishilik-3-standart/standart-4.png';
-import c3_5 from '../xonalar/10-kishilik-3-standart/standart-5.png';
-import c3_6 from '../xonalar/10-kishilik-3-standart/standart-6.png';
-import c3_7 from '../xonalar/10-kishilik-3-standart/standart-7.png';
-import c3_8 from '../xonalar/10-kishilik-3-standart/standart-8.png';
-import c3_9 from '../xonalar/10-kishilik-3-standart/standart-9.png';
-import c3_10 from '../xonalar/10-kishilik-3-standart/standart-10.png';
+import c3_1 from '../xonalar/10-kishilik-3-standart/standart-1.webp';
+import c3_2 from '../xonalar/10-kishilik-3-standart/standart-2.webp';
+import c3_3 from '../xonalar/10-kishilik-3-standart/standart-3.webp';
+import c3_4 from '../xonalar/10-kishilik-3-standart/standart-4.webp';
+import c3_5 from '../xonalar/10-kishilik-3-standart/standart-5.webp';
+import c3_6 from '../xonalar/10-kishilik-3-standart/standart-6.webp';
+import c3_7 from '../xonalar/10-kishilik-3-standart/standart-7.webp';
+import c3_8 from '../xonalar/10-kishilik-3-standart/standart-8.webp';
+import c3_9 from '../xonalar/10-kishilik-3-standart/standart-9.webp';
+import c3_10 from '../xonalar/10-kishilik-3-standart/standart-10.webp';
 
-import c4_1 from '../xonalar/10-kishilik-pollux/10kishi-pollux1.png';
-import c4_2 from '../xonalar/10-kishilik-pollux/10kishi-pollux2.png';
-import c4_3 from '../xonalar/10-kishilik-pollux/10kishi-pollux3.png';
-import c4_4 from '../xonalar/10-kishilik-pollux/10kishi-pollux4.png';
-import c4_5 from '../xonalar/10-kishilik-pollux/10kishi-pollux5.png';
-import c4_6 from '../xonalar/10-kishilik-pollux/10kishi-pollux6.png';
-import c4_7 from '../xonalar/10-kishilik-pollux/10kishi-pollux7.png';
-import c4_8 from '../xonalar/10-kishilik-pollux/10kishi-pollux8.png';
-import c4_9 from '../xonalar/10-kishilik-pollux/10kishi-pollux9.png';
-import c4_10 from '../xonalar/10-kishilik-pollux/10kishi-pollux10.png';
+import c4_1 from '../xonalar/10-kishilik-pollux/10kishi-pollux1.webp';
+import c4_2 from '../xonalar/10-kishilik-pollux/10kishi-pollux2.webp';
+import c4_3 from '../xonalar/10-kishilik-pollux/10kishi-pollux3.webp';
+import c4_4 from '../xonalar/10-kishilik-pollux/10kishi-pollux4.webp';
+import c4_5 from '../xonalar/10-kishilik-pollux/10kishi-pollux5.webp';
+import c4_6 from '../xonalar/10-kishilik-pollux/10kishi-pollux6.webp';
+import c4_7 from '../xonalar/10-kishilik-pollux/10kishi-pollux7.webp';
+import c4_8 from '../xonalar/10-kishilik-pollux/10kishi-pollux8.webp';
+import c4_9 from '../xonalar/10-kishilik-pollux/10kishi-pollux9.webp';
+import c4_10 from '../xonalar/10-kishilik-pollux/10kishi-pollux10.webp';
 
-import c5_1 from '../xonalar/8-kishilik-luks/8kishi-lux1.png';
-import c5_2 from '../xonalar/8-kishilik-luks/8kishi-lux2.png';
-import c5_3 from '../xonalar/8-kishilik-luks/8kishi-lux3.png';
-import c5_4 from '../xonalar/8-kishilik-luks/8kishi-lux4.png';
-import c5_5 from '../xonalar/8-kishilik-luks/8kishi-lux5.png';
-import c5_6 from '../xonalar/8-kishilik-luks/8kishi-lux6.png';
-import c5_7 from '../xonalar/8-kishilik-luks/8kishi-lux7.png';
-import c5_8 from '../xonalar/8-kishilik-luks/8kishi-lux8.png';
-import c5_9 from '../xonalar/8-kishilik-luks/8kishi-lux9.png';
-import c5_10 from '../xonalar/8-kishilik-luks/8kishi-lux10.png';
+import c5_1 from '../xonalar/8-kishilik-luks/8kishi-lux1.webp';
+import c5_2 from '../xonalar/8-kishilik-luks/8kishi-lux2.webp';
+import c5_3 from '../xonalar/8-kishilik-luks/8kishi-lux3.webp';
+import c5_4 from '../xonalar/8-kishilik-luks/8kishi-lux4.webp';
+import c5_5 from '../xonalar/8-kishilik-luks/8kishi-lux5.webp';
+import c5_6 from '../xonalar/8-kishilik-luks/8kishi-lux6.webp';
+import c5_7 from '../xonalar/8-kishilik-luks/8kishi-lux7.webp';
+import c5_8 from '../xonalar/8-kishilik-luks/8kishi-lux8.webp';
+import c5_9 from '../xonalar/8-kishilik-luks/8kishi-lux9.webp';
+import c5_10 from '../xonalar/8-kishilik-luks/8kishi-lux10.webp';
 
 import v_kotej1 from '../videos/1-kotej.mp4';
 import v_standart2 from '../videos/2-standart-kotej-video/standart-2.mp4';
@@ -77,19 +77,19 @@ import v_bolim1 from '../videos/videolar-bolim.mp4';
 import v_bolim2 from '../videos/videolar-bolim2.mp4';
 import v_bolim3 from '../videos/videolar-bolim3.mp4';
 import v_bolim4 from '../videos/videolar-bolim4.mp4';
-import p_bolim1 from '../videos/posters/videolar-bolim.jpg';
-import p_bolim2 from '../videos/posters/videolar-bolim2.jpg';
-import p_bolim3 from '../videos/posters/videolar-bolim3.jpg';
-import p_bolim4 from '../videos/posters/videolar-bolim4.jpg';
-import p_kotej1 from '../videos/posters/obj-kotej1.jpg';
-import p_standart2 from '../videos/posters/obj-standart2.jpg';
-import p_standart3 from '../videos/posters/obj-standart3.jpg';
-import p_luxKotej from '../videos/posters/obj-lux-kotej.jpg';
-import p_4kishi1 from '../videos/posters/obj-4kishi1.jpg';
-import p_4kishi2 from '../videos/posters/obj-4kishi2.jpg';
-import p_4kishi3 from '../videos/posters/obj-4kishi3.jpg';
-import p_pollux from '../videos/posters/obj-pollux.jpg';
-import p_4kishi4 from '../videos/posters/obj-4kishi4.jpg';
+import p_bolim1 from '../videos/posters/videolar-bolim.webp';
+import p_bolim2 from '../videos/posters/videolar-bolim2.webp';
+import p_bolim3 from '../videos/posters/videolar-bolim3.webp';
+import p_bolim4 from '../videos/posters/videolar-bolim4.webp';
+import p_kotej1 from '../videos/posters/obj-kotej1.webp';
+import p_standart2 from '../videos/posters/obj-standart2.webp';
+import p_standart3 from '../videos/posters/obj-standart3.webp';
+import p_luxKotej from '../videos/posters/obj-lux-kotej.webp';
+import p_4kishi1 from '../videos/posters/obj-4kishi1.webp';
+import p_4kishi2 from '../videos/posters/obj-4kishi2.webp';
+import p_4kishi3 from '../videos/posters/obj-4kishi3.webp';
+import p_pollux from '../videos/posters/obj-pollux.webp';
+import p_4kishi4 from '../videos/posters/obj-4kishi4.webp';
 
 import tourVideoMain from '../tur-paket/tur-paket-batafsil.mp4';
 import tourVideoExtra1 from '../tur-paket/IMG_8888.mp4';
@@ -115,39 +115,39 @@ import tv18 from '../tabiat-videos/IMG_8222.mp4';
 import tv19 from '../tabiat-videos/IMG_8224.mp4';
 import tv20 from '../tabiat-videos/IMG_8236.mp4';
 
-import tvp1 from '../tabiat-videos/posters/tabiat-1.jpg';
-import tvp2 from '../tabiat-videos/posters/tabiat-2.jpg';
-import tvp3 from '../tabiat-videos/posters/tabiat-4.jpg';
-import tvp4 from '../tabiat-videos/posters/tabiat-resort-3.jpg';
-import tvp5 from '../tabiat-videos/posters/tabiat-7.jpg';
-import tvp6 from '../tabiat-videos/posters/tabiat-5.jpg';
-import tvp7 from '../tabiat-videos/posters/tabiat-6.jpg';
-import tvp8 from '../tabiat-videos/posters/IMG_3509.jpg';
-import tvp9 from '../tabiat-videos/posters/IMG_3511.jpg';
-import tvp10 from '../tabiat-videos/posters/IMG_3512.jpg';
-import tvp11 from '../tabiat-videos/posters/IMG_3514.jpg';
-import tvp12 from '../tabiat-videos/posters/IMG_8111.jpg';
-import tvp13 from '../tabiat-videos/posters/IMG_8158.jpg';
-import tvp14 from '../tabiat-videos/posters/IMG_8170.jpg';
-import tvp15 from '../tabiat-videos/posters/IMG_8171.jpg';
-import tvp16 from '../tabiat-videos/posters/IMG_8176.jpg';
-import tvp17 from '../tabiat-videos/posters/IMG_8215.jpg';
-import tvp18 from '../tabiat-videos/posters/IMG_8222.jpg';
-import tvp19 from '../tabiat-videos/posters/IMG_8224.jpg';
-import tvp20 from '../tabiat-videos/posters/IMG_8236.jpg';
+import tvp1 from '../tabiat-videos/posters/tabiat-1.webp';
+import tvp2 from '../tabiat-videos/posters/tabiat-2.webp';
+import tvp3 from '../tabiat-videos/posters/tabiat-4.webp';
+import tvp4 from '../tabiat-videos/posters/tabiat-resort-3.webp';
+import tvp5 from '../tabiat-videos/posters/tabiat-7.webp';
+import tvp6 from '../tabiat-videos/posters/tabiat-5.webp';
+import tvp7 from '../tabiat-videos/posters/tabiat-6.webp';
+import tvp8 from '../tabiat-videos/posters/IMG_3509.webp';
+import tvp9 from '../tabiat-videos/posters/IMG_3511.webp';
+import tvp10 from '../tabiat-videos/posters/IMG_3512.webp';
+import tvp11 from '../tabiat-videos/posters/IMG_3514.webp';
+import tvp12 from '../tabiat-videos/posters/IMG_8111.webp';
+import tvp13 from '../tabiat-videos/posters/IMG_8158.webp';
+import tvp14 from '../tabiat-videos/posters/IMG_8170.webp';
+import tvp15 from '../tabiat-videos/posters/IMG_8171.webp';
+import tvp16 from '../tabiat-videos/posters/IMG_8176.webp';
+import tvp17 from '../tabiat-videos/posters/IMG_8215.webp';
+import tvp18 from '../tabiat-videos/posters/IMG_8222.webp';
+import tvp19 from '../tabiat-videos/posters/IMG_8224.webp';
+import tvp20 from '../tabiat-videos/posters/IMG_8236.webp';
 
-import am_tabiat0 from '../atrof-muhit/tabiat.png';
-import am_tabiat1 from '../atrof-muhit/tabiat1.png';
-import am_tabiat2 from '../atrof-muhit/tabiat2.png';
-import am_tabiat3 from '../atrof-muhit/tabiat3.png';
-import am_tabiat4 from '../atrof-muhit/tabiat4.png';
-import am_tabiat5 from '../atrof-muhit/tabiat5.png';
-import am_tabiat6 from '../atrof-muhit/tabiat6.png';
-import am_tabiat7 from '../atrof-muhit/tabiat7.png';
-import am_tabiat8 from '../atrof-muhit/tabiat8.png';
-import am_xonaKotej from '../atrof-muhit/xona-kotej.png';
-import am_tog from '../atrof-muhit/tog.png';
-import am_resort from '../atrof-muhit/resort.png';
+import am_tabiat0 from '../atrof-muhit/tabiat.webp';
+import am_tabiat1 from '../atrof-muhit/tabiat1.webp';
+import am_tabiat2 from '../atrof-muhit/tabiat2.webp';
+import am_tabiat3 from '../atrof-muhit/tabiat3.webp';
+import am_tabiat4 from '../atrof-muhit/tabiat4.webp';
+import am_tabiat5 from '../atrof-muhit/tabiat5.webp';
+import am_tabiat6 from '../atrof-muhit/tabiat6.webp';
+import am_tabiat7 from '../atrof-muhit/tabiat7.webp';
+import am_tabiat8 from '../atrof-muhit/tabiat8.webp';
+import am_xonaKotej from '../atrof-muhit/xona-kotej.webp';
+import am_tog from '../atrof-muhit/tog.webp';
+import am_resort from '../atrof-muhit/resort.webp';
 
 import type { Language } from '@/i18n/language';
 
@@ -945,6 +945,8 @@ export interface GalleryImage {
   url: string;
   category: string;
   caption: string;
+  width: number;
+  height: number;
 }
 
 export function getGalleryImages(lang: Lang): GalleryImage[] {
@@ -952,16 +954,16 @@ export function getGalleryImages(lang: Lang): GalleryImage[] {
   const natureCaption = lang === 'ru' ? 'Природный пейзаж' : 'Tabiat manzarasi';
   const resortCaption = lang === 'ru' ? 'Курорт и коттеджи' : 'Resort va kottejlar';
   return [
-    { url: am_xonaKotej, category, caption: resortCaption },
-    { url: am_tabiat0, category, caption: natureCaption },
-    { url: am_tabiat1, category, caption: natureCaption },
-    { url: am_tabiat2, category, caption: natureCaption },
-    { url: am_tabiat3, category, caption: natureCaption },
-    { url: am_tabiat4, category, caption: natureCaption },
-    { url: am_tabiat5, category, caption: natureCaption },
-    { url: am_tabiat6, category, caption: natureCaption },
-    { url: am_tabiat7, category, caption: natureCaption },
-    { url: am_tabiat8, category, caption: natureCaption },
+    { url: am_xonaKotej, category, caption: resortCaption, width: 1280, height: 960 },
+    { url: am_tabiat0, category, caption: natureCaption, width: 1920, height: 2560 },
+    { url: am_tabiat1, category, caption: natureCaption, width: 1920, height: 2560 },
+    { url: am_tabiat2, category, caption: natureCaption, width: 1920, height: 2560 },
+    { url: am_tabiat3, category, caption: natureCaption, width: 1920, height: 2560 },
+    { url: am_tabiat4, category, caption: natureCaption, width: 1920, height: 2560 },
+    { url: am_tabiat5, category, caption: natureCaption, width: 1079, height: 1077 },
+    { url: am_tabiat6, category, caption: natureCaption, width: 640, height: 640 },
+    { url: am_tabiat7, category, caption: natureCaption, width: 640, height: 640 },
+    { url: am_tabiat8, category, caption: natureCaption, width: 1920, height: 2560 },
   ];
 }
 

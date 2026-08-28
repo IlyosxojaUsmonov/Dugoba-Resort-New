@@ -6,11 +6,11 @@ import {
 import { getAccommodations, IMAGES } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
 import AccommodationCard from '@/components/AccommodationCard';
-import heroImage from '@/atrof-muhit/xona-kotej.png';
-import tabiat1 from '@/atrof-muhit/tabiat1.png';
-import tabiat2 from '@/atrof-muhit/tabiat2.png';
-import tabiat3 from '@/atrof-muhit/tabiat3.png';
-import tabiat8 from '@/atrof-muhit/tabiat8.png';
+import heroImage from '@/atrof-muhit/xona-kotej.webp';
+import tabiat1 from '@/atrof-muhit/tabiat1.webp';
+import tabiat2 from '@/atrof-muhit/tabiat2.webp';
+import tabiat3 from '@/atrof-muhit/tabiat3.webp';
+import tabiat8 from '@/atrof-muhit/tabiat8.webp';
 
 export default function Home() {
   const { t, language } = useTranslation();
@@ -32,6 +32,9 @@ export default function Home() {
           <img
             src={heroImage}
             alt="Dugoba Resort"
+            width={1280}
+            height={960}
+            fetchPriority="high"
             className="w-full h-full object-cover animate-slow-zoom"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-stone-950/60 via-stone-950/30 to-stone-950/80" />
@@ -96,12 +99,12 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <img src={tabiat1} alt="Tabiat manzarasi" className="w-full h-64 object-cover rounded-sm shadow-md" loading="lazy" />
-                <img src={tabiat2} alt="Tabiat manzarasi" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={tabiat1} alt="Tabiat manzarasi" width={1920} height={2560} className="w-full h-64 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={tabiat2} alt="Tabiat manzarasi" width={1920} height={2560} className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
               </div>
               <div className="space-y-4 pt-8">
-                <img src={tabiat3} alt="Tabiat manzarasi" className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
-                <img src={tabiat8} alt="Tabiat manzarasi" className="w-full h-64 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={tabiat3} alt="Tabiat manzarasi" width={1920} height={2560} className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={tabiat8} alt="Tabiat manzarasi" width={1920} height={2560} className="w-full h-64 object-cover rounded-sm shadow-md" loading="lazy" />
               </div>
             </div>
           </div>
