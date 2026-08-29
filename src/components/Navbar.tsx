@@ -198,7 +198,8 @@ export default function Navbar() {
 
       {/* Mobil yon panel (drawer) */}
       <div
-        className={`xl:hidden fixed top-0 right-0 z-[60] h-full w-[82%] max-w-xs bg-stone-900 shadow-2xl transition-transform duration-300 ease-out overflow-y-auto ${
+        data-testid="mobile-nav-drawer"
+        className={`xl:hidden fixed top-0 right-0 z-[60] h-full w-[82%] max-w-xs sm:max-w-sm bg-stone-900 shadow-2xl transition-transform duration-300 ease-out overflow-y-auto ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >

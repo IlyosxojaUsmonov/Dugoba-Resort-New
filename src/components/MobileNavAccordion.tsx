@@ -18,26 +18,17 @@ export default function MobileNavAccordion({ label, to, viewAllLabel, groups, on
 
   return (
     <div className="border-b border-white/5 last:border-b-0">
-      <div className="flex items-center">
-        <Link
-          to={to}
-          onClick={onNavigate}
-          className={`flex-1 px-4 py-3 text-base font-medium rounded-sm transition-colors ${
-            isActive ? 'bg-forest-800 text-forest-300' : 'text-white/80 hover:bg-stone-800 hover:text-white'
-          }`}
-        >
-          {label}
-        </Link>
-        <button
-          type="button"
-          onClick={() => setExpanded((v) => !v)}
-          aria-expanded={expanded}
-          aria-label={label}
-          className="p-3 text-white/60 hover:text-white"
-        >
-          <ChevronDown size={18} className={`transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`} />
-        </button>
-      </div>
+      <button
+        type="button"
+        onClick={() => setExpanded((v) => !v)}
+        aria-expanded={expanded}
+        className={`flex w-full items-center justify-between gap-2 px-4 py-3 text-base font-medium rounded-sm transition-colors ${
+          isActive ? 'bg-forest-800 text-forest-300' : 'text-white/80 hover:bg-stone-800 hover:text-white'
+        }`}
+      >
+        {label}
+        <ChevronDown size={18} className={`shrink-0 transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`} />
+      </button>
 
       <div
         className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
@@ -68,15 +59,24 @@ export default function MobileNavAccordion({ label, to, viewAllLabel, groups, on
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="flex flex-col gap-0.5 py-1 pl-3">
+                    <div className="grid max-h-72 grid-cols-1 gap-1.5 overflow-y-auto overscroll-contain py-1.5 pl-2 pr-1 sm:grid-cols-2">
                       {group.items.map((item) => (
                         <Link
                           key={item.id}
                           to={`/obyekt/${item.id}`}
                           onClick={onNavigate}
-                          className="rounded-sm px-3 py-2 text-sm text-white/60 hover:bg-stone-800 hover:text-white"
+                          className="flex items-center gap-2.5 rounded-sm bg-white/5 p-1.5 transition-colors hover:bg-stone-800"
                         >
-                          {item.name}
+                          <img
+                            src={item.mainImage}
+                            alt={item.name}
+                            loading="lazy"
+                            className="h-11 w-11 shrink-0 rounded-sm object-cover"
+                          />
+                          <div className="min-w-0">
+                            <p className="truncate text-[13px] font-medium text-white/90">{item.name}</p>
+                            <p className="text-[11px] text-forest-300">{item.priceDisplay}</p>
+                          </div>
                         </Link>
                       ))}
                     </div>
