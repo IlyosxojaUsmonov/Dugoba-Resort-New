@@ -17,13 +17,15 @@ export default function MobileNavAccordion({ label, to, viewAllLabel, groups, on
   const isActive = useLocation().pathname === to;
 
   return (
-    <div className="border-b border-white/5 last:border-b-0">
+    <div>
       <button
         type="button"
         onClick={() => setExpanded((v) => !v)}
         aria-expanded={expanded}
-        className={`flex w-full items-center justify-between gap-2 px-4 py-3 text-base font-medium rounded-sm transition-colors ${
-          isActive ? 'bg-forest-800 text-forest-300' : 'text-white/80 hover:bg-stone-800 hover:text-white'
+        className={`flex w-full items-center justify-between gap-2 px-4 py-3 text-base font-medium rounded-sm border transition-colors ${
+          isActive
+            ? 'bg-forest-50 border-forest-200 text-forest-700'
+            : 'bg-white/60 border-stone-200 text-stone-700 hover:bg-stone-100 hover:text-stone-900'
         }`}
       >
         {label}
@@ -43,10 +45,10 @@ export default function MobileNavAccordion({ label, to, viewAllLabel, groups, on
                   type="button"
                   onClick={() => setOpenCategory((prev) => (prev === group.key ? null : group.key))}
                   aria-expanded={openCategory === group.key}
-                  className="flex w-full items-center justify-between px-3 py-2.5 text-sm font-medium text-white/70 hover:text-white"
+                  className="flex w-full items-center justify-between px-3 py-2.5 text-sm font-medium text-stone-600 hover:text-stone-900"
                 >
                   <span>
-                    {group.label} <span className="text-white/40">({group.items.length})</span>
+                    {group.label} <span className="text-stone-400">({group.items.length})</span>
                   </span>
                   <ChevronDown
                     size={14}
@@ -59,13 +61,13 @@ export default function MobileNavAccordion({ label, to, viewAllLabel, groups, on
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="grid max-h-72 grid-cols-1 gap-1.5 overflow-y-auto overscroll-contain py-1.5 pl-2 pr-1 sm:grid-cols-2">
+                    <div className="grid max-h-72 grid-cols-1 gap-1.5 overflow-y-auto overscroll-contain py-1.5 pl-2 pr-1 sm:grid-cols-2" data-lenis-prevent>
                       {group.items.map((item) => (
                         <Link
                           key={item.id}
                           to={`/obyekt/${item.id}`}
                           onClick={onNavigate}
-                          className="flex items-center gap-2.5 rounded-sm bg-white/5 p-1.5 transition-colors hover:bg-stone-800"
+                          className="flex items-center gap-2.5 rounded-sm bg-stone-50 p-1.5 transition-colors hover:bg-stone-100"
                         >
                           <img
                             src={item.mainImage}
@@ -74,8 +76,8 @@ export default function MobileNavAccordion({ label, to, viewAllLabel, groups, on
                             className="h-11 w-11 shrink-0 rounded-sm object-cover"
                           />
                           <div className="min-w-0">
-                            <p className="truncate text-[13px] font-medium text-white/90">{item.name}</p>
-                            <p className="text-[11px] text-forest-300">{item.priceDisplay}</p>
+                            <p className="truncate text-[13px] font-medium text-stone-800">{item.name}</p>
+                            <p className="text-[11px] text-forest-600">{item.priceDisplay}</p>
                           </div>
                         </Link>
                       ))}
@@ -87,7 +89,7 @@ export default function MobileNavAccordion({ label, to, viewAllLabel, groups, on
             <Link
               to={to}
               onClick={onNavigate}
-              className="mt-1 block rounded-sm px-3 py-2.5 text-sm font-medium text-forest-300 hover:bg-stone-800"
+              className="mt-1 block rounded-sm px-3 py-2.5 text-sm font-medium text-forest-700 hover:bg-stone-100"
             >
               {viewAllLabel}
             </Link>

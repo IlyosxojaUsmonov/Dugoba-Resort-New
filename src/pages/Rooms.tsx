@@ -4,6 +4,7 @@ import PageHero from '@/components/PageHero';
 import AccommodationCard from '@/components/AccommodationCard';
 import { getAccommodations, IMAGES } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
+import Reveal from '@/components/motion/Reveal';
 
 export default function Rooms() {
   const { t, language } = useTranslation();
@@ -176,7 +177,7 @@ export default function Rooms() {
             {/* Mobile filter drawer */}
             {showFilters && (
               <div className="lg:hidden fixed inset-0 z-50 bg-stone-950/50" onClick={() => setShowFilters(false)}>
-                <div className="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-white p-6 overflow-y-auto animate-slide-down" onClick={(e) => e.stopPropagation()}>
+                <div className="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-white p-6 overflow-y-auto animate-slide-down" onClick={(e) => e.stopPropagation()} data-lenis-prevent>
                   <div className="flex items-center justify-between mb-5 pb-4 border-b border-stone-100">
                     <h3 className="font-serif text-lg font-semibold">{t('rooms.filterHeading')}</h3>
                     <button onClick={() => setShowFilters(false)}><X size={22} className="text-stone-400" /></button>
@@ -195,11 +196,11 @@ export default function Rooms() {
                   </button>
                 </div>
               ) : (
-                <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                <Reveal variant="fade-up" stagger={0.1} className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
                   {rooms.map((room) => (
                     <AccommodationCard key={room.id} accommodation={room} />
                   ))}
-                </div>
+                </Reveal>
               )}
             </div>
           </div>

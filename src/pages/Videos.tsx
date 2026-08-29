@@ -4,6 +4,7 @@ import PageHero from '@/components/PageHero';
 import { getVideoItems, IMAGES, type VideoItem } from '@/data/accommodations';
 import { VideoModal } from '@/components/VideoPlayer';
 import { useTranslation } from '@/i18n/useTranslation';
+import Reveal from '@/components/motion/Reveal';
 
 type SelectedVideo = {
   thumbnail: string | null;
@@ -74,11 +75,11 @@ export default function Videos() {
             <h2 className="font-serif text-3xl font-semibold text-stone-900">{t('videos.resortTitle')}</h2>
             <p className="text-stone-500 mt-2 max-w-2xl">{t('videos.resortSubtitle')}</p>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-8">
+            <Reveal variant="fade-up" stagger={0.08} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-8">
               {resortVideos.map((video) => (
                 <VideoCard key={video.id} video={video} onOpen={openVideo} />
               ))}
-            </div>
+            </Reveal>
           </div>
         </section>
       )}
@@ -90,11 +91,11 @@ export default function Videos() {
             <h2 className="font-serif text-3xl font-semibold text-stone-900">{t('videos.natureTitle')}</h2>
             <p className="text-stone-500 mt-2 max-w-2xl">{t('videos.natureSubtitle')}</p>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-8">
+            <Reveal variant="fade-up" stagger={0.08} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-8">
               {natureVideos.map((video) => (
                 <VideoCard key={video.id} video={video} onOpen={openVideo} />
               ))}
-            </div>
+            </Reveal>
 
             {/* Note about videos */}
             <div className="mt-16 text-center bg-white p-8 rounded-sm">

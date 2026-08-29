@@ -11,6 +11,7 @@ import {
 } from '@/data/accommodations';
 import VideoPlayer, { VideoModal } from '@/components/VideoPlayer';
 import { useTranslation } from '@/i18n/useTranslation';
+import Reveal from '@/components/motion/Reveal';
 
 export default function TourPackages() {
   const { t, language } = useTranslation();
@@ -53,7 +54,7 @@ export default function TourPackages() {
       {/* PACKAGES */}
       <section className="py-20 bg-stone-50">
         <div className="container-lux">
-          <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <Reveal variant="pop-in" stagger={0.15} className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {tourPackages.map((pkg) => (
               <div key={pkg.id} className="lux-card flex flex-col">
                 <div className="p-8 flex flex-col flex-1">
@@ -105,7 +106,7 @@ export default function TourPackages() {
                 </div>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -199,7 +200,7 @@ export default function TourPackages() {
             <h2 className="section-title mb-3">{t('tourPackages.moreVideosTitle')}</h2>
             <p className="text-stone-600 max-w-2xl mb-8">{t('tourPackages.moreVideosDesc')}</p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Reveal variant="fade-up" stagger={0.1} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {extraVideos.map((video) => (
                 <button
                   key={video.id}
@@ -230,7 +231,7 @@ export default function TourPackages() {
                   </div>
                 </button>
               ))}
-            </div>
+            </Reveal>
           </div>
         </section>
       )}

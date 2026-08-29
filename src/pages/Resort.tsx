@@ -3,9 +3,16 @@ import { Mountain, Store, Flame, Baby, MapPin } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import { IMAGES, resortInfo, getResortLocation } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
+import { useParallax } from '@/hooks/useParallax';
+import { useCountUp } from '@/hooks/useCountUp';
+import Reveal from '@/components/motion/Reveal';
 
 export default function Resort() {
   const { t, language } = useTranslation();
+  const mountainParallaxRef = useParallax<HTMLImageElement>(0.2);
+  const countObjectRef = useCountUp<HTMLDivElement>('29');
+  const countCottageRef = useCountUp<HTMLDivElement>('5');
+  const countRoomRef = useCountUp<HTMLDivElement>('24');
 
   return (
     <div>
@@ -20,7 +27,7 @@ export default function Resort() {
       <section className="py-24 bg-white">
         <div className="container-lux">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1">
+            <Reveal variant="slide-left" className="order-2 lg:order-1">
               <p className="section-subtitle">{t('resort.subtitle')}</p>
               <h2 className="section-title mb-6">{t('resort.title')}</h2>
               <div className="space-y-4 text-stone-600 leading-relaxed">
@@ -30,26 +37,34 @@ export default function Resort() {
               </div>
               <div className="mt-8 grid grid-cols-3 gap-4">
                 <div className="text-center p-4 bg-forest-50 rounded-sm">
-                  <div className="font-serif text-3xl font-bold text-forest-700">29</div>
+                  <div ref={countObjectRef} className="font-serif text-3xl font-bold text-forest-700">29</div>
                   <div className="text-xs text-stone-500 uppercase tracking-wider mt-1">{t('resort.statObject')}</div>
                 </div>
                 <div className="text-center p-4 bg-forest-50 rounded-sm">
-                  <div className="font-serif text-3xl font-bold text-forest-700">5</div>
+                  <div ref={countCottageRef} className="font-serif text-3xl font-bold text-forest-700">5</div>
                   <div className="text-xs text-stone-500 uppercase tracking-wider mt-1">{t('resort.statCottage')}</div>
                 </div>
                 <div className="text-center p-4 bg-forest-50 rounded-sm">
-                  <div className="font-serif text-3xl font-bold text-forest-700">24</div>
+                  <div ref={countRoomRef} className="font-serif text-3xl font-bold text-forest-700">24</div>
                   <div className="text-xs text-stone-500 uppercase tracking-wider mt-1">{t('resort.statRoom')}</div>
                 </div>
               </div>
-            </div>
-            <div className="order-1 lg:order-2 space-y-4">
-              <img src={IMAGES.atrofMuhitTog} alt="Tog' manzarasi" width={1800} height={1200} className="w-full h-80 object-cover rounded-sm shadow-lg" loading="lazy" />
+            </Reveal>
+            <Reveal variant="mask-reveal" className="order-1 lg:order-2 space-y-4">
+              <div className="relative h-80 overflow-hidden rounded-sm shadow-lg">
+                <img
+                  ref={mountainParallaxRef}
+                  src={IMAGES.atrofMuhitTog}
+                  alt="Tog' manzarasi"
+                  className="absolute inset-[-15%] w-[130%] h-[130%] object-cover"
+                  loading="lazy"
+                />
+              </div>
               <div className="grid grid-cols-2 gap-4">
                 <img src={IMAGES.atrofMuhitXonaKotej} alt="Resort va kottejlar" width={1280} height={960} className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
                 <img src={IMAGES.atrofMuhitTabiat6} alt="Tog' manzarasi" width={640} height={640} className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -57,12 +72,12 @@ export default function Resort() {
       {/* RESORT AREAS */}
       <section className="py-24 bg-stone-50">
         <div className="container-lux">
-          <div className="text-center mb-16">
+          <Reveal variant="fade-up" className="text-center mb-16">
             <p className="section-subtitle">{t('resort.areasSubtitle')}</p>
             <h2 className="section-title">{t('resort.areasTitle')}</h2>
-          </div>
+          </Reveal>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <Reveal variant="fade-up" stagger={0.12} className="grid md:grid-cols-2 gap-8">
             <div className="lux-card flex flex-col sm:flex-row overflow-hidden">
               <img src={IMAGES.shop1} alt="Magazin" className="w-full sm:w-2/5 h-48 sm:h-auto object-cover" loading="lazy" />
               <div className="p-6 flex-1">
@@ -106,13 +121,13 @@ export default function Resort() {
                 </p>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* LOCATION */}
       <section className="py-24 bg-forest-950 text-white">
-        <div className="container-lux text-center">
+        <Reveal variant="fade-up" className="container-lux text-center">
           <MapPin size={40} className="mx-auto text-forest-400 mb-6" />
           <p className="section-subtitle text-forest-400">{t('resort.locationSubtitle')}</p>
           <h2 className="font-serif text-3xl sm:text-4xl font-semibold mb-4">
@@ -132,7 +147,7 @@ export default function Resort() {
               {t('resort.contact')}
             </Link>
           </div>
-        </div>
+        </Reveal>
       </section>
     </div>
   );

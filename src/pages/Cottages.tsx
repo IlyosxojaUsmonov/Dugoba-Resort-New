@@ -2,6 +2,7 @@ import PageHero from '@/components/PageHero';
 import AccommodationCard from '@/components/AccommodationCard';
 import { getAccommodations, IMAGES } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
+import Reveal from '@/components/motion/Reveal';
 
 export default function Cottages() {
   const { t, language } = useTranslation();
@@ -18,19 +19,19 @@ export default function Cottages() {
 
       <section className="py-24 bg-stone-50">
         <div className="container-lux">
-          <div className="mb-12 text-center">
+          <Reveal variant="fade-up" className="mb-12 text-center">
             <p className="section-subtitle">{t('cottages.subtitle')}</p>
             <h2 className="section-title">{t('cottages.title')}</h2>
             <p className="text-stone-600 mt-3 max-w-2xl mx-auto">
               {t('cottages.desc')}
             </p>
-          </div>
+          </Reveal>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Reveal variant="fade-up" stagger={0.12} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {cottages.map((c) => (
               <AccommodationCard key={c.id} accommodation={c} />
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
     </div>

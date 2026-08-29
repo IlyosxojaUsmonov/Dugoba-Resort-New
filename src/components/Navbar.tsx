@@ -4,6 +4,7 @@ import { Menu, X, Phone } from 'lucide-react';
 import { getAccommodations, resortInfo } from '@/data/accommodations';
 import { groupCottagesByCategory, groupRoomsByCapacity } from '@/lib/accommodationGroups';
 import { useTranslation } from '@/i18n/useTranslation';
+import { useMagnetic } from '@/hooks/useMagnetic';
 import logo from '@/atrof-muhit/dugobba.webp';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import NavMegaMenu from '@/components/NavMegaMenu';
@@ -16,6 +17,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeDesktopMenu, setActiveDesktopMenu] = useState<DesktopMenuKey>(null);
   const closeTimeoutRef = useRef<number | null>(null);
+  const ctaRef = useMagnetic<HTMLAnchorElement>(0.3, 10);
   const { t, language } = useTranslation();
 
   const accommodations = useMemo(() => getAccommodations(language), [language]);
@@ -60,8 +62,10 @@ export default function Navbar() {
     }`;
 
   const mobileLinkClass = ({ isActive }: { isActive: boolean }) =>
-    `px-4 py-3 text-base font-medium rounded-sm transition-colors ${
-      isActive ? 'bg-forest-800 text-forest-300' : 'text-white/80 hover:bg-stone-800 hover:text-white'
+    `block px-4 py-3 text-base font-medium rounded-sm border transition-colors ${
+      isActive
+        ? 'bg-forest-50 border-forest-200 text-forest-700'
+        : 'bg-white/60 border-stone-200 text-stone-700 hover:bg-stone-100 hover:text-stone-900'
     }`;
 
   const navLinks = [
@@ -79,7 +83,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -169,8 +173,9 @@ export default function Navbar() {
         <div className="hidden xl:flex items-center gap-3 shrink-0">
           <LanguageSwitcher variant="dark" />
           <a
+            ref={ctaRef}
             href={`tel:${resortInfo.phone.replace(/\s/g, '')}`}
-            className="flex items-center gap-2 px-3 2xl:px-4 py-2 border border-forest-400/40 rounded-sm text-forest-300 hover:bg-forest-700 hover:text-white hover:border-forest-700 transition-all duration-300"
+            className="flex items-center gap-2 px-3 2xl:px-4 py-2 border border-forest-400/40 rounded-sm text-forest-300 hover:bg-forest-700 hover:text-white hover:border-forest-700 hover:shadow-[0_0_20px_rgba(90,159,130,0.5)] transition-all duration-300"
           >
             <Phone size={16} className="shrink-0" />
             <span className="text-sm font-medium whitespace-nowrap">{t('navbar.book')}</span>
@@ -189,7 +194,7 @@ export default function Navbar() {
 
       {/* Mobil yon panel (drawer) fon parda */}
       <div
-        className={`xl:hidden fixed inset-0 z-[55] bg-stone-950/60 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`xl:hidden fixed inset-0 z-[55] bg-stone-950/60 backdrop-blur-sm transition-opacity duration-[450ms] ease-out ${
           isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
         onClick={() => setIsOpen(false)}
@@ -199,70 +204,86 @@ export default function Navbar() {
       {/* Mobil yon panel (drawer) */}
       <div
         data-testid="mobile-nav-drawer"
-        className={`xl:hidden fixed top-0 right-0 z-[60] h-full w-[82%] max-w-xs sm:max-w-sm bg-stone-900 shadow-2xl transition-transform duration-300 ease-out overflow-y-auto ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
+        data-lenis-prevent
+        className={`xl:hidden fixed top-0 right-0 z-[60] h-full w-[82%] max-w-xs sm:max-w-sm bg-white/85 backdrop-blur-2xl shadow-2xl overflow-y-auto ${
+          isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-90'
         }`}
+        style={{ transition: 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease-out' }}
       >
-        <div className="flex items-center justify-between p-5 border-b border-white/10">
-          <span className="font-serif text-white text-lg font-semibold">Dugoba Resort</span>
-          <button
-            className="text-white p-1"
-            onClick={() => setIsOpen(false)}
-            aria-label="Close menu"
-          >
-            <X size={24} />
-          </button>
-        </div>
-
-        <div className="p-5 flex flex-col gap-1">
-          <div className="mb-2">
-            <LanguageSwitcher variant="dark" />
+          <div className="flex items-center justify-between p-5 border-b border-stone-200">
+            <span className="font-serif text-stone-900 text-lg font-semibold">Dugoba Resort</span>
+            <button
+              className="text-stone-500 hover:text-stone-900 p-1 transition-colors"
+              onClick={() => setIsOpen(false)}
+              aria-label="Close menu"
+            >
+              <X size={24} />
+            </button>
           </div>
-          {navLinks.map((link) => {
-            if (link.to === '/kottejlar') {
+
+          <div className="p-5 flex flex-col gap-2">
+            <div
+              className={`mb-2 transition-all duration-300 ease-out ${isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-6'}`}
+              style={{ transitionDelay: isOpen ? '60ms' : '0ms' }}
+            >
+              <LanguageSwitcher variant="light" />
+            </div>
+            {navLinks.map((link, i) => {
+              const itemClass = `transition-all duration-300 ease-out ${isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-6'}`;
+              const itemStyle = { transitionDelay: isOpen ? `${100 + i * 45}ms` : '0ms' };
+
+              if (link.to === '/kottejlar') {
+                return (
+                  <div key={link.to} className={itemClass} style={itemStyle}>
+                    <MobileNavAccordion
+                      label={link.label}
+                      to={link.to}
+                      viewAllLabel={t('navbar.viewAllCottages')}
+                      groups={cottageGroups}
+                      onNavigate={() => setIsOpen(false)}
+                    />
+                  </div>
+                );
+              }
+              if (link.to === '/xonalar') {
+                return (
+                  <div key={link.to} className={itemClass} style={itemStyle}>
+                    <MobileNavAccordion
+                      label={link.label}
+                      to={link.to}
+                      viewAllLabel={t('navbar.viewAllRooms')}
+                      groups={roomGroups}
+                      onNavigate={() => setIsOpen(false)}
+                    />
+                  </div>
+                );
+              }
               return (
-                <MobileNavAccordion
-                  key={link.to}
-                  label={link.label}
-                  to={link.to}
-                  viewAllLabel={t('navbar.viewAllCottages')}
-                  groups={cottageGroups}
-                  onNavigate={() => setIsOpen(false)}
-                />
+                <div key={link.to} className={itemClass} style={itemStyle}>
+                  <NavLink
+                    to={link.to}
+                    end={link.to === '/'}
+                    onClick={() => setIsOpen(false)}
+                    className={mobileLinkClass}
+                  >
+                    {link.label}
+                  </NavLink>
+                </div>
               );
-            }
-            if (link.to === '/xonalar') {
-              return (
-                <MobileNavAccordion
-                  key={link.to}
-                  label={link.label}
-                  to={link.to}
-                  viewAllLabel={t('navbar.viewAllRooms')}
-                  groups={roomGroups}
-                  onNavigate={() => setIsOpen(false)}
-                />
-              );
-            }
-            return (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                end={link.to === '/'}
-                onClick={() => setIsOpen(false)}
-                className={mobileLinkClass}
+            })}
+            <div
+              className={`transition-all duration-300 ease-out ${isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-6'}`}
+              style={{ transitionDelay: isOpen ? `${100 + navLinks.length * 45}ms` : '0ms' }}
+            >
+              <a
+                href={`tel:${resortInfo.phone.replace(/\s/g, '')}`}
+                className="flex items-center gap-2 px-4 py-3 mt-2 bg-forest-700 text-white rounded-sm"
               >
-                {link.label}
-              </NavLink>
-            );
-          })}
-          <a
-            href={`tel:${resortInfo.phone.replace(/\s/g, '')}`}
-            className="flex items-center gap-2 px-4 py-3 mt-2 bg-forest-700 text-white rounded-sm"
-          >
-            <Phone size={18} />
-            <span className="font-medium">{resortInfo.phone}</span>
-          </a>
-        </div>
+                <Phone size={18} />
+                <span className="font-medium">{resortInfo.phone}</span>
+              </a>
+            </div>
+          </div>
       </div>
     </>
   );

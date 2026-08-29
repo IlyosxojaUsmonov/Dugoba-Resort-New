@@ -48,7 +48,7 @@ export default function NavMegaMenu({ open, groups, viewAllTo, viewAllLabel, onN
             ))}
           </div>
 
-          <div className="max-h-[26rem] flex-1 overflow-y-auto p-3">
+          <div className="max-h-[26rem] flex-1 overflow-y-auto p-3" data-lenis-prevent>
             <div className="grid grid-cols-2 gap-1.5">
               {activeGroup?.items.map((item) => (
                 <Link

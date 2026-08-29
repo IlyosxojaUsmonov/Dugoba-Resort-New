@@ -13,6 +13,16 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'motion-vendor': ['gsap', 'lenis', 'framer-motion'],
+        },
+      },
+    },
+  },
   experimental: {
     renderBuiltUrl(filename, { type, hostType }) {
       if (type === 'asset' && hostType !== 'html') {

@@ -3,6 +3,7 @@ import PageHero from '@/components/PageHero';
 import Lightbox from '@/components/Lightbox';
 import { getGalleryImages, IMAGES } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
+import Reveal from '@/components/motion/Reveal';
 
 export default function Gallery() {
   const { t, language } = useTranslation();
@@ -21,7 +22,7 @@ export default function Gallery() {
       <section className="py-20 bg-white">
         <div className="container-lux">
           {/* Masonry grid */}
-          <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
+          <Reveal variant="fade-up" stagger={0.04} className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
             {galleryImages.map((img, i) => (
               <button
                 key={`${img.url}-${i}`}
@@ -44,7 +45,7 @@ export default function Gallery() {
                 </div>
               </button>
             ))}
-          </div>
+          </Reveal>
 
           {lightboxIndex !== null && (
             <Lightbox

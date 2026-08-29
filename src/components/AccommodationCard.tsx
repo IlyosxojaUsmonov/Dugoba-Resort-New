@@ -3,6 +3,7 @@ import { Users, ArrowRight, Check } from 'lucide-react';
 import type { Accommodation } from '@/data/accommodations';
 import { useBookingModal } from '@/lib/store';
 import { useTranslation } from '@/i18n/useTranslation';
+import { useTilt } from '@/hooks/useTilt';
 
 interface Props {
   accommodation: Accommodation;
@@ -11,15 +12,20 @@ interface Props {
 export default function AccommodationCard({ accommodation }: Props) {
   const openBooking = useBookingModal((s) => s.open);
   const { t } = useTranslation();
+  const tiltRef = useTilt<HTMLDivElement>(7);
 
   return (
-    <div className="lux-card group flex flex-col">
+    <div ref={tiltRef} className="lux-card group flex flex-col will-change-transform">
       <Link to={`/obyekt/${accommodation.id}`} className="relative overflow-hidden block aspect-[4/3]">
         <img
           src={accommodation.mainImage}
           alt={accommodation.name}
           loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-125 group-hover:brightness-105"
+        />
+        <div
+          className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-[-20deg] pointer-events-none"
+          aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         {accommodation.isLuxury && (

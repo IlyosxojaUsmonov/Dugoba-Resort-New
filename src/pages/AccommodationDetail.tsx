@@ -10,6 +10,7 @@ import { useTranslation } from '@/i18n/useTranslation';
 import AccommodationCard from '@/components/AccommodationCard';
 import Lightbox from '@/components/Lightbox';
 import VideoPlayer from '@/components/VideoPlayer';
+import Reveal from '@/components/motion/Reveal';
 
 export default function AccommodationDetail() {
   const { id } = useParams<{ id: string }>();
@@ -140,7 +141,7 @@ export default function AccommodationDetail() {
           <p className="section-subtitle mb-3">{t('accommodationDetail.gallerySubtitle')}</p>
           <h2 className="section-title mb-8">{t('accommodationDetail.galleryTitle')}</h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          <Reveal variant="fade-up" stagger={0.05} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {uniqueImages.map((img, i) => (
               <button
                 key={i}
@@ -161,7 +162,7 @@ export default function AccommodationDetail() {
                 </div>
               </button>
             ))}
-          </div>
+          </Reveal>
 
           {lightboxIndex !== null && (
             <Lightbox
@@ -206,7 +207,7 @@ export default function AccommodationDetail() {
         <div className="container-lux max-w-4xl">
           <p className="section-subtitle mb-3">{t('accommodationDetail.amenitiesSubtitle')}</p>
           <h2 className="section-title mb-8">{t('accommodationDetail.amenitiesTitle')}</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <Reveal variant="fade-up" stagger={0.06} className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {accommodation.amenities.map((amenity) => (
               <div key={amenity} className="flex items-center gap-3 p-4 bg-white rounded-sm border border-stone-100">
                 <div className="w-8 h-8 rounded-full bg-forest-50 flex items-center justify-center shrink-0">
@@ -215,7 +216,7 @@ export default function AccommodationDetail() {
                 <span className="text-sm text-stone-700 font-medium">{amenity}</span>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -229,7 +230,7 @@ export default function AccommodationDetail() {
               ? t('accommodationDetail.tapchanDescCottage')
               : t('accommodationDetail.tapchanDescRoom')}
           </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <Reveal variant="fade-up" stagger={0.08} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {accommodation.tapchanImages.map((img, i) => (
               <button
                 key={i}
@@ -240,7 +241,7 @@ export default function AccommodationDetail() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors" />
               </button>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -255,7 +256,7 @@ export default function AccommodationDetail() {
                 ? t('accommodationDetail.kitchenDescLux')
                 : t('accommodationDetail.kitchenDescDefault')}
             </p>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            <Reveal variant="fade-up" stagger={0.08} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
               {accommodation.kitchenImages.map((img, i) => (
                 <button
                   key={i}
@@ -266,7 +267,7 @@ export default function AccommodationDetail() {
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors" />
                 </button>
               ))}
-            </div>
+            </Reveal>
             {accommodation.kitchenVideo && (
               <div className="max-w-2xl">
                 <VideoPlayer
@@ -306,11 +307,11 @@ export default function AccommodationDetail() {
           <div className="container-lux">
             <p className="section-subtitle mb-3">{t('accommodationDetail.relatedSubtitle')}</p>
             <h2 className="section-title mb-8">{t('accommodationDetail.relatedTitle')}</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Reveal variant="fade-up" stagger={0.12} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {related.map((r) => (
                 <AccommodationCard key={r.id} accommodation={r} />
               ))}
-            </div>
+            </Reveal>
           </div>
         </section>
       )}

@@ -80,7 +80,7 @@ export default function BookingModal() {
     <div className="fixed inset-0 z-[90] flex items-center justify-center p-4 animate-fade-in">
       <div className="absolute inset-0 bg-stone-950/80 backdrop-blur-sm" onClick={close} />
 
-      <div className="relative bg-white rounded-sm shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto animate-scale-in">
+      <div className="relative bg-white rounded-sm shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto animate-scale-in" data-lenis-prevent>
         {sent ? (
           <div className="p-8">
             <div className="flex flex-col items-center text-center mb-6">
