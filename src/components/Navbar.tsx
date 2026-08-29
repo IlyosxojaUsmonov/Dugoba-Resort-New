@@ -1,15 +1,68 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
-import { resortInfo } from '@/data/accommodations';
+import { getAccommodations, resortInfo } from '@/data/accommodations';
+import { groupCottagesByCategory, groupRoomsByCapacity } from '@/lib/accommodationGroups';
 import { useTranslation } from '@/i18n/useTranslation';
 import logo from '@/atrof-muhit/dugobba.webp';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import NavMegaMenu from '@/components/NavMegaMenu';
+import MobileNavAccordion from '@/components/MobileNavAccordion';
+
+type DesktopMenuKey = 'cottages' | 'rooms' | null;
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { t } = useTranslation();
+  const [activeDesktopMenu, setActiveDesktopMenu] = useState<DesktopMenuKey>(null);
+  const closeTimeoutRef = useRef<number | null>(null);
+  const { t, language } = useTranslation();
+
+  const accommodations = useMemo(() => getAccommodations(language), [language]);
+  const roomGroups = useMemo(
+    () => groupRoomsByCapacity(accommodations.filter((a) => a.type === 'room')),
+    [accommodations],
+  );
+  const cottageGroups = useMemo(
+    () => groupCottagesByCategory(accommodations.filter((a) => a.type === 'cottage')),
+    [accommodations],
+  );
+
+  const openDesktopMenu = (menu: DesktopMenuKey) => {
+    if (closeTimeoutRef.current !== null) {
+      window.clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setActiveDesktopMenu(menu);
+  };
+
+  const scheduleCloseDesktopMenu = () => {
+    closeTimeoutRef.current = window.setTimeout(() => setActiveDesktopMenu(null), 150);
+  };
+
+  const closeDesktopMenu = () => {
+    if (closeTimeoutRef.current !== null) {
+      window.clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setActiveDesktopMenu(null);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current !== null) window.clearTimeout(closeTimeoutRef.current);
+    };
+  }, []);
+
+  const desktopLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `px-2 2xl:px-3 py-2 text-[13px] 2xl:text-sm font-medium tracking-wide whitespace-nowrap transition-colors duration-300 ${
+      isActive ? 'text-forest-300' : 'text-white/80 hover:text-white'
+    }`;
+
+  const mobileLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `px-4 py-3 text-base font-medium rounded-sm transition-colors ${
+      isActive ? 'bg-forest-800 text-forest-300' : 'text-white/80 hover:bg-stone-800 hover:text-white'
+    }`;
 
   const navLinks = [
     { to: '/', label: t('navbar.home') },
@@ -40,6 +93,7 @@ export default function Navbar() {
   }, [isOpen]);
 
   return (
+    <>
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
@@ -61,20 +115,55 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden xl:flex items-center gap-0.5">
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.to === '/'}
-              className={({ isActive }) =>
-                `px-2 2xl:px-3 py-2 text-[13px] 2xl:text-sm font-medium tracking-wide whitespace-nowrap transition-colors duration-300 ${
-                  isActive ? 'text-forest-300' : 'text-white/80 hover:text-white'
-                }`
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
+          {navLinks.map((link) => {
+            if (link.to === '/kottejlar') {
+              return (
+                <div
+                  key={link.to}
+                  className="relative"
+                  onMouseEnter={() => openDesktopMenu('cottages')}
+                  onMouseLeave={scheduleCloseDesktopMenu}
+                >
+                  <NavLink to={link.to} className={desktopLinkClass}>
+                    {link.label}
+                  </NavLink>
+                  <NavMegaMenu
+                    open={activeDesktopMenu === 'cottages'}
+                    groups={cottageGroups}
+                    viewAllTo="/kottejlar"
+                    viewAllLabel={t('navbar.viewAllCottages')}
+                    onNavigate={closeDesktopMenu}
+                  />
+                </div>
+              );
+            }
+            if (link.to === '/xonalar') {
+              return (
+                <div
+                  key={link.to}
+                  className="relative"
+                  onMouseEnter={() => openDesktopMenu('rooms')}
+                  onMouseLeave={scheduleCloseDesktopMenu}
+                >
+                  <NavLink to={link.to} className={desktopLinkClass}>
+                    {link.label}
+                  </NavLink>
+                  <NavMegaMenu
+                    open={activeDesktopMenu === 'rooms'}
+                    groups={roomGroups}
+                    viewAllTo="/xonalar"
+                    viewAllLabel={t('navbar.viewAllRooms')}
+                    onNavigate={closeDesktopMenu}
+                  />
+                </div>
+              );
+            }
+            return (
+              <NavLink key={link.to} to={link.to} end={link.to === '/'} className={desktopLinkClass}>
+                {link.label}
+              </NavLink>
+            );
+          })}
         </div>
 
         <div className="hidden xl:flex items-center gap-3 shrink-0">
@@ -96,6 +185,7 @@ export default function Navbar() {
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
+    </header>
 
       {/* Mobil yon panel (drawer) fon parda */}
       <div
@@ -127,23 +217,43 @@ export default function Navbar() {
           <div className="mb-2">
             <LanguageSwitcher variant="dark" />
           </div>
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.to === '/'}
-              onClick={() => setIsOpen(false)}
-              className={({ isActive }) =>
-                `px-4 py-3 text-base font-medium rounded-sm transition-colors ${
-                  isActive
-                    ? 'bg-forest-800 text-forest-300'
-                    : 'text-white/80 hover:bg-stone-800 hover:text-white'
-                }`
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
+          {navLinks.map((link) => {
+            if (link.to === '/kottejlar') {
+              return (
+                <MobileNavAccordion
+                  key={link.to}
+                  label={link.label}
+                  to={link.to}
+                  viewAllLabel={t('navbar.viewAllCottages')}
+                  groups={cottageGroups}
+                  onNavigate={() => setIsOpen(false)}
+                />
+              );
+            }
+            if (link.to === '/xonalar') {
+              return (
+                <MobileNavAccordion
+                  key={link.to}
+                  label={link.label}
+                  to={link.to}
+                  viewAllLabel={t('navbar.viewAllRooms')}
+                  groups={roomGroups}
+                  onNavigate={() => setIsOpen(false)}
+                />
+              );
+            }
+            return (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                end={link.to === '/'}
+                onClick={() => setIsOpen(false)}
+                className={mobileLinkClass}
+              >
+                {link.label}
+              </NavLink>
+            );
+          })}
           <a
             href={`tel:${resortInfo.phone.replace(/\s/g, '')}`}
             className="flex items-center gap-2 px-4 py-3 mt-2 bg-forest-700 text-white rounded-sm"
@@ -153,6 +263,6 @@ export default function Navbar() {
           </a>
         </div>
       </div>
-    </header>
+    </>
   );
 }
