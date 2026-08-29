@@ -125,13 +125,11 @@ export const translations = {
       title: 'Barcha kottejlar',
       desc:
         "Resortning to'g'ri qismida jami 5 ta kottej mavjud. Har bir kottej alohida obyekt sifatida yaratilgan — o'zining rasmi, galereyasi, videosi, tavsifi va bron qilish tugmasi bilan.",
-      cottageWord: 'kottej',
     },
     rooms: {
       heroTitle: 'Xonalar',
       heroSubtitle:
         "24 ta alohida xona — 3, 4, 6, 8 va 10 kishilik variantlar, barchasi zamonaviy qulayliklar bilan",
-      roomWord: 'xona',
       capacityAll: 'Barchasi',
       sortDefault: 'Standart tartib',
       sortPriceAsc: 'Narx: arzondan qimmatga',
@@ -503,13 +501,11 @@ export const translations = {
       title: 'Все коттеджи',
       desc:
         'В передней части курорта расположено 5 коттеджей. Каждый коттедж представлен как отдельный объект — со своим фото, галереей, видео, описанием и кнопкой бронирования.',
-      cottageWord: 'коттеджей',
     },
     rooms: {
       heroTitle: 'Номера',
       heroSubtitle:
         '24 отдельных номера — варианты на 3, 4, 6, 8 и 10 человек, все с современными удобствами',
-      roomWord: 'номеров',
       capacityAll: 'Все',
       sortDefault: 'Стандартный порядок',
       sortPriceAsc: 'Цена: сначала дешевле',

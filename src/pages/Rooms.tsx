@@ -2,7 +2,6 @@ import { useState, useMemo } from 'react';
 import { SlidersHorizontal, X } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import AccommodationCard from '@/components/AccommodationCard';
-import CategoryAccordion from '@/components/CategoryAccordion';
 import { getAccommodations, IMAGES } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
 
@@ -13,19 +12,6 @@ export default function Rooms() {
   const [hasTapchan, setHasTapchan] = useState(false);
   const [sortBy, setSortBy] = useState('default');
   const [showFilters, setShowFilters] = useState(false);
-  const [openCapacities, setOpenCapacities] = useState<Set<number>>(new Set());
-
-  const toggleGroup = (cap: number) => {
-    setOpenCapacities((prev) => {
-      const next = new Set(prev);
-      if (next.has(cap)) {
-        next.delete(cap);
-      } else {
-        next.add(cap);
-      }
-      return next;
-    });
-  };
 
   const capacityOptions = [
     { value: 0, label: t('rooms.capacityAll') },
@@ -70,21 +56,6 @@ export default function Rooms() {
 
     return result;
   }, [language, capacity, hasKitchen, hasTapchan, sortBy]);
-
-  const groupedRooms = useMemo(() => {
-    const map = new Map<number, typeof rooms>();
-    for (const room of rooms) {
-      const group = map.get(room.capacity);
-      if (group) {
-        group.push(room);
-      } else {
-        map.set(room.capacity, [room]);
-      }
-    }
-    const entries = Array.from(map.entries());
-    entries.sort((a, b) => (sortBy === 'capacity-desc' ? b[0] - a[0] : a[0] - b[0]));
-    return entries;
-  }, [rooms, sortBy]);
 
   const activeFilterCount = (capacity > 0 ? 1 : 0) + (hasKitchen ? 1 : 0) + (hasTapchan ? 1 : 0);
 
@@ -223,28 +194,10 @@ export default function Rooms() {
                     {t('rooms.clearFilters')}
                   </button>
                 </div>
-              ) : capacity > 0 ? (
+              ) : (
                 <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
                   {rooms.map((room) => (
                     <AccommodationCard key={room.id} accommodation={room} />
-                  ))}
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {groupedRooms.map(([cap, group]) => (
-                    <CategoryAccordion
-                      key={cap}
-                      title={group[0].category}
-                      count={group.length}
-                      countLabel={t('rooms.roomWord')}
-                      capacityLabel={`${cap} ${t('common.seatedPerson')}`}
-                      isOpen={openCapacities.has(cap)}
-                      onToggle={() => toggleGroup(cap)}
-                    >
-                      {group.map((room) => (
-                        <AccommodationCard key={room.id} accommodation={room} />
-                      ))}
-                    </CategoryAccordion>
                   ))}
                 </div>
               )}
