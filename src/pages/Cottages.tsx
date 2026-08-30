@@ -1,9 +1,10 @@
 import PageHero from '@/components/PageHero';
 import AccommodationCard from '@/components/AccommodationCard';
-import { getAccommodations, IMAGES } from '@/data/accommodations';
+import { getAccommodations } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
 import { useDocumentMeta } from '@/hooks/useDocumentMeta';
 import Reveal from '@/components/motion/Reveal';
+import cottagesHero from '@/atrof-muhit/image.webp';
 
 export default function Cottages() {
   const { t, language } = useTranslation();
@@ -15,7 +16,8 @@ export default function Cottages() {
       <PageHero
         title={t('cottages.heroTitle')}
         subtitle={t('cottages.heroSubtitle')}
-        image={IMAGES.cottage1}
+        image={cottagesHero}
+        imagePosition="center 78%"
         breadcrumb={[{ label: t('common.home'), to: '/' }, { label: t('cottages.heroTitle') }]}
       />
 

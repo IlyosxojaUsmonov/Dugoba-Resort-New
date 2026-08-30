@@ -2,14 +2,16 @@ interface PageHeroProps {
   title: string;
   subtitle?: string;
   image: string;
+  /** CSS object-position for the banner image, e.g. 'center 75%' to favor the lower half of a tall photo. */
+  imagePosition?: string;
   breadcrumb?: { label: string; to?: string }[];
 }
 
-export default function PageHero({ title, subtitle, image, breadcrumb }: PageHeroProps) {
+export default function PageHero({ title, subtitle, image, imagePosition = 'center', breadcrumb }: PageHeroProps) {
   return (
     <section className="relative h-[50vh] min-h-[400px] flex items-end overflow-hidden">
       <div className="absolute inset-0">
-        <img src={image} alt={title} className="w-full h-full object-cover" />
+        <img src={image} alt={title} className="w-full h-full object-cover" style={{ objectPosition: imagePosition }} />
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-stone-950/30" />
       </div>
 
