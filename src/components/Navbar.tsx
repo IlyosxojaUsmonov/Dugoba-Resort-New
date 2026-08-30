@@ -79,6 +79,7 @@ export default function Navbar() {
     { to: '/videolar', label: t('navbar.videos') },
     { to: '/tog-manzarasi', label: t('navbar.mountainViews') },
     { to: '/aloqa', label: t('navbar.contact') },
+    { to: '/qoidalar', label: t('navbar.rules') },
   ];
 
   useEffect(() => {
