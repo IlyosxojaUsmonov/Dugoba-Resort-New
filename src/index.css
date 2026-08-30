@@ -78,39 +78,62 @@ body {
   cursor: none !important;
 }
 
+@keyframes cursor-glow-breathe {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.12); }
+}
+
 .cursor-dot {
   position: fixed;
   top: 0;
   left: 0;
-  width: 8px;
-  height: 8px;
-  margin: -4px 0 0 -4px;
-  border-radius: 9999px;
-  background-color: #5a9f82;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #d9ffe9 0%, #7ed9ab 55%, transparent 100%);
+  box-shadow:
+    0 0 8px 2px rgba(217, 255, 233, 0.95),
+    0 0 22px 6px rgba(126, 217, 171, 0.75);
   pointer-events: none;
   z-index: 9999;
+  mix-blend-mode: screen;
+  transition: opacity 0.3s ease;
 }
 
 .cursor-ring {
   position: fixed;
   top: 0;
   left: 0;
-  width: 36px;
-  height: 36px;
-  margin: -18px 0 0 -18px;
-  border-radius: 9999px;
-  border: 1.5px solid rgba(90, 159, 130, 0.55);
+  width: 0;
+  height: 0;
   pointer-events: none;
   z-index: 9998;
-  transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
 }
 
-.cursor-ring.cursor-ring-hover {
-  width: 56px;
-  height: 56px;
-  margin: -28px 0 0 -28px;
-  background-color: rgba(90, 159, 130, 0.15);
-  border-color: #5a9f82;
+.cursor-ring::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90px;
+  height: 90px;
+  margin: -45px 0 0 -45px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(126, 217, 171, 0.65) 0%, rgba(90, 159, 130, 0.32) 42%, rgba(90, 159, 130, 0) 72%);
+  filter: blur(4px);
+  mix-blend-mode: screen;
+  animation: cursor-glow-breathe 3.2s ease-in-out infinite;
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease, background 0.5s ease;
+}
+
+.cursor-ring.cursor-ring-hover::before {
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  filter: blur(6px);
+  background: radial-gradient(circle, rgba(191, 255, 220, 0.75) 0%, rgba(90, 159, 130, 0.35) 45%, rgba(90, 159, 130, 0) 75%);
 }
 
 /* Loading screen */
