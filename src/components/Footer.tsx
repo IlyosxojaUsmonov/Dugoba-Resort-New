@@ -49,6 +49,7 @@ export default function Footer() {
               <li><Link to="/videolar" className="text-sm hover:text-forest-400 transition-colors">{t('navbar.videos')}</Link></li>
               <li><Link to="/tog-manzarasi" className="text-sm hover:text-forest-400 transition-colors">{t('navbar.mountainViews')}</Link></li>
               <li><Link to="/aloqa" className="text-sm hover:text-forest-400 transition-colors">{t('navbar.contact')}</Link></li>
+              <li><Link to="/qoidalar" className="text-sm hover:text-forest-400 transition-colors">{t('navbar.rules')}</Link></li>
             </ul>
           </div>
 

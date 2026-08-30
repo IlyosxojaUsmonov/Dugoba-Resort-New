@@ -24,6 +24,7 @@ const Videos = lazy(() => import('@/pages/Videos'));
 const MountainViews = lazy(() => import('@/pages/MountainViews'));
 const Contact = lazy(() => import('@/pages/Contact'));
 const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
+const Rules = lazy(() => import('@/pages/Rules'));
 
 function LanguageFade({ children }: { children: ReactNode }) {
   const { language } = useTranslation();
@@ -69,6 +70,7 @@ function AnimatedRoutes() {
             <Route path="/tog-manzarasi" element={<MountainViews />} />
             <Route path="/aloqa" element={<Contact />} />
             <Route path="/maxfiylik-siyosati" element={<PrivacyPolicy />} />
+            <Route path="/qoidalar" element={<Rules />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </Suspense>

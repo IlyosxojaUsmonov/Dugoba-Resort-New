@@ -20,6 +20,7 @@ export const translations = {
       videos: 'Videolar',
       mountainViews: "Tog' manzarasi",
       contact: 'Aloqa',
+      rules: 'Qoidalar',
       book: 'Bron qilish',
       viewAllRooms: 'Barcha xonalarni ko\'rish',
       viewAllCottages: 'Barcha kottejlarni ko\'rish',
@@ -422,6 +423,19 @@ export const translations = {
       contactBody:
         "Maxfiylik siyosatimiz yuzasidan savollaringiz bo'lsa, quyidagi aloqa vositalari orqali biz bilan bog'lanishingiz mumkin.",
     },
+    rules: {
+      heroTitle: 'Ichki tartib qoidalari',
+      heroSubtitle: "Barcha mehmonlar uchun qulay va xavfsiz muhitni ta'minlash uchun rioya qilinadigan qoidalar",
+      intro:
+        "Dugoba Resort barcha mehmonlar uchun xavfsiz, oilaviy va qulay muhitni saqlab qolish maqsadida quyidagi ichki tartib qoidalarini joriy etgan. Hududimizga kirishdan oldin ular bilan tanishib chiqishingizni so'raymiz.",
+      alcoholTitle: 'Spirtli ichimliklar taqiqlanadi',
+      alcoholBody: "Resort hududida spirtli ichimliklarni iste'mol qilish va olib kirish qat'iyan taqiqlanadi.",
+      smokingTitle: 'Chekish, nos va boshqa zararli moddalar taqiqlanadi',
+      smokingBody: "Sigaret, nos va boshqa zararli/mast qiluvchi moddalarni iste'mol qilish taqiqlanadi.",
+      dressTitle: 'Kiyinish tartibi',
+      dressBody: "Resortning ichki hududida shortik va maykada yurish mumkin emas — kiyinish odobiga rioya qilishingizni so'raymiz.",
+      note: "Qoidalarga rioya etilmagan holatlarda resort ma'muriyati mehmonni ogohlantirish yoki xizmat ko'rsatishdan bosh tortish huquqini o'zida saqlab qoladi.",
+    },
   },
   ru: {
     common: {
@@ -444,6 +458,7 @@ export const translations = {
       videos: 'Видео',
       mountainViews: 'Вид на горы',
       contact: 'Контакты',
+      rules: 'Правила',
       book: 'Забронировать',
       viewAllRooms: 'Смотреть все номера',
       viewAllCottages: 'Смотреть все коттеджи',
@@ -836,6 +851,19 @@ export const translations = {
       contactTitle: 'Свяжитесь с нами',
       contactBody:
         'Если у вас есть вопросы по нашей политике конфиденциальности, вы можете связаться с нами через контакты ниже.',
+    },
+    rules: {
+      heroTitle: 'Правила внутреннего распорядка',
+      heroSubtitle: 'Правила, которые соблюдаются для комфортной и безопасной атмосферы для всех гостей',
+      intro:
+        'Dugoba Resort установил следующие правила внутреннего распорядка, чтобы сохранить безопасную, семейную и комфортную атмосферу для всех гостей. Просим вас ознакомиться с ними перед посещением территории.',
+      alcoholTitle: 'Алкогольные напитки запрещены',
+      alcoholBody: 'Употребление и пронос алкогольных напитков на территории курорта категорически запрещены.',
+      smokingTitle: 'Курение, насвай и другие вредные вещества запрещены',
+      smokingBody: 'Курение сигарет, употребление насвая и других вредных или одурманивающих веществ запрещено.',
+      dressTitle: 'Форма одежды',
+      dressBody: 'На внутренней территории курорта не допускается нахождение в шортах и майках — просим соблюдать опрятный вид.',
+      note: 'В случае несоблюдения правил администрация курорта оставляет за собой право сделать предупреждение гостю или отказать в обслуживании.',
     },
   },
 } as const;
