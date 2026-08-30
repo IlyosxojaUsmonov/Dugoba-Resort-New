@@ -2,10 +2,12 @@ import { Check } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import { getAmenities, IMAGES } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
 import Reveal from '@/components/motion/Reveal';
 
 export default function Amenities() {
   const { t, tList, language } = useTranslation();
+  useDocumentMeta({ title: t('amenities.heroTitle'), description: t('amenities.heroSubtitle') });
   const amenities = getAmenities(language);
   const fullList = tList('amenities.list');
 

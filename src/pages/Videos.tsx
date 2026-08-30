@@ -4,6 +4,7 @@ import PageHero from '@/components/PageHero';
 import { getVideoItems, IMAGES, type VideoItem } from '@/data/accommodations';
 import { VideoModal } from '@/components/VideoPlayer';
 import { useTranslation } from '@/i18n/useTranslation';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
 import Reveal from '@/components/motion/Reveal';
 
 type SelectedVideo = {
@@ -46,6 +47,7 @@ function VideoCard({ video, onOpen }: { video: VideoItem; onOpen: (v: VideoItem)
 
 export default function Videos() {
   const { t, language } = useTranslation();
+  useDocumentMeta({ title: t('videos.heroTitle'), description: t('videos.heroSubtitle') });
   const [selectedVideo, setSelectedVideo] = useState<SelectedVideo | null>(null);
   const videoItems = getVideoItems(language);
   const natureVideos = videoItems.filter((v) => v.id.startsWith('vid-tabiat'));

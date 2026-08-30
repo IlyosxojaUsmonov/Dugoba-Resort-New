@@ -2,10 +2,12 @@ import { MapPin, Phone, Send, Clock, Mountain, MessageCircle, Radio, Instagram }
 import PageHero from '@/components/PageHero';
 import { resortInfo, IMAGES, getResortLocation } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
 import Reveal from '@/components/motion/Reveal';
 
 export default function Contact() {
   const { t, language } = useTranslation();
+  useDocumentMeta({ title: t('contact.heroTitle'), description: t('contact.heroSubtitle') });
 
   return (
     <div>
@@ -32,7 +34,7 @@ export default function Contact() {
                     <MapPin size={22} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">{t('contact.addressLabel')}</h4>
+                    <h3 className="font-medium text-stone-900 mb-1">{t('contact.addressLabel')}</h3>
                     <a
                       href={resortInfo.mapUrl}
                       target="_blank"
@@ -50,7 +52,7 @@ export default function Contact() {
                     <Phone size={22} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">{t('contact.phoneLabel')}</h4>
+                    <h3 className="font-medium text-stone-900 mb-1">{t('contact.phoneLabel')}</h3>
                     <a href={`tel:${resortInfo.phone.replace(/\s/g, '')}`} className="text-sm text-stone-600 hover:text-forest-700 transition-colors">
                       {resortInfo.phone}
                     </a>
@@ -62,7 +64,7 @@ export default function Contact() {
                     <Send size={22} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">{t('contact.telegramLabel')}</h4>
+                    <h3 className="font-medium text-stone-900 mb-1">{t('contact.telegramLabel')}</h3>
                     <a
                       href={resortInfo.telegram}
                       target="_blank"
@@ -80,7 +82,7 @@ export default function Contact() {
                     <Radio size={22} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">{t('contact.telegramChannelLabel')}</h4>
+                    <h3 className="font-medium text-stone-900 mb-1">{t('contact.telegramChannelLabel')}</h3>
                     <a
                       href={resortInfo.telegramChannel}
                       target="_blank"
@@ -98,7 +100,7 @@ export default function Contact() {
                     <Instagram size={22} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">{t('contact.instagramLabel')}</h4>
+                    <h3 className="font-medium text-stone-900 mb-1">{t('contact.instagramLabel')}</h3>
                     <a
                       href={resortInfo.instagram}
                       target="_blank"
@@ -116,7 +118,7 @@ export default function Contact() {
                     <Clock size={22} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">{t('contact.hoursLabel')}</h4>
+                    <h3 className="font-medium text-stone-900 mb-1">{t('contact.hoursLabel')}</h3>
                     <p className="text-sm text-stone-600">{t('contact.hoursValue')}</p>
                   </div>
                 </div>
@@ -154,7 +156,7 @@ export default function Contact() {
               </Reveal>
               <Reveal variant="fade-up" className="p-6 bg-stone-50 rounded-sm">
                 <Mountain size={24} className="text-forest-600 mb-3" />
-                <h4 className="font-medium text-stone-900 mb-2">{t('contact.aboutTitle')}</h4>
+                <h3 className="font-medium text-stone-900 mb-2">{t('contact.aboutTitle')}</h3>
                 <p className="text-sm text-stone-600 leading-relaxed">
                   {t('contact.aboutDesc')}
                 </p>

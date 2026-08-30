@@ -120,7 +120,7 @@ export default function BookingModal() {
                 <h3 className="font-serif text-xl font-semibold text-stone-900">{t('bookingModal.bookTitle')}</h3>
                 <p className="text-sm text-forest-600 mt-1">{accommodationName}</p>
               </div>
-              <button onClick={close} className="text-stone-400 hover:text-stone-600 p-1">
+              <button onClick={close} className="text-stone-400 hover:text-stone-600 p-1" aria-label={t('common.close')}>
                 <X size={22} />
               </button>
             </div>
@@ -131,10 +131,11 @@ export default function BookingModal() {
               </p>
 
               <div>
-                <label className="block text-xs font-medium text-stone-600 mb-1.5">
+                <label htmlFor="booking-name" className="block text-xs font-medium text-stone-600 mb-1.5">
                   {t('bookingModal.nameLabel')} <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="booking-name"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -145,10 +146,11 @@ export default function BookingModal() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-stone-600 mb-1.5">
+                <label htmlFor="booking-phone" className="block text-xs font-medium text-stone-600 mb-1.5">
                   {t('bookingModal.phoneLabel')} <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="booking-phone"
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
@@ -159,21 +161,23 @@ export default function BookingModal() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-stone-600 mb-1.5">
+                <label id="booking-guests-label" className="block text-xs font-medium text-stone-600 mb-1.5">
                   {t('bookingModal.guestsLabel')}
                 </label>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3" role="group" aria-labelledby="booking-guests-label">
                   <button
                     type="button"
                     onClick={() => setGuests(Math.max(1, guests - 1))}
+                    aria-label={t('bookingModal.guestsDecrease')}
                     className="w-10 h-10 flex items-center justify-center border border-stone-300 rounded-sm text-stone-600 hover:bg-stone-100"
                   >
                     −
                   </button>
-                  <span className="w-12 text-center font-medium text-stone-900">{guests}</span>
+                  <span className="w-12 text-center font-medium text-stone-900" aria-live="polite">{guests}</span>
                   <button
                     type="button"
                     onClick={() => setGuests(guests + 1)}
+                    aria-label={t('bookingModal.guestsIncrease')}
                     className="w-10 h-10 flex items-center justify-center border border-stone-300 rounded-sm text-stone-600 hover:bg-stone-100"
                   >
                     +
@@ -183,15 +187,16 @@ export default function BookingModal() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-stone-600 mb-2">
+                <label id="booking-nights-label" className="block text-xs font-medium text-stone-600 mb-2">
                   {t('bookingModal.nightsLabel')} <span className="text-red-500">*</span>
                 </label>
-                <div className="flex flex-wrap gap-2 mb-2">
+                <div className="flex flex-wrap gap-2 mb-2" role="group" aria-labelledby="booking-nights-label">
                   {NIGHT_PRESETS.map((n) => (
                     <button
                       key={n}
                       type="button"
                       onClick={() => { setNights(n); setCustomNights(''); }}
+                      aria-pressed={nights === n && !customNights}
                       className={`px-4 py-2 text-sm rounded-sm border transition-all ${
                         nights === n && !customNights
                           ? 'bg-forest-700 text-white border-forest-700'
@@ -202,7 +207,9 @@ export default function BookingModal() {
                     </button>
                   ))}
                 </div>
+                <label htmlFor="booking-nights-custom" className="sr-only">{t('bookingModal.nightsPlaceholder')}</label>
                 <input
+                  id="booking-nights-custom"
                   type="number"
                   min="1"
                   value={customNights}
@@ -213,10 +220,11 @@ export default function BookingModal() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-stone-600 mb-1.5">
+                <label htmlFor="booking-notes" className="block text-xs font-medium text-stone-600 mb-1.5">
                   {t('bookingModal.notesLabel')}
                 </label>
                 <textarea
+                  id="booking-notes"
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   rows={3}

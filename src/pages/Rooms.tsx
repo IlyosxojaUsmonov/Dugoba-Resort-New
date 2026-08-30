@@ -1,13 +1,15 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useId } from 'react';
 import { SlidersHorizontal, X } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import AccommodationCard from '@/components/AccommodationCard';
 import { getAccommodations, IMAGES } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
 import Reveal from '@/components/motion/Reveal';
 
 export default function Rooms() {
   const { t, language } = useTranslation();
+  useDocumentMeta({ title: t('rooms.heroTitle'), description: t('rooms.heroSubtitle') });
   const [capacity, setCapacity] = useState(0);
   const [hasKitchen, setHasKitchen] = useState(false);
   const [hasTapchan, setHasTapchan] = useState(false);
@@ -67,10 +69,12 @@ export default function Rooms() {
     setSortBy('default');
   };
 
-  const FilterContent = () => (
+  const FilterContent = () => {
+    const sortLabelId = useId();
+    return (
     <div className="space-y-6">
       <div>
-        <h4 className="text-sm font-semibold text-stone-900 mb-3">{t('rooms.capacityLabel')}</h4>
+        <h3 className="text-sm font-semibold text-stone-900 mb-3">{t('rooms.capacityLabel')}</h3>
         <div className="flex flex-wrap gap-2">
           {capacityOptions.map((opt) => (
             <button
@@ -89,7 +93,7 @@ export default function Rooms() {
       </div>
 
       <div>
-        <h4 className="text-sm font-semibold text-stone-900 mb-3">{t('rooms.additionalLabel')}</h4>
+        <h3 className="text-sm font-semibold text-stone-900 mb-3">{t('rooms.additionalLabel')}</h3>
         <div className="space-y-2">
           <label className="flex items-center gap-3 cursor-pointer group">
             <input
@@ -113,10 +117,11 @@ export default function Rooms() {
       </div>
 
       <div>
-        <h4 className="text-sm font-semibold text-stone-900 mb-3">{t('rooms.sortLabel')}</h4>
+        <h3 id={sortLabelId} className="text-sm font-semibold text-stone-900 mb-3">{t('rooms.sortLabel')}</h3>
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
+          aria-labelledby={sortLabelId}
           className="w-full px-3 py-2 border border-stone-300 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-forest-500 bg-white"
         >
           {sortOptions.map((opt) => (
@@ -134,7 +139,8 @@ export default function Rooms() {
         </button>
       )}
     </div>
-  );
+    );
+  };
 
   return (
     <div>
@@ -167,9 +173,9 @@ export default function Rooms() {
             {/* Desktop sidebar */}
             <aside className="hidden lg:block">
               <div className="sticky top-28 bg-white p-6 rounded-sm shadow-sm">
-                <h3 className="font-serif text-lg font-semibold text-stone-900 mb-5 pb-4 border-b border-stone-100">
+                <h2 className="font-serif text-lg font-semibold text-stone-900 mb-5 pb-4 border-b border-stone-100">
                   {t('rooms.filterHeading')}
-                </h3>
+                </h2>
                 <FilterContent />
               </div>
             </aside>
@@ -179,8 +185,8 @@ export default function Rooms() {
               <div className="lg:hidden fixed inset-0 z-50 bg-stone-950/50" onClick={() => setShowFilters(false)}>
                 <div className="absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-white p-6 overflow-y-auto animate-slide-down" onClick={(e) => e.stopPropagation()} data-lenis-prevent>
                   <div className="flex items-center justify-between mb-5 pb-4 border-b border-stone-100">
-                    <h3 className="font-serif text-lg font-semibold">{t('rooms.filterHeading')}</h3>
-                    <button onClick={() => setShowFilters(false)}><X size={22} className="text-stone-400" /></button>
+                    <h2 className="font-serif text-lg font-semibold">{t('rooms.filterHeading')}</h2>
+                    <button onClick={() => setShowFilters(false)} aria-label={t('common.close')}><X size={22} className="text-stone-400" /></button>
                   </div>
                   <FilterContent />
                 </div>

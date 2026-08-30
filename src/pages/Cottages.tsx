@@ -2,10 +2,12 @@ import PageHero from '@/components/PageHero';
 import AccommodationCard from '@/components/AccommodationCard';
 import { getAccommodations, IMAGES } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
 import Reveal from '@/components/motion/Reveal';
 
 export default function Cottages() {
   const { t, language } = useTranslation();
+  useDocumentMeta({ title: t('cottages.heroTitle'), description: t('cottages.heroSubtitle') });
   const cottages = getAccommodations(language).filter((a) => a.type === 'cottage');
 
   return (

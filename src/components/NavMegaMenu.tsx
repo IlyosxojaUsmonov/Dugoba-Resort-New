@@ -21,10 +21,10 @@ export default function NavMegaMenu({ open, groups, viewAllTo, viewAllLabel, onN
 
   return (
     <div
-      className={`absolute left-0 top-full w-[40rem] max-w-[90vw] pt-3 transition-all duration-300 ease-out ${
+      className={`absolute left-0 top-full w-[40rem] max-w-[90vw] pt-3 transition-[opacity,transform] duration-[250ms] ease-out ${
         open
-          ? 'visible translate-y-0 opacity-100'
-          : 'invisible -translate-y-2 opacity-0 pointer-events-none'
+          ? 'translate-y-0 opacity-100 pointer-events-auto'
+          : '-translate-y-2 opacity-0 pointer-events-none'
       }`}
     >
       <div className="overflow-hidden rounded-sm border-t-2 border-forest-500 bg-white shadow-2xl">

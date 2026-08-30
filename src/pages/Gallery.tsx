@@ -3,10 +3,12 @@ import PageHero from '@/components/PageHero';
 import Lightbox from '@/components/Lightbox';
 import { getGalleryImages, IMAGES } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
 import Reveal from '@/components/motion/Reveal';
 
 export default function Gallery() {
   const { t, language } = useTranslation();
+  useDocumentMeta({ title: t('gallery.heroTitle'), description: t('gallery.heroSubtitle') });
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const galleryImages = getGalleryImages(language);
 

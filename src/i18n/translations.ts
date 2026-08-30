@@ -7,6 +7,7 @@ export const translations = {
       person: 'kishi',
       seatedPerson: 'kishilik',
       allRightsReserved: 'Barcha huquqlar himoyalangan',
+      close: 'Yopish',
     },
     navbar: {
       home: 'Bosh sahifa',
@@ -349,6 +350,8 @@ export const translations = {
       phonePlaceholder: '+998 XX XXX XX XX',
       guestsLabel: 'Mehmonlar soni',
       guestsSuffix: 'kishi',
+      guestsDecrease: 'Mehmonlar sonini kamaytirish',
+      guestsIncrease: 'Mehmonlar sonini oshirish',
       nightsLabel: 'Necha kun qolmoqchisiz?',
       nightsUnit: 'kun',
       nightsPlaceholder: "Yoki o'zingiz kun sonini kiriting",
@@ -375,6 +378,50 @@ export const translations = {
       previous: 'Oldingi',
       next: 'Keyingi',
     },
+    cookieConsent: {
+      message: "Ushbu sayt cookie fayllardan foydalanadi, saytdan foydalanish tajribangizni yaxshilash uchun.",
+      acceptAll: 'Barchasini qabul qilish',
+      settings: 'Cookie sozlash',
+      privacyLink: 'Maxfiylik siyosati',
+      modalTitle: 'Cookie sozlamalari',
+      modalDescription:
+        "Saytdan foydalanish tajribangizni yaxshilash uchun turli xil cookie fayllardan foydalanamiz. Quyida qaysi turlarini yoqishni xohlashingizni tanlashingiz mumkin.",
+      necessaryTitle: 'Zarur cookie\'lar',
+      necessaryDesc:
+        "Saytning asosiy funksiyalari (sahifalarni ko'rish, tilni tanlash, bron shaklini yuborish) uchun zarur bo'lib, doimiy yoqilgan holatda bo'ladi.",
+      analyticsTitle: 'Analitika cookie\'lari',
+      analyticsDesc:
+        "Saytdan qanday foydalanilayotganini tushunish va uni yaxshilash uchun anonim statistik ma'lumot to'playdi.",
+      marketingTitle: 'Marketing cookie\'lari',
+      marketingDesc:
+        "Sizga qiziqishlaringizga mos reklama va takliflarni ko'rsatish uchun ishlatiladi.",
+      alwaysOn: 'Doimo yoqilgan',
+      save: 'Sozlamalarni saqlash',
+      close: 'Yopish',
+    },
+    privacyPolicy: {
+      heroTitle: 'Maxfiylik siyosati',
+      heroSubtitle: "Sizning shaxsiy ma'lumotlaringiz va cookie fayllardan qanday foydalanishimiz haqida",
+      updatedLabel: 'Oxirgi yangilanish',
+      updatedDate: '2026-yil 30-avgust',
+      intro:
+        "Dugoba Resort sifatida biz mehmonlarimizning shaxsiy hayoti va ma'lumotlari xavfsizligini muhim deb bilamiz. Ushbu maxfiylik siyosati saytimizga tashrif buyurganingizda qanday ma'lumotlar to'planishi, ulardan qanday foydalanilishi va cookie fayllarni qanday boshqarishingiz mumkinligini tushuntiradi.",
+      collectTitle: "Biz qanday ma'lumot to'playmiz",
+      collectBody:
+        "Bron shaklini to'ldirganingizda ismingiz, telefon raqamingiz va bron bilan bog'liq boshqa ma'lumotlarni olamiz. Bundan tashqari, saytdan foydalanish jarayonida cookie fayllar orqali texnik va statistik ma'lumotlar (masalan, brauzer turi, tashrif vaqti, ko'rilgan sahifalar) avtomatik yig'ilishi mumkin.",
+      cookieTypesTitle: 'Cookie fayl turlari',
+      cookieTypesBody:
+        "Saytimizda uchta asosiy turdagi cookie fayllardan foydalanamiz: zarur, analitika va marketing. Har birining maqsadi \"Cookie sozlash\" oynasida batafsil tushuntirilgan va siz ularni istalgan vaqtda yoqishingiz yoki o'chirishingiz mumkin.",
+      manageTitle: 'Cookie sozlamalarini boshqarish',
+      manageBody:
+        "Sahifa pastki qismidagi cookie banneridagi \"Cookie sozlash\" tugmasi orqali qaysi turdagi cookie fayllarga rozilik berishni tanlashingiz mumkin. Tanlovingiz brauzeringizning localStorage xotirasida saqlanadi va keyingi tashriflaringizda banner qayta chiqmaydi. Brauzer sozlamalari orqali cookie fayllarni istalgan vaqtda o'chirib tashlashingiz ham mumkin.",
+      securityTitle: "Ma'lumotlar xavfsizligi",
+      securityBody:
+        "To'plangan ma'lumotlar faqat xizmat sifatini yaxshilash va bron so'rovlarini qayta ishlash uchun ishlatiladi hamda uchinchi shaxslarga sotilmaydi yoki noqonuniy tarzda uzatilmaydi.",
+      contactTitle: "Biz bilan bog'lanish",
+      contactBody:
+        "Maxfiylik siyosatimiz yuzasidan savollaringiz bo'lsa, quyidagi aloqa vositalari orqali biz bilan bog'lanishingiz mumkin.",
+    },
   },
   ru: {
     common: {
@@ -384,6 +431,7 @@ export const translations = {
       person: 'чел.',
       seatedPerson: 'мест',
       allRightsReserved: 'Все права защищены',
+      close: 'Закрыть',
     },
     navbar: {
       home: 'Главная',
@@ -718,6 +766,8 @@ export const translations = {
       phonePlaceholder: '+998 XX XXX XX XX',
       guestsLabel: 'Количество гостей',
       guestsSuffix: 'чел.',
+      guestsDecrease: 'Уменьшить количество гостей',
+      guestsIncrease: 'Увеличить количество гостей',
       nightsLabel: 'На сколько дней хотите остаться?',
       nightsUnit: 'дн.',
       nightsPlaceholder: 'Или укажите количество дней вручную',
@@ -743,6 +793,49 @@ export const translations = {
       close: 'Закрыть',
       previous: 'Назад',
       next: 'Далее',
+    },
+    cookieConsent: {
+      message: 'Этот сайт использует файлы cookie для улучшения качества обслуживания.',
+      acceptAll: 'Принять все',
+      settings: 'Настройки cookie',
+      privacyLink: 'Политика конфиденциальности',
+      modalTitle: 'Настройки cookie',
+      modalDescription:
+        'Мы используем различные типы файлов cookie, чтобы улучшить ваш опыт использования сайта. Ниже вы можете выбрать, какие типы включить.',
+      necessaryTitle: 'Необходимые cookie',
+      necessaryDesc:
+        'Требуются для основных функций сайта (просмотр страниц, выбор языка, отправка формы бронирования) и всегда включены.',
+      analyticsTitle: 'Аналитические cookie',
+      analyticsDesc:
+        'Собирают анонимную статистику для понимания того, как используется сайт, и его улучшения.',
+      marketingTitle: 'Маркетинговые cookie',
+      marketingDesc: 'Используются для показа рекламы и предложений, соответствующих вашим интересам.',
+      alwaysOn: 'Всегда включено',
+      save: 'Сохранить настройки',
+      close: 'Закрыть',
+    },
+    privacyPolicy: {
+      heroTitle: 'Политика конфиденциальности',
+      heroSubtitle: 'О том, какие данные мы собираем и как используем файлы cookie',
+      updatedLabel: 'Последнее обновление',
+      updatedDate: '30 августа 2026 г.',
+      intro:
+        'Dugoba Resort ценит конфиденциальность и безопасность данных наших гостей. Данная политика объясняет, какие данные собираются при посещении сайта, как они используются и как вы можете управлять файлами cookie.',
+      collectTitle: 'Какие данные мы собираем',
+      collectBody:
+        'При заполнении формы бронирования мы получаем ваше имя, номер телефона и другую информацию, связанную с бронированием. Кроме того, при использовании сайта через файлы cookie могут автоматически собираться технические и статистические данные (например, тип браузера, время визита, просмотренные страницы).',
+      cookieTypesTitle: 'Типы файлов cookie',
+      cookieTypesBody:
+        'На нашем сайте используются три основных типа файлов cookie: необходимые, аналитические и маркетинговые. Назначение каждого подробно описано в окне «Настройки cookie», и вы можете включить или отключить их в любое время.',
+      manageTitle: 'Управление настройками cookie',
+      manageBody:
+        'С помощью кнопки «Настройки cookie» в баннере внизу страницы вы можете выбрать, на какие типы файлов cookie дать согласие. Ваш выбор сохраняется в localStorage браузера, и при следующих визитах баннер больше не появится. Вы также можете удалить файлы cookie в любое время через настройки браузера.',
+      securityTitle: 'Безопасность данных',
+      securityBody:
+        'Собранные данные используются только для улучшения качества обслуживания и обработки запросов на бронирование и не продаются и не передаются третьим лицам незаконным образом.',
+      contactTitle: 'Свяжитесь с нами',
+      contactBody:
+        'Если у вас есть вопросы по нашей политике конфиденциальности, вы можете связаться с нами через контакты ниже.',
     },
   },
 } as const;

@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-serif text-lg text-white mb-6 font-semibold">{t('footer.navigation')}</h4>
+            <h2 className="font-serif text-lg text-white mb-6 font-semibold">{t('footer.navigation')}</h2>
             <ul className="space-y-3">
               <li><Link to="/" className="text-sm hover:text-forest-400 transition-colors">{t('navbar.home')}</Link></li>
               <li><Link to="/resort" className="text-sm hover:text-forest-400 transition-colors">{t('navbar.resort')}</Link></li>
@@ -42,7 +42,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-serif text-lg text-white mb-6 font-semibold">{t('footer.more')}</h4>
+            <h2 className="font-serif text-lg text-white mb-6 font-semibold">{t('footer.more')}</h2>
             <ul className="space-y-3">
               <li><Link to="/qulayliklar" className="text-sm hover:text-forest-400 transition-colors">{t('navbar.amenities')}</Link></li>
               <li><Link to="/galereya" className="text-sm hover:text-forest-400 transition-colors">{t('navbar.gallery')}</Link></li>
@@ -53,7 +53,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-serif text-lg text-white mb-6 font-semibold">{t('footer.contact')}</h4>
+            <h2 className="font-serif text-lg text-white mb-6 font-semibold">{t('footer.contact')}</h2>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-forest-400 mt-0.5 shrink-0" />
@@ -109,7 +109,12 @@ export default function Footer() {
           <p className="text-xs text-stone-500">
             © {new Date().getFullYear()} {t('footer.copyright')}
           </p>
-          <p className="text-xs text-stone-500">{t('footer.locationLine')}</p>
+          <div className="flex items-center gap-4">
+            <Link to="/maxfiylik-siyosati" className="text-xs text-stone-500 hover:text-forest-400 transition-colors">
+              {t('cookieConsent.privacyLink')}
+            </Link>
+            <p className="text-xs text-stone-500">{t('footer.locationLine')}</p>
+          </div>
         </div>
       </div>
     </footer>

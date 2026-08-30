@@ -10,6 +10,7 @@ import { useTranslation } from '@/i18n/useTranslation';
 import { shouldReduceMotion } from '@/lib/perf';
 import { useParallax } from '@/hooks/useParallax';
 import { useCountUp } from '@/hooks/useCountUp';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
 import AccommodationCard from '@/components/AccommodationCard';
 import Reveal from '@/components/motion/Reveal';
 import SplitChars from '@/components/motion/SplitChars';
@@ -32,6 +33,11 @@ function StatItem({ icon: Icon, value, label }: { icon: typeof Building2; value:
 
 export default function Home() {
   const { t, language } = useTranslation();
+  useDocumentMeta({
+    title: "Dugoba Resort — Premium Resort | Shohimardon, Farg'ona",
+    description: t('home.heroDescription'),
+    rawTitle: true,
+  });
   const accommodations = getAccommodations(language);
   const featuredCottages = accommodations.filter((a) => a.type === 'cottage').slice(0, 3);
   const featuredRooms = accommodations.filter((a) => a.type === 'room').slice(0, 6);
@@ -85,7 +91,7 @@ export default function Home() {
             alt="Dugoba Resort"
             width={1280}
             height={960}
-            fetchPriority="high"
+            {...{ fetchpriority: 'high' }}
             className="w-full h-full object-cover animate-slow-zoom"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-stone-950/60 via-stone-950/30 to-stone-950/80" />

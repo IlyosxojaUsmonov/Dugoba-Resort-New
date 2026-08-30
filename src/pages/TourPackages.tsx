@@ -11,10 +11,12 @@ import {
 } from '@/data/accommodations';
 import VideoPlayer, { VideoModal } from '@/components/VideoPlayer';
 import { useTranslation } from '@/i18n/useTranslation';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
 import Reveal from '@/components/motion/Reveal';
 
 export default function TourPackages() {
   const { t, language } = useTranslation();
+  useDocumentMeta({ title: t('tourPackages.heroTitle'), description: t('tourPackages.heroSubtitle') });
   const [activeVideo, setActiveVideo] = useState<TourVideo | null>(null);
   const tourPackages = getTourPackages(language);
   const mainVideo = getTourMainVideo(language);
@@ -123,7 +125,7 @@ export default function TourPackages() {
                     <MapPin size={18} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">{t('tourPackages.transport1Title')}</h4>
+                    <h3 className="font-medium text-stone-900 mb-1">{t('tourPackages.transport1Title')}</h3>
                     <p className="text-sm">{t('tourPackages.transport1Desc')}</p>
                   </div>
                 </div>
@@ -132,7 +134,7 @@ export default function TourPackages() {
                     <Calendar size={18} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">{t('tourPackages.transport2Title')}</h4>
+                    <h3 className="font-medium text-stone-900 mb-1">{t('tourPackages.transport2Title')}</h3>
                     <p className="text-sm">{t('tourPackages.transport2Desc')}</p>
                   </div>
                 </div>
@@ -141,7 +143,7 @@ export default function TourPackages() {
                     <Bus size={18} className="text-forest-600" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-stone-900 mb-1">{t('tourPackages.transport3Title')}</h4>
+                    <h3 className="font-medium text-stone-900 mb-1">{t('tourPackages.transport3Title')}</h3>
                     <p className="text-sm">{t('tourPackages.transport3Desc')}</p>
                   </div>
                 </div>

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, Suspense, lazy, type ReactNode } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
@@ -9,18 +9,21 @@ import FloatingContact from '@/components/FloatingContact';
 import SmoothScrollProvider from '@/components/SmoothScrollProvider';
 import LoadingScreen from '@/components/LoadingScreen';
 import CustomCursor from '@/components/CustomCursor';
+import CookieConsent from '@/components/CookieConsent';
 import { useTranslation } from '@/i18n/useTranslation';
 import Home from '@/pages/Home';
-import Resort from '@/pages/Resort';
-import Cottages from '@/pages/Cottages';
-import Rooms from '@/pages/Rooms';
-import AccommodationDetail from '@/pages/AccommodationDetail';
-import TourPackages from '@/pages/TourPackages';
-import Amenities from '@/pages/Amenities';
-import Gallery from '@/pages/Gallery';
-import Videos from '@/pages/Videos';
-import MountainViews from '@/pages/MountainViews';
-import Contact from '@/pages/Contact';
+
+const Resort = lazy(() => import('@/pages/Resort'));
+const Cottages = lazy(() => import('@/pages/Cottages'));
+const Rooms = lazy(() => import('@/pages/Rooms'));
+const AccommodationDetail = lazy(() => import('@/pages/AccommodationDetail'));
+const TourPackages = lazy(() => import('@/pages/TourPackages'));
+const Amenities = lazy(() => import('@/pages/Amenities'));
+const Gallery = lazy(() => import('@/pages/Gallery'));
+const Videos = lazy(() => import('@/pages/Videos'));
+const MountainViews = lazy(() => import('@/pages/MountainViews'));
+const Contact = lazy(() => import('@/pages/Contact'));
+const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
 
 function LanguageFade({ children }: { children: ReactNode }) {
   const { language } = useTranslation();
@@ -52,20 +55,23 @@ function AnimatedRoutes() {
         exit={{ opacity: 0, y: -12 }}
         transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
       >
-        <Routes location={location}>
-          <Route path="/" element={<Home />} />
-          <Route path="/resort" element={<Resort />} />
-          <Route path="/kottejlar" element={<Cottages />} />
-          <Route path="/xonalar" element={<Rooms />} />
-          <Route path="/obyekt/:id" element={<AccommodationDetail />} />
-          <Route path="/tur-paketlari" element={<TourPackages />} />
-          <Route path="/qulayliklar" element={<Amenities />} />
-          <Route path="/galereya" element={<Gallery />} />
-          <Route path="/videolar" element={<Videos />} />
-          <Route path="/tog-manzarasi" element={<MountainViews />} />
-          <Route path="/aloqa" element={<Contact />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
+        <Suspense fallback={null}>
+          <Routes location={location}>
+            <Route path="/" element={<Home />} />
+            <Route path="/resort" element={<Resort />} />
+            <Route path="/kottejlar" element={<Cottages />} />
+            <Route path="/xonalar" element={<Rooms />} />
+            <Route path="/obyekt/:id" element={<AccommodationDetail />} />
+            <Route path="/tur-paketlari" element={<TourPackages />} />
+            <Route path="/qulayliklar" element={<Amenities />} />
+            <Route path="/galereya" element={<Gallery />} />
+            <Route path="/videolar" element={<Videos />} />
+            <Route path="/tog-manzarasi" element={<MountainViews />} />
+            <Route path="/aloqa" element={<Contact />} />
+            <Route path="/maxfiylik-siyosati" element={<PrivacyPolicy />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </Suspense>
       </motion.div>
     </AnimatePresence>
   );
@@ -91,6 +97,7 @@ function App() {
         </div>
         <BookingModal />
         <FloatingContact />
+        <CookieConsent />
       </SmoothScrollProvider>
     </BrowserRouter>
   );

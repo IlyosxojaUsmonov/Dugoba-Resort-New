@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Play, X } from 'lucide-react';
+import { useTranslation } from '@/i18n/useTranslation';
 
 type Orientation = 'portrait' | 'landscape';
 
@@ -114,11 +115,12 @@ export function VideoModal({
   orientation?: Orientation;
   portraitMaxWidth?: string;
 }) {
+  const { t } = useTranslation();
   const isPortrait = orientation === 'portrait';
 
   return (
     <div className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center animate-fade-in p-4" onClick={onClose}>
-      <button className="absolute top-6 right-6 text-white/80 hover:text-white p-2" onClick={onClose}>
+      <button className="absolute top-6 right-6 text-white/80 hover:text-white p-2" onClick={onClose} aria-label={t('common.close')}>
         <X size={32} />
       </button>
       <div className={`w-full ${isPortrait ? 'max-w-sm' : 'max-w-5xl'}`} onClick={(e) => e.stopPropagation()}>

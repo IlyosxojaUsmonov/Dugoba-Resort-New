@@ -3,12 +3,14 @@ import { Mountain, Store, Flame, Baby, MapPin } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import { IMAGES, resortInfo, getResortLocation } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
 import { useParallax } from '@/hooks/useParallax';
 import { useCountUp } from '@/hooks/useCountUp';
 import Reveal from '@/components/motion/Reveal';
 
 export default function Resort() {
   const { t, language } = useTranslation();
+  useDocumentMeta({ title: t('resort.heroTitle'), description: t('resort.heroSubtitle') });
   const mountainParallaxRef = useParallax<HTMLImageElement>(0.2);
   const countObjectRef = useCountUp<HTMLDivElement>('29');
   const countCottageRef = useCountUp<HTMLDivElement>('5');

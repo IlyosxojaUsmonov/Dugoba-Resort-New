@@ -7,6 +7,7 @@ import {
 import { getAccommodationById, getRelatedAccommodations } from '@/data/accommodations';
 import { useBookingModal } from '@/lib/store';
 import { useTranslation } from '@/i18n/useTranslation';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
 import AccommodationCard from '@/components/AccommodationCard';
 import Lightbox from '@/components/Lightbox';
 import VideoPlayer from '@/components/VideoPlayer';
@@ -19,6 +20,13 @@ export default function AccommodationDetail() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const accommodation = id ? getAccommodationById(id, language) : undefined;
+
+  useDocumentMeta({
+    title: accommodation ? accommodation.name : t('accommodationDetail.notFoundTitle'),
+    description: accommodation
+      ? accommodation.shortDescription
+      : t('accommodationDetail.notFoundDesc'),
+  });
 
   if (!accommodation) {
     return (

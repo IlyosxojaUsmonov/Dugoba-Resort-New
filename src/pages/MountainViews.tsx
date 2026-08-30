@@ -5,6 +5,7 @@ import Lightbox from '@/components/Lightbox';
 import VideoPlayer from '@/components/VideoPlayer';
 import { IMAGES } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
+import { useDocumentMeta } from '@/hooks/useDocumentMeta';
 import { useParallax } from '@/hooks/useParallax';
 import Reveal from '@/components/motion/Reveal';
 
@@ -15,6 +16,7 @@ const mountainImages = [
 
 export default function MountainViews() {
   const { t } = useTranslation();
+  useDocumentMeta({ title: t('mountainViews.heroTitle'), description: t('mountainViews.heroSubtitle') });
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const parallax1Ref = useParallax<HTMLImageElement>(0.28);
   const parallax2Ref = useParallax<HTMLImageElement>(0.22);
