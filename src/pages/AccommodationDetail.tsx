@@ -52,25 +52,25 @@ export default function AccommodationDetail() {
       {/* HERO */}
       <section className="relative h-[60vh] min-h-[400px] overflow-hidden">
         <img src={accommodation.mainImage} alt={accommodation.name} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/30 to-stone-950/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/30 to-forest-950/40" />
 
         <div className="absolute bottom-0 left-0 right-0 pb-12">
           <div className="container-lux">
             <nav className="flex items-center gap-2 text-xs text-white/60 mb-4">
-              <Link to="/" className="hover:text-forest-300">{t('common.home')}</Link>
+              <Link to="/" className="hover:text-sand-300">{t('common.home')}</Link>
               <ChevronRight size={12} />
-              <Link to={accommodation.type === 'cottage' ? '/kottejlar' : '/xonalar'} className="hover:text-forest-300">
+              <Link to={accommodation.type === 'cottage' ? '/kottejlar' : '/xonalar'} className="hover:text-sand-300">
                 {accommodation.type === 'cottage' ? t('accommodationDetail.cottages') : t('accommodationDetail.rooms')}
               </Link>
               <ChevronRight size={12} />
-              <span className="text-forest-300">{accommodation.name}</span>
+              <span className="text-sand-300">{accommodation.name}</span>
             </nav>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
               <div>
-                <span className="text-sm text-forest-300 tracking-[0.2em] uppercase font-medium">
+                <span className="text-sm text-sand-300 tracking-[0.2em] uppercase font-medium">
                   {accommodation.category}
                 </span>
-                <h1 className="font-serif text-3xl sm:text-5xl font-semibold text-white text-shadow-lux mt-2">
+                <h1 className="font-serif italic text-3xl sm:text-5xl font-semibold text-white text-shadow-lux mt-2">
                   {accommodation.name}
                 </h1>
                 <div className="flex items-center gap-4 mt-4 text-white/80 text-sm">
@@ -154,7 +154,7 @@ export default function AccommodationDetail() {
               <button
                 key={i}
                 onClick={() => setLightboxIndex(i)}
-                className={`relative overflow-hidden rounded-sm group cursor-pointer ${
+                className={`relative overflow-hidden rounded-xl group cursor-pointer ${
                   i === 0 ? 'col-span-2 row-span-2 aspect-square md:aspect-auto' : 'aspect-[4/3]'
                 }`}
               >
@@ -217,7 +217,7 @@ export default function AccommodationDetail() {
           <h2 className="section-title mb-8">{t('accommodationDetail.amenitiesTitle')}</h2>
           <Reveal variant="fade-up" stagger={0.06} className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {accommodation.amenities.map((amenity) => (
-              <div key={amenity} className="flex items-center gap-3 p-4 bg-white rounded-sm border border-stone-100">
+              <div key={amenity} className="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-100">
                 <div className="w-8 h-8 rounded-full bg-forest-50 flex items-center justify-center shrink-0">
                   <Check size={16} className="text-forest-600" />
                 </div>
@@ -243,7 +243,7 @@ export default function AccommodationDetail() {
               <button
                 key={i}
                 onClick={() => setLightboxIndex(uniqueImages.indexOf(img) >= 0 ? uniqueImages.indexOf(img) : 0)}
-                className="relative overflow-hidden rounded-sm group aspect-[4/3]"
+                className="relative overflow-hidden rounded-xl group aspect-[4/3]"
               >
                 <img src={img} alt={`${t('accommodationDetail.tapchanAlt')} ${i + 1}`} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors" />
@@ -269,7 +269,7 @@ export default function AccommodationDetail() {
                 <button
                   key={i}
                   onClick={() => setLightboxIndex(uniqueImages.indexOf(img) >= 0 ? uniqueImages.indexOf(img) : 0)}
-                  className="relative overflow-hidden rounded-sm group aspect-[4/3]"
+                  className="relative overflow-hidden rounded-xl group aspect-[4/3]"
                 >
                   <img src={img} alt={`${t('accommodationDetail.kitchenAlt')} ${i + 1}`} loading="lazy" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors" />
@@ -301,7 +301,7 @@ export default function AccommodationDetail() {
           </p>
           <button
             onClick={() => openBooking(accommodation.id, accommodation.name, accommodation.priceDisplay)}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-forest-600 text-white font-medium rounded-sm hover:bg-forest-500 transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-forest-600 text-white font-medium rounded-xl hover:bg-forest-500 transition-colors"
           >
             {t('accommodationDetail.bookNow')}
             <ArrowRight size={18} />
@@ -316,8 +316,8 @@ export default function AccommodationDetail() {
             <p className="section-subtitle mb-3">{t('accommodationDetail.relatedSubtitle')}</p>
             <h2 className="section-title mb-8">{t('accommodationDetail.relatedTitle')}</h2>
             <Reveal variant="fade-up" stagger={0.12} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {related.map((r) => (
-                <AccommodationCard key={r.id} accommodation={r} />
+              {related.map((r, i) => (
+                <AccommodationCard key={r.id} accommodation={r} index={i} />
               ))}
             </Reveal>
           </div>

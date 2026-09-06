@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
-import logo from '@/atrof-muhit/dugobba.webp';
 
 const SESSION_KEY = 'dugoba-intro-shown';
 
@@ -48,11 +47,9 @@ export default function LoadingScreen() {
       <div className="loading-screen-panel loading-screen-panel-left" />
       <div className="loading-screen-panel loading-screen-panel-right" />
       <div className="loading-screen-content">
-        <div className="loading-screen-logo-wrap">
-          <span className="loading-screen-ring" />
-          <img src={logo} alt="" width={64} height={64} className="loading-screen-logo" />
-        </div>
+        <span className="loading-screen-index">No. 01 — Shohimardon</span>
         <span className="loading-screen-title">Dugoba Resort</span>
+        <span className="loading-screen-rule" />
       </div>
     </div>
   );

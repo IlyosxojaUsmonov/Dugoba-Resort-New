@@ -7,51 +7,72 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background-color: #fafaf9;
-  color: #1c1917;
+  font-family: 'Archivo', system-ui, sans-serif;
+  background-color: #faf8f5;
+  color: #120e0b;
+  position: relative;
+}
+
+/* Filmic grain — a faint, brand-neutral texture over every page for the "kinematic" feel. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 ::selection {
-  background-color: #235341;
-  color: #fafaf9;
+  background-color: #24432a;
+  color: #fdf8ea;
 }
 
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f5f5f4;
+  background: #f2ede6;
 }
 ::-webkit-scrollbar-thumb {
-  background: #5a9f82;
+  background: #e3b13a;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3a8064;
+  background: #cf9527;
 }
 
 @layer components {
   .container-lux {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-[100rem] mx-auto px-5 sm:px-8 lg:px-12;
   }
+
+  /* Editorial "text as button" — an underline that draws in on hover, no fill, no pill. */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-forest-700 text-white font-medium tracking-wide rounded-sm transition-all duration-300 hover:bg-forest-800 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98];
+    @apply relative inline-flex items-center justify-center gap-2.5 px-0 py-1 text-stone-950 font-semibold tracking-tight text-base border-b-2 border-stone-950 transition-all duration-300 hover:gap-4 hover:text-clay-700 hover:border-clay-700;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white/10 backdrop-blur-md border border-white/30 text-white font-medium tracking-wide rounded-sm transition-all duration-300 hover:bg-white/20 hover:border-white/50 active:scale-[0.98];
+    @apply relative inline-flex items-center justify-center gap-2.5 px-0 py-1 text-white font-semibold tracking-tight text-base border-b-2 border-white/50 transition-all duration-300 hover:gap-4 hover:border-sand-300 hover:text-sand-200;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-stone-700 font-medium tracking-wide transition-all duration-300 hover:text-forest-700 border-b-2 border-transparent hover:border-forest-600;
+    @apply inline-flex items-center justify-center gap-2 text-[11px] font-semibold tracking-[0.25em] uppercase text-stone-500 transition-all duration-300 hover:text-stone-950 hover:gap-3;
   }
+  /* Oversized, condensed editorial headline — the layout's dominant graphic element. */
   .section-title {
-    @apply font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-stone-900 tracking-tight;
+    @apply font-serif text-[13vw] sm:text-6xl lg:text-7xl xl:text-8xl font-normal text-stone-950 tracking-[-0.02em] leading-[0.92];
   }
   .section-subtitle {
-    @apply text-sm sm:text-base text-forest-600 font-medium tracking-[0.2em] uppercase mb-3;
+    @apply flex items-center gap-3 text-[11px] sm:text-xs text-stone-500 font-semibold tracking-[0.3em] uppercase mb-4;
   }
+  /* Numbered index tag, e.g. "01 — Kottejlar" — the recurring wayfinding motif. */
+  .index-tag {
+    @apply font-sans text-xs font-bold tracking-[0.3em] text-clay-600;
+  }
+  /* Flat editorial panel — hairline border, no shadow, sharp corners. */
   .lux-card {
-    @apply bg-white rounded-sm shadow-md overflow-hidden transition-all duration-500 hover:shadow-2xl;
+    @apply bg-white border border-stone-200 overflow-hidden transition-colors duration-500 hover:border-stone-950;
   }
 }
 
@@ -78,11 +99,6 @@ body {
   cursor: none !important;
 }
 
-@keyframes cursor-glow-breathe {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.12); }
-}
-
 .cursor-dot {
   position: fixed;
   top: 0;
@@ -91,14 +107,10 @@ body {
   height: 6px;
   margin: -3px 0 0 -3px;
   border-radius: 50%;
-  background: radial-gradient(circle, #d9ffe9 0%, #7ed9ab 55%, transparent 100%);
-  box-shadow:
-    0 0 8px 2px rgba(217, 255, 233, 0.95),
-    0 0 22px 6px rgba(126, 217, 171, 0.75);
+  background: #e3b13a;
   pointer-events: none;
   z-index: 9999;
-  mix-blend-mode: screen;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
 }
 
 .cursor-ring {
@@ -116,24 +128,21 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 90px;
-  height: 90px;
-  margin: -45px 0 0 -45px;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(126, 217, 171, 0.65) 0%, rgba(90, 159, 130, 0.32) 42%, rgba(90, 159, 130, 0) 72%);
-  filter: blur(4px);
-  mix-blend-mode: screen;
-  animation: cursor-glow-breathe 3.2s ease-in-out infinite;
-  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    margin 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease, background 0.5s ease;
+  border: 1px solid rgba(18, 14, 11, 0.35);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background 0.3s ease;
 }
 
 .cursor-ring.cursor-ring-hover::before {
-  width: 150px;
-  height: 150px;
-  margin: -75px 0 0 -75px;
-  filter: blur(6px);
-  background: radial-gradient(circle, rgba(191, 255, 220, 0.75) 0%, rgba(90, 159, 130, 0.35) 45%, rgba(90, 159, 130, 0) 75%);
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  background: rgba(227, 177, 58, 0.12);
+  border-color: rgba(227, 177, 58, 0.7);
 }
 
 /* Loading screen */
@@ -148,7 +157,7 @@ body {
   top: 0;
   bottom: 0;
   width: 50%;
-  background-color: #0c1d16;
+  background-color: #120e0b;
   transition: transform 0.7s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
@@ -184,76 +193,55 @@ body {
   transition: opacity 0.25s ease;
 }
 
-.loading-screen-logo-wrap {
-  position: relative;
-  width: 88px;
-  height: 88px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transform: scale(0.6) rotate(-12deg);
-  animation: loadingLogoIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
-}
-
-.loading-screen-ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 9999px;
-  border: 2px solid transparent;
-  border-top-color: #8bc2aa;
-  border-right-color: rgba(139, 194, 170, 0.35);
-  opacity: 0;
-  animation:
-    loadingRingIn 0.4s ease-out 0.45s forwards,
-    loadingRingSpin 1.1s linear 0.45s infinite;
-}
-
-.loading-screen-logo {
-  width: 64px;
-  height: 64px;
-  border-radius: 9999px;
-  object-fit: cover;
-  border: 2px solid rgba(139, 194, 170, 0.6);
-  position: relative;
-  z-index: 1;
-}
-
 .loading-screen-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  color: #fff;
+  font-family: '"Bodoni Moda"', Georgia, serif;
+  color: #faf8f5;
   letter-spacing: 0.5em;
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 1.1rem;
   opacity: 0;
   transform: translateY(8px);
-  animation: loadingTitleIn 0.6s ease-out 0.55s forwards;
+  animation: loadingTitleIn 0.6s ease-out 0.2s forwards;
 }
 
-@keyframes loadingLogoIn {
-  to {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
+.loading-screen-index {
+  font-family: 'Archivo', system-ui, sans-serif;
+  color: #e3b13a;
+  letter-spacing: 0.3em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  opacity: 0;
+  animation: loadingTitleIn 0.6s ease-out 0.05s forwards;
 }
 
-@keyframes loadingRingIn {
-  to {
-    opacity: 1;
-  }
+.loading-screen-rule {
+  position: relative;
+  width: 140px;
+  height: 1px;
+  background: rgba(250, 248, 245, 0.15);
+  overflow: hidden;
+  opacity: 0;
+  animation: loadingTitleIn 0.4s ease-out 0.35s forwards;
 }
 
-@keyframes loadingRingSpin {
-  to {
-    transform: rotate(360deg);
-  }
+.loading-screen-rule::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #e3b13a;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: loadingRuleDraw 1.1s cubic-bezier(0.65, 0, 0.35, 1) 0.4s forwards;
+}
+
+@keyframes loadingRuleDraw {
+  to { transform: scaleX(1); }
 }
 
 @keyframes loadingTitleIn {
   to {
     opacity: 1;
     transform: translateY(0);
-    letter-spacing: 0.25em;
   }
 }
 

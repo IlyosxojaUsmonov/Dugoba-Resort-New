@@ -80,7 +80,7 @@ export default function Rooms() {
             <button
               key={opt.value}
               onClick={() => setCapacity(opt.value)}
-              className={`px-3 py-1.5 text-sm rounded-sm border transition-all ${
+              className={`px-3 py-1.5 text-sm rounded-xl border transition-all ${
                 capacity === opt.value
                   ? 'bg-forest-700 text-white border-forest-700'
                   : 'bg-white text-stone-600 border-stone-300 hover:border-forest-400'
@@ -122,7 +122,7 @@ export default function Rooms() {
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
           aria-labelledby={sortLabelId}
-          className="w-full px-3 py-2 border border-stone-300 rounded-sm text-sm focus:outline-none focus:ring-2 focus:ring-forest-500 bg-white"
+          className="w-full px-3 py-2 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-forest-500 bg-white"
         >
           {sortOptions.map((opt) => (
             <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -133,7 +133,7 @@ export default function Rooms() {
       {activeFilterCount > 0 && (
         <button
           onClick={resetFilters}
-          className="w-full px-4 py-2 text-sm text-stone-500 hover:text-forest-600 border border-stone-200 rounded-sm transition-colors"
+          className="w-full px-4 py-2 text-sm text-stone-500 hover:text-forest-600 border border-stone-200 rounded-xl transition-colors"
         >
           {t('rooms.clearFilters')} ({activeFilterCount})
         </button>
@@ -159,7 +159,7 @@ export default function Rooms() {
             </p>
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="lg:hidden flex items-center gap-2 px-4 py-2 bg-white border border-stone-300 rounded-sm text-sm font-medium text-stone-700"
+              className="lg:hidden flex items-center gap-2 px-4 py-2 bg-white border border-stone-300 rounded-xl text-sm font-medium text-stone-700"
             >
               <SlidersHorizontal size={16} />
               {t('rooms.filtersButton')}
@@ -172,7 +172,7 @@ export default function Rooms() {
           <div className="grid lg:grid-cols-[260px_1fr] gap-8">
             {/* Desktop sidebar */}
             <aside className="hidden lg:block">
-              <div className="sticky top-28 bg-white p-6 rounded-sm shadow-sm">
+              <div className="sticky top-28 bg-white p-6 rounded-xl shadow-sm">
                 <h2 className="font-serif text-lg font-semibold text-stone-900 mb-5 pb-4 border-b border-stone-100">
                   {t('rooms.filterHeading')}
                 </h2>
@@ -195,7 +195,7 @@ export default function Rooms() {
 
             <div>
               {rooms.length === 0 ? (
-                <div className="text-center py-20 bg-white rounded-sm">
+                <div className="text-center py-20 bg-white rounded-xl">
                   <p className="text-stone-500 mb-4">{t('rooms.noRoomsFound')}</p>
                   <button onClick={resetFilters} className="text-forest-600 font-medium hover:underline">
                     {t('rooms.clearFilters')}
@@ -203,8 +203,8 @@ export default function Rooms() {
                 </div>
               ) : (
                 <Reveal variant="fade-up" stagger={0.1} className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                  {rooms.map((room) => (
-                    <AccommodationCard key={room.id} accommodation={room} />
+                  {rooms.map((room, i) => (
+                    <AccommodationCard key={room.id} accommodation={room} index={i} />
                   ))}
                 </Reveal>
               )}

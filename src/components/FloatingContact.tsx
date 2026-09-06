@@ -50,7 +50,7 @@ export default function FloatingContact() {
             }`}
             style={{ transitionDelay: isOpen ? `${i * 60}ms` : '0ms' }}
           >
-            <span className="hidden sm:block px-3 py-1.5 rounded-sm bg-stone-900 text-white text-xs font-medium shadow-lg whitespace-nowrap">
+            <span className="hidden sm:block px-3 py-1.5 rounded-xl bg-stone-900 text-white text-xs font-medium shadow-lg whitespace-nowrap">
               {link.label}
             </span>
             <span

@@ -1,13 +1,10 @@
-import { useLayoutEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Mountain, Users, Wifi, ShowerHead, TreePine, Store, Flame,
-  Baby, ArrowRight, ChevronRight, ChevronDown, Building2,
+  Mountain, Wifi, ShowerHead, Store, Flame,
+  Baby, ArrowRight, ArrowUpRight,
 } from 'lucide-react';
-import gsap from 'gsap';
 import { getAccommodations, IMAGES } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
-import { shouldReduceMotion } from '@/lib/perf';
 import { useParallax } from '@/hooks/useParallax';
 import { useCountUp } from '@/hooks/useCountUp';
 import { useDocumentMeta } from '@/hooks/useDocumentMeta';
@@ -20,13 +17,12 @@ import tabiat2 from '@/atrof-muhit/tabiat2.webp';
 import tabiat3 from '@/atrof-muhit/tabiat3.webp';
 import tabiat8 from '@/atrof-muhit/tabiat8.webp';
 
-function StatItem({ icon: Icon, value, label }: { icon: typeof Building2; value: string; label: string }) {
-  const countRef = useCountUp<HTMLDivElement>(value);
+function StatTicker({ value, label }: { value: string; label: string }) {
+  const countRef = useCountUp<HTMLSpanElement>(value);
   return (
-    <div className="bg-stone-950/40 backdrop-blur-md p-4 sm:p-6 text-center">
-      <Icon size={24} className="text-forest-300 mx-auto mb-2" />
-      <div ref={countRef} className="font-serif text-2xl sm:text-3xl font-bold text-white">{value}</div>
-      <div className="text-[10px] sm:text-xs text-white/60 uppercase tracking-wider mt-1">{label}</div>
+    <div className="flex items-baseline gap-3 shrink-0">
+      <span ref={countRef} className="font-serif italic text-3xl sm:text-4xl text-white">{value}</span>
+      <span className="text-[10px] sm:text-xs text-white/60 uppercase tracking-[0.2em]">{label}</span>
     </div>
   );
 }
@@ -42,264 +38,252 @@ export default function Home() {
   const featuredCottages = accommodations.filter((a) => a.type === 'cottage').slice(0, 3);
   const featuredRooms = accommodations.filter((a) => a.type === 'room').slice(0, 6);
   const stats = [
-    { icon: Building2, value: '29', label: t('home.statObjects') },
-    { icon: Mountain, value: '5', label: t('home.statCottages') },
-    { icon: Users, value: '24', label: t('home.statRooms') },
-    { icon: TreePine, value: '100%', label: t('home.statMountain') },
+    { value: '29', label: t('home.statObjects') },
+    { value: '5', label: t('home.statCottages') },
+    { value: '24', label: t('home.statRooms') },
+    { value: '100%', label: t('home.statMountain') },
+  ];
+  const amenities = [
+    { icon: Mountain, label: t('home.amMountain') },
+    { icon: Store, label: t('home.amShop') },
+    { icon: Flame, label: t('home.amStove') },
+    { icon: Baby, label: t('home.amPlayground') },
+    { icon: Wifi, label: t('home.amWifi') },
+    { icon: ShowerHead, label: t('home.amBathroom') },
   ];
 
-  const heroSectionRef = useRef<HTMLElement>(null);
-  const heroBgRef = useRef<HTMLDivElement>(null);
-  const heroTextRef = useRef<HTMLDivElement>(null);
-  const heroArrowRef = useRef<HTMLDivElement>(null);
   const mountainParallaxRef = useParallax<HTMLImageElement>(0.18);
-
-  useLayoutEffect(() => {
-    if (shouldReduceMotion() || !heroSectionRef.current) return;
-
-    // Delayed so the mount-in CSS entrance (animate-fade-up) has settled before GSAP
-    // captures each element's "from" style for the scroll-scrub tween below.
-    let ctx: ReturnType<typeof gsap.context> | undefined;
-    const timer = window.setTimeout(() => {
-      ctx = gsap.context(() => {
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: heroSectionRef.current,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true,
-          },
-        })
-          .to(heroTextRef.current, { opacity: 0, y: 60, filter: 'blur(8px)', ease: 'none' }, 0)
-          .to(heroArrowRef.current, { opacity: 0, ease: 'none' }, 0);
-      }, heroSectionRef);
-    }, 800);
-
-    return () => {
-      window.clearTimeout(timer);
-      ctx?.revert();
-    };
-  }, []);
 
   return (
     <div>
-      {/* HERO */}
-      <section ref={heroSectionRef} className="relative min-h-screen flex flex-col overflow-hidden">
-        <div ref={heroBgRef} className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Dugoba Resort"
-            width={1280}
-            height={960}
-            {...{ fetchpriority: 'high' }}
-            className="w-full h-full object-cover animate-slow-zoom"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-stone-950/60 via-stone-950/30 to-stone-950/80" />
-        </div>
-
-        <div className="relative flex-1 flex items-center justify-center container-lux text-center text-white pt-28 pb-10">
-          <div ref={heroTextRef} className="animate-fade-up">
-            <p className="text-sm sm:text-base text-forest-300 tracking-[0.3em] uppercase font-medium mb-4">
-              {t('home.heroLocation')}
-            </p>
-            <h1 className="font-serif text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight text-shadow-lux mb-6">
+      {/* HERO — split composition: text column + offset framed image, no centered full-bleed banner */}
+      <section className="relative min-h-screen flex flex-col justify-center pt-28 pb-10 overflow-hidden bg-stone-50">
+        <div className="container-lux w-full grid lg:grid-cols-12 gap-10 lg:gap-6 items-center">
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="index-tag">01</span>
+              <span className="w-10 h-px bg-clay-400" />
+              <span className="text-xs text-stone-500 tracking-[0.25em] uppercase">{t('home.heroLocation')}</span>
+            </div>
+            <h1 className="font-serif text-[15vw] sm:text-7xl lg:text-8xl xl:text-9xl font-normal text-stone-950 tracking-[-0.02em] leading-[0.88] mb-8">
               <SplitChars text={t('home.heroTitle')} />
             </h1>
-            <p className="text-lg sm:text-xl text-white/85 max-w-2xl mx-auto leading-relaxed mb-10 font-light">
+            <p className="text-base sm:text-lg text-stone-600 max-w-md leading-relaxed mb-10">
               {t('home.heroDescription')}
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10">
               <Link to="/xonalar" className="btn-primary">
-                {t('home.viewRooms')}
+                {t('home.viewRooms')} <ArrowRight size={18} />
               </Link>
-              <Link to="/tur-paketlari" className="btn-secondary">
+              <Link to="/tur-paketlari" className="text-sm font-medium text-stone-500 hover:text-stone-950 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-950 transition-colors">
                 {t('home.viewTours')}
               </Link>
             </div>
           </div>
-        </div>
 
-        <div
-          ref={heroArrowRef}
-          className="absolute bottom-28 sm:bottom-32 left-1/2 -translate-x-1/2 text-white/70"
-          aria-hidden="true"
-        >
-          <div className="animate-arrow-pulse">
-            <ChevronDown size={28} />
-          </div>
-        </div>
-
-        <div className="relative">
-          <div className="container-lux pb-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 backdrop-blur-md rounded-sm overflow-hidden">
-              {stats.map((s) => (
-                <StatItem key={s.label} icon={s.icon} value={s.value} label={s.label} />
-              ))}
+          <div className="lg:col-span-5 relative">
+            <div className="relative aspect-[3/4] sm:ml-8 lg:ml-0">
+              <img
+                src={heroImage}
+                alt="Dugoba Resort"
+                width={1280}
+                height={960}
+                {...{ fetchpriority: 'high' }}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute -bottom-5 -left-5 sm:-bottom-8 sm:-left-8 w-24 sm:w-32 aspect-square border-8 border-stone-50 bg-clay-600 flex flex-col items-center justify-center text-center p-2">
+                <Mountain size={22} className="text-white mb-1" />
+                <span className="text-[9px] text-white uppercase tracking-[0.15em] leading-tight">{t('home.statMountain')}</span>
+              </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* INTRO */}
-      <section className="py-24 bg-stone-50">
-        <div className="container-lux">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <Reveal variant="slide-left">
-              <p className="section-subtitle">{t('home.introSubtitle')}</p>
-              <h2 className="section-title mb-6">
-                {t('home.introTitleLine1')}<br />{t('home.introTitleLine2')}
-              </h2>
-              <p className="text-stone-600 leading-relaxed mb-6">
-                {t('home.introP1')}
-              </p>
-              <p className="text-stone-600 leading-relaxed mb-8">
-                {t('home.introP2')}
-              </p>
-              <Link to="/resort" className="inline-flex items-center gap-2 text-forest-700 font-medium hover:gap-3 transition-all">
-                {t('home.moreInfo')}
-                <ArrowRight size={18} />
-              </Link>
-            </Reveal>
-            <Reveal variant="mask-reveal" className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <img src={tabiat1} alt="Tabiat manzarasi" width={1920} height={2560} className="w-full h-64 object-cover rounded-sm shadow-md" loading="lazy" />
-                <img src={tabiat2} alt="Tabiat manzarasi" width={1920} height={2560} className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
-              </div>
-              <div className="space-y-4 pt-8">
-                <img src={tabiat3} alt="Tabiat manzarasi" width={1920} height={2560} className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
-                <img src={tabiat8} alt="Tabiat manzarasi" width={1920} height={2560} className="w-full h-64 object-cover rounded-sm shadow-md" loading="lazy" />
-              </div>
-            </Reveal>
+        <div className="mt-16 sm:mt-20 border-t border-stone-200">
+          <div className="container-lux flex flex-wrap items-center gap-x-10 gap-y-4 py-6">
+            {stats.map((s) => (
+              <StatTicker key={s.label} value={s.value} label={s.label} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* FEATURED COTTAGES */}
-      <section className="py-24 bg-white">
+      {/* STORY — pull-quote + offset image collage, replaces the old symmetric "intro" section */}
+      <section className="py-24 sm:py-32 bg-white">
+        <div className="container-lux grid lg:grid-cols-12 gap-12 lg:gap-8">
+          <div className="lg:col-span-5">
+            <p className="section-subtitle">{t('home.introSubtitle')}</p>
+            <h2 className="font-serif italic text-4xl sm:text-5xl text-stone-950 leading-[1.05] mb-8">
+              {t('home.introTitleLine1')} {t('home.introTitleLine2')}
+            </h2>
+            <p className="text-stone-600 leading-relaxed mb-5">{t('home.introP1')}</p>
+            <p className="text-stone-600 leading-relaxed mb-8">{t('home.introP2')}</p>
+            <Link to="/resort" className="btn-primary">
+              {t('home.moreInfo')} <ArrowRight size={18} />
+            </Link>
+          </div>
+
+          <Reveal variant="fade-up" className="lg:col-span-7 relative grid grid-cols-2 gap-4 sm:gap-6">
+            <img src={tabiat1} alt="Tabiat manzarasi" width={1920} height={2560} className="w-full h-72 sm:h-96 object-cover" loading="lazy" />
+            <div className="flex flex-col gap-4 sm:gap-6 pt-12 sm:pt-20">
+              <img src={tabiat2} alt="Tabiat manzarasi" width={1920} height={2560} className="w-full h-40 sm:h-52 object-cover" loading="lazy" />
+              <img src={tabiat3} alt="Tabiat manzarasi" width={1920} height={2560} className="w-full h-40 sm:h-52 object-cover" loading="lazy" />
+            </div>
+            <img src={tabiat8} alt="Tabiat manzarasi" width={1920} height={2560} className="hidden sm:block absolute -bottom-10 left-1/3 w-1/2 h-40 object-cover border-8 border-white shadow-xl" loading="lazy" />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* FEATURED COTTAGES — alternating index-list rows instead of a uniform card grid */}
+      <section className="py-24 sm:py-32 bg-stone-50">
         <div className="container-lux">
-          <Reveal variant="fade-up" className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-12 gap-4">
+          <Reveal variant="fade-up" className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-16 gap-4">
             <div>
               <p className="section-subtitle">{t('home.cottagesSubtitle')}</p>
               <h2 className="section-title">{t('home.cottagesTitle')}</h2>
-              <p className="text-stone-600 mt-3 max-w-xl">
-                {t('home.cottagesDesc')}
-              </p>
             </div>
-            <Link to="/kottejlar" className="btn-ghost">
-              {t('home.allCottages')}
-              <ChevronRight size={16} />
-            </Link>
+            <div className="max-w-sm">
+              <p className="text-stone-600 mb-3">{t('home.cottagesDesc')}</p>
+              <Link to="/kottejlar" className="btn-ghost">
+                {t('home.allCottages')} <ArrowUpRight size={14} />
+              </Link>
+            </div>
           </Reveal>
 
-          <Reveal variant="fade-up" stagger={0.12} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredCottages.map((c) => (
-              <AccommodationCard key={c.id} accommodation={c} />
+          <div className="divide-y divide-stone-200 border-t border-b border-stone-200">
+            {featuredCottages.map((c, i) => (
+              <Reveal key={c.id} variant={i % 2 === 0 ? 'slide-left' : 'slide-right'}>
+                <Link
+                  to={`/obyekt/${c.id}`}
+                  className={`group flex flex-col md:flex-row items-stretch gap-6 md:gap-10 py-10 ${
+                    i % 2 === 1 ? 'md:flex-row-reverse' : ''
+                  }`}
+                >
+                  <div className="md:w-1/2 overflow-hidden">
+                    <img
+                      src={c.mainImage}
+                      alt={c.name}
+                      loading="lazy"
+                      className="w-full h-64 sm:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="md:w-1/2 flex flex-col justify-center">
+                    <span className="index-tag mb-3">{String(i + 1).padStart(2, '0')} — {c.category}</span>
+                    <h3 className="font-serif italic text-3xl sm:text-4xl text-stone-950 mb-4 group-hover:text-clay-700 transition-colors">
+                      {c.name}
+                    </h3>
+                    <p className="text-stone-600 leading-relaxed mb-6 max-w-md">{c.shortDescription}</p>
+                    <div className="flex items-center gap-6">
+                      <span className="font-serif italic text-xl text-stone-950">{c.priceDisplay}</span>
+                      <span className="flex items-center gap-2 text-sm font-semibold text-stone-950 group-hover:gap-3 transition-all">
+                        {t('accommodationCard.details')} <ArrowUpRight size={16} />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
             ))}
-          </Reveal>
+          </div>
         </div>
       </section>
 
-      {/* PARALLAX MOUNTAIN VIEW */}
-      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+      {/* MOUNTAIN BREAK — full-bleed, text pinned bottom-left instead of centered */}
+      <section className="relative h-[70vh] min-h-[440px] flex items-end overflow-hidden">
         <img
           ref={mountainParallaxRef}
           src={IMAGES.mountain2}
           alt=""
           className="absolute inset-[-10%] w-[120%] h-[120%] object-cover"
         />
-        <div className="absolute inset-0 bg-stone-950/50" />
-        <Reveal variant="fade-up" className="relative container-lux text-center text-white">
-          <Mountain size={48} className="mx-auto mb-6 text-forest-300" />
-          <h2 className="font-serif text-3xl sm:text-5xl font-semibold mb-4 text-shadow-lux">
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/10 to-transparent" />
+        <Reveal variant="fade-up" className="relative container-lux pb-16 max-w-xl">
+          <span className="index-tag text-sand-300 block mb-4">04 — {t('home.mountainTitle')}</span>
+          <h2 className="font-serif italic text-4xl sm:text-6xl text-white leading-[0.95] mb-6">
             {t('home.mountainTitle')}
           </h2>
-          <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
-            {t('home.mountainDesc')}
-          </p>
+          <p className="text-white/75 leading-relaxed mb-8">{t('home.mountainDesc')}</p>
           <Link to="/tog-manzarasi" className="btn-secondary">
-            {t('home.viewMountain')}
+            {t('home.viewMountain')} <ArrowRight size={18} />
           </Link>
         </Reveal>
       </section>
 
-      {/* FEATURED ROOMS */}
-      <section className="py-24 bg-stone-50">
+      {/* FEATURED ROOMS — one large feature tile + smaller grid, not a uniform grid */}
+      <section className="py-24 sm:py-32 bg-white">
         <div className="container-lux">
-          <Reveal variant="fade-up" className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-12 gap-4">
+          <Reveal variant="fade-up" className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-16 gap-4">
             <div>
               <p className="section-subtitle">{t('home.roomsSubtitle')}</p>
               <h2 className="section-title">{t('home.roomsTitle')}</h2>
-              <p className="text-stone-600 mt-3 max-w-xl">
-                {t('home.roomsDesc')}
-              </p>
             </div>
-            <Link to="/xonalar" className="btn-ghost">
-              {t('home.allRooms')}
-              <ChevronRight size={16} />
-            </Link>
+            <div className="max-w-sm">
+              <p className="text-stone-600 mb-3">{t('home.roomsDesc')}</p>
+              <Link to="/xonalar" className="btn-ghost">
+                {t('home.allRooms')} <ArrowUpRight size={14} />
+              </Link>
+            </div>
           </Reveal>
 
-          <Reveal variant="fade-up" stagger={0.1} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredRooms.map((r) => (
-              <AccommodationCard key={r.id} accommodation={r} />
+          <Reveal variant="fade-up" stagger={0.1} className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+            {featuredRooms.map((r, i) => (
+              <div key={r.id} className={i < 2 ? 'col-span-2' : 'col-span-1'}>
+                <AccommodationCard accommodation={r} index={i} />
+              </div>
             ))}
           </Reveal>
         </div>
       </section>
 
-      {/* AMENITIES PREVIEW */}
-      <section className="py-24 bg-white">
+      {/* AMENITIES — numbered index list instead of an icon-grid */}
+      <section className="py-24 sm:py-32 bg-stone-50">
         <div className="container-lux">
-          <Reveal variant="fade-in" className="text-center mb-12">
+          <Reveal variant="fade-in" className="mb-16">
             <p className="section-subtitle">{t('home.amenitiesSubtitle')}</p>
             <h2 className="section-title">{t('home.amenitiesTitle')}</h2>
           </Reveal>
 
-          <Reveal variant="pop-in" stagger={0.08} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {[
-              { icon: Mountain, label: t('home.amMountain') },
-              { icon: Store, label: t('home.amShop') },
-              { icon: Flame, label: t('home.amStove') },
-              { icon: Baby, label: t('home.amPlayground') },
-              { icon: Wifi, label: t('home.amWifi') },
-              { icon: ShowerHead, label: t('home.amBathroom') },
-            ].map((item) => (
-              <div key={item.label} className="flex flex-col items-center text-center p-6 border border-stone-100 rounded-sm hover:border-forest-200 hover:shadow-md transition-all group">
-                <div className="w-14 h-14 rounded-full bg-forest-50 flex items-center justify-center mb-3 group-hover:bg-forest-100 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                  <item.icon size={24} className="text-forest-600" />
-                </div>
-                <span className="text-sm font-medium text-stone-700">{item.label}</span>
+          <Reveal
+            variant="fade-up"
+            stagger={0.06}
+            className="grid md:grid-cols-2 border-t border-stone-200 md:divide-x divide-stone-200"
+          >
+            {amenities.map((item, i) => (
+              <div
+                key={item.label}
+                className="flex items-center gap-5 py-6 px-1 md:px-8 border-b border-stone-200 group"
+              >
+                <span className="index-tag w-8 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                <item.icon size={22} className="text-clay-600 shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="font-serif italic text-xl text-stone-950">{item.label}</span>
               </div>
             ))}
           </Reveal>
 
-          <div className="text-center mt-10">
+          <div className="mt-10">
             <Link to="/qulayliklar" className="btn-ghost">
-              {t('home.allAmenities')}
-              <ChevronRight size={16} />
+              {t('home.allAmenities')} <ArrowUpRight size={14} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="relative py-24 overflow-hidden">
+      {/* CTA — full-bleed image with oversized overlapping type */}
+      <section className="relative py-32 sm:py-40 overflow-hidden bg-stone-950">
         <div className="absolute inset-0">
-          <img src={IMAGES.resortPool} alt="" className="w-full h-full object-cover" loading="lazy" />
-          <div className="absolute inset-0 bg-stone-950/80" />
+          <img src={IMAGES.resortPool} alt="" className="w-full h-full object-cover opacity-50" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/70 to-stone-950/40" />
         </div>
-        <Reveal variant="fade-up" className="relative container-lux text-center text-white">
-          <h2 className="font-serif text-3xl sm:text-5xl font-semibold mb-4">
+        <Reveal variant="fade-up" className="relative container-lux">
+          <span className="index-tag text-sand-400 block mb-6">06</span>
+          <h2 className="font-serif italic text-[13vw] sm:text-6xl lg:text-7xl text-white leading-[0.9] mb-8 max-w-3xl">
             {t('home.ctaTitle')}
           </h2>
-          <p className="text-lg text-white/70 max-w-2xl mx-auto mb-8">
-            {t('home.ctaDesc')}
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/xonalar" className="btn-primary">
-              {t('home.ctaRooms')}
+          <p className="text-lg text-white/70 max-w-xl mb-10">{t('home.ctaDesc')}</p>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10">
+            <Link to="/xonalar" className="btn-secondary">
+              {t('home.ctaRooms')} <ArrowRight size={18} />
             </Link>
-            <Link to="/aloqa" className="btn-secondary">
+            <Link to="/aloqa" className="text-sm font-medium text-white/70 hover:text-white underline underline-offset-4 decoration-white/30 hover:decoration-white transition-colors">
               {t('home.ctaContact')}
             </Link>
           </div>

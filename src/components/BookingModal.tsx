@@ -80,7 +80,7 @@ export default function BookingModal() {
     <div className="fixed inset-0 z-[90] flex items-center justify-center p-4 animate-fade-in">
       <div className="absolute inset-0 bg-stone-950/80 backdrop-blur-sm" onClick={close} />
 
-      <div className="relative bg-white rounded-sm shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto animate-scale-in" data-lenis-prevent>
+      <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto animate-scale-in" data-lenis-prevent>
         {sent ? (
           <div className="p-8">
             <div className="flex flex-col items-center text-center mb-6">
@@ -101,14 +101,14 @@ export default function BookingModal() {
               href={TELEGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-forest-700 text-white font-medium rounded-sm hover:bg-forest-800 transition-colors mb-3"
+              className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-forest-700 text-white font-medium rounded-xl hover:bg-forest-800 transition-colors mb-3"
             >
               <Send size={18} />
               {t('bookingModal.reopenTelegram')}
             </a>
             <button
               onClick={close}
-              className="w-full px-6 py-3 border border-stone-300 text-stone-600 font-medium rounded-sm hover:bg-stone-50 transition-colors"
+              className="w-full px-6 py-3 border border-stone-300 text-stone-600 font-medium rounded-xl hover:bg-stone-50 transition-colors"
             >
               {t('bookingModal.close')}
             </button>
@@ -126,7 +126,7 @@ export default function BookingModal() {
             </div>
 
             <form onSubmit={handleSubmit} className="p-6 space-y-4">
-              <p className="text-xs text-stone-500 bg-stone-50 p-3 rounded-sm">
+              <p className="text-xs text-stone-500 bg-stone-50 p-3 rounded-xl">
                 {t('bookingModal.formNote')}
               </p>
 
@@ -140,7 +140,7 @@ export default function BookingModal() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className="w-full px-3 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-sm transition-all"
+                  className="w-full px-3 py-2.5 border border-stone-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-sm transition-all"
                   placeholder={t('bookingModal.namePlaceholder')}
                 />
               </div>
@@ -155,7 +155,7 @@ export default function BookingModal() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   required
-                  className="w-full px-3 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-sm transition-all"
+                  className="w-full px-3 py-2.5 border border-stone-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-sm transition-all"
                   placeholder={t('bookingModal.phonePlaceholder')}
                 />
               </div>
@@ -169,7 +169,7 @@ export default function BookingModal() {
                     type="button"
                     onClick={() => setGuests(Math.max(1, guests - 1))}
                     aria-label={t('bookingModal.guestsDecrease')}
-                    className="w-10 h-10 flex items-center justify-center border border-stone-300 rounded-sm text-stone-600 hover:bg-stone-100"
+                    className="w-10 h-10 flex items-center justify-center border border-stone-300 rounded-xl text-stone-600 hover:bg-stone-100"
                   >
                     −
                   </button>
@@ -178,7 +178,7 @@ export default function BookingModal() {
                     type="button"
                     onClick={() => setGuests(guests + 1)}
                     aria-label={t('bookingModal.guestsIncrease')}
-                    className="w-10 h-10 flex items-center justify-center border border-stone-300 rounded-sm text-stone-600 hover:bg-stone-100"
+                    className="w-10 h-10 flex items-center justify-center border border-stone-300 rounded-xl text-stone-600 hover:bg-stone-100"
                   >
                     +
                   </button>
@@ -197,7 +197,7 @@ export default function BookingModal() {
                       type="button"
                       onClick={() => { setNights(n); setCustomNights(''); }}
                       aria-pressed={nights === n && !customNights}
-                      className={`px-4 py-2 text-sm rounded-sm border transition-all ${
+                      className={`px-4 py-2 text-sm rounded-xl border transition-all ${
                         nights === n && !customNights
                           ? 'bg-forest-700 text-white border-forest-700'
                           : 'bg-white text-stone-600 border-stone-300 hover:border-forest-400'
@@ -214,7 +214,7 @@ export default function BookingModal() {
                   min="1"
                   value={customNights}
                   onChange={(e) => setCustomNights(e.target.value)}
-                  className="w-full px-3 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-sm transition-all"
+                  className="w-full px-3 py-2.5 border border-stone-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-sm transition-all"
                   placeholder={t('bookingModal.nightsPlaceholder')}
                 />
               </div>
@@ -228,13 +228,13 @@ export default function BookingModal() {
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   rows={3}
-                  className="w-full px-3 py-2.5 border border-stone-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-sm transition-all resize-none"
+                  className="w-full px-3 py-2.5 border border-stone-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-forest-500 focus:border-transparent text-sm transition-all resize-none"
                   placeholder={t('bookingModal.notesPlaceholder')}
                 />
               </div>
 
               {error && (
-                <div className="flex items-start gap-2 p-3 bg-red-50 text-red-700 rounded-sm text-sm">
+                <div className="flex items-start gap-2 p-3 bg-red-50 text-red-700 rounded-xl text-sm">
                   <AlertCircle size={18} className="shrink-0 mt-0.5" />
                   <span>{error}</span>
                 </div>
@@ -243,7 +243,7 @@ export default function BookingModal() {
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full px-6 py-3.5 bg-forest-700 text-white font-medium rounded-sm hover:bg-forest-800 transition-colors flex items-center justify-center gap-2"
+                  className="w-full px-6 py-3.5 bg-forest-700 text-white font-medium rounded-xl hover:bg-forest-800 transition-colors flex items-center justify-center gap-2"
                 >
                   <Send size={18} />
                   {t('bookingModal.submit')}

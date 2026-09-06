@@ -109,7 +109,7 @@ export default function CookieConsent() {
           bannerOpen ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0 pointer-events-none'
         }`}
       >
-        <div className="w-full max-w-3xl overflow-hidden rounded-sm border-t-2 border-forest-500 bg-white shadow-2xl">
+        <div className="w-full max-w-3xl overflow-hidden rounded-xl border-t-2 border-forest-500 bg-white shadow-2xl">
           <div className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:p-6">
             <div className="hidden shrink-0 sm:flex h-11 w-11 items-center justify-center rounded-full bg-forest-50">
               <Cookie size={22} className="text-forest-700" />
@@ -126,7 +126,7 @@ export default function CookieConsent() {
               <button
                 type="button"
                 onClick={() => setSettingsOpen(true)}
-                className="inline-flex items-center justify-center gap-2 rounded-sm border border-stone-300 px-4 py-2.5 text-sm font-medium text-stone-600 transition-colors hover:bg-stone-50"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 px-4 py-2.5 text-sm font-medium text-stone-600 transition-colors hover:bg-stone-50"
               >
                 <SlidersHorizontal size={15} />
                 {t('cookieConsent.settings')}
@@ -134,7 +134,7 @@ export default function CookieConsent() {
               <button
                 type="button"
                 onClick={acceptAll}
-                className="inline-flex items-center justify-center rounded-sm bg-forest-700 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-forest-800"
+                className="inline-flex items-center justify-center rounded-xl bg-forest-700 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-forest-800"
               >
                 {t('cookieConsent.acceptAll')}
               </button>
@@ -147,7 +147,7 @@ export default function CookieConsent() {
         <div className="fixed inset-0 z-[90] flex items-center justify-center p-4 animate-fade-in">
           <div className="absolute inset-0 bg-stone-950/80 backdrop-blur-sm" onClick={() => setSettingsOpen(false)} />
 
-          <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-sm bg-white shadow-2xl animate-scale-in" data-lenis-prevent>
+          <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-xl bg-white shadow-2xl animate-scale-in" data-lenis-prevent>
             <div className="flex items-center justify-between border-b border-stone-100 p-6">
               <h3 className="font-serif text-xl font-semibold text-stone-900">{t('cookieConsent.modalTitle')}</h3>
               <button onClick={() => setSettingsOpen(false)} className="p-1 text-stone-400 hover:text-stone-600" aria-label={t('cookieConsent.close')}>
@@ -158,7 +158,7 @@ export default function CookieConsent() {
             <div className="space-y-5 p-6">
               <p className="text-sm leading-relaxed text-stone-600">{t('cookieConsent.modalDescription')}</p>
 
-              <div className="flex items-start justify-between gap-4 rounded-sm bg-stone-50 p-4">
+              <div className="flex items-start justify-between gap-4 rounded-xl bg-stone-50 p-4">
                 <div>
                   <h4 className="text-sm font-medium text-stone-900">{t('cookieConsent.necessaryTitle')}</h4>
                   <p className="mt-1 text-xs leading-relaxed text-stone-500">{t('cookieConsent.necessaryDesc')}</p>
@@ -169,7 +169,7 @@ export default function CookieConsent() {
                 <Toggle checked disabled />
               </div>
 
-              <div className="flex items-start justify-between gap-4 rounded-sm p-4">
+              <div className="flex items-start justify-between gap-4 rounded-xl p-4">
                 <div>
                   <h4 className="text-sm font-medium text-stone-900">{t('cookieConsent.analyticsTitle')}</h4>
                   <p className="mt-1 text-xs leading-relaxed text-stone-500">{t('cookieConsent.analyticsDesc')}</p>
@@ -177,7 +177,7 @@ export default function CookieConsent() {
                 <Toggle checked={analytics} onChange={setAnalytics} />
               </div>
 
-              <div className="flex items-start justify-between gap-4 rounded-sm p-4">
+              <div className="flex items-start justify-between gap-4 rounded-xl p-4">
                 <div>
                   <h4 className="text-sm font-medium text-stone-900">{t('cookieConsent.marketingTitle')}</h4>
                   <p className="mt-1 text-xs leading-relaxed text-stone-500">{t('cookieConsent.marketingDesc')}</p>
@@ -190,14 +190,14 @@ export default function CookieConsent() {
               <button
                 type="button"
                 onClick={saveSettings}
-                className="w-full rounded-sm bg-forest-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-forest-800"
+                className="w-full rounded-xl bg-forest-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-forest-800"
               >
                 {t('cookieConsent.save')}
               </button>
               <button
                 type="button"
                 onClick={acceptAll}
-                className="w-full rounded-sm border border-stone-300 px-6 py-3 text-sm font-medium text-stone-600 transition-colors hover:bg-stone-50"
+                className="w-full rounded-xl border border-stone-300 px-6 py-3 text-sm font-medium text-stone-600 transition-colors hover:bg-stone-50"
               >
                 {t('cookieConsent.acceptAll')}
               </button>

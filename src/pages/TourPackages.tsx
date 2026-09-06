@@ -60,11 +60,11 @@ export default function TourPackages() {
             {tourPackages.map((pkg) => (
               <div key={pkg.id} className="lux-card flex flex-col">
                 <div className="p-8 flex flex-col flex-1">
-                  <span className="inline-flex items-center gap-1.5 self-start px-3 py-1.5 bg-forest-100 text-forest-700 text-sm font-medium rounded-sm mb-3">
+                  <span className="inline-flex items-center gap-1.5 self-start px-3 py-1.5 bg-forest-100 text-forest-700 text-sm font-medium rounded-xl mb-3">
                     <Calendar size={14} /> {pkg.date}
                   </span>
                   {pkg.dateNote && (
-                    <span className="inline-flex self-start px-3 py-1 bg-sand-500 text-white text-xs font-semibold tracking-wide uppercase rounded-sm mb-3">
+                    <span className="inline-flex self-start px-3 py-1 bg-sand-500 text-white text-xs font-semibold tracking-wide uppercase rounded-xl mb-3">
                       {pkg.dateNote}
                     </span>
                   )}
@@ -100,7 +100,7 @@ export default function TourPackages() {
                     href={resortInfo.telegram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-forest-700 text-white text-sm font-medium rounded-sm hover:bg-forest-800 transition-colors"
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 bg-forest-700 text-white text-sm font-medium rounded-xl hover:bg-forest-800 transition-colors"
                   >
                     <Send size={16} />
                     {t('tourPackages.contactTelegramFull')}
@@ -150,10 +150,10 @@ export default function TourPackages() {
               </div>
             </div>
             <div className="space-y-4">
-              <img src={IMAGES.mountain4} alt="Tog' yo'li" width={640} height={640} className="w-full h-80 object-cover rounded-sm shadow-lg" loading="lazy" />
+              <img src={IMAGES.mountain4} alt="Tog' yo'li" width={640} height={640} className="w-full h-80 object-cover rounded-xl shadow-lg" loading="lazy" />
               <div className="grid grid-cols-2 gap-4">
-                <img src={IMAGES.mountain7} alt="Tog' manzarasi" width={1920} height={2560} className="w-full h-40 object-cover rounded-sm shadow-md" loading="lazy" />
-                <img src={IMAGES.mountain9} alt="Vodiy" width={1920} height={2560} className="w-full h-40 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={IMAGES.mountain7} alt="Tog' manzarasi" width={1920} height={2560} className="w-full h-40 object-cover rounded-xl shadow-md" loading="lazy" />
+                <img src={IMAGES.mountain9} alt="Vodiy" width={1920} height={2560} className="w-full h-40 object-cover rounded-xl shadow-md" loading="lazy" />
               </div>
             </div>
           </div>
@@ -208,7 +208,7 @@ export default function TourPackages() {
                   key={video.id}
                   type="button"
                   onClick={() => setActiveVideo(video)}
-                  className="group text-left bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
+                  className="group text-left bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
                 >
                   <div
                     className={`relative ${video.orientation === 'portrait' ? 'aspect-[9/16]' : 'aspect-video'} bg-stone-900 overflow-hidden`}

@@ -62,7 +62,7 @@ export default function Amenities() {
           <h2 className="section-title mb-8">{t('amenities.listTitle')}</h2>
           <Reveal variant="fade-up" stagger={0.05} className="grid sm:grid-cols-2 gap-3">
             {fullList.map((item) => (
-              <div key={item} className="flex items-center gap-3 p-4 bg-white rounded-sm border border-stone-100">
+              <div key={item} className="flex items-center gap-3 p-4 bg-white rounded-xl border border-stone-100">
                 <div className="w-6 h-6 rounded-full bg-forest-50 flex items-center justify-center shrink-0">
                   <Check size={14} className="text-forest-600" />
                 </div>

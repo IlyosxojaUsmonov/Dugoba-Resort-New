@@ -38,22 +38,22 @@ export default function Resort() {
                 <p>{t('resort.p3')}</p>
               </div>
               <div className="mt-8 grid grid-cols-3 gap-4">
-                <div className="text-center p-4 bg-forest-50 rounded-sm">
+                <div className="text-center p-4 bg-forest-50 rounded-xl">
                   <div ref={countObjectRef} className="font-serif text-3xl font-bold text-forest-700">29</div>
                   <div className="text-xs text-stone-500 uppercase tracking-wider mt-1">{t('resort.statObject')}</div>
                 </div>
-                <div className="text-center p-4 bg-forest-50 rounded-sm">
+                <div className="text-center p-4 bg-forest-50 rounded-xl">
                   <div ref={countCottageRef} className="font-serif text-3xl font-bold text-forest-700">5</div>
                   <div className="text-xs text-stone-500 uppercase tracking-wider mt-1">{t('resort.statCottage')}</div>
                 </div>
-                <div className="text-center p-4 bg-forest-50 rounded-sm">
+                <div className="text-center p-4 bg-forest-50 rounded-xl">
                   <div ref={countRoomRef} className="font-serif text-3xl font-bold text-forest-700">24</div>
                   <div className="text-xs text-stone-500 uppercase tracking-wider mt-1">{t('resort.statRoom')}</div>
                 </div>
               </div>
             </Reveal>
             <Reveal variant="mask-reveal" className="order-1 lg:order-2 space-y-4">
-              <div className="relative h-80 overflow-hidden rounded-sm shadow-lg">
+              <div className="relative h-80 overflow-hidden rounded-xl shadow-lg">
                 <img
                   ref={mountainParallaxRef}
                   src={IMAGES.atrofMuhitTog}
@@ -63,8 +63,8 @@ export default function Resort() {
                 />
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <img src={IMAGES.atrofMuhitXonaKotej} alt="Resort va kottejlar" width={1280} height={960} className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
-                <img src={IMAGES.atrofMuhitTabiat6} alt="Tog' manzarasi" width={640} height={640} className="w-full h-48 object-cover rounded-sm shadow-md" loading="lazy" />
+                <img src={IMAGES.atrofMuhitXonaKotej} alt="Resort va kottejlar" width={1280} height={960} className="w-full h-48 object-cover rounded-xl shadow-md" loading="lazy" />
+                <img src={IMAGES.atrofMuhitTabiat6} alt="Tog' manzarasi" width={640} height={640} className="w-full h-48 object-cover rounded-xl shadow-md" loading="lazy" />
               </div>
             </Reveal>
           </div>

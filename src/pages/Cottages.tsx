@@ -32,8 +32,8 @@ export default function Cottages() {
           </Reveal>
 
           <Reveal variant="fade-up" stagger={0.12} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {cottages.map((c) => (
-              <AccommodationCard key={c.id} accommodation={c} />
+            {cottages.map((c, i) => (
+              <AccommodationCard key={c.id} accommodation={c} index={i} />
             ))}
           </Reveal>
         </div>

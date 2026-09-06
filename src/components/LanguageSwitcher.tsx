@@ -42,7 +42,7 @@ export default function LanguageSwitcher({ variant = 'dark' }: Props) {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-sm border text-sm font-medium tracking-wide transition-colors duration-300 ${
+        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-sm font-medium tracking-wide transition-colors duration-300 ${
           isDark
             ? 'border-forest-400/40 text-white/80 hover:bg-white/10'
             : 'border-stone-300 text-stone-600 hover:bg-stone-100'
@@ -55,7 +55,7 @@ export default function LanguageSwitcher({ variant = 'dark' }: Props) {
       {open && (
         <ul
           role="listbox"
-          className={`absolute right-0 mt-2 min-w-[9rem] rounded-sm border shadow-xl overflow-hidden z-50 ${
+          className={`absolute right-0 mt-2 min-w-[9rem] rounded-xl border shadow-xl overflow-hidden z-50 ${
             isDark ? 'bg-stone-900 border-forest-400/40' : 'bg-white border-stone-200'
           }`}
         >

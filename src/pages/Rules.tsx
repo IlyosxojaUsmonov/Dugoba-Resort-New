@@ -22,7 +22,7 @@ export default function Rules() {
           <nav className="flex items-center gap-2 text-xs text-white/60 mb-4">
             <Link to="/" className="hover:text-white transition-colors">{t('common.home')}</Link>
             <span>/</span>
-            <span className="text-forest-300">{t('rules.heroTitle')}</span>
+            <span className="text-sand-300">{t('rules.heroTitle')}</span>
           </nav>
           <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-white text-shadow-lux animate-fade-up">
             {t('rules.heroTitle')}
@@ -41,7 +41,7 @@ export default function Rules() {
 
           <Reveal variant="fade-up" stagger={0.1} className="space-y-6">
             {rules.map((rule) => (
-              <div key={rule.title} className="flex items-start gap-5 p-6 bg-stone-50 rounded-sm">
+              <div key={rule.title} className="flex items-start gap-5 p-6 bg-stone-50 rounded-xl">
                 <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center shrink-0">
                   <rule.icon size={22} className="text-red-600" />
                 </div>
@@ -53,7 +53,7 @@ export default function Rules() {
             ))}
           </Reveal>
 
-          <Reveal variant="fade-up" className="mt-10 flex items-start gap-3 p-6 border border-stone-200 rounded-sm">
+          <Reveal variant="fade-up" className="mt-10 flex items-start gap-3 p-6 border border-stone-200 rounded-xl">
             <ShieldAlert size={20} className="text-forest-600 shrink-0 mt-0.5" />
             <p className="text-sm text-stone-500 leading-relaxed">{t('rules.note')}</p>
           </Reveal>

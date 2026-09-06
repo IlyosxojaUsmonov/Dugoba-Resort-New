@@ -36,7 +36,7 @@ export default function VideoPlayer({
 
   if (playing && videoSrc) {
     return (
-      <div className={`relative ${frameClass} rounded-sm overflow-hidden bg-black animate-scale-in`}>
+      <div className={`relative ${frameClass} rounded-xl overflow-hidden bg-black animate-scale-in`}>
         <video
           className="w-full h-full"
           src={videoSrc}
@@ -52,7 +52,7 @@ export default function VideoPlayer({
 
   if (playing && youtubeId) {
     return (
-      <div className={`relative ${frameClass} rounded-sm overflow-hidden bg-black animate-scale-in`}>
+      <div className={`relative ${frameClass} rounded-xl overflow-hidden bg-black animate-scale-in`}>
         <iframe
           className="w-full h-full"
           src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1`}
@@ -66,7 +66,7 @@ export default function VideoPlayer({
 
   return (
     <div
-      className={`relative ${frameClass} rounded-sm overflow-hidden bg-stone-900 group cursor-pointer`}
+      className={`relative ${frameClass} rounded-xl overflow-hidden bg-stone-900 group cursor-pointer`}
       onClick={() => setPlaying(true)}
     >
       {thumbnail ? (

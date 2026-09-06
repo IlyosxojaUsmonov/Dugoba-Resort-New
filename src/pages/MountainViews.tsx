@@ -79,7 +79,7 @@ export default function MountainViews() {
               <button
                 key={i}
                 onClick={() => setLightboxIndex(i)}
-                className={`relative overflow-hidden rounded-sm group ${
+                className={`relative overflow-hidden rounded-xl group ${
                   i === 0 || i === 5 ? 'col-span-2 row-span-2 aspect-square' : 'aspect-[4/3]'
                 }`}
               >

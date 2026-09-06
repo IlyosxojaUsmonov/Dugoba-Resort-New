@@ -21,11 +21,13 @@ export const translations = {
       mountainViews: "Tog' manzarasi",
       contact: 'Aloqa',
       rules: 'Qoidalar',
+      menu: 'Menyu',
       book: 'Bron qilish',
       viewAllRooms: 'Barcha xonalarni ko\'rish',
       viewAllCottages: 'Barcha kottejlarni ko\'rish',
     },
     footer: {
+      colophonLabel: "No. 01 — Shohimardon, Farg'ona",
       description:
         "Farg'ona viloyati, Shohimardon qishlog'ining eng yuqori nuqtasida joylashgan premium resort. Tog' manzarasi, qulay xonalar va kottejlar bilan dam olishning eng yuqori darajasi.",
       navigation: 'Naviqatsiya',
@@ -459,11 +461,13 @@ export const translations = {
       mountainViews: 'Вид на горы',
       contact: 'Контакты',
       rules: 'Правила',
+      menu: 'Меню',
       book: 'Забронировать',
       viewAllRooms: 'Смотреть все номера',
       viewAllCottages: 'Смотреть все коттеджи',
     },
     footer: {
+      colophonLabel: 'No. 01 — Шохимардон, Фергана',
       description:
         'Премиальный курорт, расположенный на самой высокой точке кишлака Шохимардон, Ферганская область. Вид на горы, комфортные номера и коттеджи для отдыха на высшем уровне.',
       navigation: 'Навигация',

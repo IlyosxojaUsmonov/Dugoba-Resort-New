@@ -29,7 +29,7 @@ export default function Gallery() {
               <button
                 key={`${img.url}-${i}`}
                 onClick={() => setLightboxIndex(i)}
-                className="block w-full break-inside-avoid relative overflow-hidden rounded-sm group"
+                className="block w-full break-inside-avoid relative overflow-hidden rounded-xl group"
               >
                 <img
                   src={img.url}

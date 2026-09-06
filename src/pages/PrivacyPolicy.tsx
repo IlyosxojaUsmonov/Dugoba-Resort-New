@@ -49,7 +49,7 @@ export default function PrivacyPolicy() {
                 {section.title === t('privacyPolicy.cookieTypesTitle') && (
                   <div className="mt-6 grid gap-4 sm:grid-cols-3">
                     {cookieTypes.map((c) => (
-                      <div key={c.title} className="rounded-sm bg-stone-50 p-4">
+                      <div key={c.title} className="rounded-xl bg-stone-50 p-4">
                         <h3 className="text-sm font-medium text-stone-900 mb-1.5">{c.title}</h3>
                         <p className="text-xs leading-relaxed text-stone-500">{c.desc}</p>
                       </div>
