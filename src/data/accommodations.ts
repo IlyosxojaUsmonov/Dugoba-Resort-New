@@ -177,6 +177,27 @@ export interface Accommodation {
   isLuxury: boolean;
   hasPrivateTapchan: boolean;
   features: string[];
+  /** false = temporarily not offered; the card/detail page shows an honest "Mavjud emas" state instead of hiding or deleting anything. */
+  available: boolean;
+}
+
+/** Every accommodation entry below builds one of these; `available` is added afterwards by applyAvailability(). */
+type AccommodationDraft = Omit<Accommodation, 'available'>;
+
+// TEMPORARY, pre-launch only: mark most listings as not currently available so the
+// site can be reviewed with a realistic "limited availability" look before launch.
+// To restore full availability, just set this to false — nothing else needs to change.
+export const SIMULATE_LIMITED_AVAILABILITY = true;
+
+// Only these stay bookable (~1-2 per listing page); everything else shows an
+// honest "Mavjud emas" placeholder instead of its real photo/video.
+const AVAILABLE_ACCOMMODATION_IDS = new Set<string>(['cottage-3', 'room-3p-2', 'room-8p-1']);
+
+function applyAvailability(items: AccommodationDraft[]): Accommodation[] {
+  return items.map((item) => ({
+    ...item,
+    available: SIMULATE_LIMITED_AVAILABILITY ? AVAILABLE_ACCOMMODATION_IDS.has(item.id) : true,
+  }));
 }
 
 const IMG = {
@@ -306,7 +327,7 @@ function make3pRoom(
   mainImage: string,
   roomImg2: string,
   roomImg3: string,
-): Accommodation {
+): AccommodationDraft {
   const loc = LOC[locKey];
   const name = lang === 'ru' ? `3-местный номер №${num}` : `3 kishilik xona №${num}`;
   const shortDescription =
@@ -355,7 +376,7 @@ function make4pRoom(
   mainImage: string,
   roomImg2: string,
   roomImg3: string,
-): Accommodation {
+): AccommodationDraft {
   const loc = LOC[locKey];
   const name = lang === 'ru' ? `4-местный номер №${num}` : `4 kishilik xona №${num}`;
   const shortDescription =
@@ -412,7 +433,7 @@ interface CottageSpec {
   featuresRu: string[];
 }
 
-function makeCottage(lang: Lang, spec: CottageSpec): Accommodation {
+function makeCottage(lang: Lang, spec: CottageSpec): AccommodationDraft {
   const cottageAmenities = [...BASE_AMENITIES[lang]];
   if (lang === 'ru') {
     cottageAmenities.push('Личный задний тапчан', 'Коттеджный интерьер');
@@ -466,7 +487,7 @@ function makeCottage(lang: Lang, spec: CottageSpec): Accommodation {
 }
 
 export function getAccommodations(lang: Lang): Accommodation[] {
-  return [
+  const list: AccommodationDraft[] = [
     // ===== 5 COTTAGES =====
     {
       ...makeCottage(lang, {
@@ -776,6 +797,7 @@ export function getAccommodations(lang: Lang): Accommodation[] {
           : ['10 kishilik', 'Standart xona', 'Dush', 'Sanuzel', 'Wi-Fi', 'Televizor', 'Shaxsiy tapchan'],
     },
   ];
+  return applyAvailability(list);
 }
 
 export function getAccommodationById(id: string, lang: Lang): Accommodation | undefined {
@@ -947,13 +969,18 @@ export interface GalleryImage {
   caption: string;
   width: number;
   height: number;
+  /** false = shown as an honest "Mavjud emas" placeholder instead of the real photo. */
+  available: boolean;
 }
+
+// Indices into the array below that stay visible (~1-2, matching the accommodation pages).
+const AVAILABLE_GALLERY_INDICES = new Set([0, 5]);
 
 export function getGalleryImages(lang: Lang): GalleryImage[] {
   const category = lang === 'ru' ? 'Природа' : 'Atrof-muhit';
   const natureCaption = lang === 'ru' ? 'Природный пейзаж' : 'Tabiat manzarasi';
   const resortCaption = lang === 'ru' ? 'Курорт и коттеджи' : 'Resort va kottejlar';
-  return [
+  const images = [
     { url: am_xonaKotej, category, caption: resortCaption, width: 1280, height: 960 },
     { url: am_tabiat0, category, caption: natureCaption, width: 1920, height: 2560 },
     { url: am_tabiat1, category, caption: natureCaption, width: 1920, height: 2560 },
@@ -965,6 +992,10 @@ export function getGalleryImages(lang: Lang): GalleryImage[] {
     { url: am_tabiat7, category, caption: natureCaption, width: 640, height: 640 },
     { url: am_tabiat8, category, caption: natureCaption, width: 1920, height: 2560 },
   ];
+  return images.map((img, i) => ({
+    ...img,
+    available: SIMULATE_LIMITED_AVAILABILITY ? AVAILABLE_GALLERY_INDICES.has(i) : true,
+  }));
 }
 
 // ===== VIDEO GALLERY =====
@@ -979,7 +1010,14 @@ export interface VideoItem {
   videoSrc?: string | null;
   /** Video kadrining yo'nalishi — tabiat videolari bo'yiga (portrait) olingan. */
   orientation?: 'portrait' | 'landscape';
+  /** false = shown as an honest "Mavjud emas" placeholder instead of the real video/thumbnail. */
+  available: boolean;
 }
+
+type VideoItemDraft = Omit<VideoItem, 'available'>;
+
+// Only these stay watchable (~1-2 per section); everything else shows an honest placeholder.
+const AVAILABLE_VIDEO_IDS = new Set<string>(['vid-1', 'vid-tabiat-1', 'vid-tabiat-10']);
 
 const TABIAT_VIDEOS: ReadonlyArray<{ src: string; poster: string }> = [
   { src: tv1, poster: tvp1 },
@@ -1004,7 +1042,7 @@ const TABIAT_VIDEOS: ReadonlyArray<{ src: string; poster: string }> = [
   { src: tv20, poster: tvp20 },
 ];
 
-function getTabiatVideos(lang: Lang): VideoItem[] {
+function getTabiatVideos(lang: Lang): VideoItemDraft[] {
   return TABIAT_VIDEOS.map(({ src, poster }, i) => ({
     id: `vid-tabiat-${i + 1}`,
     title: lang === 'ru' ? `Природа Дугоба — ${i + 1}` : `Dugoba tabiati — ${i + 1}`,
@@ -1021,10 +1059,14 @@ function getTabiatVideos(lang: Lang): VideoItem[] {
 }
 
 export function getVideoItems(lang: Lang): VideoItem[] {
-  return [...getBaseVideoItems(lang), ...getTabiatVideos(lang)];
+  const items = [...getBaseVideoItems(lang), ...getTabiatVideos(lang)];
+  return items.map((v) => ({
+    ...v,
+    available: SIMULATE_LIMITED_AVAILABILITY ? AVAILABLE_VIDEO_IDS.has(v.id) : true,
+  }));
 }
 
-function getBaseVideoItems(lang: Lang): VideoItem[] {
+function getBaseVideoItems(lang: Lang): VideoItemDraft[] {
   return lang === 'ru'
     ? [
         { id: 'vid-1', title: 'Dugoba Resort — общий вид', category: 'Территория курорта', description: 'Полный обзор территории курорта и её удобств.', thumbnail: p_bolim1, youtubeId: null, videoSrc: v_bolim1, orientation: 'portrait' },

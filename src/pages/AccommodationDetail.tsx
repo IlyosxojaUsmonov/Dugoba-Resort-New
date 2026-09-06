@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useState } from 'react';
 import {
   Users, Wifi, Tv, ShowerHead, Check, ArrowRight,
-  ChevronRight, Utensils, Camera,
+  ChevronRight, Utensils, Camera, ImageOff,
 } from 'lucide-react';
 import { getAccommodationById, getRelatedAccommodations } from '@/data/accommodations';
 import { useBookingModal } from '@/lib/store';
@@ -40,6 +40,7 @@ export default function AccommodationDetail() {
     );
   }
 
+  const { available } = accommodation;
   const related = getRelatedAccommodations(accommodation.id, language, 3);
   const allImages = [accommodation.mainImage, ...accommodation.gallery, ...accommodation.tapchanImages];
   if (accommodation.hasKitchen) {
@@ -51,7 +52,14 @@ export default function AccommodationDetail() {
     <div className="pt-16">
       {/* HERO */}
       <section className="relative h-[60vh] min-h-[400px] overflow-hidden">
-        <img src={accommodation.mainImage} alt={accommodation.name} className="w-full h-full object-cover" />
+        {available ? (
+          <img src={accommodation.mainImage} alt={accommodation.name} className="w-full h-full object-cover" />
+        ) : (
+          <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-stone-800 text-stone-400">
+            <ImageOff size={36} strokeWidth={1.5} />
+            <span className="text-xs font-semibold tracking-[0.25em] uppercase">{t('accommodationCard.unavailable')}</span>
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/30 to-forest-950/40" />
 
         <div className="absolute bottom-0 left-0 right-0 pb-12">
@@ -81,6 +89,12 @@ export default function AccommodationDetail() {
                     <>
                       <span className="w-px h-4 bg-white/30" />
                       <span className="text-sand-300 font-medium">{t('accommodationDetail.premium')}</span>
+                    </>
+                  )}
+                  {!available && (
+                    <>
+                      <span className="w-px h-4 bg-white/30" />
+                      <span className="text-clay-300 font-medium">{t('accommodationCard.unavailable')}</span>
                     </>
                   )}
                 </div>
@@ -123,12 +137,18 @@ export default function AccommodationDetail() {
               </div>
             )}
           </div>
-          <button
-            onClick={() => openBooking(accommodation.id, accommodation.name, accommodation.priceDisplay)}
-            className="btn-primary"
-          >
-            {t('accommodationDetail.bookNow')}
-          </button>
+          {available ? (
+            <button
+              onClick={() => openBooking(accommodation.id, accommodation.name, accommodation.priceDisplay)}
+              className="btn-primary"
+            >
+              {t('accommodationDetail.bookNow')}
+            </button>
+          ) : (
+            <span className="text-sm font-semibold uppercase tracking-wide text-stone-400" title={t('accommodationCard.unavailableNote')}>
+              {t('accommodationCard.unavailable')}
+            </span>
+          )}
         </div>
       </section>
 
@@ -149,35 +169,44 @@ export default function AccommodationDetail() {
           <p className="section-subtitle mb-3">{t('accommodationDetail.gallerySubtitle')}</p>
           <h2 className="section-title mb-8">{t('accommodationDetail.galleryTitle')}</h2>
 
-          <Reveal variant="fade-up" stagger={0.05} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-            {uniqueImages.map((img, i) => (
-              <button
-                key={i}
-                onClick={() => setLightboxIndex(i)}
-                className={`relative overflow-hidden rounded-xl group cursor-pointer ${
-                  i === 0 ? 'col-span-2 row-span-2 aspect-square md:aspect-auto' : 'aspect-[4/3]'
-                }`}
-              >
-                <img
-                  src={img}
-                  alt={`${accommodation.name} - ${i + 1}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-                <div className="absolute bottom-2 right-2 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Camera size={14} className="text-stone-700" />
-                </div>
-              </button>
-            ))}
-          </Reveal>
+          {available ? (
+            <>
+              <Reveal variant="fade-up" stagger={0.05} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                {uniqueImages.map((img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setLightboxIndex(i)}
+                    className={`relative overflow-hidden rounded-xl group cursor-pointer ${
+                      i === 0 ? 'col-span-2 row-span-2 aspect-square md:aspect-auto' : 'aspect-[4/3]'
+                    }`}
+                  >
+                    <img
+                      src={img}
+                      alt={`${accommodation.name} - ${i + 1}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
+                    <div className="absolute bottom-2 right-2 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Camera size={14} className="text-stone-700" />
+                    </div>
+                  </button>
+                ))}
+              </Reveal>
 
-          {lightboxIndex !== null && (
-            <Lightbox
-              images={uniqueImages}
-              startIndex={lightboxIndex}
-              onClose={() => setLightboxIndex(null)}
-            />
+              {lightboxIndex !== null && (
+                <Lightbox
+                  images={uniqueImages}
+                  startIndex={lightboxIndex}
+                  onClose={() => setLightboxIndex(null)}
+                />
+              )}
+            </>
+          ) : (
+            <div className="flex flex-col items-center justify-center gap-3 bg-stone-100 text-stone-400 py-20 rounded-xl">
+              <ImageOff size={32} strokeWidth={1.5} />
+              <span className="text-xs font-semibold tracking-[0.2em] uppercase">{t('accommodationCard.unavailable')}</span>
+            </div>
           )}
         </div>
       </section>
@@ -188,15 +217,24 @@ export default function AccommodationDetail() {
           <div className="container-lux max-w-4xl">
             <p className="section-subtitle mb-3">{t('accommodationDetail.videoSubtitle')}</p>
             <h2 className="section-title mb-8">{t('accommodationDetail.videoTitle')}</h2>
-            <VideoPlayer
-              thumbnail={accommodation.videoPoster ?? accommodation.mainImage}
-              title={`${accommodation.name} — ${t('accommodationDetail.videoPlayerSuffix')}`}
-              videoSrc={accommodation.video}
-              orientation="portrait"
-            />
-            <p className="text-sm text-stone-500 mt-4 text-center">
-              {accommodation.type === 'cottage' ? t('accommodationDetail.videoNoteCottage') : t('accommodationDetail.videoNoteRoom')}
-            </p>
+            {available ? (
+              <>
+                <VideoPlayer
+                  thumbnail={accommodation.videoPoster ?? accommodation.mainImage}
+                  title={`${accommodation.name} — ${t('accommodationDetail.videoPlayerSuffix')}`}
+                  videoSrc={accommodation.video}
+                  orientation="portrait"
+                />
+                <p className="text-sm text-stone-500 mt-4 text-center">
+                  {accommodation.type === 'cottage' ? t('accommodationDetail.videoNoteCottage') : t('accommodationDetail.videoNoteRoom')}
+                </p>
+              </>
+            ) : (
+              <div className="flex flex-col items-center justify-center gap-3 bg-stone-200 text-stone-400 py-20 rounded-xl max-w-md mx-auto">
+                <ImageOff size={32} strokeWidth={1.5} />
+                <span className="text-xs font-semibold tracking-[0.2em] uppercase">{t('accommodationCard.unavailable')}</span>
+              </div>
+            )}
           </div>
         </section>
       )}
@@ -299,13 +337,19 @@ export default function AccommodationDetail() {
           <p className="text-white/70 max-w-2xl mx-auto mb-8">
             {t('accommodationDetail.bookCtaDesc')}
           </p>
-          <button
-            onClick={() => openBooking(accommodation.id, accommodation.name, accommodation.priceDisplay)}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-forest-600 text-white font-medium rounded-xl hover:bg-forest-500 transition-colors"
-          >
-            {t('accommodationDetail.bookNow')}
-            <ArrowRight size={18} />
-          </button>
+          {available ? (
+            <button
+              onClick={() => openBooking(accommodation.id, accommodation.name, accommodation.priceDisplay)}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-forest-600 text-white font-medium rounded-xl hover:bg-forest-500 transition-colors"
+            >
+              {t('accommodationDetail.bookNow')}
+              <ArrowRight size={18} />
+            </button>
+          ) : (
+            <span className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white/50 font-medium rounded-xl" title={t('accommodationCard.unavailableNote')}>
+              {t('accommodationCard.unavailable')}
+            </span>
+          )}
         </div>
       </section>
 

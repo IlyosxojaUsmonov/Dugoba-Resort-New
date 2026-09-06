@@ -8,6 +8,7 @@ export const translations = {
       seatedPerson: 'kishilik',
       allRightsReserved: 'Barcha huquqlar himoyalangan',
       close: 'Yopish',
+      unavailable: 'Mavjud emas',
     },
     navbar: {
       home: 'Bosh sahifa',
@@ -375,6 +376,8 @@ export const translations = {
       dailyPrice: 'Kunlik narx',
       book: 'Bron qilish',
       details: 'Batafsil',
+      unavailable: 'Mavjud emas',
+      unavailableNote: "Hozircha bron qilib bo'lmaydi",
     },
     lightbox: {
       close: 'Yopish',
@@ -448,6 +451,7 @@ export const translations = {
       seatedPerson: 'мест',
       allRightsReserved: 'Все права защищены',
       close: 'Закрыть',
+      unavailable: 'Недоступно',
     },
     navbar: {
       home: 'Главная',
@@ -807,6 +811,8 @@ export const translations = {
       dailyPrice: 'Цена за сутки',
       book: 'Забронировать',
       details: 'Подробнее',
+      unavailable: 'Недоступно',
+      unavailableNote: 'Бронирование временно недоступно',
     },
     lightbox: {
       close: 'Закрыть',

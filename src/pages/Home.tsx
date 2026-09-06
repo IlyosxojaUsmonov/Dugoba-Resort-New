@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import {
   Mountain, Wifi, ShowerHead, Store, Flame,
-  Baby, ArrowRight, ArrowUpRight,
+  Baby, ArrowRight, ArrowUpRight, ImageOff,
 } from 'lucide-react';
 import { getAccommodations, IMAGES } from '@/data/accommodations';
 import { useTranslation } from '@/i18n/useTranslation';
@@ -159,13 +159,20 @@ export default function Home() {
                     i % 2 === 1 ? 'md:flex-row-reverse' : ''
                   }`}
                 >
-                  <div className="md:w-1/2 overflow-hidden">
-                    <img
-                      src={c.mainImage}
-                      alt={c.name}
-                      loading="lazy"
-                      className="w-full h-64 sm:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+                  <div className="md:w-1/2 overflow-hidden bg-stone-200">
+                    {c.available ? (
+                      <img
+                        src={c.mainImage}
+                        alt={c.name}
+                        loading="lazy"
+                        className="w-full h-64 sm:h-80 object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="flex h-64 sm:h-80 w-full flex-col items-center justify-center gap-2 text-stone-400">
+                        <ImageOff size={26} strokeWidth={1.5} />
+                        <span className="text-[11px] font-semibold tracking-[0.2em] uppercase">{t('common.unavailable')}</span>
+                      </div>
+                    )}
                   </div>
                   <div className="md:w-1/2 flex flex-col justify-center">
                     <span className="index-tag mb-3">{String(i + 1).padStart(2, '0')} — {c.category}</span>
@@ -175,9 +182,15 @@ export default function Home() {
                     <p className="text-stone-600 leading-relaxed mb-6 max-w-md">{c.shortDescription}</p>
                     <div className="flex items-center gap-6">
                       <span className="font-serif italic text-xl text-stone-950">{c.priceDisplay}</span>
-                      <span className="flex items-center gap-2 text-sm font-semibold text-stone-950 group-hover:gap-3 transition-all">
-                        {t('accommodationCard.details')} <ArrowUpRight size={16} />
-                      </span>
+                      {c.available ? (
+                        <span className="flex items-center gap-2 text-sm font-semibold text-stone-950 group-hover:gap-3 transition-all">
+                          {t('accommodationCard.details')} <ArrowUpRight size={16} />
+                        </span>
+                      ) : (
+                        <span className="text-sm font-semibold uppercase tracking-wide text-stone-400">
+                          {t('common.unavailable')}
+                        </span>
+                      )}
                     </div>
                   </div>
                 </Link>

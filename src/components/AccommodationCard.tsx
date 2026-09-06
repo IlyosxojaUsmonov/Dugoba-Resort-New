@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Users, ArrowUpRight } from 'lucide-react';
+import { Users, ArrowUpRight, ImageOff } from 'lucide-react';
 import type { Accommodation } from '@/data/accommodations';
 import { useBookingModal } from '@/lib/store';
 import { useTranslation } from '@/i18n/useTranslation';
@@ -12,29 +12,39 @@ interface Props {
 export default function AccommodationCard({ accommodation, index }: Props) {
   const openBooking = useBookingModal((s) => s.open);
   const { t } = useTranslation();
+  const { available } = accommodation;
 
   return (
     <div className="group flex flex-col">
       <Link to={`/obyekt/${accommodation.id}`} className="relative overflow-hidden block aspect-[4/5] bg-stone-100">
-        <img
-          src={accommodation.mainImage}
-          alt={accommodation.name}
-          loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-        />
+        {available ? (
+          <img
+            src={accommodation.mainImage}
+            alt={accommodation.name}
+            loading="lazy"
+            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+        ) : (
+          <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-stone-200 text-stone-500">
+            <ImageOff size={28} strokeWidth={1.5} />
+            <span className="text-[11px] font-semibold tracking-[0.2em] uppercase">{t('accommodationCard.unavailable')}</span>
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         <span className="absolute top-4 left-4 index-tag text-white/90 mix-blend-difference">
           {typeof index === 'number' ? String(index + 1).padStart(2, '0') : ''}
         </span>
-        {accommodation.isLuxury && (
+        {available && accommodation.isLuxury && (
           <span className="absolute top-4 right-4 px-2.5 py-1 bg-sand-400 text-stone-950 text-[10px] font-bold tracking-wider uppercase">
             {t('accommodationCard.premium')}
           </span>
         )}
-        <ArrowUpRight
-          size={28}
-          className="absolute bottom-4 right-4 text-white opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300"
-        />
+        {available && (
+          <ArrowUpRight
+            size={28}
+            className="absolute bottom-4 right-4 text-white opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300"
+          />
+        )}
       </Link>
 
       <div className="pt-4 flex flex-col flex-1">
@@ -63,12 +73,21 @@ export default function AccommodationCard({ accommodation, index }: Props) {
             {accommodation.priceDisplay}
           </span>
           <div className="flex items-center gap-4">
-            <button
-              onClick={() => openBooking(accommodation.id, accommodation.name, accommodation.priceDisplay)}
-              className="text-[11px] font-bold tracking-[0.2em] uppercase text-stone-950 border-b border-stone-950 pb-0.5 hover:text-clay-700 hover:border-clay-700 transition-colors"
-            >
-              {t('accommodationCard.book')}
-            </button>
+            {available ? (
+              <button
+                onClick={() => openBooking(accommodation.id, accommodation.name, accommodation.priceDisplay)}
+                className="text-[11px] font-bold tracking-[0.2em] uppercase text-stone-950 border-b border-stone-950 pb-0.5 hover:text-clay-700 hover:border-clay-700 transition-colors"
+              >
+                {t('accommodationCard.book')}
+              </button>
+            ) : (
+              <span
+                className="text-[11px] font-bold tracking-[0.2em] uppercase text-stone-400 cursor-not-allowed"
+                title={t('accommodationCard.unavailableNote')}
+              >
+                {t('accommodationCard.unavailable')}
+              </span>
+            )}
           </div>
         </div>
       </div>

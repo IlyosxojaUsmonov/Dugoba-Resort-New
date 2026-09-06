@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Play, Video } from 'lucide-react';
+import { Play, Video, ImageOff } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import { getVideoItems, IMAGES, type VideoItem } from '@/data/accommodations';
 import { VideoModal } from '@/components/VideoPlayer';
@@ -15,7 +15,17 @@ type SelectedVideo = {
 };
 
 function VideoCard({ video, onOpen }: { video: VideoItem; onOpen: (v: VideoItem) => void }) {
+  const { t } = useTranslation();
   const isPortrait = video.orientation === 'portrait';
+
+  if (!video.available) {
+    return (
+      <div className={`relative ${isPortrait ? 'aspect-[9/16]' : 'aspect-video'} rounded-xl overflow-hidden bg-stone-200 flex flex-col items-center justify-center gap-2 text-stone-400`}>
+        <ImageOff size={24} strokeWidth={1.5} />
+        <span className="text-[10px] font-semibold tracking-[0.2em] uppercase">{t('common.unavailable')}</span>
+      </div>
+    );
+  }
 
   return (
     <div className="group cursor-pointer" onClick={() => onOpen(video)}>
