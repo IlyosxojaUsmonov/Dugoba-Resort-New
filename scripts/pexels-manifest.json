@@ -1,0 +1,842 @@
+[
+  {
+    "url": "https://images.pexels.com/photos/30151209/pexels-photo-30151209.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "heroResort"
+    ],
+    "ok": true,
+    "file": "src/stok/heroResort.webp",
+    "width": 1600,
+    "height": 1066,
+    "sizeKB": 442
+  },
+  {
+    "url": "https://images.pexels.com/photos/452726/pexels-photo-452726.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "heroMountain"
+    ],
+    "ok": true,
+    "file": "src/stok/heroMountain.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 335
+  },
+  {
+    "url": "https://images.pexels.com/photos/12389429/pexels-photo-12389429.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "resortAerial"
+    ],
+    "ok": true,
+    "file": "src/stok/resortAerial.webp",
+    "width": 1600,
+    "height": 778,
+    "sizeKB": 172
+  },
+  {
+    "url": "https://images.pexels.com/photos/31665649/pexels-photo-31665649.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "resortTerrace"
+    ],
+    "ok": true,
+    "file": "src/stok/resortTerrace.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 189
+  },
+  {
+    "url": "https://images.pexels.com/photos/9119725/pexels-photo-9119725.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "resortPool"
+    ],
+    "ok": true,
+    "file": "src/stok/resortPool.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 179
+  },
+  {
+    "url": "https://images.pexels.com/photos/9119622/pexels-photo-9119622.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "resortFacade"
+    ],
+    "ok": true,
+    "file": "src/stok/resortFacade.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 133
+  },
+  {
+    "url": "https://images.pexels.com/photos/9119722/pexels-photo-9119722.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "resortGarden"
+    ],
+    "ok": true,
+    "file": "src/stok/resortGarden.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 151
+  },
+  {
+    "url": "https://images.pexels.com/photos/9119626/pexels-photo-9119626.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "resortElegant"
+    ],
+    "ok": true,
+    "file": "src/stok/resortElegant.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 308
+  },
+  {
+    "url": "https://images.pexels.com/photos/38543138/pexels-photo-38543138.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "resortForest"
+    ],
+    "ok": true,
+    "file": "src/stok/resortForest.webp",
+    "width": 1600,
+    "height": 1340,
+    "sizeKB": 257
+  },
+  {
+    "url": "https://images.pexels.com/photos/8413422/pexels-photo-8413422.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "resortRiverside"
+    ],
+    "ok": true,
+    "file": "src/stok/resortRiverside.webp",
+    "width": 1600,
+    "height": 1066,
+    "sizeKB": 191
+  },
+  {
+    "url": "https://images.pexels.com/photos/29338236/pexels-photo-29338236.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "cottage1"
+    ],
+    "ok": true,
+    "file": "src/stok/cottage1.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 343
+  },
+  {
+    "url": "https://images.pexels.com/photos/14177812/pexels-photo-14177812.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "cottage2"
+    ],
+    "ok": true,
+    "file": "src/stok/cottage2.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 148
+  },
+  {
+    "url": "https://images.pexels.com/photos/13686638/pexels-photo-13686638.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "cottage3"
+    ],
+    "ok": true,
+    "file": "src/stok/cottage3.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 301
+  },
+  {
+    "url": "https://images.pexels.com/photos/10388824/pexels-photo-10388824.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "cottage4"
+    ],
+    "ok": true,
+    "file": "src/stok/cottage4.webp",
+    "width": 1600,
+    "height": 900,
+    "sizeKB": 252
+  },
+  {
+    "url": "https://images.pexels.com/photos/18870105/pexels-photo-18870105.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "cottage5"
+    ],
+    "ok": true,
+    "file": "src/stok/cottage5.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 357
+  },
+  {
+    "url": "https://images.pexels.com/photos/27238377/pexels-photo-27238377.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "cottage6"
+    ],
+    "ok": true,
+    "file": "src/stok/cottage6.webp",
+    "width": 1600,
+    "height": 1080,
+    "sizeKB": 298
+  },
+  {
+    "url": "https://images.pexels.com/photos/32880862/pexels-photo-32880862.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "cottage7"
+    ],
+    "ok": true,
+    "file": "src/stok/cottage7.webp",
+    "width": 1600,
+    "height": 769,
+    "sizeKB": 122
+  },
+  {
+    "url": "https://images.pexels.com/photos/8262574/pexels-photo-8262574.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "cottage8"
+    ],
+    "ok": true,
+    "file": "src/stok/cottage8.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 331
+  },
+  {
+    "url": "https://images.pexels.com/photos/31728412/pexels-photo-31728412.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room1"
+    ],
+    "ok": true,
+    "file": "src/stok/room1.webp",
+    "width": 1600,
+    "height": 1064,
+    "sizeKB": 75
+  },
+  {
+    "url": "https://images.pexels.com/photos/7745929/pexels-photo-7745929.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room2"
+    ],
+    "ok": true,
+    "file": "src/stok/room2.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 93
+  },
+  {
+    "url": "https://images.pexels.com/photos/14547139/pexels-photo-14547139.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room3"
+    ],
+    "ok": true,
+    "file": "src/stok/room3.webp",
+    "width": 1600,
+    "height": 1099,
+    "sizeKB": 54
+  },
+  {
+    "url": "https://images.pexels.com/photos/189293/pexels-photo-189293.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room4"
+    ],
+    "ok": true,
+    "file": "src/stok/room4.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 90
+  },
+  {
+    "url": "https://images.pexels.com/photos/35747339/pexels-photo-35747339.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room5"
+    ],
+    "ok": true,
+    "file": "src/stok/room5.webp",
+    "width": 1600,
+    "height": 1224,
+    "sizeKB": 28
+  },
+  {
+    "url": "https://images.pexels.com/photos/2736388/pexels-photo-2736388.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room6"
+    ],
+    "ok": true,
+    "file": "src/stok/room6.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 58
+  },
+  {
+    "url": "https://images.pexels.com/photos/15792555/pexels-photo-15792555.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room7"
+    ],
+    "ok": true,
+    "file": "src/stok/room7.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 119
+  },
+  {
+    "url": "https://images.pexels.com/photos/14883357/pexels-photo-14883357.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room8"
+    ],
+    "ok": true,
+    "file": "src/stok/room8.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 129
+  },
+  {
+    "url": "https://images.pexels.com/photos/8135248/pexels-photo-8135248.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room9"
+    ],
+    "ok": true,
+    "file": "src/stok/room9.webp",
+    "width": 1600,
+    "height": 1117,
+    "sizeKB": 127
+  },
+  {
+    "url": "https://images.pexels.com/photos/6585619/pexels-photo-6585619.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room10"
+    ],
+    "ok": true,
+    "file": "src/stok/room10.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 78
+  },
+  {
+    "url": "https://images.pexels.com/photos/6394574/pexels-photo-6394574.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room11"
+    ],
+    "ok": true,
+    "file": "src/stok/room11.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 166
+  },
+  {
+    "url": "https://images.pexels.com/photos/10660270/pexels-photo-10660270.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room12"
+    ],
+    "ok": true,
+    "file": "src/stok/room12.webp",
+    "width": 1600,
+    "height": 898,
+    "sizeKB": 44
+  },
+  {
+    "url": "https://images.pexels.com/photos/4577673/pexels-photo-4577673.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room13"
+    ],
+    "ok": true,
+    "file": "src/stok/room13.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 94
+  },
+  {
+    "url": "https://images.pexels.com/photos/2736384/pexels-photo-2736384.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room14"
+    ],
+    "ok": true,
+    "file": "src/stok/room14.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 94
+  },
+  {
+    "url": "https://images.pexels.com/photos/26840829/pexels-photo-26840829.png?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room15"
+    ],
+    "ok": true,
+    "file": "src/stok/room15.webp",
+    "width": 1600,
+    "height": 900,
+    "sizeKB": 42
+  },
+  {
+    "url": "https://images.pexels.com/photos/6434586/pexels-photo-6434586.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room16"
+    ],
+    "ok": true,
+    "file": "src/stok/room16.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 130
+  },
+  {
+    "url": "https://images.pexels.com/photos/6782578/pexels-photo-6782578.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room17"
+    ],
+    "ok": true,
+    "file": "src/stok/room17.webp",
+    "width": 1600,
+    "height": 1038,
+    "sizeKB": 68
+  },
+  {
+    "url": "https://images.pexels.com/photos/8134823/pexels-photo-8134823.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room18",
+      "cottageInterior1"
+    ],
+    "ok": true,
+    "file": "src/stok/room18.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 133
+  },
+  {
+    "url": "https://images.pexels.com/photos/8135118/pexels-photo-8135118.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room19",
+      "cottageInterior2"
+    ],
+    "ok": true,
+    "file": "src/stok/room19.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 104
+  },
+  {
+    "url": "https://images.pexels.com/photos/8135502/pexels-photo-8135502.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room20",
+      "cottageInterior3"
+    ],
+    "ok": true,
+    "file": "src/stok/room20.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 91
+  },
+  {
+    "url": "https://images.pexels.com/photos/8134808/pexels-photo-8134808.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room21",
+      "cottageInterior4"
+    ],
+    "ok": true,
+    "file": "src/stok/room21.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 132
+  },
+  {
+    "url": "https://images.pexels.com/photos/34961766/pexels-photo-34961766.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room22"
+    ],
+    "ok": true,
+    "file": "src/stok/room22.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 123
+  },
+  {
+    "url": "https://images.pexels.com/photos/35868592/pexels-photo-35868592.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room23"
+    ],
+    "ok": true,
+    "file": "src/stok/room23.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 107
+  },
+  {
+    "url": "https://images.pexels.com/photos/13813465/pexels-photo-13813465.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room24"
+    ],
+    "ok": true,
+    "file": "src/stok/room24.webp",
+    "width": 1600,
+    "height": 1100,
+    "sizeKB": 129
+  },
+  {
+    "url": "https://images.pexels.com/photos/32177990/pexels-photo-32177990.png?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room25"
+    ],
+    "ok": true,
+    "file": "src/stok/room25.webp",
+    "width": 1600,
+    "height": 1053,
+    "sizeKB": 99
+  },
+  {
+    "url": "https://images.pexels.com/photos/5137980/pexels-photo-5137980.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room26"
+    ],
+    "ok": true,
+    "file": "src/stok/room26.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 155
+  },
+  {
+    "url": "https://images.pexels.com/photos/5158945/pexels-photo-5158945.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "room27"
+    ],
+    "ok": true,
+    "file": "src/stok/room27.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 129
+  },
+  {
+    "url": "https://images.pexels.com/photos/7534297/pexels-photo-7534297.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "kitchen1"
+    ],
+    "ok": true,
+    "file": "src/stok/kitchen1.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 50
+  },
+  {
+    "url": "https://images.pexels.com/photos/6908569/pexels-photo-6908569.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "kitchen2"
+    ],
+    "ok": true,
+    "file": "src/stok/kitchen2.webp",
+    "width": 1600,
+    "height": 1203,
+    "sizeKB": 73
+  },
+  {
+    "url": "https://images.pexels.com/photos/18285887/pexels-photo-18285887.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "kitchen3"
+    ],
+    "ok": true,
+    "file": "src/stok/kitchen3.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 110
+  },
+  {
+    "url": "https://images.pexels.com/photos/11295908/pexels-photo-11295908.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "kitchen4"
+    ],
+    "ok": true,
+    "file": "src/stok/kitchen4.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 72
+  },
+  {
+    "url": "https://images.pexels.com/photos/7836573/pexels-photo-7836573.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "kitchen5"
+    ],
+    "ok": true,
+    "file": "src/stok/kitchen5.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 76
+  },
+  {
+    "url": "https://images.pexels.com/photos/9551383/pexels-photo-9551383.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "stove"
+    ],
+    "ok": true,
+    "file": "src/stok/stove.webp",
+    "width": 1600,
+    "height": 1200,
+    "sizeKB": 153
+  },
+  {
+    "url": "https://images.pexels.com/photos/10835546/pexels-photo-10835546.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "stove2"
+    ],
+    "ok": true,
+    "file": "src/stok/stove2.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 65
+  },
+  {
+    "url": "https://images.pexels.com/photos/27359993/pexels-photo-27359993.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "bathroom1"
+    ],
+    "ok": true,
+    "file": "src/stok/bathroom1.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 134
+  },
+  {
+    "url": "https://images.pexels.com/photos/7005271/pexels-photo-7005271.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "bathroom2"
+    ],
+    "ok": true,
+    "file": "src/stok/bathroom2.webp",
+    "width": 1600,
+    "height": 1093,
+    "sizeKB": 58
+  },
+  {
+    "url": "https://images.pexels.com/photos/8082195/pexels-photo-8082195.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "bathroom3"
+    ],
+    "ok": true,
+    "file": "src/stok/bathroom3.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 59
+  },
+  {
+    "url": "https://images.pexels.com/photos/8082550/pexels-photo-8082550.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "bathroom4"
+    ],
+    "ok": true,
+    "file": "src/stok/bathroom4.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 69
+  },
+  {
+    "url": "https://images.pexels.com/photos/7147283/pexels-photo-7147283.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "bathroom5"
+    ],
+    "ok": true,
+    "file": "src/stok/bathroom5.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 172
+  },
+  {
+    "url": "https://images.pexels.com/photos/7005448/pexels-photo-7005448.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "bathroom6"
+    ],
+    "ok": true,
+    "file": "src/stok/bathroom6.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 67
+  },
+  {
+    "url": "https://images.pexels.com/photos/2771921/pexels-photo-2771921.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "tapchan1"
+    ],
+    "ok": true,
+    "file": "src/stok/tapchan1.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 171
+  },
+  {
+    "url": "https://images.pexels.com/photos/2962114/pexels-photo-2962114.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "tapchan2"
+    ],
+    "ok": true,
+    "file": "src/stok/tapchan2.webp",
+    "width": 1600,
+    "height": 898,
+    "sizeKB": 116
+  },
+  {
+    "url": "https://images.pexels.com/photos/38871237/pexels-photo-38871237.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "tapchan3"
+    ],
+    "ok": true,
+    "file": "src/stok/tapchan3.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 115
+  },
+  {
+    "url": "https://images.pexels.com/photos/2961945/pexels-photo-2961945.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "tapchan4"
+    ],
+    "ok": true,
+    "file": "src/stok/tapchan4.webp",
+    "width": 1600,
+    "height": 898,
+    "sizeKB": 138
+  },
+  {
+    "url": "https://images.pexels.com/photos/4915587/pexels-photo-4915587.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "tapchan5"
+    ],
+    "ok": true,
+    "file": "src/stok/tapchan5.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 139
+  },
+  {
+    "url": "https://images.pexels.com/photos/38701759/pexels-photo-38701759.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "tapchan6"
+    ],
+    "ok": true,
+    "file": "src/stok/tapchan6.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 214
+  },
+  {
+    "url": "https://images.pexels.com/photos/34401151/pexels-photo-34401151.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "tapchan7"
+    ],
+    "ok": true,
+    "file": "src/stok/tapchan7.webp",
+    "width": 1600,
+    "height": 1068,
+    "sizeKB": 116
+  },
+  {
+    "url": "https://images.pexels.com/photos/36577716/pexels-photo-36577716.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "tapchan8"
+    ],
+    "ok": true,
+    "file": "src/stok/tapchan8.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 197
+  },
+  {
+    "url": "https://images.pexels.com/photos/19336565/pexels-photo-19336565.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "playground1"
+    ],
+    "ok": true,
+    "file": "src/stok/playground1.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 530
+  },
+  {
+    "url": "https://images.pexels.com/photos/13350086/pexels-photo-13350086.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "playground2"
+    ],
+    "ok": true,
+    "file": "src/stok/playground2.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 388
+  },
+  {
+    "url": "https://images.pexels.com/photos/5826495/pexels-photo-5826495.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "playground3"
+    ],
+    "ok": true,
+    "file": "src/stok/playground3.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 183
+  },
+  {
+    "url": "https://images.pexels.com/photos/3735183/pexels-photo-3735183.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "shop1"
+    ],
+    "ok": true,
+    "file": "src/stok/shop1.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 94
+  },
+  {
+    "url": "https://images.pexels.com/photos/38698664/pexels-photo-38698664.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "shop2"
+    ],
+    "ok": true,
+    "file": "src/stok/shop2.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 102
+  },
+  {
+    "url": "https://images.pexels.com/photos/3167310/pexels-photo-3167310.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "shop3"
+    ],
+    "ok": true,
+    "file": "src/stok/shop3.webp",
+    "width": 1600,
+    "height": 1065,
+    "sizeKB": 165
+  },
+  {
+    "url": "https://images.pexels.com/photos/1061640/pexels-photo-1061640.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "campfire1"
+    ],
+    "ok": true,
+    "file": "src/stok/campfire1.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 153
+  },
+  {
+    "url": "https://images.pexels.com/photos/5686602/pexels-photo-5686602.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "campfire2"
+    ],
+    "ok": true,
+    "file": "src/stok/campfire2.webp",
+    "width": 1600,
+    "height": 1202,
+    "sizeKB": 96
+  },
+  {
+    "url": "https://images.pexels.com/photos/9880528/pexels-photo-9880528.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "campfire3"
+    ],
+    "ok": true,
+    "file": "src/stok/campfire3.webp",
+    "width": 1600,
+    "height": 1067,
+    "sizeKB": 35
+  },
+  {
+    "url": "https://images.pexels.com/photos/5283702/pexels-photo-5283702.jpeg?auto=compress&cs=tinysrgb&w=1920",
+    "keys": [
+      "campfire4"
+    ],
+    "ok": true,
+    "file": "src/stok/campfire4.webp",
+    "width": 1600,
+    "height": 981,
+    "sizeKB": 68
+  }
+]

@@ -1,0 +1,289 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  /* Keeps the scrollbar's space reserved even while body scroll is locked
+     (menu/lightbox/modal open), so the page doesn't shift right when it toggles. */
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: 'Archivo', system-ui, sans-serif;
+  background-color: #faf8f5;
+  color: #120e0b;
+  position: relative;
+}
+
+/* Filmic grain — a faint, brand-neutral texture over every page for the "kinematic" feel. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background-color: #24432a;
+  color: #fdf8ea;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f2ede6;
+}
+::-webkit-scrollbar-thumb {
+  background: #e3b13a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cf9527;
+}
+
+@layer components {
+  .container-lux {
+    @apply max-w-[100rem] mx-auto px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Editorial "text as button" — an underline that draws in on hover, no fill, no pill. */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2.5 px-0 py-1 text-stone-950 font-semibold tracking-tight text-base border-b-2 border-stone-950 transition-all duration-300 hover:gap-4 hover:text-clay-700 hover:border-clay-700;
+  }
+  .btn-secondary {
+    @apply relative inline-flex items-center justify-center gap-2.5 px-0 py-1 text-white font-semibold tracking-tight text-base border-b-2 border-white/50 transition-all duration-300 hover:gap-4 hover:border-sand-300 hover:text-sand-200;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 text-[11px] font-semibold tracking-[0.25em] uppercase text-stone-500 transition-all duration-300 hover:text-stone-950 hover:gap-3;
+  }
+  /* Oversized, condensed editorial headline — the layout's dominant graphic element. */
+  .section-title {
+    @apply font-serif text-[13vw] sm:text-6xl lg:text-7xl xl:text-8xl font-normal text-stone-950 tracking-[-0.02em] leading-[0.92];
+  }
+  .section-subtitle {
+    @apply flex items-center gap-3 text-[11px] sm:text-xs text-stone-500 font-semibold tracking-[0.3em] uppercase mb-4;
+  }
+  /* Numbered index tag, e.g. "01 — Kottejlar" — the recurring wayfinding motif. */
+  .index-tag {
+    @apply font-sans text-xs font-bold tracking-[0.3em] text-clay-600;
+  }
+  /* Flat editorial panel — hairline border, no shadow, sharp corners. */
+  .lux-card {
+    @apply bg-white border border-stone-200 overflow-hidden transition-colors duration-500 hover:border-stone-950;
+  }
+}
+
+.text-shadow-lux {
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+  .parallax-bg {
+    background-attachment: scroll;
+  }
+}
+
+/* Custom cursor */
+.custom-cursor-active,
+.custom-cursor-active * {
+  cursor: none !important;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: #e3b13a;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+.cursor-ring::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border-radius: 50%;
+  border: 1px solid rgba(18, 14, 11, 0.35);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background 0.3s ease;
+}
+
+.cursor-ring.cursor-ring-hover::before {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  background: rgba(227, 177, 58, 0.12);
+  border-color: rgba(227, 177, 58, 0.7);
+}
+
+/* Loading screen */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.loading-screen-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background-color: #120e0b;
+  transition: transform 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.loading-screen-panel-left {
+  left: 0;
+}
+
+.loading-screen-panel-right {
+  right: 0;
+}
+
+.loading-screen-out .loading-screen-panel-left {
+  transform: translateX(-100%);
+}
+
+.loading-screen-out .loading-screen-panel-right {
+  transform: translateX(100%);
+}
+
+.loading-screen-content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+}
+
+.loading-screen-out .loading-screen-content {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.loading-screen-title {
+  font-family: '"Bodoni Moda"', Georgia, serif;
+  color: #faf8f5;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: loadingTitleIn 0.6s ease-out 0.2s forwards;
+}
+
+.loading-screen-index {
+  font-family: 'Archivo', system-ui, sans-serif;
+  color: #e3b13a;
+  letter-spacing: 0.3em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  opacity: 0;
+  animation: loadingTitleIn 0.6s ease-out 0.05s forwards;
+}
+
+.loading-screen-rule {
+  position: relative;
+  width: 140px;
+  height: 1px;
+  background: rgba(250, 248, 245, 0.15);
+  overflow: hidden;
+  opacity: 0;
+  animation: loadingTitleIn 0.4s ease-out 0.35s forwards;
+}
+
+.loading-screen-rule::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #e3b13a;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: loadingRuleDraw 1.1s cubic-bezier(0.65, 0, 0.35, 1) 0.4s forwards;
+}
+
+@keyframes loadingRuleDraw {
+  to { transform: scaleX(1); }
+}
+
+@keyframes loadingTitleIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero headline character stagger */
+.split-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(60%);
+  animation: splitCharIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes splitCharIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .split-char {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+
+  .loading-screen {
+    display: none !important;
+  }
+}
